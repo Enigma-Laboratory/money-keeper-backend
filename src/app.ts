@@ -11,5 +11,6 @@ const app = express();
 app.listen(port, async () => {
   logger.info(`App is running port http:\\localhost:${port}`);
   await connect();
+  logger.warn("the user test ");
   routes(app);
 });
