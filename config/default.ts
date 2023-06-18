@@ -1,4 +1,6 @@
 export default {
   port: 1337,
-  dbUri: "mongodb://localhost:27017/money-keeper-backend",
+  dbUri:
+    "mongodb+srv://tutuanle:5KceUHEmgGf2Brct@money-keeper.zuvtb7i.mongodb.net/?retryWrites=true&w=majority",
+  saltWorkFactor: 10,
 };
