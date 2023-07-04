@@ -3,15 +3,15 @@ import {
   createUserHandler,
   getAllUsesHandler,
   getOneUserHandler,
-} from "./controllers/user.controller";
-import validateResource from "./middleware/validateResource";
-import { createUserSchema } from "./schemas/user.schemas";
+} from "../controllers/user.controller";
+import validateResource from "../middleware/validateResource";
+import { createUserSchema } from "../schemas/user.schemas";
 import {
   createUserSessionHandler,
   getUserSessionsHandler,
-} from "./controllers/session.controller";
-import { createSessionSchema } from "./schemas/session.schemas";
-import requireUser from "./middleware/requireUser";
+} from "../controllers/session.controller";
+import { createSessionSchema } from "../schemas/session.schemas";
+import requireUser from "../middleware/requireUser";
 
 function routes(app: Express) {
   app.get("/healthyCheck", (rep: Request, res: Response) => {

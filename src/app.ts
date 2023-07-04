@@ -2,7 +2,7 @@ import express from "express";
 import config from "config";
 import logger from "./utils/logger";
 import connect from "./utils/connect";
-import routes from "./routes";
+import routes from "./routes/routes";
 import deserializeUser from "./middleware/deserializeUser";
 
 const port = config.get<number>("port");
