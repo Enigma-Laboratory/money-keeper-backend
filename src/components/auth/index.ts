@@ -6,7 +6,7 @@ import { AuthValidation } from "./validation";
 
 export async function createUserHandler(req: Request, res: Response) {
   try {
-    const validate = AuthValidation.instance.postCreateValidation(req.body);
+    const validate = AuthValidation.instance.postCreateUserValidate(req.body);
     if (validate.error) {
       logger.error(`not create user by ${validate.error.message} `);
       return res.status(409).send(validate.error.message);

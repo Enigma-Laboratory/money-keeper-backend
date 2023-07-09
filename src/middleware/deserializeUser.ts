@@ -11,24 +11,18 @@ const deserializeUser = async (
     /^Bearer\s/,
     ""
   );
-  console.log("🚀 ~ file: deserializeUser.ts:14 ~ accessToken:", accessToken);
-
-  const refreshToken = get(req, "headers.x-refresh");
-  console.log("🚀 ~ file: deserializeUser.ts:17 ~ refreshToken:", refreshToken);
 
   if (!accessToken) {
     return next();
   }
 
   const { decoded, expired } = verifyJwt(accessToken, "accessTokenPublicKey");
-  console.log(decoded, expired);
 
-  //   console.log("decoded", decoded);
-  //   console.log("expired", expired);
-  //   if (decoded) {
-  //     res.locals.user = decoded;
-  //     return next();
-  //   }
+  if (decoded) {
+    res.locals.user = decoded;
+    return next();
+  }
+
   return next();
 };
 

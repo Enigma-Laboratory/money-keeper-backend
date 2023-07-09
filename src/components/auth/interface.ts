@@ -10,12 +10,12 @@ export interface User {
   updatedAt?: Date;
 }
 
-export interface Product {
-  id: string;
-  name: string;
-  price: number;
-  unit: "vnd" | "usd" | "jpy" | "eur";
-}
+// export interface Product {
+//   id: string;
+//   name: string;
+//   price: number;
+//   unit: "vnd" | "usd" | "jpy" | "eur";
+// }
 
 export interface OrderDetail {
   id: string;

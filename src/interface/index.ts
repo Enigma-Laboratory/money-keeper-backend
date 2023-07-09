@@ -5,7 +5,7 @@ export interface FindAllParams<Scope = string> {
   pageSize?: number;
 }
 
-export interface GetOneParams<T = string> {
+export interface getOneParams<T = string> {
   id?: string;
 }
 

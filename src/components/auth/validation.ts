@@ -11,7 +11,7 @@ export class AuthValidation {
     return AuthValidation._instance;
   }
 
-  public postCreateValidation(params: any): ValidationResult<any> {
+  public postCreateUserValidate(params: any): ValidationResult<any> {
     const schema = Joi.object({
       name: Joi.string().required(),
       email: Joi.string().email().required(),

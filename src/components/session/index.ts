@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-
+import { nanoid } from "nanoid";
 import config from "config";
 import { validatePassword } from "../auth/use-cases/validatePassword";
 import * as SessionUseCases from "./use-cases";
@@ -17,15 +17,15 @@ export async function createUserSessionHandler(req: Request, res: Response) {
     );
 
     const accessToken = signJwt(
-      { ...user, session: session._id },
+      { session: session._id },
       "accessTokenPrivateKey",
-      { expiresIn: config.get("accessTokenTtl") }
+      { expiresIn: config.get<string>("accessTokenTtl"), algorithm: "HS256" }
     );
 
     const refreshToken = signJwt(
       { ...user, session: session._id },
       "refreshTokenPrivateKey",
-      { expiresIn: config.get("refreshTokenTtl") }
+      { expiresIn: config.get<string>("refreshTokenTtl") }
     );
 
     return res.send({ accessToken, refreshToken });
@@ -36,7 +36,7 @@ export async function createUserSessionHandler(req: Request, res: Response) {
 
 export async function getUserSessionsHandler(req: Request, res: Response) {
   const userId = res.locals.user._id;
-
+  console.log("nanoid: ", nanoid());
   const sessions = await SessionUseCases.findSessions({
     user: userId,
     valid: true,
