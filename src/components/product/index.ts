@@ -39,11 +39,6 @@ export async function getOneProductHandler(req: Request, res: Response) {
 export async function getAllProductHandler(req: Request, res: Response) {
   try {
     const params = req.params;
-    console.log(
-      "🚀 ~ file: index.ts:42 ~ getAllProductHandler ~ params:",
-      params
-    );
-
     const validate = ProductValidation.instance.getAllProductValidate(params);
     if (validate.error) {
       logger.error(`not get product by ${validate.error.message} `);
