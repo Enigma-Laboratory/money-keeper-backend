@@ -4,14 +4,20 @@ import { GetOneOrderDetailParams } from "./interface";
 export class OrderDetailValidation {
   private static _instance: OrderDetailValidation;
   public static get instance(): OrderDetailValidation {
-    if (!OrderDetailValidation.instance) {
-      this._instance = new OrderDetailValidation();
+    if (!OrderDetailValidation._instance) {
+      this._instance = new this();
     }
     return this._instance;
   }
 
   public postCreateOrderDetail(params: any): ValidationResult<any> {
-    const schema = Joi.object({});
+    const schema = Joi.object({
+      orderId: Joi.string().required(),
+      product: Joi.string().required(),
+      quantity: Joi.number().required(),
+      price: Joi.number().required(),
+    });
+
     return schema.validate(params);
   }
 
