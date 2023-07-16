@@ -4,31 +4,31 @@ import * as AuthComponent from "../components/auth/index";
 const route = express.Router();
 
 /**
- * get /Product
- * @summary get one product
+ * post /user
+ * @summary post create one user
  *
- * @tags Product
+ * @tags user
  *
  * @security BearerAuth
  *
- * @param {string} id - The unique id of product
+ * @param {User} optional userModel and unique email
  **
- * @return {Product} 200 - Return product by id - application/json
+ * @return {User} 200 - Return user by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
 route.post("/create-user", AuthComponent.createUserHandler);
 
 /**
- * get /Product
- * @summary get one product
+ * get /user
+ * @summary get one user
  *
- * @tags Product
+ * @tags User
  *
  * @security BearerAuth
  *
- * @param {string} id - The unique id of product
+ * @param {string} email - The unique email of user
  **
- * @return {Product} 200 - Return product by id - application/json
+ * @return {User} 200 - Return user by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
 route.get("/user/:email", AuthComponent.getOneUserHandler);
