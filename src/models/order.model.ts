@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const orderSchema = new mongoose.Schema(
   {
@@ -8,12 +8,12 @@ const orderSchema = new mongoose.Schema(
     },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
+      ref: 'user',
     },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 export interface OrderDocument extends mongoose.Document {
@@ -23,6 +23,6 @@ export interface OrderDocument extends mongoose.Document {
   updatedAt: Date;
 }
 
-const OrderModel = mongoose.model<OrderDocument>("Order", orderSchema);
+const OrderModel = mongoose.model<OrderDocument>('Order', orderSchema);
 
 export default OrderModel;

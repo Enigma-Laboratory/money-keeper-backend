@@ -1,13 +1,7 @@
-import { omit } from "lodash";
-import UserModel from "../../../models/user.model";
+import { omit } from 'lodash';
+import UserModel from '../../../models/user.model';
 
-export async function validatePassword({
-  email,
-  password,
-}: {
-  email: string;
-  password: string;
-}) {
+export async function validatePassword({ email, password }: { email: string; password: string }) {
   try {
     const user = await UserModel.findOne({ email });
     if (!user) {
@@ -17,7 +11,7 @@ export async function validatePassword({
     if (!isValid) {
       return false;
     }
-    return omit(user.toJSON(), "password");
+    return omit(user.toJSON(), 'password');
   } catch (e: any) {
     throw new Error(e);
   }

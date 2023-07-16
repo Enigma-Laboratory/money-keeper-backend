@@ -1,9 +1,7 @@
-import OrderModel from "../../../models/order.model";
-import { FindAllOrderParams, FindAllOrderResponse, Order } from "../interface";
+import OrderModel from '../../../models/order.model';
+import { FindAllOrderParams, FindAllOrderResponse, Order } from '../interface';
 
-export async function getAllOrders(
-  params: FindAllOrderParams
-): Promise<FindAllOrderResponse> {
+export async function getAllOrders(params: FindAllOrderParams): Promise<FindAllOrderResponse> {
   try {
     const orders = await OrderModel.find().lean().exec();
 

@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
-import * as AuthUseCases from "./use-cases";
+import { Request, Response } from 'express';
+import * as AuthUseCases from './use-cases';
 
-import logger from "../../utils/logger";
-import { AuthValidation } from "./validation";
+import logger from '../../utils/logger';
+import { AuthValidation } from './validation';
 
 export async function createUserHandler(req: Request, res: Response) {
   try {
@@ -33,7 +33,7 @@ export async function getOneUserHandler(req: Request, res: Response) {
     const user = await AuthUseCases.getOneUser(email);
 
     if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      return res.status(404).json({ error: 'User not found' });
     }
     return res.send(user);
   } catch (e: any) {

@@ -1,11 +1,11 @@
-import express from "express";
-import config from "config";
-import logger from "./utils/logger";
-import connect from "./utils/connect";
-import routes from "./routes/index";
-import deserializeUser from "./middleware/deserializeUser";
+import express from 'express';
+import config from 'config';
+import logger from './utils/logger';
+import connect from './utils/connect';
+import routes from './routes/index';
+import deserializeUser from './middleware/deserializeUser';
 
-const port = config.get<number>("port");
+const port = config.get<number>('port');
 
 const app = express();
 

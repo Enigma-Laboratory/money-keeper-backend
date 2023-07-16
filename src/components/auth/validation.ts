@@ -1,5 +1,5 @@
-import Joi, { ValidationResult } from "joi";
-import { User } from "./interface";
+import Joi, { ValidationResult } from 'joi';
+import { User } from './interface';
 
 export class AuthValidation {
   private static _instance: AuthValidation;
@@ -16,7 +16,7 @@ export class AuthValidation {
       name: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
-      passwordConfirmation: Joi.ref("password"),
+      passwordConfirmation: Joi.ref('password'),
     });
     return schema.validate(params);
   }

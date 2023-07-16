@@ -1,9 +1,7 @@
-import OrderModel from "../../../models/order.model";
-import { FindOneOrderParams, FindOneOrderResponse, Order } from "../interface";
+import OrderModel from '../../../models/order.model';
+import { FindOneOrderParams, FindOneOrderResponse, Order } from '../interface';
 
-export async function getOneOrders(
-  params: FindOneOrderParams
-): Promise<FindOneOrderResponse> {
+export async function getOneOrders(params: FindOneOrderParams): Promise<FindOneOrderResponse> {
   try {
     const order = await OrderModel.findById({
       _id: params.id,

@@ -1,10 +1,5 @@
-import Joi, { ValidationResult } from "joi";
-import {
-  DeleteOrderParams,
-  FindAllOrderParams,
-  FindOneOrderParams,
-  UpdateOrderParams,
-} from "./interface";
+import Joi, { ValidationResult } from 'joi';
+import { DeleteOrderParams, FindAllOrderParams, FindOneOrderParams, UpdateOrderParams } from './interface';
 
 export class OrderValidation {
   private static _instance: OrderValidation;
@@ -23,27 +18,21 @@ export class OrderValidation {
     return schema.validate(params);
   }
 
-  public getOneOrder(
-    params: FindOneOrderParams
-  ): ValidationResult<FindOneOrderParams> {
+  public getOneOrder(params: FindOneOrderParams): ValidationResult<FindOneOrderParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
     });
     return schema.validate(params);
   }
 
-  public deleteOneOrder(
-    params: DeleteOrderParams
-  ): ValidationResult<DeleteOrderParams> {
+  public deleteOneOrder(params: DeleteOrderParams): ValidationResult<DeleteOrderParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
     });
     return schema.validate(params);
   }
 
-  public getAllOrderParams(
-    params: FindAllOrderParams
-  ): ValidationResult<FindAllOrderParams> {
+  public getAllOrderParams(params: FindAllOrderParams): ValidationResult<FindAllOrderParams> {
     const schema = Joi.object({
       id: Joi.string(),
       orderName: Joi.string(),
@@ -58,9 +47,7 @@ export class OrderValidation {
     return schema.validate(params);
   }
 
-  public updateOrderParams(
-    params: UpdateOrderParams
-  ): ValidationResult<UpdateOrderParams> {
+  public updateOrderParams(params: UpdateOrderParams): ValidationResult<UpdateOrderParams> {
     const schema = Joi.object({
       id: Joi.string(),
       orderName: Joi.string(),

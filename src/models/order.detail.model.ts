@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const orderDetailSchema = new mongoose.Schema(
   {
     orderId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Order",
+      ref: 'Order',
       required: true,
     },
     product: {
@@ -22,7 +22,7 @@ const orderDetailSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 export interface OrderDetailDocument extends mongoose.Document {
@@ -30,9 +30,6 @@ export interface OrderDetailDocument extends mongoose.Document {
   updatedAt: Date;
 }
 
-const OrderDetailModel = mongoose.model<OrderDetailDocument>(
-  "OrderDetail",
-  orderDetailSchema
-);
+const OrderDetailModel = mongoose.model<OrderDetailDocument>('OrderDetail', orderDetailSchema);
 
 export default OrderDetailModel;

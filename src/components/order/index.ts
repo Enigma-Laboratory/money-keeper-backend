@@ -1,12 +1,9 @@
-import { Request, Response } from "express";
-import logger from "../../utils/logger";
-import * as OrderUseCases from "./use-cases";
-import { OrderValidation } from "./validation";
+import { Request, Response } from 'express';
+import logger from '../../utils/logger';
+import * as OrderUseCases from './use-cases';
+import { OrderValidation } from './validation';
 
-export async function postCreateOrderHandler(
-  req: Request,
-  res: Response
-): Promise<any> {
+export async function postCreateOrderHandler(req: Request, res: Response): Promise<any> {
   try {
     const params = req.body;
     const validate = OrderValidation.instance.postCreateOrder(params);
@@ -22,10 +19,7 @@ export async function postCreateOrderHandler(
   }
 }
 
-export async function getAllOrderHandler(
-  req: Request,
-  res: Response
-): Promise<any> {
+export async function getAllOrderHandler(req: Request, res: Response): Promise<any> {
   try {
     const params = req.params;
     const validate = OrderValidation.instance.getAllOrderParams(params);
@@ -41,10 +35,7 @@ export async function getAllOrderHandler(
   }
 }
 
-export async function getOneOrderHandler(
-  req: Request,
-  res: Response
-): Promise<any> {
+export async function getOneOrderHandler(req: Request, res: Response): Promise<any> {
   try {
     const params = req.params;
     const validate = OrderValidation.instance.getOneOrder(params);
@@ -59,10 +50,7 @@ export async function getOneOrderHandler(
   }
 }
 
-export async function deleteOneOrderHandler(
-  req: Request,
-  res: Response
-): Promise<any> {
+export async function deleteOneOrderHandler(req: Request, res: Response): Promise<any> {
   try {
     const params = req.body;
     const validate = OrderValidation.instance.deleteOneOrder(params);
@@ -78,10 +66,7 @@ export async function deleteOneOrderHandler(
   }
 }
 
-export async function patchOneOrderHandler(
-  req: Request,
-  res: Response
-): Promise<any> {
+export async function patchOneOrderHandler(req: Request, res: Response): Promise<any> {
   try {
     const params = req.body;
     const validate = OrderValidation.instance.updateOrderParams(params);

@@ -1,5 +1,5 @@
-import express from "express";
-import * as ProductComponent from "../components/product";
+import express from 'express';
+import * as ProductComponent from '../components/product';
 
 const route = express.Router();
 /**
@@ -15,7 +15,7 @@ const route = express.Router();
  * @return {Product} 200 - Return product when created - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.post("/create-product", ProductComponent.createProductHandler);
+route.post('/create-product', ProductComponent.createProductHandler);
 
 /**
  * get /Product
@@ -30,7 +30,7 @@ route.post("/create-product", ProductComponent.createProductHandler);
  * @return {Product} 200 - Return product by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get("/get-one-product/:id", ProductComponent.getOneProductHandler);
+route.get('/get-one-product/:id', ProductComponent.getOneProductHandler);
 
 /**
  * get /order
@@ -45,5 +45,5 @@ route.get("/get-one-product/:id", ProductComponent.getOneProductHandler);
  * @return {Array<Product>} 200 - Return array product - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get("/all-product", ProductComponent.getAllProductHandler);
+route.get('/all-product', ProductComponent.getAllProductHandler);
 export default route;

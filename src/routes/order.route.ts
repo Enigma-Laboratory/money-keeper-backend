@@ -1,13 +1,10 @@
-import express from "express";
-import * as OrderDetailComponent from "../components/order/orderDetail";
-import * as OrderComponent from "../components/order";
+import express from 'express';
+import * as OrderDetailComponent from '../components/order/orderDetail';
+import * as OrderComponent from '../components/order';
 
 const route = express.Router();
 
-route.post(
-  "/create-order-detail",
-  OrderDetailComponent.postCreateOrderDetailHandler
-);
+route.post('/create-order-detail', OrderDetailComponent.postCreateOrderDetailHandler);
 
 /**
  * get /order
@@ -22,7 +19,7 @@ route.post(
  * @return {Order} 200 - Return order by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get("/", OrderComponent.getAllOrderHandler);
+route.get('/', OrderComponent.getAllOrderHandler);
 
 /**
  * get /order/get-one-order/{id}
@@ -37,7 +34,7 @@ route.get("/", OrderComponent.getAllOrderHandler);
  * @return {Order} 200 - Return order by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get("/get-one-order/:id", OrderComponent.getOneOrderHandler);
+route.get('/get-one-order/:id', OrderComponent.getOneOrderHandler);
 
 /**
  * post /order
@@ -52,7 +49,7 @@ route.get("/get-one-order/:id", OrderComponent.getOneOrderHandler);
  * @return {Order} 200 - Return order when created - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.post("/create-order", OrderComponent.postCreateOrderHandler);
+route.post('/create-order', OrderComponent.postCreateOrderHandler);
 
 /**
  * delete /order
@@ -67,7 +64,7 @@ route.post("/create-order", OrderComponent.postCreateOrderHandler);
  * @return {Order} 200 - Return order when deleted - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.delete("/delete-order", OrderComponent.deleteOneOrderHandler);
+route.delete('/delete-order', OrderComponent.deleteOneOrderHandler);
 
 /**
  * patch update order
@@ -82,6 +79,6 @@ route.delete("/delete-order", OrderComponent.deleteOneOrderHandler);
  * @return {Order} 200 - Return order when updated - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.patch("/update-order", OrderComponent.patchOneOrderHandler);
+route.patch('/update-order', OrderComponent.patchOneOrderHandler);
 
 export default route;

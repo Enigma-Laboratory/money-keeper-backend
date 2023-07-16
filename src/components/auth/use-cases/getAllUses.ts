@@ -1,6 +1,6 @@
-import { omit } from "lodash";
-import UserModel from "../../../models/user.model";
-import { FindAllUserResponse, User } from "../interface";
+import { omit } from 'lodash';
+import UserModel from '../../../models/user.model';
+import { FindAllUserResponse, User } from '../interface';
 
 export async function getAllUsers(): Promise<FindAllUserResponse> {
   try {
@@ -11,7 +11,7 @@ export async function getAllUsers(): Promise<FindAllUserResponse> {
     });
     return {
       count: users.length,
-      rows: omit(transformedUsers, "password"),
+      rows: omit(transformedUsers, 'password'),
     };
   } catch (e: any) {
     throw new Error(e);

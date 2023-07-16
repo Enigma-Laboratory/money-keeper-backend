@@ -1,10 +1,9 @@
 export default {
   port: 1337,
-  dbUri:
-    "mongodb+srv://tutuanle:5KceUHEmgGf2Brct@money-keeper.zuvtb7i.mongodb.net/?retryWrites=true&w=majority",
+  dbUri: 'mongodb+srv://tutuanle:5KceUHEmgGf2Brct@money-keeper.zuvtb7i.mongodb.net/?retryWrites=true&w=majority',
   saltWorkFactor: 10,
-  accessTokenTtl: "15m",
-  refreshTokenTtl: "1y",
+  accessTokenTtl: '15m',
+  refreshTokenTtl: '1y',
   // accessTokenPublicKey: `-----BEGIN PUBLIC KEY-----
   // MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA7qrWT9JGmBTD8BDVIeCn
   // v2SDUdoLPlWW2/bx7AEMRS/ZfGN3mKdRdck+EK3PJACwmPTlOxAUlImezXz6e6Zr

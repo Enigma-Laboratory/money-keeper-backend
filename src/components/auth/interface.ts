@@ -1,4 +1,4 @@
-import { FindAllResponse } from "../../interface";
+import { FindAllResponse } from '../../interface';
 
 export interface User {
   id: string;

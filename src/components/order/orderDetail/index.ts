@@ -1,16 +1,12 @@
-import { Request, Response } from "express";
-import { OrderDetailValidation } from "./validation";
-import logger from "../../../utils/logger";
-import * as OrderDetailUseCases from "./use-cases";
+import { Request, Response } from 'express';
+import { OrderDetailValidation } from './validation';
+import logger from '../../../utils/logger';
+import * as OrderDetailUseCases from './use-cases';
 
-export async function postCreateOrderDetailHandler(
-  req: Request,
-  res: Response
-): Promise<any> {
+export async function postCreateOrderDetailHandler(req: Request, res: Response): Promise<any> {
   try {
     const params = req.body;
-    const validate =
-      OrderDetailValidation.instance.postCreateOrderDetail(params);
+    const validate = OrderDetailValidation.instance.postCreateOrderDetail(params);
 
     if (validate.error) {
       logger.error(`not create order detail by ${validate.error.message} `);

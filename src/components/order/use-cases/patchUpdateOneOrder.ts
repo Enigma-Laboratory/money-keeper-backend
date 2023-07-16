@@ -1,9 +1,7 @@
-import OrderModel from "../../../models/order.model";
-import { FindOneOrderResponse, UpdateOrderParams } from "../interface";
+import OrderModel from '../../../models/order.model';
+import { FindOneOrderResponse, UpdateOrderParams } from '../interface';
 
-export async function patchUpdateOneOrders(
-  params: UpdateOrderParams
-): Promise<FindOneOrderResponse> {
+export async function patchUpdateOneOrders(params: UpdateOrderParams): Promise<FindOneOrderResponse> {
   try {
     const { id: _id, ...orderParams } = params;
 
@@ -12,7 +10,7 @@ export async function patchUpdateOneOrders(
         _id, // where by id
       },
       { ...orderParams }, // update follow params Order
-      { new: true } // ensures that the updated customer object is returned
+      { new: true }, // ensures that the updated customer object is returned
     )
       .lean()
       .exec();

@@ -1,3 +1,3 @@
-import { getOneParams } from "../../../interface";
+import { getOneParams } from '../../../interface';
 
 export interface GetOneOrderDetailParams extends getOneParams {}

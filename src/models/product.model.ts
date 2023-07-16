@@ -1,11 +1,11 @@
-import mongoose from "mongoose";
-import { customAlphabet } from "nanoid";
-import { UserDocument } from "./user.model";
+import mongoose from 'mongoose';
+import { customAlphabet } from 'nanoid';
+import { UserDocument } from './user.model';
 
-const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10);
+const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 10);
 
 export interface Product {
-  user: UserDocument["_id"];
+  user: UserDocument['_id'];
   title: string;
   description: string;
   image: string;
@@ -30,9 +30,9 @@ const productSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-const ProductModel = mongoose.model<ProductDocument>("Product", productSchema);
+const ProductModel = mongoose.model<ProductDocument>('Product', productSchema);
 
 export default ProductModel;

@@ -1,12 +1,12 @@
-import config from "config";
-import JWT from "jsonwebtoken";
+import config from 'config';
+import JWT from 'jsonwebtoken';
 
 export function signJwt(
   object: Object,
-  keyName: "accessTokenPrivateKey" | "refreshTokenPrivateKey",
-  options?: JWT.SignOptions
+  keyName: 'accessTokenPrivateKey' | 'refreshTokenPrivateKey',
+  options?: JWT.SignOptions,
 ) {
-  const signingKey = config.get<string>("accessTokenPrivateKey");
+  const signingKey = config.get<string>('accessTokenPrivateKey');
   const token = JWT.sign(object, signingKey, {
     ...(options && options),
   });
@@ -16,10 +16,10 @@ export function signJwt(
 
 export function verifyJwt(
   token: string,
-  keyName: "accessTokenPublicKey" | "refreshTokenPublicKey",
-  options?: JWT.SignOptions
+  keyName: 'accessTokenPublicKey' | 'refreshTokenPublicKey',
+  options?: JWT.SignOptions,
 ) {
-  const publicKey = config.get<string>("accessTokenPrivateKey");
+  const publicKey = config.get<string>('accessTokenPrivateKey');
   try {
     const decoded = JWT.verify(token, publicKey, { ...(options && options) });
     return {
@@ -31,7 +31,7 @@ export function verifyJwt(
     console.error(e);
     return {
       valid: false,
-      expired: e.message === "jwt expired",
+      expired: e.message === 'jwt expired',
       decoded: null,
     };
   }

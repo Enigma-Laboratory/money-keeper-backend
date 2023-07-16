@@ -1,5 +1,5 @@
-import Joi, { ValidationResult } from "joi";
-import { GetOneOrderDetailParams } from "./interface";
+import Joi, { ValidationResult } from 'joi';
+import { GetOneOrderDetailParams } from './interface';
 
 export class OrderDetailValidation {
   private static _instance: OrderDetailValidation;
@@ -21,9 +21,7 @@ export class OrderDetailValidation {
     return schema.validate(params);
   }
 
-  public getOneOrderDetail(
-    params: GetOneOrderDetailParams
-  ): ValidationResult<GetOneOrderDetailParams> {
+  public getOneOrderDetail(params: GetOneOrderDetailParams): ValidationResult<GetOneOrderDetailParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
     });
