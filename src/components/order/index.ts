@@ -28,6 +28,7 @@ export async function getAllOrderHandler(req: Request, res: Response): Promise<a
       return res.status(409).send(validate.error.message);
     }
     const deleteOrder = await OrderUseCases.getAllOrders(params);
+    logger.info('[GET] fetch All Orders');
     return res.send(deleteOrder);
   } catch (e: any) {
     logger.error(`get orders ${e}`);
