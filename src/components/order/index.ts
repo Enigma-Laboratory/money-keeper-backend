@@ -53,7 +53,7 @@ export async function getOneOrderHandler(req: Request, res: Response): Promise<a
 
 export async function deleteOneOrderHandler(req: Request, res: Response): Promise<any> {
   try {
-    const params = req.body;
+    const params = req.params;
     const validate = OrderValidation.instance.deleteOneOrder(params);
 
     if (validate.error) {

@@ -64,7 +64,7 @@ route.post('/create-order', OrderComponent.postCreateOrderHandler);
  * @return {Order} 200 - Return order when deleted - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.delete('/delete-order', OrderComponent.deleteOneOrderHandler);
+route.delete('/delete-order/:id', OrderComponent.deleteOneOrderHandler);
 
 /**
  * patch update order
