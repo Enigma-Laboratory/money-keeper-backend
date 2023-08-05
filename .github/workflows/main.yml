@@ -1,0 +1,17 @@
+name: money-keeper-backend
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: userNode
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: install dependencies
+        run: yarn install
+      - name: run build
+        run: yarn run build
