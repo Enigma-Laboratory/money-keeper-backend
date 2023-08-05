@@ -1,4 +1,4 @@
-import SessionModel from "../../../models/session.model";
+import SessionModel from '../../../models/session.model';
 
 export async function createSession(userId: string, userAgent: string) {
   try {

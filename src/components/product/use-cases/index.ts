@@ -1,3 +1,3 @@
-export * from "./postCreateProduct";
-export * from "./getOneProduct";
-export * from "./getAllProducts";
+export * from './postCreateProduct';
+export * from './getOneProduct';
+export * from './getAllProducts';

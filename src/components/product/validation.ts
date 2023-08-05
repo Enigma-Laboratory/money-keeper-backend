@@ -1,5 +1,5 @@
-import Joi, { ValidationResult } from "joi";
-import { FindAllProductParams, GetOneProductParams } from "./interface";
+import Joi, { ValidationResult } from 'joi';
+import { FindAllProductParams, GetOneProductParams } from './interface';
 
 export class ProductValidation {
   private static _instance: ProductValidation;
@@ -21,17 +21,13 @@ export class ProductValidation {
     return schema.validate(params);
   }
 
-  public getOneProductValidate(
-    params: GetOneProductParams
-  ): ValidationResult<GetOneProductParams> {
+  public getOneProductValidate(params: GetOneProductParams): ValidationResult<GetOneProductParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
     });
     return schema.validate(params);
   }
-  public getAllProductValidate(
-    params: Partial<FindAllProductParams>
-  ): ValidationResult<FindAllProductParams> {
+  public getAllProductValidate(params: Partial<FindAllProductParams>): ValidationResult<FindAllProductParams> {
     const schema = Joi.object({
       scope: Joi.string(),
       page: Joi.number(),

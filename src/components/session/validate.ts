@@ -1,4 +1,4 @@
-import Joi, { ValidationResult } from "joi";
+import Joi, { ValidationResult } from 'joi';
 
 export class SessionValidation {
   private static _instance: SessionValidation;

@@ -3,7 +3,7 @@ name: money-keeper
 on:
   push:
     paths:
-      - "**"
+      - '**'
 jobs:
   build:
     runs-on: ubuntu-latest

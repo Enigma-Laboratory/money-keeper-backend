@@ -1,13 +1,12 @@
-import { Request, Response } from "express";
-import logger from "../../utils/logger";
-import { ProductValidation } from "./validation";
-import * as ProductUseCases from "./use-cases";
+import { Request, Response } from 'express';
+import logger from '../../utils/logger';
+import { ProductValidation } from './validation';
+import * as ProductUseCases from './use-cases';
 
 export async function createProductHandler(req: Request, res: Response) {
   try {
     const params = req.body;
-    const validate =
-      ProductValidation.instance.postCreateProductValidate(params);
+    const validate = ProductValidation.instance.postCreateProductValidate(params);
     if (validate.error) {
       logger.error(`not create product by ${validate.error.message} `);
       return res.status(409).send(validate.error.message);
