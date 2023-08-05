@@ -20,5 +20,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Deploy to Render
-        run: https://api.render.com/deploy/srv-cj71tgs5kgrc73f7ekbg?key=aVRBEVEFfDE
+      # - name: Deploy to Render
+      # run: https://api.render.com/deploy/srv-cj71tgs5kgrc73f7ekbg?key=aVRBEVEFfDE
