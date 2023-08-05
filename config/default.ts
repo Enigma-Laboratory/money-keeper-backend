@@ -2,7 +2,7 @@ require('dotenv').config();
 
 export default {
   port: process.env.PORT,
-  dbUri: 'mongodb+srv://tutuanle:5KceUHEmgGf2Brct@money-keeper.zuvtb7i.mongodb.net/?retryWrites=true&w=majority',
+  dbUri: process.env.DB_URI,
   saltWorkFactor: 10,
   accessTokenTtl: '15m',
   refreshTokenTtl: '1y',
