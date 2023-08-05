@@ -16,3 +16,7 @@ jobs:
         run: yarn install
       - name: run build
         run: yarn run build
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
