@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "build": "tsc"
   },
   "dependencies": {
     "@types/joi": "^17.2.3",
