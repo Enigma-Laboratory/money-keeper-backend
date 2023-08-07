@@ -5,7 +5,7 @@ export async function getAllOrders(params: FindAllOrderParams): Promise<FindAllO
   try {
     const orders = await OrderModel.find().lean().exec();
 
-    const transformedOrders: Order[] = orders.map((order) => {
+    const transformedOrders: Order[] = orders.map(order => {
       return {
         id: order._id,
         orderName: order.orderName,
