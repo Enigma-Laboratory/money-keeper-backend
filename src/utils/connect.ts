@@ -4,7 +4,7 @@ import logger from './logger';
 
 async function connect() {
   const dbUri = config.get<string>('dbUri');
-  logger.info(`🚀 DB_URI = ${dbUri} `);
+  logger.info(`DB_URI = ${dbUri}`);
   try {
     await mongoose.connect(dbUri);
     logger.info('DB connected');
