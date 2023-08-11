@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { nanoid } from 'nanoid';
 import config from 'config';
 import { validatePassword } from '../auth/use-cases/validatePassword';
 import * as SessionUseCases from './use-cases';
@@ -30,7 +29,6 @@ export async function createUserSessionHandler(req: Request, res: Response) {
 
 export async function getUserSessionsHandler(req: Request, res: Response) {
   const userId = res.locals.user._id;
-  console.log('nanoid: ', nanoid());
   const sessions = await SessionUseCases.findSessions({
     user: userId,
     valid: true,

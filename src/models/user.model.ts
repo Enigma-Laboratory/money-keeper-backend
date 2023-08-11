@@ -1,11 +1,13 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import config from 'config';
 
 export interface userInput {
   email: string;
   name: string;
   password: string;
+}
+export interface loginInput {
+  email: string;
 }
 
 export interface UserDocument extends userInput, mongoose.Document {
@@ -28,13 +30,12 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.pre('save', async function (next) {
-  let user = this as unknown as UserDocument;
+  let user = this as unknown as UserDocument; // [ ]: review
 
   if (!user.isModified('password')) {
     return next();
   }
-
-  const salt = await bcrypt.genSalt(config.get<number>('saltWorkFactor'));
+  const salt = await bcrypt.genSalt(Number(process.env.SALT_WORK_FACTOR) || 0);
 
   const hash = bcrypt.hashSync(user.password, salt);
 
