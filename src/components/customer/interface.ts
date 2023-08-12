@@ -29,4 +29,4 @@ export interface Order {
   quantity: number;
 }
 
-export interface FindAllUserResponse extends FindAllResponse<User> {}
+export interface FindAllUserResponse extends FindAllResponse<Omit<User, 'password'>> {}
