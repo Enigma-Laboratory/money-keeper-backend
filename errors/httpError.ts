@@ -10,4 +10,15 @@ export class HttpError extends Error {
     this.message = message || STATUS_CODES[this.status] || 'HttpError';
     if (component) this.component = component;
   }
+<<<<<<< Updated upstream
+=======
+  toObject() {
+    return {
+      status: this.status,
+      message: this.message,
+      stack: this.stack,
+      ...(this.component && { component: this.component }),
+    };
+  }
+>>>>>>> Stashed changes
 }
