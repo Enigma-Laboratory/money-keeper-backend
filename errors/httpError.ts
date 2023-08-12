@@ -8,6 +8,15 @@ export class HttpError extends Error {
     super(message);
     this.status = status || 500;
     this.message = message || STATUS_CODES[this.status] || 'HttpError';
+    Error.captureStackTrace(this, this.constructor);
     if (component) this.component = component;
+  }
+  toJSON() {
+    return JSON.stringify({
+      status: this.status,
+      message: this.message,
+      stack: this.stack,
+      ...(this.component && { component: this.component }),
+    });
   }
 }
