@@ -1,10 +1,16 @@
+import { BadRequestError } from '../../../../errors';
 import OrderModel from '../../../models/order.model';
 import { FindAllOrderParams, FindAllOrderResponse, Order } from '../interface';
+import { OrderValidation } from '../validation';
 
 export async function getAllOrders(params: FindAllOrderParams): Promise<FindAllOrderResponse> {
+  const validate = OrderValidation.instance.getAllOrderParams(params);
+
+  if (validate.error) {
+    throw new BadRequestError(validate.error.message);
+  }
   try {
     const orders = await OrderModel.find().lean().exec();
-
     const transformedOrders: Order[] = orders.map(order => {
       return {
         id: order._id,
@@ -19,7 +25,7 @@ export async function getAllOrders(params: FindAllOrderParams): Promise<FindAllO
       count: orders.length,
       rows: transformedOrders,
     };
-  } catch (e: any) {
-    throw new Error(e);
+  } catch (error) {
+    throw { error };
   }
 }

@@ -13,7 +13,7 @@ export async function getAllUsers(): Promise<FindAllUserResponse> {
       count: users.length,
       rows: transformedUsers,
     };
-  } catch (e: any) {
-    throw new Error(e);
+  } catch (error) {
+    throw { error };
   }
 }

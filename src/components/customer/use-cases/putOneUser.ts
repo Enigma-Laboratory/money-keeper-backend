@@ -4,7 +4,7 @@ export async function putCreateUser(params: userInput) {
   try {
     const user = await UserModel.updateOne(params);
     return user.matchedCount;
-  } catch (e: any) {
-    throw new Error(e);
+  } catch (error) {
+    throw { error };
   }
 }

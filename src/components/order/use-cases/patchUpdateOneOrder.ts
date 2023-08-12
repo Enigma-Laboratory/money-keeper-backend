@@ -1,8 +1,15 @@
+import { BadRequestError } from '../../../../errors';
 import OrderModel from '../../../models/order.model';
 import { FindOneOrderResponse, UpdateOrderParams } from '../interface';
+import { OrderValidation } from '../validation';
 
 export async function patchUpdateOneOrders(params: UpdateOrderParams): Promise<FindOneOrderResponse> {
   try {
+    const validate = OrderValidation.instance.updateOrderParams(params);
+    if (validate.error) {
+      throw new BadRequestError(validate.error.message);
+    }
+
     const { id: _id, ...orderParams } = params;
 
     const order = await OrderModel.findByIdAndUpdate(
@@ -15,18 +22,16 @@ export async function patchUpdateOneOrders(params: UpdateOrderParams): Promise<F
       .lean()
       .exec();
 
-    if (order) {
-      return {
-        id: order._id,
-        orderName: order.orderName,
-        userId: order.userId,
-        createdAt: order.createdAt,
-        updatedAt: order.updatedAt,
-      };
-    }
+    if (!order) throw new BadRequestError('Cannot update order ');
 
-    return {};
-  } catch (e: any) {
-    throw new Error(e);
+    return {
+      id: order._id,
+      orderName: order.orderName,
+      userId: order.userId,
+      createdAt: order.createdAt,
+      updatedAt: order.updatedAt,
+    };
+  } catch (error) {
+    throw { error };
   }
 }

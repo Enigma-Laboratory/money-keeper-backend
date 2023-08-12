@@ -1,3 +1,4 @@
+import { NotFoundError } from '../../../../errors';
 import UserModel from '../../../models/user.model';
 
 export async function deleteOneUser(id: string) {
@@ -5,9 +6,10 @@ export async function deleteOneUser(id: string) {
     const user = await UserModel.findOne({
       id,
     });
+    if (!user) throw new NotFoundError(`Can not delete user with ${id}`);
 
     return user?.toJSON();
-  } catch (e: any) {
-    throw new Error(e);
+  } catch (error) {
+    throw { error };
   }
 }

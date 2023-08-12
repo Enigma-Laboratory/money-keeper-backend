@@ -49,7 +49,7 @@ route.get('/get-one-order/:id', OrderComponent.getOneOrderHandler);
  * @return {Order} 200 - Return order when created - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.post('/create-order', OrderComponent.postCreateOrderHandler);
+route.post('/create-order', OrderComponent.postCreateOneOrderHandler);
 
 /**
  * delete /order

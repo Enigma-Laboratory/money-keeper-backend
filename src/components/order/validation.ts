@@ -1,5 +1,11 @@
 import Joi, { ValidationResult } from 'joi';
-import { DeleteOrderParams, FindAllOrderParams, FindOneOrderParams, UpdateOrderParams } from './interface';
+import {
+  CreateOneOrderParams,
+  DeleteOrderParams,
+  FindAllOrderParams,
+  FindOneOrderParams,
+  UpdateOrderParams,
+} from './interface';
 
 export class OrderValidation {
   private static _instance: OrderValidation;
@@ -10,7 +16,7 @@ export class OrderValidation {
     return this._instance;
   }
 
-  public postCreateOrder(params: any): ValidationResult<any> {
+  public postCreateOneOrder(params: CreateOneOrderParams): ValidationResult<CreateOneOrderParams> {
     const schema = Joi.object({
       orderName: Joi.string().required(),
       userId: Joi.string().required(),

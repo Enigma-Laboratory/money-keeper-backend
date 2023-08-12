@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors(corsOptions));
 
 app.listen(process.env.PORT, async () => {
-  logger.info(`App is running port http:\\\\localhost:${process.env.PORT}`);
+  logger.info(`App is running port :${process.env.PORT}`);
   await connect();
   routes(app);
 });
