@@ -1,18 +1,16 @@
 import { Express } from 'express';
-import AuthRoute from './auth.route';
-import Auth from './auth/index';
-import SessionRoute from './session.route';
-import ProductRoute from './product.route';
-import OrderRoute from './order.route';
-import otherRoute from './other.route';
+import AuthRoute from './auth/authRoutes';
+import SessionRoute from './session/sessionRoutes';
+import ProductRoute from './product/productRoutes';
+import OrderRoute from './order/orderRoutes';
+import CustomerRoute from './customer/customerRoutes';
 
 function routes(app: Express) {
-  // app.use('/auth', AuthRoute);
-  app.use('/auth2', jwtconfig.authenticate, Auth);
-  app.use('/session', jwtconfig.authenticate, SessionRoute);
-  app.use('/product', jwtconfig.authenticate, ProductRoute);
-  app.use('/order', jwtconfig.authenticate, OrderRoute);
-  app.use('/', jwtconfig.authenticate, otherRoute);
+  app.use('/auth', AuthRoute);
+  app.use('/session', SessionRoute);
+  app.use('/product', ProductRoute);
+  app.use('/order', OrderRoute);
+  app.use('/customer', CustomerRoute);
 }
 
 export default routes;

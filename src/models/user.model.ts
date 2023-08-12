@@ -6,6 +6,7 @@ export interface userInput {
   name: string;
   password: string;
 }
+
 export interface loginInput {
   email: string;
 }

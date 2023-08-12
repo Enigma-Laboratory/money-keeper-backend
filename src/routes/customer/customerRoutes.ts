@@ -1,22 +1,7 @@
 import express from 'express';
-import * as AuthComponent from '../components/auth/index';
+import * as CustomerComponent from '../../components/customer';
 
 const route = express.Router();
-
-/**
- * post /user
- * @summary post create one user
- *
- * @tags user
- *
- * @security BearerAuth
- *
- * @param {User} optional userModel and unique email
- **
- * @return {User} 200 - Return user by id - application/json
- * @return {Error} default - Unexpected error - application/json
- */
-route.post('/create-user', AuthComponent.createUserHandler);
 
 /**
  * get /user
@@ -31,7 +16,7 @@ route.post('/create-user', AuthComponent.createUserHandler);
  * @return {User} 200 - Return user by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get('/user/:email', AuthComponent.getOneUserHandler);
+route.get('/user/:email', CustomerComponent.getOneUserHandler);
 
 /**
  * get /users
@@ -45,6 +30,6 @@ route.get('/user/:email', AuthComponent.getOneUserHandler);
  * @return {User} 200 - Return array user  - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get('/users', AuthComponent.getAllUsesHandler);
+route.get('/users', CustomerComponent.getAllUsesHandler);
 
 export default route;

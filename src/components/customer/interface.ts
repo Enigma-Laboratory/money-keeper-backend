@@ -8,6 +8,7 @@ export interface User {
   numberPhone?: number;
   createdAt?: Date;
   updatedAt?: Date;
+  password: string;
 }
 
 // export interface Product {
@@ -28,4 +29,4 @@ export interface Order {
   quantity: number;
 }
 
-export interface FindAllUserResponse extends FindAllResponse<User> {}
+export interface FindAllUserResponse extends FindAllResponse<Omit<User, 'password'>> {}
