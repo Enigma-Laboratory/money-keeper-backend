@@ -1,5 +1,5 @@
 import Joi, { ValidationResult } from 'joi';
-import { User } from './interface';
+import { CreateUserParams, FindOneUserParams } from './interfaces';
 
 export class AuthValidation {
   private static _instance: AuthValidation;
@@ -11,19 +11,19 @@ export class AuthValidation {
     return AuthValidation._instance;
   }
 
-  public postCreateUserValidate(params: any): ValidationResult<any> {
+  public signInValidate(params: FindOneUserParams): ValidationResult<FindOneUserParams> {
     const schema = Joi.object({
-      name: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
-      passwordConfirmation: Joi.ref('password'),
     });
     return schema.validate(params);
   }
 
-  public getOneUserValidation(params: Partial<User>): ValidationResult<User> {
+  public signUpValidate(params: CreateUserParams): ValidationResult<CreateUserParams> {
     const schema = Joi.object({
+      name: Joi.string().required(),
       email: Joi.string().email().required(),
+      password: Joi.string().required(),
     });
     return schema.validate(params);
   }

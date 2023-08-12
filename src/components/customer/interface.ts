@@ -8,6 +8,7 @@ export interface User {
   numberPhone?: number;
   createdAt?: Date;
   updatedAt?: Date;
+  password: string;
 }
 
 // export interface Product {
