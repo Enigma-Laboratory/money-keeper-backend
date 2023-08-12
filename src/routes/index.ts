@@ -4,7 +4,8 @@ import SessionRoute from './session/sessionRoutes';
 import ProductRoute from './product/productRoutes';
 import OrderRoute from './order/orderRoutes';
 import CustomerRoute from './customer/customerRoutes';
-import { HttpError } from '../../errors';
+
+import { InternalServerError } from './serverError/serverError';
 import { Request, Response, NextFunction } from 'express';
 
 function routes(app: Express) {
@@ -13,14 +14,7 @@ function routes(app: Express) {
   app.use('/product', ProductRoute);
   app.use('/order', OrderRoute);
   app.use('/customer', CustomerRoute);
-
-  app.use((err: HttpError, req: Request, res: Response, next: NextFunction) => {
-    if (err instanceof HttpError) {
-      res.status(err.status).json({ error: err.toJSON() });
-    } else {
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  });
+  app.use(InternalServerError);
 }
 
 export default routes;

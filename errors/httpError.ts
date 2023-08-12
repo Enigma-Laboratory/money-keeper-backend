@@ -11,12 +11,12 @@ export class HttpError extends Error {
     Error.captureStackTrace(this, this.constructor);
     if (component) this.component = component;
   }
-  toJSON() {
-    return JSON.stringify({
+  toObject() {
+    return {
       status: this.status,
       message: this.message,
       stack: this.stack,
       ...(this.component && { component: this.component }),
-    });
+    };
   }
 }
