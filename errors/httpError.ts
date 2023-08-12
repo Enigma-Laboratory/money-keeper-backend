@@ -8,10 +8,9 @@ export class HttpError extends Error {
     super(message);
     this.status = status || 500;
     this.message = message || STATUS_CODES[this.status] || 'HttpError';
+    Error.captureStackTrace(this, this.constructor);
     if (component) this.component = component;
   }
-<<<<<<< Updated upstream
-=======
   toObject() {
     return {
       status: this.status,
@@ -20,5 +19,4 @@ export class HttpError extends Error {
       ...(this.component && { component: this.component }),
     };
   }
->>>>>>> Stashed changes
 }
