@@ -8,11 +8,11 @@ import otherRoute from './other.route';
 
 function routes(app: Express) {
   // app.use('/auth', AuthRoute);
-  app.use('/auth2', Auth);
-  app.use('/session', SessionRoute);
-  app.use('/product', ProductRoute);
-  app.use('/order', OrderRoute);
-  app.use('/', otherRoute);
+  app.use('/auth2', jwtconfig.authenticate, Auth);
+  app.use('/session', jwtconfig.authenticate, SessionRoute);
+  app.use('/product', jwtconfig.authenticate, ProductRoute);
+  app.use('/order', jwtconfig.authenticate, OrderRoute);
+  app.use('/', jwtconfig.authenticate, otherRoute);
 }
 
 export default routes;
