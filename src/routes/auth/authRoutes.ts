@@ -16,7 +16,7 @@ const route = express.Router();
  * @return {Token} 200 - Return token - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get('/sign-in', AuthComponent.postSignInHandler);
+route.post('/sign-in', AuthComponent.postSignInHandler);
 
 /**
  * post /sign up
@@ -31,6 +31,6 @@ route.get('/sign-in', AuthComponent.postSignInHandler);
  * @return {User} 200 - Return user by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get('/sign-up', AuthComponent.postSignUpUserHandler);
+route.post('/sign-up', AuthComponent.postSignUpUserHandler);
 
 export default route;
