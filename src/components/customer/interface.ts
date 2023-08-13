@@ -1,4 +1,4 @@
-import { FindAllResponse } from '../../interface';
+import { FindAllResponse, getOneParams } from '../../interface';
 
 export interface User {
   id: string;
@@ -30,3 +30,5 @@ export interface Order {
 }
 
 export interface FindAllUserResponse extends FindAllResponse<Omit<User, 'password'>> {}
+
+export interface FindOneUserParams extends getOneParams {}

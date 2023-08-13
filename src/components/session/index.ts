@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import config from 'config';
-import { validatePassword } from '../customer/use-cases/validatePassword';
+import { validatePassword } from '../customer/shared';
 import * as SessionUseCases from './use-cases';
 import { signJwt } from '../../utils/jwt';
 

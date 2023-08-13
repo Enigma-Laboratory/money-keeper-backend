@@ -1,5 +1,5 @@
 import Joi, { ValidationResult } from 'joi';
-import { User } from './interface';
+import { FindOneUserParams } from './interface';
 
 export class CustomerValidation {
   private static _instance: CustomerValidation;
@@ -11,9 +11,9 @@ export class CustomerValidation {
     return CustomerValidation._instance;
   }
 
-  public getOneUserValidation(params: Partial<User>): ValidationResult<User> {
+  public getOneUserValidation(params: FindOneUserParams): ValidationResult<FindOneUserParams> {
     const schema = Joi.object({
-      email: Joi.string().email().required(),
+      id: Joi.string().required(),
     });
     return schema.validate(params);
   }
