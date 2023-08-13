@@ -20,3 +20,5 @@ export interface FindOneOrderResponse extends Partial<Order> {}
 export interface FindAllOrderResponse extends FindAllResponse<Order> {}
 
 export interface UpdateOrderParams extends Partial<Order> {}
+
+export interface CreateOneOrderParams extends Pick<Order, 'orderName' | 'userId'> {}

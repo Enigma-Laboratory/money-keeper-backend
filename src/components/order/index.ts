@@ -1,83 +1,58 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import logger from '../../utils/logger';
 import * as OrderUseCases from './use-cases';
-import { OrderValidation } from './validation';
 
-export async function postCreateOrderHandler(req: Request, res: Response): Promise<any> {
+export async function postCreateOneOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const params = req.body;
-    const validate = OrderValidation.instance.postCreateOrder(params);
-
-    if (validate.error) {
-      return res.status(409).send(validate.error.message);
-    }
-    const order = await OrderUseCases.postCreateOrder(params);
-    return res.send(order);
-  } catch (e: any) {
-    logger.error(`create order ${e}`);
-    return res.status(409).send(e.message);
+    const order = await OrderUseCases.postCreateOneOrder(req.body);
+    logger.info({ component: 'OrderService', func: 'postCreateOneOrderHandler', additionalInfo: order });
+    res.status(200).send(order);
+  } catch (error) {
+    logger.error({ component: 'OrderService', func: 'postCreateOneOrderHandler', additionalInfo: error });
+    next(error);
   }
 }
 
-export async function getAllOrderHandler(req: Request, res: Response): Promise<any> {
+export async function getAllOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const params = req.params;
-    const validate = OrderValidation.instance.getAllOrderParams(params);
-
-    if (validate.error) {
-      return res.status(409).send(validate.error.message);
-    }
-    const deleteOrder = await OrderUseCases.getAllOrders(params);
-    logger.info('[GET] fetch All Orders');
-    return res.send(deleteOrder);
-  } catch (e: any) {
-    logger.error(`get orders ${e}`);
-    return res.status(409).send(e.message);
+    const orders = await OrderUseCases.getAllOrders(req.params);
+    logger.info({ component: 'OrderService', func: 'getAllOrderHandler', additionalInfo: orders });
+    res.status(200).send(orders);
+  } catch (error) {
+    logger.error({ component: 'OrderService', func: 'getAllOrderHandler', additionalInfo: error });
+    next(error);
   }
 }
 
-export async function getOneOrderHandler(req: Request, res: Response): Promise<any> {
+export async function getOneOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const params = req.params;
-    const validate = OrderValidation.instance.getOneOrder(params);
-    if (validate.error) {
-      return res.status(409).send(validate.error.message);
-    }
-    const deleteOrder = await OrderUseCases.getOneOrders(params);
-    return res.send(deleteOrder);
-  } catch (e: any) {
-    logger.error(`get orders ${e}`);
-    return res.status(409).send(e.message);
+    const order = await OrderUseCases.getOneOrders(req.params);
+    logger.info({ component: 'OrderService', func: 'getOneOrderHandler', additionalInfo: order });
+    res.status(200).send(order);
+  } catch (error) {
+    logger.error({ component: 'OrderService', func: 'getOneOrderHandler', additionalInfo: error });
+    next(error);
   }
 }
 
-export async function deleteOneOrderHandler(req: Request, res: Response): Promise<any> {
+export async function deleteOneOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const params = req.params;
-    const validate = OrderValidation.instance.deleteOneOrder(params);
-
-    if (validate.error) {
-      return res.status(409).send(validate.error.message);
-    }
-    const deleteOrder = await OrderUseCases.deleteOneOrder(params);
-    return res.send(deleteOrder);
-  } catch (e: any) {
-    logger.error(`delete order ${e}`);
-    return res.status(409).send(e.message);
+    const deleteOrder = await OrderUseCases.deleteOneOrder(req.params);
+    logger.info({ component: 'OrderService', func: 'deleteOneOrderHandler', additionalInfo: deleteOrder });
+    res.status(200).send(deleteOrder);
+  } catch (error) {
+    logger.error({ component: 'OrderService', func: 'deleteOneOrderHandler', additionalInfo: error });
+    next(error);
   }
 }
 
-export async function patchOneOrderHandler(req: Request, res: Response): Promise<any> {
+export async function patchOneOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const params = req.body;
-    const validate = OrderValidation.instance.updateOrderParams(params);
-    if (validate.error) {
-      return res.status(409).send(validate.error.message);
-    }
-    const order = await OrderUseCases.patchUpdateOneOrders(params);
-    return res.send(order);
-  } catch (e: any) {
-    logger.error(`patch orders ${e}`);
-    return res.status(409).send(e.message);
+    const order = await OrderUseCases.patchUpdateOneOrders(req.params);
+    logger.info({ component: 'OrderService', func: 'patchOneOrderHandler', additionalInfo: order });
+    res.status(200).send(order);
+  } catch (error) {
+    logger.error({ component: 'OrderService', func: 'patchOneOrderHandler', additionalInfo: error });
+    next(error);
   }
 }
