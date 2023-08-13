@@ -1,17 +1,13 @@
-import { omit } from 'lodash';
+import { removeFieldsNotUse } from '../../../../shared/transformedData';
 import UserModel from '../../../models/user.model';
 import { FindAllUserResponse, User } from '../interface';
 
 export async function getAllUsers(): Promise<FindAllUserResponse> {
   try {
     const users = await UserModel.find().lean().exec();
-    const transformedUsers: User[] = users.map(user => {
-      const { _id, __v, ...rest } = user;
-      return { id: _id, ...rest };
-    });
     return {
       count: users.length,
-      rows: transformedUsers,
+      rows: users?.map(user => removeFieldsNotUse(user)),
     };
   } catch (error) {
     throw { error };

@@ -1,17 +1,17 @@
 import { BadRequestError, NotFoundError } from '../../../../errors';
+import { removeFieldsNotUse } from '../../../../shared/transformedData';
 import UserModel from '../../../models/user.model';
-import logger from '../../../utils/logger';
-import { User } from '../interface';
+import { FindOneUserParams, User } from '../interface';
 import { CustomerValidation } from '../validation';
 
-export async function getOneUser(email: string): Promise<User> {
-  const validate = CustomerValidation.instance.getOneUserValidation({ email });
+export async function getOneUser(params: FindOneUserParams): Promise<User> {
+  const validate = CustomerValidation.instance.getOneUserValidation(params);
   if (validate.error) {
     throw new BadRequestError(validate.error.message);
   }
   try {
     const user = await UserModel.findOne({
-      email,
+      id: params.id,
     });
     if (!user) throw new NotFoundError('User not found');
     return user.toJSON();

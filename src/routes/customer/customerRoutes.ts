@@ -11,12 +11,12 @@ const route = express.Router();
  *
  * @security BearerAuth
  *
- * @param {string} email - The unique email of user
+ * @param {string} id - The unique id of user
  **
  * @return {User} 200 - Return user by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get('/user/:email', CustomerComponent.getOneUserHandler);
+route.get('/user/:id', CustomerComponent.getOneUserHandler);
 
 /**
  * get /users

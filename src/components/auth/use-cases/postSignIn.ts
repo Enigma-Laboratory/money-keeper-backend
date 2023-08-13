@@ -5,7 +5,7 @@ import { BadRequestError } from '../../../../errors';
 import { signJwt } from '../../../utils/jwt';
 import { FindOneUserParams } from '../interfaces';
 
-const ACCESS_TOKEN_TTL = process.env.ACCESS_TOKEN_TTL || '10m';
+const ACCESS_TOKEN_TTL = process.env.ACCESS_TOKEN_TTL || '1h';
 
 export async function postSignIn(params: FindOneUserParams): Promise<string> {
   const validate = AuthValidation.instance.signInValidate(params);

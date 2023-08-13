@@ -1,24 +1,22 @@
-import mongoose from 'mongoose';
+import { Document, Schema, Types, model } from 'mongoose';
 import bcrypt from 'bcrypt';
+import { User } from '../components/customer/interface';
 
-export interface userInput {
-  email: string;
-  name: string;
-  password: string;
-}
-
-export interface loginInput {
-  email: string;
-}
-
-export interface UserDocument extends userInput, mongoose.Document {
+export interface UserDocument extends User, Document {
+  id: string;
   createdAt: Date;
   updateAt: Date;
   comparePassword(candidatePassword: String): Promise<Boolean>;
 }
 
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema(
   {
+    id: {
+      type: String,
+      required: true,
+      unique: true,
+      default: () => new Types.ObjectId().toString(),
+    },
     email: { type: String, required: true, unique: true },
     name: { type: String, required: true },
     password: { type: String, required: true },
@@ -27,11 +25,12 @@ const userSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    primaryKey: 'id',
   },
 );
 
 userSchema.pre('save', async function (next) {
-  let user = this as unknown as UserDocument; // [ ]: review
+  let user = this as unknown as UserDocument;
 
   if (!user.isModified('password')) {
     return next();
@@ -51,6 +50,6 @@ userSchema.methods.comparePassword = async function (candidatePassword: string):
   return bcrypt.compare(candidatePassword, user.password).catch(e => false);
 };
 
-const UserModel = mongoose.model<UserDocument>('User', userSchema);
+const UserModel = model<UserDocument>('User', userSchema);
 
 export default UserModel;

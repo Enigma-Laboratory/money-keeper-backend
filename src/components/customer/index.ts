@@ -4,9 +4,7 @@ import logger from '../../utils/logger';
 
 export async function getOneUserHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const { email } = req.params;
-
-    const user = await AuthUseCases.getOneUser(email);
+    const user = await AuthUseCases.getOneUser(req.params);
     res.status(200).send(user);
   } catch (error) {
     logger.error({ component: 'CustomerService', func: 'getOneUserHandler', additionalInfo: error });
