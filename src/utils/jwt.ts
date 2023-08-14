@@ -1,27 +1,17 @@
 import config from 'config';
 import JWT from 'jsonwebtoken';
 
-export function signJwt(
-  object: Object,
-  keyName: 'accessTokenPrivateKey' | 'refreshTokenPrivateKey',
-  options?: JWT.SignOptions,
-) {
-  const signingKey = config.get<string>('accessTokenPrivateKey');
-  const token = JWT.sign(object, signingKey, {
+export function signJwt(object: Object, keyName: string, options?: JWT.SignOptions) {
+  const token = JWT.sign(object, keyName, {
     ...(options && options),
   });
 
   return token;
 }
 
-export function verifyJwt(
-  token: string,
-  keyName: 'accessTokenPublicKey' | 'refreshTokenPublicKey',
-  options?: JWT.SignOptions,
-) {
-  const publicKey = config.get<string>('accessTokenPrivateKey');
+export function verifyJwt(token: string, keyName: string, options?: JWT.SignOptions) {
   try {
-    const decoded = JWT.verify(token, publicKey, { ...(options && options) });
+    const decoded = JWT.verify(token, keyName, { ...(options && options) });
     return {
       valid: true,
       expired: false,

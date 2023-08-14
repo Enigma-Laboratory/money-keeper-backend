@@ -1,10 +1,9 @@
 import express from 'express';
-import * as OrderDetailComponent from '../../components/order/orderDetail';
 import * as OrderComponent from '../../components/order';
+import OrderDetailRoute from './detail/orderDetailRoutes';
 
 const route = express.Router();
-
-route.post('/create-order-detail', OrderDetailComponent.postCreateOrderDetailHandler);
+route.use('/detail', OrderDetailRoute);
 
 /**
  * get /order
