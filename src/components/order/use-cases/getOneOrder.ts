@@ -9,11 +9,7 @@ export async function getOneOrders(params: FindOneOrderParams): Promise<FindOneO
     if (validate.error) {
       throw new BadRequestError(validate.error.message);
     }
-    const order = await OrderModel.findById({
-      _id: params.id,
-    })
-      .lean()
-      .exec();
+    const order = await OrderModel.findById({ _id: params.id }).lean().exec();
 
     if (!order) throw new BadRequestError(`Can not get order with id = ${params.id}`);
     return {

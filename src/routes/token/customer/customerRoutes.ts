@@ -1,5 +1,5 @@
 import express from 'express';
-import * as CustomerComponent from '../../components/customer';
+import * as CustomerComponent from '../../../components/customer';
 
 const route = express.Router();
 

@@ -50,3 +50,38 @@ export async function getAllProductHandler(req: Request, res: Response) {
     return res.status(409).send(e.message);
   }
 }
+
+export async function updateOneProductHandler(req: Request, res: Response) {
+  try {
+    const body = req.body;
+    const id = req.url.match(/\/(.*?)\//)![1];
+
+    const validate = ProductValidation.instance.putUpdateProductValidate(body);
+    if (validate.error) {
+      logger.error(`not get product by ${validate.error.message} `);
+      return res.status(409).send(validate.error.message);
+    }
+    const product = await ProductUseCases.putUpdateOneProduct(id, body);
+    return res.send(product);
+  } catch (e: any) {
+    logger.error(`get product fail at : ${e}`);
+    return res.status(409).send(e.message);
+  }
+}
+
+export async function deleteOneProductHandler(req: Request, res: Response) {
+  try {
+    const id = req.url.replace('/', '');
+
+    const validate = ProductValidation.instance.deleteOneOrderDetail({ id });
+    if (validate.error) {
+      logger.error(`not delete product by ${validate.error.message} `);
+      return res.status(409).send(validate.error.message);
+    }
+    const product = await ProductUseCases.deleteOneOrderDetail(id);
+    return res.send(product);
+  } catch (e: any) {
+    logger.error(`delete product fail at : ${e}`);
+    return res.status(409).send(e.message);
+  }
+}
