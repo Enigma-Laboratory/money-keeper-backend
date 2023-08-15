@@ -13,7 +13,6 @@ export class ProductValidation {
 
   public postCreateProductValidate(params: any): ValidationResult<any> {
     const schema = Joi.object({
-      name: Joi.string().required(),
       title: Joi.string().required(),
       description: Joi.string().required(),
       image: Joi.string().required(),
@@ -27,12 +26,29 @@ export class ProductValidation {
     });
     return schema.validate(params);
   }
+
   public getAllProductValidate(params: Partial<FindAllProductParams>): ValidationResult<FindAllProductParams> {
     const schema = Joi.object({
       scope: Joi.string(),
       page: Joi.number(),
       pageSize: Joi.number(),
       sorters: Joi.array().items(Joi.string()),
+    });
+    return schema.validate(params);
+  }
+
+  public putUpdateProductValidate(params: any): ValidationResult<any> {
+    const schema = Joi.object({
+      title: Joi.string(),
+      description: Joi.string(),
+      image: Joi.string(),
+    });
+    return schema.validate(params);
+  }
+
+  public deleteOneOrderDetail(params: any): ValidationResult<any> {
+    const schema = Joi.object({
+      id: Joi.string(),
     });
     return schema.validate(params);
   }

@@ -12,7 +12,7 @@ export async function postSignUpUser(params: CreateUserParams): Promise<User> {
     const user = await UserModel.create(params);
     if (!user) throw new BadRequestError('Can not create user.');
     return removeFieldsNotUse(user).toJSON();
-  } catch (error) {
-    throw { error };
+  } catch (error: any) {
+    throw new Error(error);
   }
 }

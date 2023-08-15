@@ -4,10 +4,10 @@ import { BadRequestError } from '../../../../errors';
 import { signJwt } from '../../../utils/jwt';
 import { FindOneUserParams } from '../interfaces';
 
-const AccessTokenTtl = process.env.ACCESS_TOKEN_TTL || '1h';
-const AccessTokenSecret = process.env.ACCESS_TOKEN_SECRET || 'test';
-
 export async function postSignIn(params: FindOneUserParams): Promise<string> {
+  const AccessTokenTtl = process.env.ACCESS_TOKEN_TTL || '1h';
+  const AccessTokenSecret = process.env.ACCESS_TOKEN_SECRET || 'test';
+
   const validate = AuthValidation.instance.signInValidate(params);
   if (validate.error) {
     throw new BadRequestError(validate.error.message);
@@ -18,6 +18,7 @@ export async function postSignIn(params: FindOneUserParams): Promise<string> {
     const isValid = await user.comparePassword(params.password);
     if (!isValid) throw new BadRequestError('Wrong password');
 
+    console.log(AccessTokenTtl);
     return signJwt({ user: user }, AccessTokenSecret, {
       expiresIn: AccessTokenTtl,
       algorithm: 'HS256',

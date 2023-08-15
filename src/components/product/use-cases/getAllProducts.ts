@@ -13,3 +13,21 @@ export async function getAllProducts(params: FindAllProductParams): Promise<Find
     throw new Error(e);
   }
 }
+
+export async function putUpdateOneProduct(id: any, body: any): Promise<any> {
+  try {
+    const products = await ProductModel.findOneAndUpdate({ _id: id }, body);
+    return products;
+  } catch (e: any) {
+    throw new Error(e);
+  }
+}
+
+export async function deleteOneOrderDetail(id: string): Promise<any> {
+  try {
+    const products = await ProductModel.findByIdAndRemove({ _id: id });
+    return products;
+  } catch (e: any) {
+    throw new Error(e);
+  }
+}

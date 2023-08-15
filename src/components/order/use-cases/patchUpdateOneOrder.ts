@@ -13,9 +13,7 @@ export async function patchUpdateOneOrders(params: UpdateOrderParams): Promise<F
     const { id: _id, ...orderParams } = params;
 
     const order = await OrderModel.findByIdAndUpdate(
-      {
-        _id, // where by id
-      },
+      { _id }, // where by id
       { ...orderParams }, // update follow params Order
       { new: true }, // ensures that the updated customer object is returned
     )

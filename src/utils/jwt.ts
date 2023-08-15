@@ -1,4 +1,3 @@
-import config from 'config';
 import JWT from 'jsonwebtoken';
 
 export function signJwt(object: Object, keyName: string, options?: JWT.SignOptions) {

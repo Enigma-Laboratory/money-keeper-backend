@@ -2,7 +2,6 @@ import express from 'express';
 import * as AuthComponent from '../../components/auth';
 
 const route = express.Router();
-
 /**
  * post /sign in
  * @summary post create token when user
