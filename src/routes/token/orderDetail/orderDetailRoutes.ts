@@ -4,54 +4,70 @@ import * as OrderDetailComponent from '../../../components/orderDetail';
 const route = express.Router();
 
 /**
- *  /order-detail/create
- * @summary create order detail
- *
- * @tags Order Detail
- *
- * @security BearerAuth
- **
- * @return {Order} 200 - Return list order detail - application/json
- * @return {Error} default - Unexpected error - application/json
+ * @openapi
+ * /order-detail/create:
+ *   post:
+ *     tags:
+ *       - order detail
+ *     description: description
+ *     summary: Create Order Detail
+ *     operationId: CreateOrderDetail
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
  */
 route.post('/create', OrderDetailComponent.postCreateOrderDetailHandler);
 
 /**
- *  /order-detail/:id/edit
- * @summary edit order detail
- *
- * @tags Order Detail
- *
- * @security BearerAuth
- **
- * @return {Order} 200 - Return list order detail - application/json
- * @return {Error} default - Unexpected error - application/json
+ * @openapi
+ * /order-detail/{id}/edit:
+ *   put:
+ *     tags:
+ *       - order detail
+ *     description: description
+ *     summary: Update One Order Detail
+ *     operationId: UpdateOneOrderDetail
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
  */
 route.put('/:id/edit', OrderDetailComponent.putUpdateOrderDetailHandler);
 
 /**
- *  /order-detail/:id
- * @summary delete one order detail
- *
- * @tags Order Detail
- *
- * @security BearerAuth
- **
- * @return {Order} 200 - Return list order detail - application/json
- * @return {Error} default - Unexpected error - application/json
+ * @openapi
+ * /order-detail/{id}:
+ *   delete:
+ *     tags:
+ *       - order detail
+ *     description: description
+ *     summary: Delete Order Detail
+ *     operationId: DeleteOrderDetail
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
  */
 route.delete('/:id', OrderDetailComponent.deleteOrderDetailHandler);
 
 /**
- * get /order-detail
- * @summary get all order detail
- *
- * @tags Order Detail
- *
- * @security BearerAuth
- **
- * @return {Order} 200 - Return list order detail - application/json
- * @return {Error} default - Unexpected error - application/json
+ * @openapi
+ * /order-detail/create:
+ *   get:
+ *     tags:
+ *       - order detail
+ *     description: description
+ *     summary: Create Order Detail
+ *     operationId: CreateOrderDetail
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
  */
 route.get('/', OrderDetailComponent.getAllOrderDetailHandler);
 
