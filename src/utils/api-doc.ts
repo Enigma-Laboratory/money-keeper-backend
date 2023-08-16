@@ -6,13 +6,10 @@ export default class SwaggerUI {
   private static _instance: SwaggerUI;
   private options: Options;
   private swaggerSpec: object;
-  serve: RequestHandler[];
+  private serve: RequestHandler[];
 
   public static get instance(): SwaggerUI {
-    if (!SwaggerUI._instance) {
-      this._instance = new this();
-    }
-    return this._instance;
+    return this._instance || new this();
   }
 
   constructor() {
@@ -39,7 +36,11 @@ export default class SwaggerUI {
     this.swaggerSpec = swaggerJsdoc(this.options);
   }
 
-  public setup(): RequestHandler {
+  private setup(): RequestHandler {
     return swaggerUi.setup(this.swaggerSpec);
+  }
+
+  public serveAndSetup(): RequestHandler[] {
+    return [...this.serve, this.setup()];
   }
 }
