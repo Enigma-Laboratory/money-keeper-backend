@@ -39,7 +39,7 @@ export default class SwaggerUI {
     this.swaggerSpec = swaggerJsdoc(this.options);
   }
 
-  public setup() {
+  public setup(): RequestHandler {
     return swaggerUi.setup(this.swaggerSpec);
   }
 }
