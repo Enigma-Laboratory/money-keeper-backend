@@ -21,7 +21,5 @@ const options: Options = {
   apis: ['./src/routes/**/*.ts'],
 };
 const swaggerSpec = swaggerJsdoc(options);
-const serve = swaggerUi.serve;
-const setup = swaggerUi.setup;
-export { serve, setup };
-export default swaggerSpec;
+export { swaggerSpec };
+export default swaggerUi;
