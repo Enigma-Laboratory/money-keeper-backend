@@ -1,40 +1,40 @@
 import express from 'express';
-import * as AuthComponent from '../../components/auth';
+import * as CustomerComponent from '../../../components/customer';
 
 const route = express.Router();
 
 /**
  * @openapi
- * /auth/sign-in:
- *   post:
+ * /user/{id}:
+ *   get:
  *     tags:
- *       - auth
+ *       - user
  *     description: description
- *     summary: Login
- *     operationId: SignInUser
+ *     summary: Get One User
+ *     operationId: GetOneUser
  *     requestBody:
  *       description: requestBody description
  *     responses:
  *       200:
  *         description: responses description
  */
-route.post('/sign-in', AuthComponent.postSignInHandler);
+route.get('/:id', CustomerComponent.getOneUserHandler);
 
 /**
  * @openapi
- * /auth/sign-up:
- *   post:
+ * /user/{id}:
+ *   get:
  *     tags:
- *       - auth
+ *       - user
  *     description: description
- *     summary: Log out
- *     operationId: SignUpUser
+ *     summary: Get All User
+ *     operationId: GetAllUser
  *     requestBody:
  *       description: requestBody description
  *     responses:
  *       200:
  *         description: responses description
  */
-route.post('/sign-up', AuthComponent.postSignUpUserHandler);
+route.get('/users', CustomerComponent.getAllUsesHandler);
 
 export default route;

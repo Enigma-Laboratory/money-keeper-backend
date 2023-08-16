@@ -6,75 +6,87 @@ const route = express.Router();
 route.use('/detail', OrderDetailRoute);
 
 /**
- * get /order/get-one-order/:id
- * @summary get one order
- *
- * @tags Order
- *
- * @security BearerAuth
- *
- * @param {string} id - The unique id of order
- **
- * @return {Order} 200 - Return order by id - application/json
- * @return {Error} default - Unexpected error - application/json
+ * @openapi
+ * /order/get-one-order/{id}:
+ *   get:
+ *     tags:
+ *       - order
+ *     description: description
+ *     summary: Get One Order
+ *     operationId:  GetOneOrder
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
  */
 route.get('/get-one-order/:id', OrderComponent.getOneOrderHandler);
 
 /**
- * post /order
- * @summary post create order
- *
- * @tags Order
- *
- * @security BearerAuth
- *
- * @param {Order}
- **
- * @return {Order} 200 - Return order when created - application/json
- * @return {Error} default - Unexpected error - application/json
+ * @openapi
+ * /order/create-order:
+ *   post:
+ *     tags:
+ *       - order
+ *     description: description
+ *     summary: Create One Order
+ *     operationId:  CreateOneOrder
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
  */
 route.post('/create-order', OrderComponent.postCreateOneOrderHandler);
 
 /**
- * post /order/create-order
- * @summary delete one order
- *
- * @tags Order
- *
- * @security BearerAuth
- *
- * @param {Order}
- **
- * @return {Order} 200 - Return order when deleted - application/json
- * @return {Error} default - Unexpected error - application/json
+ * @openapi
+ * /order/delete-order/{id}:
+ *   delete:
+ *     tags:
+ *       - order
+ *     description: description
+ *     summary: Delete One Order
+ *     operationId:  DeleteOneOrder
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
  */
 route.delete('/delete-order/:id', OrderComponent.deleteOneOrderHandler);
 
 /**
- * patch update order
- * @summary patch update one order
- *
- * @tags Order
- *
- * @security BearerAuth
- *
- * @param {Order} optional Order model
- **
- * @return {Order} 200 - Return order when updated - application/json
- * @return {Error} default - Unexpected error - application/json
+ * @openapi
+ * /order/update-order:
+ *   patch:
+ *     tags:
+ *       - order
+ *     description: description
+ *     summary: Get One Order
+ *     operationId:  GetOneOrder
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
  */
 route.patch('/update-order', OrderComponent.patchOneOrderHandler);
 
 /**
- * get /order
- * @summary get all order
- *
- * @tags Order
- *
- * @security BearerAuth
- **
- * @return {Order} 200 - Return order by id - application/json
- * @return {Error} default - Unexpected error - application/json
+ * @openapi
+ * /order:
+ *   get:
+ *     tags:
+ *       - order
+ *     description: description
+ *     summary: Get One Order
+ *     operationId:  GetOneOrder
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
  */
 route.get('/', OrderComponent.getAllOrderHandler);
 
