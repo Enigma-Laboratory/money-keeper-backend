@@ -19,7 +19,7 @@ export default class SwaggerUI {
       definition: {
         openapi: '3.1.0',
         info: {
-          title: 'NodeJS API Project for mongodb',
+          title: 'Nodejs API for Money Keeper Project + mongodb',
           version: '1.0.0',
         },
         servers: [
