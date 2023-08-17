@@ -7,6 +7,8 @@ import { validateUserExistById } from '@/components/user/shared';
 import { User } from '@/components/user/interface';
 import { UnauthorizedError } from '@/errors';
 
+const AccessTokenSecret = process.env.ACCESS_TOKEN_SECRET || 'test';
+
 export const deserializeUser = async (req: RequestWithUser, res: Response, next: NextFunction) => {
   const accessToken = get(req, 'headers.authorization', '').replace(/^Bearer\s/, '');
   try {
