@@ -1,11 +1,10 @@
-import { BadRequestError, NotFoundError } from '../../../../errors';
-import { removeFieldsNotUse } from '../../../../shared/transformedData';
-import UserModel from '../../../models/user.model';
+import { BadRequestError, NotFoundError } from '@/errors';
+import UserModel from '@/models/user.model';
 import { FindOneUserParams, User } from '../interface';
-import { CustomerValidation } from '../validation';
+import { UserValidation } from '../validation';
 
 export async function getOneUser(params: FindOneUserParams): Promise<User> {
-  const validate = CustomerValidation.instance.getOneUserValidation(params);
+  const validate = UserValidation.instance.getOneUserValidation(params);
   if (validate.error) {
     throw new BadRequestError(validate.error.message);
   }

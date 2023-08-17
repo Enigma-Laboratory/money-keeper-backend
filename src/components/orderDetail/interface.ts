@@ -1,4 +1,4 @@
-import { getOneParams } from '../../interface';
+import { getOneParams } from '@/interface';
 
 export interface OrderDetail {
   id: string;
