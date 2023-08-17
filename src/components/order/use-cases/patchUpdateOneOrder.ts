@@ -1,5 +1,5 @@
-import { BadRequestError } from '../../../../errors';
-import OrderModel from '../../../models/order.model';
+import { BadRequestError } from '@/errors';
+import OrderModel from '@/models/order.model';
 import { FindOneOrderResponse, UpdateOrderParams } from '../interface';
 import { OrderValidation } from '../validation';
 
@@ -17,7 +17,7 @@ export async function patchUpdateOneOrders(params: UpdateOrderParams): Promise<F
         _id, // where by id
       },
       { ...orderParams }, // update follow params Order
-      { new: true }, // ensures that the updated customer object is returned
+      { new: true }, // ensures that the updated order object is returned
     )
       .lean()
       .exec();

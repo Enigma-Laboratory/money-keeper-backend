@@ -1,5 +1,5 @@
 import express from 'express';
-import * as CustomerComponent from '../../../components/customer';
+import * as UserComponent from '@/components/user';
 
 const route = express.Router();
 
@@ -18,7 +18,7 @@ const route = express.Router();
  *       200:
  *         description: responses description
  */
-route.get('/:id', CustomerComponent.getOneUserHandler);
+route.get('/:id', UserComponent.getOneUserHandler);
 
 /**
  * @openapi
@@ -35,6 +35,6 @@ route.get('/:id', CustomerComponent.getOneUserHandler);
  *       200:
  *         description: responses description
  */
-route.get('/users', CustomerComponent.getAllUsesHandler);
+route.get('/users', UserComponent.getAllUsesHandler);
 
 export default route;

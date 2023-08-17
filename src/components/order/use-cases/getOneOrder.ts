@@ -1,6 +1,6 @@
-import { BadRequestError } from '../../../../errors';
-import OrderModel from '../../../models/order.model';
-import { FindOneOrderParams, FindOneOrderResponse, Order } from '../interface';
+import { BadRequestError } from '@/errors';
+import OrderModel from '@/models/order.model';
+import { FindOneOrderParams, FindOneOrderResponse } from '../interface';
 import { OrderValidation } from '../validation';
 
 export async function getOneOrders(params: FindOneOrderParams): Promise<FindOneOrderResponse> {

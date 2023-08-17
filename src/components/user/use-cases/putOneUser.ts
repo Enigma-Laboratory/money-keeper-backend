@@ -1,4 +1,5 @@
-import UserModel, { userInput } from '../../../models/user.model';
+import UserModel from '@/models/user.model';
+import { UpdateOneUserParams } from '../interface';
 
 export async function putCreateUser(params: userInput) {
   try {

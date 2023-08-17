@@ -1,5 +1,5 @@
 import { omit } from 'lodash';
-import UserModel from '../../../models/user.model';
+import UserModel from '@/models/user.model';
 
 export async function validatePassword({ email, password }: { email: string; password: string }) {
   try {

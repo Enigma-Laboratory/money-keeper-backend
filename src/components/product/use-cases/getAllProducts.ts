@@ -1,5 +1,5 @@
 import { omit } from 'lodash';
-import ProductModel from '../../../models/product.model';
+import ProductModel from '@/models/product.model';
 import { FindAllProductParams, FindAllProductResponse } from '../interface';
 
 export async function getAllProducts(params: FindAllProductParams): Promise<FindAllProductResponse> {

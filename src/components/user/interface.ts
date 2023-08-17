@@ -1,4 +1,4 @@
-import { FindAllResponse, getOneParams } from '../../interface';
+import { FindAllResponse, getOneParams } from '@/interface';
 
 export interface User {
   id: string;

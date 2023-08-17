@@ -1,5 +1,5 @@
-import { NotFoundError } from '../../../../errors';
-import UserModel from '../../../models/user.model';
+import { NotFoundError } from '@/errors';
+import UserModel from '@/models/user.model';
 
 export async function deleteOneUser(id: string) {
   try {

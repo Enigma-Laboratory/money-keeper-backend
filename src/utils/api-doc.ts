@@ -6,8 +6,8 @@ export default class SwaggerUI {
   private static _instance: SwaggerUI;
   private options: Options;
   private swaggerSpec: object;
-  serve: RequestHandler[];
-
+  private serve: RequestHandler[];
+  private port: string;
   public static get instance(): SwaggerUI {
     if (!SwaggerUI._instance) {
       this._instance = new this();
@@ -17,6 +17,7 @@ export default class SwaggerUI {
 
   constructor() {
     this.serve = swaggerUi.serve;
+    this.port = process.env.PORT || '3000';
     this.options = {
       definition: {
         openapi: '3.1.0',
@@ -24,7 +25,10 @@ export default class SwaggerUI {
           title: 'NodeJS API Project for mongodb',
           version: '1.0.0',
         },
-        servers: [{ url: 'http://localhost:1338', description: 'Development server' }],
+        servers: [
+          { url: 'http://localhost:' + this.port, description: 'Development server' },
+          { url: 'https://money-keeper-dev.onrender.com', description: 'Production server' },
+        ],
         tags: [
           { name: 'user', description: '' },
           { name: 'auth', description: '' },

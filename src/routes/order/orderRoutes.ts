@@ -1,6 +1,6 @@
 import express from 'express';
-import * as OrderComponent from '../../components/order';
-import OrderDetailRoute from './detail/orderDetailRoutes';
+import * as OrderComponent from '@/components/order';
+import OrderDetailRoute from '@/routes/token/orderDetail/orderDetailRoutes';
 
 const route = express.Router();
 route.use('/detail', OrderDetailRoute);

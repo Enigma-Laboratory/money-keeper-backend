@@ -1,7 +1,7 @@
-import UserModel from '../../../models/user.model';
+import UserModel from '@/models/user.model';
 import { AuthValidation } from '../validation';
-import { BadRequestError } from '../../../../errors';
-import { signJwt } from '../../../utils/jwt';
+import { BadRequestError } from '@/errors';
+import { signJwt } from '@/utils/jwt';
 import { FindOneUserParams } from '../interfaces';
 
 const AccessTokenTtl = process.env.ACCESS_TOKEN_TTL || '1h';

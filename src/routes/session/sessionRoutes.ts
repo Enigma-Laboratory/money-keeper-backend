@@ -1,6 +1,6 @@
 import express from 'express';
 
-import * as SessionComponent from '../../components/session';
+import * as SessionComponent from '@/components/session';
 
 const route = express.Router();
 
