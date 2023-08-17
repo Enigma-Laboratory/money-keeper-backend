@@ -1,5 +1,5 @@
-import { Request, Response, NextFunction } from 'express';
 import { HttpError } from '@/errors';
+import { NextFunction, Request, Response } from 'express';
 
 const AdditionalHttpStatusCodes = (err: HttpError, req: Request, res: Response, next: NextFunction) => {
   try {

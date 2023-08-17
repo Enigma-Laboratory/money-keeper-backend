@@ -1,6 +1,6 @@
-import { Document, Schema, Types, model } from 'mongoose';
-import bcrypt from 'bcrypt';
 import { User } from '@/components/user/interface';
+import bcrypt from 'bcrypt';
+import { Document, Schema, Types, model } from 'mongoose';
 
 export interface UserDocument extends User, Document {
   id: string;

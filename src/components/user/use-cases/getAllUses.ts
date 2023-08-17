@@ -1,6 +1,6 @@
-import { removeFieldsNotUse } from '@/shared/transformedData';
 import UserModel from '@/models/user.model';
-import { FindAllUserResponse, User } from '../interface';
+import { removeFieldsNotUse } from '@/shared/transformedData';
+import { FindAllUserResponse } from '../interface';
 
 export async function getAllUsers(): Promise<FindAllUserResponse> {
   try {

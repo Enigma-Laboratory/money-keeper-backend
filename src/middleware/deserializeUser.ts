@@ -1,11 +1,11 @@
-import { Response, NextFunction } from 'express';
-import { get } from 'lodash';
-import { verifyJwt } from '@/utils/jwt';
-import { RequestWithUser } from '@/interface';
-import { JwtPayload } from 'jsonwebtoken';
-import { validateUserExistById } from '@/components/user/shared';
 import { User } from '@/components/user/interface';
+import { validateUserExistById } from '@/components/user/shared';
 import { UnauthorizedError } from '@/errors';
+import { RequestWithUser } from '@/interface';
+import Jwt from '@/services/jwt';
+import { NextFunction, Response } from 'express';
+import { JwtPayload } from 'jsonwebtoken';
+import { get } from 'lodash';
 
 const AccessTokenSecret = process.env.ACCESS_TOKEN_SECRET || 'test';
 
@@ -13,7 +13,7 @@ export const deserializeUser = async (req: RequestWithUser, res: Response, next:
   const accessToken = get(req, 'headers.authorization', '').replace(/^Bearer\s/, '');
   try {
     if (!accessToken) throw new UnauthorizedError('accessToken not exist.');
-    const { decoded, expired } = verifyJwt(accessToken, AccessTokenSecret);
+    const { decoded, expired } = Jwt.verifyJwt(accessToken, AccessTokenSecret);
 
     if (!decoded || expired) throw new UnauthorizedError('accessToken is expired.');
     if (decoded) {

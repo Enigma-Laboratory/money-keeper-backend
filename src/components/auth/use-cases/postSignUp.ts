@@ -1,7 +1,7 @@
-import { BadRequestError } from '@/errors';
-import { removeFieldsNotUse } from '@/shared/transformedData';
-import UserModel from '@/models/user.model';
 import { User } from '@/components/user/interface';
+import { BadRequestError } from '@/errors';
+import UserModel from '@/models/user.model';
+import { removeFieldsNotUse } from '@/shared/transformedData';
 import { CreateUserParams } from '../interfaces';
 import { AuthValidation } from '../validation';
 

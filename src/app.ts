@@ -1,10 +1,10 @@
-import './utils/absolute_path';
-import cors from 'cors';
-import express from 'express';
+import './utils/absolute_path'; // Imports should be placed at the top.
 import routes from '@/routes/index';
 import connect from '@/utils/connect';
 import { corsOptions } from '@/utils/cors';
 import logger from '@/utils/logger';
+import cors from 'cors';
+import express from 'express';
 
 require('dotenv').config();
 

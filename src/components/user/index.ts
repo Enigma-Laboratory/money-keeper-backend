@@ -1,6 +1,6 @@
+import logger from '@/utils/logger';
 import { NextFunction, Request, Response } from 'express';
 import * as AuthUseCases from './use-cases';
-import logger from '@/utils/logger';
 
 export async function getOneUserHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {

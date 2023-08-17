@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
-import { ProductValidation } from './validation';
-import * as ProductUseCases from './use-cases';
 import logger from '@/utils/logger';
+import { Request, Response } from 'express';
+import * as ProductUseCases from './use-cases';
+import { ProductValidation } from './validation';
 
 export async function createProductHandler(req: Request, res: Response) {
   try {

@@ -1,4 +1,4 @@
-import { BadRequestError, NotFoundError } from '@/errors';
+import { BadRequestError } from '@/errors';
 import UserModel from '@/models/user.model';
 
 export async function validateUserExistById(id: string): Promise<any> {

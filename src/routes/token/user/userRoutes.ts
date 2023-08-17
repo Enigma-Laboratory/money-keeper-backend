@@ -1,5 +1,5 @@
-import express from 'express';
 import * as UserComponent from '@/components/user';
+import express from 'express';
 
 const route = express.Router();
 

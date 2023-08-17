@@ -1,7 +1,7 @@
-import { NextFunction, Response } from 'express';
-import logger from '@/utils/logger';
-import * as AuthUseCases from './use-cases';
 import { RequestWithUser } from '@/interface';
+import logger from '@/utils/logger';
+import { NextFunction, Response } from 'express';
+import * as AuthUseCases from './use-cases';
 
 export async function postSignInHandler(req: RequestWithUser, res: Response, next: NextFunction): Promise<void> {
   try {

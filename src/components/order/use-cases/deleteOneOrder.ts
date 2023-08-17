@@ -1,8 +1,8 @@
+import { BadRequestError } from '@/errors';
 import OrderDetailModel from '@/models/order.detail.model';
 import OrderModel from '@/models/order.model';
 import { DeleteOrderParams } from '../interface';
 import { OrderValidation } from '../validation';
-import { BadRequestError } from '@/errors';
 
 export async function deleteOneOrder(params: DeleteOrderParams): Promise<any> {
   try {

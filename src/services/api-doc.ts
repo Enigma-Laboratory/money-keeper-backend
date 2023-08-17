@@ -1,6 +1,6 @@
+import { RequestHandler } from 'express';
 import swaggerJsdoc, { Options } from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import { RequestHandler } from 'express';
 
 export default class SwaggerUI {
   private static _instance: SwaggerUI;
