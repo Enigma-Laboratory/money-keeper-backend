@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { OrderDetailValidation } from './validation';
-import logger from '../../utils/logger';
 import * as OrderDetailUseCases from './use-cases';
+import logger from '@/utils/logger';
 
 export async function getAllOrderDetailHandler(req: Request, res: Response): Promise<any> {
   try {

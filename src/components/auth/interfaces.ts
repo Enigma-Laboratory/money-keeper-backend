@@ -1,4 +1,4 @@
-import { User } from '../customer/interface';
+import { User } from '../user/interface';
 
 export interface CreateUserParams extends Pick<User, 'name' | 'email' | 'password'> {}
 

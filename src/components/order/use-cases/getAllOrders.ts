@@ -1,5 +1,5 @@
-import { BadRequestError } from '../../../../errors';
-import OrderModel from '../../../models/order.model';
+import { BadRequestError } from '@/errors';
+import OrderModel from '@/models/order.model';
 import { FindAllOrderParams, FindAllOrderResponse, Order } from '../interface';
 import { OrderValidation } from '../validation';
 

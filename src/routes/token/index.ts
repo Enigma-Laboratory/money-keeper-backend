@@ -1,10 +1,10 @@
-import SessionRoute from './session/sessionRoutes';
-import ProductRoute from './product/productRoutes';
+import { deserializeUser } from '@/middleware';
+import express from 'express';
 import OrderRoute from './order/orderRoutes';
 import OrderDetailRoute from './orderDetail/orderDetailRoutes';
+import ProductRoute from './product/productRoutes';
+import SessionRoute from './session/sessionRoutes';
 import UserRoute from './user/userRoutes';
-import express from 'express';
-import { deserializeUser } from '../../middleware';
 
 const route = express.Router();
 

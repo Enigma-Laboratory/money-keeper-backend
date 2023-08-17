@@ -1,11 +1,11 @@
 import { Response, NextFunction } from 'express';
 import { get } from 'lodash';
-import { verifyJwt } from '../utils/jwt';
-import { RequestWithUser } from '../interface';
+import { verifyJwt } from '@/utils/jwt';
+import { RequestWithUser } from '@/interface';
 import { JwtPayload } from 'jsonwebtoken';
-import { validateUserExistById } from '../components/customer/shared';
-import { User } from '../components/customer/interface';
-import { UnauthorizedError } from '../../errors';
+import { validateUserExistById } from '@/components/user/shared';
+import { User } from '@/components/user/interface';
+import { UnauthorizedError } from '@/errors';
 
 const AccessTokenSecret = process.env.ACCESS_TOKEN_SECRET || 'test';
 

@@ -1,4 +1,4 @@
-import OrderDetailModel from '../../../models/order.detail.model';
+import OrderDetailModel from '@/models/order.detail.model';
 
 export async function getAllOrderDetail(params: any): Promise<any> {
   try {
