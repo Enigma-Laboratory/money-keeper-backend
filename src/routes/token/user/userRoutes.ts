@@ -1,40 +1,40 @@
 import express from 'express';
-
-import * as SessionComponent from '../../components/session';
+import * as CustomerComponent from '../../../components/customer';
 
 const route = express.Router();
 
 /**
  * @openapi
- * /session/create-session:
- *   post:
- *     tags:
- *       - session
- *     description: description
- *     summary: Create Session
- *     operationId: CreateSession
- *     requestBody:
- *       description: requestBody description
- *     responses:
- *       200:
- *         description: responses description
- */
-route.post('/create-session', SessionComponent.createUserSessionHandler);
-/**
- * @openapi
- * /session/sessions:
+ * /user/{id}:
  *   get:
  *     tags:
- *       - session
+ *       - user
  *     description: description
- *     summary: Create Session
- *     operationId: CreateSession
+ *     summary: Get One User
+ *     operationId: GetOneUser
  *     requestBody:
  *       description: requestBody description
  *     responses:
  *       200:
  *         description: responses description
  */
-route.get('/sessions', SessionComponent.getUserSessionsHandler);
+route.get('/:id', CustomerComponent.getOneUserHandler);
+
+/**
+ * @openapi
+ * /user/{id}:
+ *   get:
+ *     tags:
+ *       - user
+ *     description: description
+ *     summary: Get All User
+ *     operationId: GetAllUser
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
+ */
+route.get('/users', CustomerComponent.getAllUsesHandler);
 
 export default route;

@@ -3,47 +3,87 @@ import * as ProductComponent from '../../components/product';
 
 const route = express.Router();
 /**
- * post /product
- * @summary post create product
- *
- * @tags Product
- *
- * @security BearerAuth
- *
- * @param {Product} optional by Product model
- **
- * @return {Product} 200 - Return product when created - application/json
- * @return {Error} default - Unexpected error - application/json
+ * @openapi
+ * /product/create:
+ *   post:
+ *     tags:
+ *       - product
+ *     description: description
+ *     summary: Create Product
+ *     operationId: CreateProduct
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
  */
 route.post('/create-product', ProductComponent.createProductHandler);
 
 /**
- * get /Product
- * @summary get one product
- *
- * @tags Product
- *
- * @security BearerAuth
- *
- * @param {string} id - The unique id of product
- **
- * @return {Product} 200 - Return product by id - application/json
- * @return {Error} default - Unexpected error - application/json
+ * @openapi
+ * /product/create:
+ *   post:
+ *     tags:
+ *       - product
+ *     description: Get One Product
+ *     summary: Create Product
+ *     operationId: GetOneProduct
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
  */
 route.get('/get-one-product/:id', ProductComponent.getOneProductHandler);
 
 /**
- * get /order
- * @summary get all order
- *
- * @tags Order
- *
- * @security BearerAuth
- *
- * @param {string} id - The unique find all params
- **
- * @return {Array<Product>} 200 - Return array product - application/json
- * @return {Error} default - Unexpected error - application/json
+ * @openapi
+ * /product/{id}/edit:
+ *   post:
+ *     tags:
+ *       - product
+ *     description: description
+ *     summary: Update One Product
+ *     operationId: UpdateOneProject
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
+ */
+route.put('/:id/edit', ProductComponent.updateOneProductHandler);
+
+/**
+ * @openapi
+ * /product/create:
+ *   delete:
+ *     tags:
+ *       - product
+ *     description: description
+ *     summary: Delete One Product
+ *     operationId: DeleteOneProduct
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
+ */
+route.delete('/:id', ProductComponent.deleteOneProductHandler);
+
+/**
+ * @openapi
+ * /product:
+ *   get:
+ *     tags:
+ *       - product
+ *     description: description
+ *     summary: Get All Product
+ *     operationId: GetAllProduct
+ *     requestBody:
+ *       description: requestBody description
+ *     responses:
+ *       200:
+ *         description: responses description
  */
 route.get('/all-product', ProductComponent.getAllProductHandler);
 export default route;
