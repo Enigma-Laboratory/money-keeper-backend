@@ -2,10 +2,9 @@ import { HttpError } from '@/errors';
 import { NextFunction, Request, Response } from 'express';
 
 const AdditionalHttpStatusCodes = (err: HttpError, req: Request, res: Response, next: NextFunction) => {
-  console.log('nghia -------------------------');
   try {
     res.status(err.status).json(err.toObject());
-  } catch (error) {
+  } catch (e) {
     res.status(500).json({ error: 'Internal server error' });
   }
 };

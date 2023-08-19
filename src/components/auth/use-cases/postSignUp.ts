@@ -7,12 +7,9 @@ import { AuthValidation } from '../validation';
 
 export async function postSignUpUser(params: CreateUserParams): Promise<User> {
   const validate = AuthValidation.instance.signUpValidate(params);
-  if (validate.error) throw new BadRequestError(validate.error.message);
-  try {
-    const user = await UserModel.create(params);
-    if (!user) throw new BadRequestError('Can not create user.');
-    return removeFieldsNotUse(user).toJSON();
-  } catch (error: any) {
-    throw new Error(error);
-  }
+  if (validate.error) throw new Error(validate.error.message);
+
+  const user = await UserModel.create(params);
+  if (!user) throw new BadRequestError('Can not create user.');
+  return removeFieldsNotUse(user.toJSON(), ['password']);
 }

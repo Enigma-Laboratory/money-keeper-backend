@@ -18,7 +18,7 @@ export async function postSignUpUserHandler(req: RequestWithUser, res: Response,
     const user = await AuthUseCases.postSignUpUser(req.body);
     res.status(200).send(user);
   } catch (error) {
-    logger.error({ component: 'AuthService', func: 'postSignUpHandler', additionalInfo: error });
+    logger.error({ component: 'AuthService', func: 'postSignUpUserHandler', additionalInfo: error });
     return next(error);
   }
 }
