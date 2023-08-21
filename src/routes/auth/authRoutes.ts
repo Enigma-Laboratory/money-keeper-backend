@@ -4,36 +4,32 @@ import express from 'express';
 const route = express.Router();
 
 /**
- * @openapi
- * /auth/sign-in:
- *   post:
- *     tags:
- *       - auth
- *     description: description
- *     summary: Login
- *     operationId: SignInUser
- *     requestBody:
- *       description: requestBody description
- *     responses:
- *       200:
- *         description: responses description
+ * post /sign in
+ * @summary post create token when user
+ *
+ * @tags user
+ *
+ * @security BearerAuth
+ *
+ * @param {User} optional userModel and unique email
+ **
+ * @return {Token} 200 - Return token - application/json
+ * @return {Error} default - Unexpected error - application/json
  */
 route.post('/sign-in', AuthComponent.postSignInHandler);
 
 /**
- * @openapi
- * /auth/sign-up:
- *   post:
- *     tags:
- *       - auth
- *     description: description
- *     summary: Log out
- *     operationId: SignUpUser
- *     requestBody:
- *       description: requestBody description
- *     responses:
- *       200:
- *         description: responses description
+ * post /sign up
+ * @summary post sign up
+ *
+ * @tags user
+ *
+ * @security BearerAuth
+ *
+ * @param {User} optional userModel and unique email
+ **
+ * @return {User} 200 - Return user by id - application/json
+ * @return {Error} default - Unexpected error - application/json
  */
 route.post('/sign-up', AuthComponent.postSignUpUserHandler);
 

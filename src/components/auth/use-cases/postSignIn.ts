@@ -16,7 +16,8 @@ export async function postSignIn(params: FindOneUserParams): Promise<string> {
   if (!user) throw new BadRequestError('Invalid email.');
 
   const isValid = await user.comparePassword(params.password);
-  if (!isValid) throw new Error('Wrong password.');
+  if (!isValid) throw new BadRequestError('Wrong password.');
+
   return Jwt.signJwt({ user: removeFieldsNotUse(user, ['password']) }, AccessTokenSecret, {
     expiresIn: AccessTokenTtl,
     algorithm: 'HS256',
