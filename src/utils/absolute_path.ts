@@ -8,5 +8,6 @@ moduleAlias.addAliases({
   '@/models': __dirname + '/..' + '/models',
   '@/errors': __dirname + '/..' + '/errors',
   '@/shared': __dirname + '/..' + '/shared',
+  '@/services': __dirname + '/..' + '/services',
 });
 export default moduleAlias;

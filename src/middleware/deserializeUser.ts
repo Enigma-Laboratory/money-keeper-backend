@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
 import { get } from 'lodash';
-import { verifyJwt } from '@/utils/jwt';
+import Jwt from '@/services/jwt';
 import { RequestWithUser } from '@/interface';
 import { JwtPayload } from 'jsonwebtoken';
 import { validateUserExistById } from '@/components/user/shared';
@@ -14,7 +14,7 @@ export const deserializeUser = async (req: RequestWithUser, res: Response, next:
   try {
     if (req.url.includes('sign-in') || req.url.includes('sign-up')) return next();
     if (!accessToken) throw new UnauthorizedError('accessToken not exist.');
-    const { decoded, expired } = verifyJwt(accessToken, 'accessTokenPublicKey');
+    const { decoded, expired } = Jwt.verifyJwt(accessToken, 'accessTokenPublicKey');
 
     if (!decoded || expired) throw new UnauthorizedError('accessToken is expired .');
     if (decoded) {

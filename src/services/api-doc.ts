@@ -1,6 +1,6 @@
-import swaggerJsdoc from 'swagger-jsdoc';
-import swaggerUi from 'swagger-ui-express';
 import { RequestHandler } from 'express';
+import swaggerJsdoc, { Options } from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
 export default class SwaggerUI {
   private static _instance: SwaggerUI;
@@ -9,10 +9,7 @@ export default class SwaggerUI {
   private serve: RequestHandler[];
   private port: string;
   public static get instance(): SwaggerUI {
-    if (!SwaggerUI._instance) {
-      this._instance = new this();
-    }
-    return this._instance;
+    return this._instance || new this();
   }
 
   constructor() {
@@ -22,7 +19,7 @@ export default class SwaggerUI {
       definition: {
         openapi: '3.1.0',
         info: {
-          title: 'NodeJS API Project for mongodb',
+          title: 'Nodejs API for Money Keeper Project + mongodb',
           version: '1.0.0',
         },
         servers: [
@@ -43,7 +40,11 @@ export default class SwaggerUI {
     this.swaggerSpec = swaggerJsdoc(this.options);
   }
 
-  public setup(): RequestHandler {
+  private setup(): RequestHandler {
     return swaggerUi.setup(this.swaggerSpec);
+  }
+
+  public serveAndSetup(): RequestHandler[] {
+    return [...this.serve, this.setup()];
   }
 }

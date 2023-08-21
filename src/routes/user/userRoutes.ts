@@ -4,36 +4,31 @@ import * as UserComponent from '@/components/user';
 const route = express.Router();
 
 /**
- * @openapi
- * /user/{id}:
- *   get:
- *     tags:
- *       - user
- *     description: description
- *     summary: Get One User
- *     operationId: GetOneUser
- *     requestBody:
- *       description: requestBody description
- *     responses:
- *       200:
- *         description: responses description
+ * get /user
+ * @summary get one user
+ *
+ * @tags User
+ *
+ * @security BearerAuth
+ *
+ * @param {string} id - The unique id of user
+ **
+ * @return {User} 200 - Return user by id - application/json
+ * @return {Error} default - Unexpected error - application/json
  */
 route.get('/:id', UserComponent.getOneUserHandler);
 
 /**
- * @openapi
- * /user/{id}:
- *   get:
- *     tags:
- *       - user
- *     description: description
- *     summary: Get All User
- *     operationId: GetAllUser
- *     requestBody:
- *       description: requestBody description
- *     responses:
- *       200:
- *         description: responses description
+ * get /users
+ * @summary get all user
+ *
+ * @tags user
+ *
+ * @security BearerAuth
+ *
+ **
+ * @return {User} 200 - Return array user  - application/json
+ * @return {Error} default - Unexpected error - application/json
  */
 route.get('/users', UserComponent.getAllUsesHandler);
 

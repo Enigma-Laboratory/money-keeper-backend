@@ -11,7 +11,6 @@ require('dotenv').config();
 const app = express();
 
 app.use(express.json());
-app.use(deserializeUser);
 app.use(cors(corsOptions));
 
 routes(app);
