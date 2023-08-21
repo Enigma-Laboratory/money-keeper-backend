@@ -11,8 +11,8 @@ function routes(app: Express) {
   app.use('/api-docs', SwaggerUI.instance.serveAndSetup());
   app.use('/auth', AuthRoute);
   app.use('/session', SessionRoute);
-  app.use('/product', ProductRoute);
-  // app.use('/order', OrderRoute);
+  // app.use('/product', ProductRoute);
+  app.use('/order', OrderRoute);
   // app.use('/user', UserRoute);
   app.use(AdditionalHttpStatusCodes);
 }
