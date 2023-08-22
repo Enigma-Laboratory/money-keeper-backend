@@ -1,5 +1,5 @@
 import Joi, { ValidationResult } from 'joi';
-import { GetOneOrderDetailParams } from './interface';
+import { GetOneOrderDetailParams } from './interfaces';
 
 export class OrderDetailValidation {
   private static _instance: OrderDetailValidation;

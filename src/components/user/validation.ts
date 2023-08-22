@@ -1,5 +1,5 @@
 import Joi, { ValidationResult } from 'joi';
-import { FindOneUserParams } from './interface';
+import { FindOneUserParams, UpdateOneUserParams } from './interface';
 
 export class UserValidation {
   private static _instance: UserValidation;
@@ -14,6 +14,14 @@ export class UserValidation {
   public getOneUserValidation(params: FindOneUserParams): ValidationResult<FindOneUserParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
+    });
+    return schema.validate(params);
+  }
+
+  public putOneUserValidation(params: UpdateOneUserParams): ValidationResult<UpdateOneUserParams> {
+    const schema = Joi.object({
+      id: Joi.string().required(),
+      name: Joi.string().required(),
     });
     return schema.validate(params);
   }

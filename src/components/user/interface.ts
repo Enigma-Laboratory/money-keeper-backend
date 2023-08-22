@@ -31,6 +31,6 @@ export interface Order {
 
 export interface FindAllUserResponse extends FindAllResponse<Omit<User, 'password'>> {}
 
-export interface UpdateOneUserParams extends User {}
+export interface UpdateOneUserParams extends Partial<User> {}
 
 export interface FindOneUserParams extends getOneParams {}

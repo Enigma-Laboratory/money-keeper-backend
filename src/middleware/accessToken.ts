@@ -9,14 +9,14 @@ import { UnauthorizedError } from '@/errors';
 
 const AccessTokenSecret = process.env.ACCESS_TOKEN_SECRET || 'test';
 
-export const deserializeUser = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+export const accessToken = async (req: RequestWithUser, res: Response, next: NextFunction) => {
   const accessToken = get(req, 'headers.authorization', '').replace(/^Bearer\s/, '');
   try {
     if (req.url.includes('sign-in') || req.url.includes('sign-up')) return next();
     if (!accessToken) throw new UnauthorizedError('accessToken not exist.');
-    const { decoded, expired } = Jwt.verifyJwt(accessToken, 'accessTokenPublicKey');
+    const { decoded, expired } = Jwt.verifyJwt(accessToken, AccessTokenSecret);
 
-    if (!decoded || expired) throw new UnauthorizedError('accessToken is expired .');
+    if (!decoded || expired) throw new UnauthorizedError('accessToken is expired.');
     if (decoded) {
       const { user } = decoded as unknown as any;
       req.actor = await validateToken(user?.id);

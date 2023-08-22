@@ -1,1 +1,1 @@
-export * from './deserializeUser';
+export * from './accessToken';

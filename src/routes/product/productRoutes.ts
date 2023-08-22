@@ -51,7 +51,7 @@ route.get('/get-one-product/:id', ProductComponent.getOneProductHandler);
  *       200:
  *         description: responses description
  */
-route.put('/:id/edit', ProductComponent.updateOneProductHandler);
+// route.put('/:id/edit', ProductComponent.updateOneProductHandler);
 
 /**
  * @openapi
@@ -68,7 +68,7 @@ route.put('/:id/edit', ProductComponent.updateOneProductHandler);
  *       200:
  *         description: responses description
  */
-route.delete('/:id', ProductComponent.deleteOneProductHandler);
+// route.delete('/:id', ProductComponent.deleteOneProductHandler);
 
 /**
  * @openapi

@@ -4,10 +4,10 @@ import { BadRequestError } from '@/errors';
 import Jwt from '@/services/jwt';
 import { FindOneUserParams } from '../interfaces';
 
-const AccessTokenTtl = process.env.ACCESS_TOKEN_TTL || '1h';
-const AccessTokenSecret = process.env.ACCESS_TOKEN_SECRET || 'test';
-
 export async function postSignIn(params: FindOneUserParams): Promise<string> {
+  const AccessTokenTtl = process.env.ACCESS_TOKEN_TTL || '1h';
+  const AccessTokenSecret = process.env.ACCESS_TOKEN_SECRET || 'test';
+
   const validate = AuthValidation.instance.signInValidate(params);
   if (validate.error) {
     throw new BadRequestError(validate.error.message);

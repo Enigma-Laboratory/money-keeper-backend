@@ -16,7 +16,6 @@ export async function postCreateOneOrderHandler(req: Request, res: Response, nex
 export async function getAllOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const orders = await OrderUseCases.getAllOrders(req.params);
-    logger.info({ component: 'OrderService', func: 'getAllOrderHandler', additionalInfo: orders });
     res.status(200).send(orders);
   } catch (error) {
     logger.error({ component: 'OrderService', func: 'getAllOrderHandler', additionalInfo: error });

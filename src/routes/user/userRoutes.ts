@@ -4,7 +4,22 @@ import * as UserComponent from '@/components/user';
 const route = express.Router();
 
 /**
- * get /user
+ * get /users/:id/edit
+ * @summary get one user
+ *
+ * @tags User
+ *
+ * @security BearerAuth
+ *
+ * @param {string} id - The unique id of user
+ **
+ * @return {User} 200 - Return user by id - application/json
+ * @return {Error} default - Unexpected error - application/json
+ */
+route.put('/:id/edit', UserComponent.putOneUserHandler);
+
+/**
+ * get /users/:id
  * @summary get one user
  *
  * @tags User
@@ -25,11 +40,10 @@ route.get('/:id', UserComponent.getOneUserHandler);
  * @tags user
  *
  * @security BearerAuth
- *
  **
  * @return {User} 200 - Return array user  - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get('/users', UserComponent.getAllUsesHandler);
+route.get('/', UserComponent.getAllUserHandler);
 
 export default route;
