@@ -6,9 +6,8 @@ import { OrderValidation } from '../validation';
 export async function getAllOrders(params: FindAllOrderParams): Promise<FindAllOrderResponse> {
   const validate = OrderValidation.instance.getAllOrderParams(params);
 
-  if (validate.error) {
-    throw new BadRequestError(validate.error.message);
-  }
+  if (validate.error) throw new BadRequestError(validate.error.message);
+
   try {
     const orders = await OrderModel.find().lean().exec();
     const transformedOrders: Order[] = orders.map(order => {

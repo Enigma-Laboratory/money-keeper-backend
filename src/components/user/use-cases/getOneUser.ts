@@ -6,9 +6,8 @@ import { removeFieldsNotUse } from '@/shared/transformedData';
 
 export async function getOneUser(params: FindOneUserParams): Promise<User> {
   const validate = UserValidation.instance.getOneUserValidation(params);
-  if (validate.error) {
-    throw new BadRequestError(validate.error.message);
-  }
+  if (validate.error) throw new BadRequestError(validate.error.message);
+
   try {
     const user = await UserModel.findOne({
       id: params.id,
