@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import * as UserUseCases from './use-cases';
 import logger from '@/utils/logger';
-import { removeFieldsNotUse } from '@/shared/transformedData';
 import { UserValidation } from './validation';
 import { BadRequestError } from '@/errors';
 

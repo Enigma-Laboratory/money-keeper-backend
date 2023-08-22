@@ -4,8 +4,8 @@ import * as OrderComponent from '@/components/order';
 const route = express.Router();
 
 /**
- * delete /order
- * @summary delete one order
+ * put /order/:id/edit
+ * @summary update one order
  *
  * @tags Order
  *
@@ -16,7 +16,7 @@ const route = express.Router();
  * @return {Order} 200 - Return order when deleted - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.patch('/update-order', OrderComponent.patchOneOrderHandler);
+route.put('/:id/edit', OrderComponent.putOneOrderHandler);
 
 /**
  * get /order/get-one-order/{id}

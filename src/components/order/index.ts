@@ -36,7 +36,9 @@ export async function getOneOrderHandler(req: Request, res: Response, next: Next
 
 export async function deleteOneOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const deleteOrder = await OrderUseCases.deleteOneOrder(req.params);
+    const id = req.url.replace('/', '');
+
+    const deleteOrder = await OrderUseCases.deleteOneOrder({ _id: id });
     logger.info({ component: 'OrderService', func: 'deleteOneOrderHandler', additionalInfo: deleteOrder });
     res.status(200).send(deleteOrder);
   } catch (error) {
@@ -45,13 +47,14 @@ export async function deleteOneOrderHandler(req: Request, res: Response, next: N
   }
 }
 
-export async function patchOneOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
+export async function putOneOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
+  const id = req.url.split('/')[1];
   try {
-    const order = await OrderUseCases.patchUpdateOneOrders(req.params);
-    logger.info({ component: 'OrderService', func: 'patchOneOrderHandler', additionalInfo: order });
+    const order = await OrderUseCases.putUpdateOneOrder({ _id: id }, req.body);
+    logger.info({ component: 'OrderService', func: 'putOneOrderHandler', additionalInfo: order });
     res.status(200).send(order);
   } catch (error) {
-    logger.error({ component: 'OrderService', func: 'patchOneOrderHandler', additionalInfo: error });
+    logger.error({ component: 'OrderService', func: 'putOneOrderHandler', additionalInfo: error });
     next(error);
   }
 }

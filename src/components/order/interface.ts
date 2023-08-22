@@ -7,7 +7,9 @@ export interface Order {
   updatedAt: Date;
 }
 
-export interface DeleteOrderParams extends getOneParams {}
+export interface DeleteOrderParams {
+  _id: string;
+}
 
 export interface DeleteOrderResponse {}
 

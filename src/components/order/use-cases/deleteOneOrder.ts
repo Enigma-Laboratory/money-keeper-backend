@@ -1,4 +1,3 @@
-import OrderDetailModel from '@/models/order.detail.model';
 import OrderModel from '@/models/order.model';
 import { DeleteOrderParams } from '../interface';
 import { OrderValidation } from '../validation';
@@ -8,16 +7,11 @@ export async function deleteOneOrder(params: DeleteOrderParams): Promise<any> {
   try {
     const validate = OrderValidation.instance.deleteOneOrder(params);
 
-    if (validate.error) {
-      throw new BadRequestError(validate.error.message);
-    }
-    // Delete the order details associated with the order
-    await OrderDetailModel.deleteMany({ orderId: params.id });
+    if (validate.error) throw new BadRequestError(validate.error.message);
 
-    const deletedOrder = await OrderModel.findByIdAndDelete(params.id);
-    if (!deletedOrder) throw new BadRequestError(`Can not delete order with id= ${params.id}`);
-    return deletedOrder;
+    const x = await OrderModel.deleteOne(params);
+    return x;
   } catch (error) {
-    throw { error };
+    throw error;
   }
 }

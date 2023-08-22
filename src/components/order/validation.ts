@@ -33,7 +33,7 @@ export class OrderValidation {
 
   public deleteOneOrder(params: DeleteOrderParams): ValidationResult<DeleteOrderParams> {
     const schema = Joi.object({
-      id: Joi.string().required(),
+      _id: Joi.string().required(),
     });
     return schema.validate(params);
   }
@@ -55,11 +55,8 @@ export class OrderValidation {
 
   public updateOrderParams(params: UpdateOrderParams): ValidationResult<UpdateOrderParams> {
     const schema = Joi.object({
-      id: Joi.string(),
-      orderName: Joi.string(),
-      userId: Joi.string(),
-      createdAt: Joi.date(),
-      updatedAt: Joi.date(),
+      _id: Joi.string().required(),
+      orderName: Joi.string().required(),
     });
     return schema.validate(params);
   }
