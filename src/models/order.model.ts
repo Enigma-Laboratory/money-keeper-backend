@@ -18,7 +18,8 @@ const orderSchema = new Schema(
 );
 
 export interface OrderDocument extends Document {
-  orderName: string;
+  id: string;
+  name: string;
   userId: string;
   createdAt: Date;
   updatedAt: Date;

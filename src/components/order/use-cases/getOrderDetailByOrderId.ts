@@ -14,10 +14,10 @@ export async function getOrderDetailByOrderId(
   OrderValidation.instance.getAllOrderDetailByOrderId(params);
 
   try {
-    const orders = await OrderDetailModel.find(params).lean().exec();
-    const x: OrderDetail[] = orders.map(_ => removeFieldsNotUse(_));
+    const orderDetail = await OrderDetailModel.find(params).lean().exec();
+    const x: OrderDetail[] = orderDetail.map(_ => removeFieldsNotUse(_));
     return {
-      count: orders.length,
+      count: orderDetail.length,
       rows: x,
     };
   } catch (error: any) {

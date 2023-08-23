@@ -13,10 +13,18 @@ const orderDetailSchema = new Schema(
     description: { type: String },
     price: { type: Number, required: true },
   },
-  { timestamps: true, primaryKey: 'id' },
+  {
+    timestamps: true,
+    primaryKey: 'id',
+  },
 );
 
 export interface OrderDetailDocument extends Document {
+  id: string;
+  orderId: string;
+  name: string;
+  description?: string;
+  price: number;
   createdAt: Date;
   updatedAt: Date;
 }
