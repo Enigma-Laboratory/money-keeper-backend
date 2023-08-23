@@ -1,6 +1,6 @@
 import { BadRequestError, ConflictError } from '@/errors';
 import UserModel from '@/models/user.model';
-import { UpdateOneUserParams } from '@/packages/user/user.interfaces';
+import { UpdateOneUserParams } from '@/packages/user';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 import { omit } from 'lodash';
 

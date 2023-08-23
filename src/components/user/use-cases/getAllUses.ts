@@ -1,6 +1,6 @@
 import { ConflictError } from '@/errors';
 import UserModel from '@/models/user.model';
-import { FindAllUserResponse } from '@/packages/user/user.interfaces';
+import { FindAllUserResponse } from '@/packages/user';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 
 export async function getAllUsers(): Promise<FindAllUserResponse> {

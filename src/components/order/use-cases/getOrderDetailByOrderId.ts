@@ -4,7 +4,7 @@ import {
   FindAllOrderDetailByOrderIdParams,
   FindAllOrderDetailByOrderIdResponse,
   OrderDetail,
-} from '@/packages/orderDetail/orderDetail.interfaces';
+} from '@/packages/orderDetail';
 import { OrderValidation } from '../validation';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 

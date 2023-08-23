@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { FindOneUserParams, UpdateOneUserParams } from '@/packages/user/user.interfaces';
+import { FindOneUserParams, UpdateOneUserParams } from '@/packages/user';
 import { BadRequestError } from '@/errors';
 
 export class UserValidation {

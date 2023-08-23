@@ -3,10 +3,10 @@ import {
   DeleteOneOrderParams,
   FindAllOrderParams,
   CreateOneOrderParams,
-  UpdateOrderParams,
+  UpdateOneOrderParams,
   FindOneOrderParams,
-} from '@/packages/order/order.interfaces';
-import { FindAllOrderDetailByOrderIdParams } from '@/packages/orderDetail/orderDetail.interfaces';
+} from '@/packages/order';
+import { FindAllOrderDetailByOrderIdParams } from '@/packages/orderDetail';
 import { BadRequestError } from '@/errors';
 
 export class OrderValidation {
@@ -59,7 +59,7 @@ export class OrderValidation {
     if (validate.error) throw new BadRequestError(validate.error.message);
   }
 
-  public updateOrderParams(params: UpdateOrderParams): void {
+  public updateOrder(params: UpdateOneOrderParams): void {
     const schema = Joi.object({
       id: Joi.string().required(),
       name: Joi.string().required(),

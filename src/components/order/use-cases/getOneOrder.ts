@@ -1,6 +1,6 @@
 import { BadRequestError, ConflictError } from '@/errors';
 import OrderModel from '@/models/order.model';
-import { FindOneOrderParams, FindOneOrderResponse, Order } from '@/packages/order/order.interfaces';
+import { FindOneOrderParams, FindOneOrderResponse, Order } from '@/packages/order';
 import { OrderValidation } from '../validation';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 

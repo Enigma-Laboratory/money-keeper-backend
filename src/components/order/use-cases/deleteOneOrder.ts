@@ -1,5 +1,5 @@
 import OrderModel from '@/models/order.model';
-import { DeleteOneOrderParams, DeleteOneOrderResponse } from '@/packages/order/order.interfaces';
+import { DeleteOneOrderParams, DeleteOneOrderResponse } from '@/packages/order';
 import { OrderValidation } from '../validation';
 import { ConflictError } from '@/errors';
 

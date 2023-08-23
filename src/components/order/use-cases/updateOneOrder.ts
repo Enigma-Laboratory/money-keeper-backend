@@ -1,13 +1,13 @@
 import { BadRequestError, ConflictError } from '@/errors';
 import OrderModel from '@/models/order.model';
-import { UpdateOrderParams } from '@/packages/order/order.interfaces';
+import { UpdateOneOrderParams, UpdateOneOrderResponse } from '@/packages/order';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 import { omit } from 'lodash';
 import { OrderValidation } from '../validation';
 
-export async function updateOneOrder(params: UpdateOrderParams): Promise<any> {
+export async function updateOneOrder(params: UpdateOneOrderParams): Promise<UpdateOneOrderResponse> {
   try {
-    OrderValidation.instance.updateOrderParams(params);
+    OrderValidation.instance.updateOrder(params);
 
     const order = await OrderModel.findOneAndUpdate({ id: params.id }, omit(params, ['id']), { new: true }).lean();
     if (!order) throw new BadRequestError("Don't have the order updated.");

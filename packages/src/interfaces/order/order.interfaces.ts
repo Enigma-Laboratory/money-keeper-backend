@@ -28,10 +28,10 @@ export interface CreateOneOrderParams extends Pick<Order, 'name' | 'userId'> {}
 export interface CreateOneOrderResponse extends Order {}
 
 /** Represents the parameters for updating an order. */
-export interface UpdateOrderParams extends Partial<Order> {}
+export interface UpdateOneOrderParams extends Partial<Order> {}
 
 /** Represents the parameters for response an order. */
-export interface UpdateOrderResponse extends Order {}
+export interface UpdateOneOrderResponse extends Order {}
 
 /** Represents the parameters for deleting an order. */
 export interface DeleteOneOrderParams extends GetOneParams {}

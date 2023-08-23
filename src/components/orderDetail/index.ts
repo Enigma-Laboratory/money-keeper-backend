@@ -13,13 +13,14 @@ export async function getAllOrderDetailHandler(req: Request, res: Response, next
   }
 }
 
-export async function getOneOrderDetailHandler(req: Request, res: Response, next: NextFunction): Promise<any> {
+export async function getOneOrderDetailHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     OrderDetailValidation.instance.getOneOrderDetail(req.params);
 
     const orderDetail = await OrderDetailUseCases.deleteOneOrderDetail(req.params);
-    return res.send(orderDetail);
+    res.status(200).send(orderDetail);
   } catch (error: any) {
+    logger.error({ component: 'OrderDetailService', func: 'getOneOrderDetailHandler', additionalInfo: error });
     next(error);
   }
 }
@@ -28,9 +29,10 @@ export async function createOneOrderDetailHandler(req: Request, res: Response, n
   try {
     OrderDetailValidation.instance.createOrderDetail(req.body);
 
-    const orderDetail = await OrderDetailUseCases.postCreateOrderDetail(req.body);
-    res.send(orderDetail);
+    const orderDetail = await OrderDetailUseCases.createOrderDetail(req.body);
+    res.status(200).send(orderDetail);
   } catch (error: any) {
+    logger.error({ component: 'OrderDetailService', func: 'createOneOrderDetailHandler', additionalInfo: error });
     next(error);
   }
 }
@@ -40,18 +42,20 @@ export async function updateOrderDetailHandler(req: Request, res: Response, next
     OrderDetailValidation.instance.updateOneOrderDetail(req.body);
 
     const orderDetail = await OrderDetailUseCases.updateOneOrderDetail(req.body);
-    res.send(orderDetail);
+    res.status(200).send(orderDetail);
   } catch (error: any) {
+    logger.error({ component: 'OrderDetailService', func: 'updateOrderDetailHandler', additionalInfo: error });
     next(error);
   }
 }
-export async function deleteOneOrderDetailHandler(req: Request, res: Response, next: NextFunction): Promise<any> {
+export async function deleteOneOrderDetailHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     OrderDetailValidation.instance.deleteOneOrderDetail(req.params);
 
     const orderDetail = await OrderDetailUseCases.deleteOneOrderDetail(req.params);
-    return res.send(orderDetail);
+    res.status(200).send(orderDetail);
   } catch (error: any) {
+    logger.error({ component: 'OrderDetailService', func: 'deleteOneOrderDetailHandler', additionalInfo: error });
     next(error);
   }
 }

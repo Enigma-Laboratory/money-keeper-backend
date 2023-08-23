@@ -1,6 +1,6 @@
 import { ConflictError } from '@/errors';
 import OrderDetailModel from '@/models/order.detail.model';
-import { UpdateOneOrderDetailParams } from '@/packages/orderDetail/orderDetail.interfaces';
+import { UpdateOneOrderDetailParams } from '@/packages/orderDetail';
 
 export async function updateOneOrderDetail(params: UpdateOneOrderDetailParams): Promise<any> {
   try {

@@ -1,7 +1,7 @@
 import { ConflictError } from '@/errors';
 import OrderDetailModel from '@/models/order.detail.model';
-
-export async function postCreateOrderDetail(params: any): Promise<any> {
+import { CreateOneOrderParams, CreateOneOrderResponse } from '@/packages/order';
+export async function createOrderDetail(params: CreateOneOrderParams): Promise<CreateOneOrderResponse> {
   try {
     const orderDetail = await OrderDetailModel.create(params);
     return orderDetail.toJSON();

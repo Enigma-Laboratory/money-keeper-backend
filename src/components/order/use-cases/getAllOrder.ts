@@ -1,6 +1,6 @@
 import { ConflictError } from '@/errors';
 import OrderModel from '@/models/order.model';
-import { FindAllOrderParams, FindAllOrderResponse, Order } from '@/packages/order/order.interfaces';
+import { FindAllOrderParams, FindAllOrderResponse, Order } from '@/packages/order';
 import { OrderValidation } from '../validation';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 
