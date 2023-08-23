@@ -28,7 +28,10 @@ export class OrderDetailValidation {
 
   public updateOneOrderDetail(params: UpdateOneOrderDetailParams): void {
     const schema = Joi.object({
-      orderId: Joi.string().required(),
+      id: Joi.string().required(),
+      name: Joi.string(),
+      description: Joi.string(),
+      price: Joi.number(),
     });
     const validate = schema.validate(params);
     if (validate.error) throw new BadRequestError(validate.error.message);

@@ -1,4 +1,4 @@
-import { BadRequestError } from '@/errors';
+import { BadRequestError, ConflictError } from '@/errors';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 import UserModel from '@/models/user.model';
 import { CreateUserParams, User } from '@/enigma-laboratory/sdk/user';
@@ -11,7 +11,7 @@ export async function postSignUpUser(params: CreateUserParams): Promise<User> {
     if (!user) throw new BadRequestError('Can not create user.');
 
     return removeFieldsNotUse(user).toJSON();
-  } catch (error) {
-    throw { error };
+  } catch (error: any) {
+    throw new ConflictError(error.message);
   }
 }
