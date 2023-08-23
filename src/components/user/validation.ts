@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { FindOneUserParams, UpdateOneUserParams } from '@/packages/user';
+import { FindOneUserParams, UpdateOneUserParams } from '@/enigma-laboratory/sdk/user';
 import { BadRequestError } from '@/errors';
 
 export class UserValidation {

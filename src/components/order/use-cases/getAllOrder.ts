@@ -1,6 +1,6 @@
 import { ConflictError } from '@/errors';
 import OrderModel from '@/models/order.model';
-import { FindAllOrderParams, FindAllOrderResponse, Order } from '@/packages/order';
+import { FindAllOrderParams, FindAllOrderResponse, Order } from '@/enigma-laboratory/sdk/order';
 import { OrderValidation } from '../validation';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 

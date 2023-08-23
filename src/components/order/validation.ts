@@ -5,8 +5,8 @@ import {
   CreateOneOrderParams,
   UpdateOneOrderParams,
   FindOneOrderParams,
-} from '@/packages/order';
-import { FindAllOrderDetailByOrderIdParams } from '@/packages/orderDetail';
+} from '@/enigma-laboratory/sdk/order';
+import { FindAllOrderDetailByOrderIdParams } from '@/enigma-laboratory/sdk/orderDetail';
 import { BadRequestError } from '@/errors';
 
 export class OrderValidation {

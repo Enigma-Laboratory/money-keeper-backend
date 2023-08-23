@@ -5,7 +5,7 @@ import {
   DeleteOneOrderDetailParams,
   FindOneOrderDetailParams,
   UpdateOneOrderDetailParams,
-} from '@/packages/orderDetail/orderDetail.interfaces';
+} from '@/enigma-laboratory/sdk/orderDetail/orderDetail.interfaces';
 export class OrderDetailValidation {
   private static _instance: OrderDetailValidation;
   public static get instance(): OrderDetailValidation {

@@ -1,6 +1,6 @@
 import { NotFoundError } from '@/errors';
 import UserModel from '@/models/user.model';
-import { FindOneUserParams, User } from '@/packages/user';
+import { FindOneUserParams, User } from '@/enigma-laboratory/sdk/user';
 import { UserValidation } from '../validation';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 

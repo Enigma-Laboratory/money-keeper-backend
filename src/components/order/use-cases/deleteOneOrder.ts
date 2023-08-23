@@ -1,5 +1,5 @@
 import OrderModel from '@/models/order.model';
-import { DeleteOneOrderParams, DeleteOneOrderResponse } from '@/packages/order';
+import { DeleteOneOrderParams, DeleteOneOrderResponse } from '@/enigma-laboratory/sdk/order';
 import { OrderValidation } from '../validation';
 import { ConflictError } from '@/errors';
 

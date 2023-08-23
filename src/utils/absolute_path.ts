@@ -9,6 +9,6 @@ moduleAlias.addAliases({
   '@/errors': __dirname + '/..' + '/errors',
   '@/shared': __dirname + '/..' + '/shared',
   '@/services': __dirname + '/..' + '/services',
-  '@/packages': __dirname + '/../..' + '/packages/src/interfaces',
+  '@/enigma-laboratory/sdk': __dirname + '/../..' + '/packages/src/interfaces',
 });
 export default moduleAlias;

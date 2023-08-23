@@ -1,6 +1,6 @@
 import { ConflictError } from '@/errors';
 import OrderDetailModel from '@/models/order.detail.model';
-import { UpdateOneOrderDetailParams } from '@/packages/orderDetail';
+import { UpdateOneOrderDetailParams } from '@/enigma-laboratory/sdk/orderDetail';
 
 export async function updateOneOrderDetail(params: UpdateOneOrderDetailParams): Promise<any> {
   try {

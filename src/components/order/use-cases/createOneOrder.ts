@@ -1,7 +1,7 @@
 import { BadRequestError, ConflictError } from '@/errors';
 import OrderModel from '@/models/order.model';
 import { OrderValidation } from '../validation';
-import { CreateOneOrderParams, CreateOneOrderResponse } from '@/packages/order';
+import { CreateOneOrderParams, CreateOneOrderResponse } from '@/enigma-laboratory/sdk/order';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 
 export async function postCreateOneOrder(params: CreateOneOrderParams): Promise<CreateOneOrderResponse> {

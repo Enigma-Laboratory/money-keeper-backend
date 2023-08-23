@@ -1,6 +1,6 @@
 import { ConflictError } from '@/errors';
 import OrderDetailModel from '@/models/order.detail.model';
-import { DeleteOneOrderDetailParams, DeleteOneOrderDetailResponse } from '@/packages/orderDetail';
+import { DeleteOneOrderDetailParams, DeleteOneOrderDetailResponse } from '@/enigma-laboratory/sdk/orderDetail';
 
 export async function deleteOneOrderDetail(params: DeleteOneOrderDetailParams): Promise<DeleteOneOrderDetailResponse> {
   try {

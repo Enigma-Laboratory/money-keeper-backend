@@ -4,7 +4,7 @@ import Jwt from '@/services/jwt';
 import { RequestWithUser } from '@/interface';
 import { JwtPayload } from 'jsonwebtoken';
 import { validateUserExistById } from '@/components/user/shared';
-import { User } from '@/packages/user';
+import { User } from '@/enigma-laboratory/sdk/user';
 import { UnauthorizedError } from '@/errors';
 
 const AccessTokenSecret = process.env.ACCESS_TOKEN_SECRET || 'test';
