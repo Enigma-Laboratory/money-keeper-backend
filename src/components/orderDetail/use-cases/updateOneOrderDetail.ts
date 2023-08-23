@@ -1,6 +1,6 @@
 import { BadRequestError, ConflictError } from '@/errors';
 import OrderDetailModel from '@/models/order.detail.model';
-import { UpdateOneOrderDetailParams, UpdateOneOrderDetailResponse } from '@/enigma-laboratory/sdk/orderDetail';
+import { UpdateOneOrderDetailParams, UpdateOneOrderDetailResponse } from '@/enigma-laboratory/sdk';
 import { omit } from 'lodash';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 

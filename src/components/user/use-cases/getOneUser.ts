@@ -1,4 +1,4 @@
-import { FindOneUserParams, User } from '@/enigma-laboratory/sdk/user';
+import { FindOneUserParams, User } from '@/enigma-laboratory/sdk';
 import { ConflictError, NotFoundError } from '@/errors';
 import UserModel from '@/models/user.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';

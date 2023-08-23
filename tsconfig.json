@@ -35,7 +35,7 @@
     "baseUrl": "." /* Specify the base directory to resolve non-relative module names. */,
     "paths": {
       "@/*": ["./src/*"],
-      "@/enigma-laboratory/sdk/*": ["./packages/src/interfaces/*"]
+      "@/enigma-laboratory/sdk": ["./packages/src/interfaces"]
     } /* Specify a set ovscode-file://vscode-app/c:/Users/phvoh/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmlf entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */

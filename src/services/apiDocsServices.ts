@@ -1,6 +1,7 @@
 import { RequestHandler } from 'express';
 import swaggerJsdoc, { Options } from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import Config from '@/services/configServices';
 
 export default class SwaggerUI {
   private static _instance: SwaggerUI;
@@ -14,7 +15,7 @@ export default class SwaggerUI {
 
   constructor() {
     this.serve = swaggerUi.serve;
-    this.port = process.env.PORT || '3000';
+    this.port = Config.instance.port;
     this.options = {
       definition: {
         openapi: '3.1.0',

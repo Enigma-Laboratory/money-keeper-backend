@@ -1,5 +1,5 @@
 import { accessToken } from '@/middleware/accessToken';
-import SwaggerUI from '@/services/api-doc';
+import SwaggerUI from '@/services/apiDocsServices';
 import { Express } from 'express';
 import AuthRoute from './auth/authRoutes';
 import OrderRoute from './order/orderRoutes';
@@ -18,6 +18,7 @@ function routes(app: Express) {
   app.use('/orders', accessToken, OrderRoute);
   app.use('/order-details', accessToken, OrderDetailRoute);
   app.use('/users', accessToken, UserRoute);
+
   // app.use('/remove', accessToken, RemoveRoute); // remove all datas for each table.
 
   app.use(AdditionalHttpStatusCodes);

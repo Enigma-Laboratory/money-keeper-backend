@@ -1,4 +1,4 @@
-import { User } from '@/enigma-laboratory/sdk/user';
+import { User } from '@/enigma-laboratory/sdk';
 
 export interface CreateUserParams extends Pick<User, 'name' | 'email' | 'password'> {}
 

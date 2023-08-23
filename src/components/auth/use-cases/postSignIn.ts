@@ -1,13 +1,11 @@
 import UserModel from '@/models/user.model';
 import { AuthValidation } from '../validation';
 import { BadRequestError, ConflictError } from '@/errors';
-import Jwt from '@/services/jwt';
+import Jwt from '@/services/jwtServices';
 import { FindOneUserParams } from '../interfaces';
+import Config from '@/services/configServices';
 
 export async function postSignIn(params: FindOneUserParams): Promise<string> {
-  const AccessTokenTtl = process.env.ACCESS_TOKEN_TTL || '1h';
-  const AccessTokenSecret = process.env.ACCESS_TOKEN_SECRET || 'test';
-
   AuthValidation.instance.signInValidate(params);
 
   try {
@@ -17,8 +15,8 @@ export async function postSignIn(params: FindOneUserParams): Promise<string> {
     const isValid = await user.comparePassword(params.password);
     if (!isValid) throw new BadRequestError('Wrong password.');
 
-    return Jwt.signJwt({ user: user }, AccessTokenSecret, {
-      expiresIn: AccessTokenTtl,
+    return Jwt.signJwt({ user: user }, Config.instance.accessTokenSecret, {
+      expiresIn: Config.instance.accessTokenTtl,
       algorithm: 'HS256',
     });
   } catch (error: any) {

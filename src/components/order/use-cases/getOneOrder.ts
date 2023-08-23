@@ -1,6 +1,6 @@
 import { BadRequestError, ConflictError } from '@/errors';
 import OrderModel from '@/models/order.model';
-import { FindOneOrderParams, FindOneOrderResponse, Order } from '@/enigma-laboratory/sdk/order';
+import { FindOneOrderParams, FindOneOrderResponse, Order } from '@/enigma-laboratory/sdk';
 import { OrderValidation } from '../validation';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 

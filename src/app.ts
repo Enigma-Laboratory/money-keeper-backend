@@ -5,6 +5,7 @@ import routes from '@/routes/index';
 import connect from '@/utils/connect';
 import { corsOptions } from '@/utils/cors';
 import logger from '@/utils/logger';
+import Config from '@/services/configServices';
 
 require('dotenv').config();
 
@@ -14,7 +15,7 @@ app.use(express.json());
 app.use(cors(corsOptions));
 
 routes(app);
-app.listen(process.env.PORT, async () => {
-  logger.info(`App is running port :${process.env.PORT}`);
+app.listen(Config.instance.port, async () => {
+  logger.info(`App is running port :${Config.instance.port}`);
   await connect();
 });

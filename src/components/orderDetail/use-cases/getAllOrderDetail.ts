@@ -1,6 +1,6 @@
 import { ConflictError } from '@/errors';
 import OrderDetailModel from '@/models/order.detail.model';
-import { FindAllOrderDetailParams, FindAllOrderDetailResponse, OrderDetail } from '@/enigma-laboratory/sdk/orderDetail';
+import { FindAllOrderDetailParams, FindAllOrderDetailResponse, OrderDetail } from '@/enigma-laboratory/sdk';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 
 export async function getAllOrderDetail(params: FindAllOrderDetailParams): Promise<FindAllOrderDetailResponse> {

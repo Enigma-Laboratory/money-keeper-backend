@@ -4,7 +4,7 @@ import {
   FindAllOrderDetailByOrderIdParams,
   FindAllOrderDetailByOrderIdResponse,
   OrderDetail,
-} from '@/enigma-laboratory/sdk/orderDetail';
+} from '@/enigma-laboratory/sdk';
 import { OrderValidation } from '../validation';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 

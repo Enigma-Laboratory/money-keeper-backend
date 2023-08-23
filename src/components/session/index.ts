@@ -1,11 +1,10 @@
 import { Request, Response } from 'express';
 import { validatePassword } from '../user/shared';
 import * as SessionUseCases from './use-cases';
-import Jwt from '@/services/jwt';
+import Jwt from '@/services/jwtServices';
+import Config from '@/services/configServices';
 
 export async function createUserSessionHandler(req: Request, res: Response) {
-  const ACCESS_TOKEN_TTL = process.env.ACCESS_TOKEN_TTL || '30d';
-  const REFRESH_TOKEN_TTL = process.env.REFRESH_TOKEN_TTL || '1y';
   try {
     const user = await validatePassword(req.body);
     if (!user) {
@@ -14,12 +13,12 @@ export async function createUserSessionHandler(req: Request, res: Response) {
     const session = await SessionUseCases.createSession(user._id, req.get('user-agent') || '');
 
     const accessToken = Jwt.signJwt({ session: session._id }, 'accessTokenPrivateKey', {
-      expiresIn: ACCESS_TOKEN_TTL,
+      expiresIn: Config.instance.accessTokenTtl,
       algorithm: 'HS256',
     });
 
     const refreshToken = Jwt.signJwt({ ...user, session: session._id }, 'refreshTokenPrivateKey', {
-      expiresIn: REFRESH_TOKEN_TTL,
+      expiresIn: Config.instance.refreshTokenTtl,
     });
 
     return res.send({ accessToken, refreshToken });

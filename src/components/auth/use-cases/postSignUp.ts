@@ -1,7 +1,7 @@
 import { BadRequestError, ConflictError } from '@/errors';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 import UserModel from '@/models/user.model';
-import { CreateUserParams, User } from '@/enigma-laboratory/sdk/user';
+import { CreateUserParams, User } from '@/enigma-laboratory/sdk';
 import { AuthValidation } from '../validation';
 
 export async function postSignUpUser(params: CreateUserParams): Promise<User> {

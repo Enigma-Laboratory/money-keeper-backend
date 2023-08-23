@@ -1,6 +1,6 @@
 import { BadRequestError, ConflictError } from '@/errors';
 import UserModel from '@/models/user.model';
-import { UpdateOneUserParams } from '@/enigma-laboratory/sdk/user';
+import { UpdateOneUserParams } from '@/enigma-laboratory/sdk';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 import { omit } from 'lodash';
 
