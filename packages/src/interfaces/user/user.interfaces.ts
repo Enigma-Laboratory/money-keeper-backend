@@ -17,27 +17,26 @@ export interface User {
 export interface FindAllUserResponse extends FindAllResponse<Omit<User, 'password'>> {}
 
 /** Represents the parameters for finding a single user. */
-export interface FindOneUserParams extends GetOneParams<User> {
+export interface FindOneUserParams extends GetOneParams {
   /** The email of the user for authentication or login purposes. */
-  email: string;
-
+  // email: string; [ ]: reivew
   /** The password of the user for authentication or login purposes. */
-  password: string;
+  // password: string;
 }
+
+/** Represents the parameters for finding a single user. */
+export interface FindOneUserParams extends GetOneParams {
+  /** The email and password fields are used for authentication or login purposes. */
+}
+
+/** Represents the parameters for creating a new user. */
+export interface CreateUserParams extends Pick<User, 'name' | 'email' | 'password'> {}
 
 /** Represents the parameters for updating a user. */
 export interface UpdateOneUserParams extends User {}
 
 /** Represents the parameters for deleting a user. */
 export interface DeleteOneUserParams extends GetOneParams<User> {}
-
-/** Represents the parameters for creating a new user. */
-export interface CreateUserParams extends Pick<User, 'name' | 'email' | 'password'> {}
-
-/** Represents the parameters for finding a single user. */
-export interface FindOneUserParams extends Pick<User, 'email' | 'password'> {
-  /** The email and password fields are used for authentication or login purposes. */
-}
 
 // Reusing the GetOneParams interface for finding a single user by their ID.
 // This interface is not repeated here since it's already defined in a previous response.

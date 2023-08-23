@@ -1,6 +1,7 @@
-import { removeFieldsNotUse } from '@/shared/transformedData';
+import { ConflictError } from '@/errors';
 import UserModel from '@/models/user.model';
-import { FindAllUserResponse, User } from '../interface';
+import { FindAllUserResponse } from '@/packages/user/user.interfaces';
+import { removeFieldsNotUse } from '@/shared/transformedData';
 
 export async function getAllUsers(): Promise<FindAllUserResponse> {
   try {
@@ -9,7 +10,7 @@ export async function getAllUsers(): Promise<FindAllUserResponse> {
       count: users.length,
       rows: users?.map(user => removeFieldsNotUse(user)),
     };
-  } catch (error) {
-    throw { error };
+  } catch (error: any) {
+    throw new ConflictError(error.message);
   }
 }

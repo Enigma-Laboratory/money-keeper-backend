@@ -1,24 +1,17 @@
-import { BadRequestError } from '@/errors';
+import { BadRequestError, ConflictError } from '@/errors';
 import OrderModel from '@/models/order.model';
-import { FindOneOrderParams, FindOneOrderResponse } from '../interface';
+import { FindOneOrderParams, FindOneOrderResponse, Order } from '@/packages/order/order.interfaces';
 import { OrderValidation } from '../validation';
+import { removeFieldsNotUse } from '@/shared/transformedData';
 
-export async function getOneOrders(params: FindOneOrderParams): Promise<FindOneOrderResponse> {
+export async function getOneOrder(params: FindOneOrderParams): Promise<FindOneOrderResponse> {
   try {
-    const validate = OrderValidation.instance.getOneOrder(params);
-    if (validate.error) throw new BadRequestError(validate.error.message);
+    OrderValidation.instance.getOneOrder(params);
 
-    const order = await OrderModel.findById({ _id: params.id }).lean().exec();
-
-    if (!order) throw new BadRequestError(`Can not get order with id = ${params.id}`);
-    return {
-      id: order._id,
-      orderName: order.orderName,
-      userId: order.userId,
-      createdAt: order.createdAt,
-      updatedAt: order.updatedAt,
-    };
-  } catch (error) {
-    throw { error };
+    const order = await OrderModel.findOne(params).lean().exec();
+    if (!order) throw new BadRequestError(`Can not get order with id = ${params.id}`); // [ ] review
+    return removeFieldsNotUse(order);
+  } catch (error: any) {
+    throw new ConflictError(error.message);
   }
 }

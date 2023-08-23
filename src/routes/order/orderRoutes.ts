@@ -4,23 +4,23 @@ import * as OrderComponent from '@/components/order';
 const route = express.Router();
 
 /**
- * put /order/:id/edit
- * @summary update one order
+ * get /order/{id}/details
+ * @summary get all order detail by order id
  *
  * @tags Order
  *
  * @security BearerAuth
  *
- * @param {Order}
+ * @param {FindAllOrderDetailByOrderIdParams}
  **
- * @return {Order} 200 - Return order when deleted - application/json
+ * @return {OrderDetail} 200 - Return order by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.put('/:id/edit', OrderComponent.putOneOrderHandler);
+route.get('/:id/details', OrderComponent.getOrderDetailByOrderIdHandler);
 
 /**
- * get /order/get-one-order/{id}
- * @summary get one  order
+ * get /order/{id}
+ * @summary get one order
  *
  * @tags Order
  *
@@ -32,6 +32,21 @@ route.put('/:id/edit', OrderComponent.putOneOrderHandler);
  * @return {Error} default - Unexpected error - application/json
  */
 route.get('/:id', OrderComponent.getOneOrderHandler);
+
+/**
+ * put /order
+ * @summary update one order
+ *
+ * @tags Order
+ *
+ * @security BearerAuth
+ *
+ * @param {Order}
+ **
+ * @return {Order} 200 - Return order when deleted - application/json
+ * @return {Error} default - Unexpected error - application/json
+ */
+route.put('/', OrderComponent.updateOneOrderHandler);
 
 /**
  * delete /orders/:id
@@ -46,7 +61,7 @@ route.get('/:id', OrderComponent.getOneOrderHandler);
  * @return {Order} 200 - Return order when deleted - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.delete('/:id', OrderComponent.deleteOneOrderHandler);
+route.delete('/', OrderComponent.deleteOneOrderHandler);
 
 /**
  * post /order
@@ -60,7 +75,7 @@ route.delete('/:id', OrderComponent.deleteOneOrderHandler);
  * @return {Order} 200 - Return order by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.post('/', OrderComponent.postCreateOneOrderHandler);
+route.post('/', OrderComponent.createOneOrderHandler);
 
 /**
  * get /order

@@ -1,28 +1,29 @@
-import mongoose from 'mongoose';
+import { Types, Schema, Document, model } from 'mongoose';
 
-const orderSchema = new mongoose.Schema(
+const orderSchema = new Schema(
   {
-    orderName: {
+    id: {
       type: String,
       required: true,
+      unique: true,
+      default: () => new Types.ObjectId().toString(),
     },
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'user',
-    },
+    name: { type: String, required: true },
+    userId: { type: Types.ObjectId, ref: 'User' },
   },
   {
     timestamps: true,
+    primaryKey: 'id',
   },
 );
 
-export interface OrderDocument extends mongoose.Document {
+export interface OrderDocument extends Document {
   orderName: string;
   userId: string;
   createdAt: Date;
   updatedAt: Date;
 }
 
-const OrderModel = mongoose.model<OrderDocument>('Order', orderSchema);
+const OrderModel = model<OrderDocument>('Order', orderSchema);
 
 export default OrderModel;

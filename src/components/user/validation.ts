@@ -1,5 +1,6 @@
-import Joi, { ValidationResult } from 'joi';
-import { FindOneUserParams, UpdateOneUserParams } from './interface';
+import Joi from 'joi';
+import { FindOneUserParams, UpdateOneUserParams } from '@/packages/user/user.interfaces';
+import { BadRequestError } from '@/errors';
 
 export class UserValidation {
   private static _instance: UserValidation;
@@ -11,18 +12,21 @@ export class UserValidation {
     return UserValidation._instance;
   }
 
-  public getOneUserValidation(params: FindOneUserParams): ValidationResult<FindOneUserParams> {
+  public getOneUserValidation(params: FindOneUserParams): void {
     const schema = Joi.object({
       id: Joi.string().required(),
     });
-    return schema.validate(params);
+    const validate = schema.validate(params);
+    if (validate.error) throw new BadRequestError(validate.error.message);
   }
 
-  public putOneUserValidation(params: UpdateOneUserParams): ValidationResult<UpdateOneUserParams> {
+  public updateOneUserValidation(params: UpdateOneUserParams): void {
     const schema = Joi.object({
       id: Joi.string().required(),
       name: Joi.string().required(),
     });
-    return schema.validate(params);
+
+    const validate = schema.validate(params);
+    if (validate.error) throw new BadRequestError(validate.error.message);
   }
 }
