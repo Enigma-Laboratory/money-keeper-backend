@@ -19,15 +19,16 @@ export interface FindAllUserResponse extends FindAllResponse<Omit<User, 'passwor
 /** Represents the parameters for finding a single user. */
 export interface FindOneUserParams extends GetOneParams {
   /** The email of the user for authentication or login purposes. */
-  // email: string; [ ]: reivew
+  // email: string;
   /** The password of the user for authentication or login purposes. */
   // password: string;
 }
 
+/** Represents the parameters for login. */
+export interface LoginParams extends Pick<User, 'email' | 'password'> {}
+
 /** Represents the parameters for finding a single user. */
-export interface FindOneUserParams extends GetOneParams {
-  /** The email and password fields are used for authentication or login purposes. */
-}
+export interface FindOneUserParams extends GetOneParams {}
 
 /** Represents the parameters for creating a new user. */
 export interface CreateUserParams extends Pick<User, 'name' | 'email' | 'password'> {}

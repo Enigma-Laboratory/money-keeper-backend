@@ -1,7 +1,5 @@
 import Joi, { ValidationResult } from 'joi';
-import { CreateUserParams, FindOneUserParams } from './interfaces';
-import { BadRequestError } from '@/errors';
-
+import { CreateUserParams, LoginParams } from '@/enigma-laboratory/sdk';
 export class AuthValidation {
   private static _instance: AuthValidation;
 
@@ -12,22 +10,20 @@ export class AuthValidation {
     return AuthValidation._instance;
   }
 
-  public signInValidate(params: FindOneUserParams): void {
+  public signInValidate(params: LoginParams): ValidationResult<LoginParams> {
     const schema = Joi.object({
       email: Joi.string().email().required(),
       password: Joi.string().required(),
     });
-    const validate = schema.validate(params);
-    if (validate.error) throw new BadRequestError(validate.error.message);
+    return schema.validate(params);
   }
 
-  public signUpValidate(params: CreateUserParams): void {
+  public signUpValidate(params: CreateUserParams): ValidationResult<CreateUserParams> {
     const schema = Joi.object({
       name: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
     });
-    const validate = schema.validate(params);
-    if (validate.error) throw new BadRequestError(validate.error.message);
+    return schema.validate(params);
   }
 }

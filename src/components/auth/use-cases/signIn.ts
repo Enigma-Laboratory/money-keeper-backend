@@ -2,13 +2,14 @@ import UserModel from '@/models/user.model';
 import { AuthValidation } from '../validation';
 import { BadRequestError, ConflictError } from '@/errors';
 import Jwt from '@/services/jwtServices';
-import { FindOneUserParams } from '../interfaces';
+import { LoginParams } from '@/enigma-laboratory/sdk';
 import Config from '@/services/configServices';
 
-export async function postSignIn(params: FindOneUserParams): Promise<string> {
-  AuthValidation.instance.signInValidate(params);
-
+export async function signIn(params: LoginParams): Promise<string> {
   try {
+    const validate = AuthValidation.instance.signInValidate(params);
+    if (validate.error) throw new BadRequestError(validate.error.message);
+
     const user = await UserModel.findOne({ email: params.email });
     if (!user) throw new BadRequestError('Invalid email.');
 

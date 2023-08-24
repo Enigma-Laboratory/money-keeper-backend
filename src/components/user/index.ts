@@ -5,7 +5,8 @@ import { UserValidation } from './validation';
 
 export async function getOneUserHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const user = await UserUseCases.getOneUser(req.params);
+    const id = req.url.replace('/', '');
+    const user = await UserUseCases.getOneUser({ id });
     res.status(200).send(user);
   } catch (error) {
     logger.error({ component: 'UserService', func: 'getOneUserHandler', additionalInfo: error });

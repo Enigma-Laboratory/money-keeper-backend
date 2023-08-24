@@ -6,14 +6,12 @@ import OrderRoute from './order/orderRoutes';
 import OrderDetailRoute from './orderDetail/orderDetailRoutes';
 import ProductRoute from './product/productRoutes';
 import AdditionalHttpStatusCodes from './serverError/serverError';
-import SessionRoute from './session/sessionRoutes';
 import UserRoute from './user/userRoutes';
 // import RemoveRoute from '@/utils/remove_data';
 
 function routes(app: Express) {
   app.use('/api-docs', SwaggerUI.instance.serveAndSetup());
   app.use('/auth', accessToken, AuthRoute);
-  app.use('/sessions', accessToken, SessionRoute);
   app.use('/products', accessToken, ProductRoute);
   app.use('/orders', accessToken, OrderRoute);
   app.use('/order-details', accessToken, OrderDetailRoute);
