@@ -1,6 +1,7 @@
 import { Document, Schema, Types, model } from 'mongoose';
 import bcrypt from 'bcrypt';
-import { User } from '../components/customer/interface';
+import { User } from '@/enigma-laboratory/sdk';
+import Config from '@/services/configServices';
 
 export interface UserDocument extends User, Document {
   id: string;
@@ -35,7 +36,7 @@ userSchema.pre('save', async function (next) {
   if (!user.isModified('password')) {
     return next();
   }
-  const salt = await bcrypt.genSalt(Number(process.env.SALT_WORK_FACTOR) || 0);
+  const salt = await bcrypt.genSalt(Config.instance.saltWorkFactor);
 
   const hash = bcrypt.hashSync(user.password, salt);
 

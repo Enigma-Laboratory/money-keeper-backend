@@ -1,24 +1,16 @@
-import OrderDetailModel from '../../../models/order.detail.model';
-import OrderModel from '../../../models/order.model';
-import { DeleteOrderParams } from '../interface';
-import logger from '../../../utils/logger';
+import OrderModel from '@/models/order.model';
+import { DeleteOneOrderParams, DeleteOneOrderResponse } from '@/enigma-laboratory/sdk';
 import { OrderValidation } from '../validation';
-import { BadRequestError } from '../../../../errors';
+import { BadRequestError, ConflictError } from '@/errors';
 
-export async function deleteOneOrder(params: DeleteOrderParams): Promise<any> {
+export async function deleteOneOrder(params: DeleteOneOrderParams): Promise<DeleteOneOrderResponse> {
   try {
-    const validate = OrderValidation.instance.deleteOneOrder(params);
+    const validate = OrderValidation.instance.deleteOneOrderValidate(params);
+    if (validate.error) throw new BadRequestError(validate.error.message);
 
-    if (validate.error) {
-      throw new BadRequestError(validate.error.message);
-    }
-    // Delete the order details associated with the order
-    await OrderDetailModel.deleteMany({ orderId: params.id });
-
-    const deletedOrder = await OrderModel.findByIdAndDelete(params.id);
-    if (!deletedOrder) throw new BadRequestError(`Can not delete order with id= ${params.id}`);
-    return deletedOrder;
-  } catch (error) {
-    throw { error };
+    const deleted = await OrderModel.deleteOne(params);
+    return { result: deleted.deletedCount };
+  } catch (error: any) {
+    throw new ConflictError(error.message);
   }
 }

@@ -1,11 +1,16 @@
-import ProductModel, { Product } from '../../../models/product.model';
-import { CreateProductResponse } from '../interface';
+import ProductModel from '@/models/product.model';
+import { BadRequestError, ConflictError } from '@/errors';
+import { ProductValidation } from '../validation';
+import { CreateProductResponse, FindOneProductParams } from '@/enigma-laboratory/sdk';
 
-export async function postCreateProduct(params: Product): Promise<CreateProductResponse> {
+export async function postCreateProduct(params: FindOneProductParams): Promise<CreateProductResponse> {
   try {
+    const validate = ProductValidation.instance.postCreateProductValidate(params);
+    if (validate.error) throw new BadRequestError(validate.error.message);
+
     const product = await ProductModel.create(params);
     return product.toJSON();
-  } catch (e: any) {
-    throw new Error(e);
+  } catch (error: any) {
+    throw new ConflictError(error);
   }
 }

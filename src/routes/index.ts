@@ -1,17 +1,24 @@
+import { accessToken } from '@/middleware/accessToken';
+import SwaggerUI from '@/services/apiDocsServices';
 import { Express } from 'express';
 import AuthRoute from './auth/authRoutes';
-import SessionRoute from './session/sessionRoutes';
-import ProductRoute from './product/productRoutes';
 import OrderRoute from './order/orderRoutes';
-import CustomerRoute from './customer/customerRoutes';
+import OrderDetailRoute from './orderDetail/orderDetailRoutes';
+import ProductRoute from './product/productRoutes';
 import AdditionalHttpStatusCodes from './serverError/serverError';
+import UserRoute from './user/userRoutes';
+// import RemoveRoute from '@/utils/remove_data';
 
 function routes(app: Express) {
-  app.use('/auth', AuthRoute);
-  app.use('/session', SessionRoute);
-  app.use('/product', ProductRoute);
-  app.use('/order', OrderRoute);
-  app.use('/customer', CustomerRoute);
+  app.use('/api-docs', SwaggerUI.instance.serveAndSetup());
+  app.use('/auth', accessToken, AuthRoute);
+  app.use('/products', accessToken, ProductRoute);
+  app.use('/orders', accessToken, OrderRoute);
+  app.use('/order-details', accessToken, OrderDetailRoute);
+  app.use('/users', accessToken, UserRoute);
+
+  // app.use('/remove', accessToken, RemoveRoute); // remove all datas for each table.
+
   app.use(AdditionalHttpStatusCodes);
 }
 

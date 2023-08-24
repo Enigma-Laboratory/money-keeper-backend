@@ -1,6 +1,5 @@
 import Joi, { ValidationResult } from 'joi';
-import { CreateUserParams, FindOneUserParams } from './interfaces';
-
+import { CreateUserParams, LoginParams } from '@/enigma-laboratory/sdk';
 export class AuthValidation {
   private static _instance: AuthValidation;
 
@@ -11,7 +10,7 @@ export class AuthValidation {
     return AuthValidation._instance;
   }
 
-  public signInValidate(params: FindOneUserParams): ValidationResult<FindOneUserParams> {
+  public signInValidate(params: LoginParams): ValidationResult<LoginParams> {
     const schema = Joi.object({
       email: Joi.string().email().required(),
       password: Joi.string().required(),

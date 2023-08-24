@@ -1,2 +1,2 @@
-export * from './postSignUp';
-export * from './postSignIn';
+export * from './signUp';
+export * from './signIn';

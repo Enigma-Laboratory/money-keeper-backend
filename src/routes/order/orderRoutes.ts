@@ -1,14 +1,24 @@
 import express from 'express';
-import * as OrderDetailComponent from '../../components/order/orderDetail';
-import * as OrderComponent from '../../components/order';
+import * as OrderComponent from '@/components/order';
 
 const route = express.Router();
 
-route.post('/create-order-detail', OrderDetailComponent.postCreateOrderDetailHandler);
+/**
+ * get /order/{id}/details
+ * @summary get all order detail by order id
+ *
+ * @tags Order
+ *
+ * @security BearerAuth
+ **
+ * @return {FindAllOrderDetailByOrderIdResponse} 200 - Return list of order details by id - application/json
+ * @return {Error} default - Unexpected error - application/json
+ */
+route.get('/:id/details', OrderComponent.getOrderDetailByOrderIdHandler);
 
 /**
- * get /order
- * @summary get all order
+ * get /order/{id}
+ * @summary get one order
  *
  * @tags Order
  *
@@ -19,26 +29,11 @@ route.post('/create-order-detail', OrderDetailComponent.postCreateOrderDetailHan
  * @return {Order} 200 - Return order by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get('/', OrderComponent.getAllOrderHandler);
+route.get('/:id', OrderComponent.getOneOrderHandler);
 
 /**
- * get /order/get-one-order/{id}
- * @summary get one  order
- *
- * @tags Order
- *
- * @security BearerAuth
- *
- * @param {string} id - The unique id of order
- **
- * @return {Order} 200 - Return order by id - application/json
- * @return {Error} default - Unexpected error - application/json
- */
-route.get('/get-one-order/:id', OrderComponent.getOneOrderHandler);
-
-/**
- * post /order
- * @summary post create order
+ * put /order
+ * @summary update one order
  *
  * @tags Order
  *
@@ -46,13 +41,13 @@ route.get('/get-one-order/:id', OrderComponent.getOneOrderHandler);
  *
  * @param {Order}
  **
- * @return {Order} 200 - Return order when created - application/json
+ * @return {Order} 200 - Return order when deleted - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.post('/create-order', OrderComponent.postCreateOneOrderHandler);
+route.put('/', OrderComponent.updateOneOrderHandler);
 
 /**
- * delete /order
+ * delete /orders/:id
  * @summary delete one order
  *
  * @tags Order
@@ -64,21 +59,34 @@ route.post('/create-order', OrderComponent.postCreateOneOrderHandler);
  * @return {Order} 200 - Return order when deleted - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.delete('/delete-order/:id', OrderComponent.deleteOneOrderHandler);
+route.delete('/', OrderComponent.deleteOneOrderHandler);
 
 /**
- * patch update order
- * @summary patch update one order
+ * post /order
+ * @summary get one order
  *
  * @tags Order
  *
  * @security BearerAuth
  *
- * @param {Order} optional Order model
  **
- * @return {Order} 200 - Return order when updated - application/json
+ * @return {Order} 200 - Return order by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.patch('/update-order', OrderComponent.patchOneOrderHandler);
+route.post('/', OrderComponent.createOneOrderHandler);
+
+/**
+ * get /order
+ * @summary Get list of all orders
+ *
+ * @tags Order
+ *
+ * @security BearerAuth
+ *
+ **
+ * @return {Order} 200 - Return order by id - application/json
+ * @return {Error} default - Unexpected error - application/json
+ */
+route.get('/', OrderComponent.getAllOrderHandler);
 
 export default route;

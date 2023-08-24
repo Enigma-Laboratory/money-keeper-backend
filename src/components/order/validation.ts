@@ -1,11 +1,12 @@
 import Joi, { ValidationResult } from 'joi';
 import {
-  CreateOneOrderParams,
-  DeleteOrderParams,
+  DeleteOneOrderParams,
   FindAllOrderParams,
+  CreateOneOrderParams,
+  UpdateOneOrderParams,
   FindOneOrderParams,
-  UpdateOrderParams,
-} from './interface';
+  FindAllOrderDetailParams,
+} from '@/enigma-laboratory/sdk';
 
 export class OrderValidation {
   private static _instance: OrderValidation;
@@ -16,29 +17,14 @@ export class OrderValidation {
     return this._instance;
   }
 
-  public postCreateOneOrder(params: CreateOneOrderParams): ValidationResult<CreateOneOrderParams> {
-    const schema = Joi.object({
-      orderName: Joi.string().required(),
-      userId: Joi.string().required(),
-    });
-    return schema.validate(params);
-  }
-
-  public getOneOrder(params: FindOneOrderParams): ValidationResult<FindOneOrderParams> {
+  public getOneOrderValidate(params: FindOneOrderParams): ValidationResult<FindOneOrderParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
     });
     return schema.validate(params);
   }
 
-  public deleteOneOrder(params: DeleteOrderParams): ValidationResult<DeleteOrderParams> {
-    const schema = Joi.object({
-      id: Joi.string().required(),
-    });
-    return schema.validate(params);
-  }
-
-  public getAllOrderParams(params: FindAllOrderParams): ValidationResult<FindAllOrderParams> {
+  public getAllOrderValidate(params: FindAllOrderParams): ValidationResult<FindAllOrderParams> {
     const schema = Joi.object({
       id: Joi.string(),
       orderName: Joi.string(),
@@ -53,13 +39,34 @@ export class OrderValidation {
     return schema.validate(params);
   }
 
-  public updateOrderParams(params: UpdateOrderParams): ValidationResult<UpdateOrderParams> {
+  public getAllOrderDetailByOrderIdValidate(
+    params: FindAllOrderDetailParams,
+  ): ValidationResult<FindAllOrderDetailParams> {
     const schema = Joi.object({
-      id: Joi.string(),
-      orderName: Joi.string(),
-      userId: Joi.string(),
-      createdAt: Joi.date(),
-      updatedAt: Joi.date(),
+      orderId: Joi.string().required(),
+    });
+    return schema.validate(params);
+  }
+
+  public createOneOrderValidate(params: CreateOneOrderParams): ValidationResult<CreateOneOrderParams> {
+    const schema = Joi.object({
+      name: Joi.string().required(),
+      userId: Joi.string().required(),
+    });
+    return schema.validate(params);
+  }
+
+  public updateOneOrderValidate(params: UpdateOneOrderParams): ValidationResult<UpdateOneOrderParams> {
+    const schema = Joi.object({
+      id: Joi.string().required(),
+      name: Joi.string().required(),
+    });
+    return schema.validate(params);
+  }
+
+  public deleteOneOrderValidate(params: DeleteOneOrderParams): ValidationResult<DeleteOneOrderParams> {
+    const schema = Joi.object({
+      id: Joi.string().required(),
     });
     return schema.validate(params);
   }
