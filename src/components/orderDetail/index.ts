@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from 'express';
-import { OrderDetailValidation } from './validation';
 import * as OrderDetailUseCases from './use-cases';
 import logger from '@/utils/logger';
 
@@ -15,8 +14,6 @@ export async function getAllOrderDetailHandler(req: Request, res: Response, next
 
 export async function getOneOrderDetailHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    OrderDetailValidation.instance.getOneOrderDetail(req.params);
-
     const orderDetail = await OrderDetailUseCases.deleteOneOrderDetail(req.params);
     res.status(200).send(orderDetail);
   } catch (error: any) {
@@ -27,8 +24,6 @@ export async function getOneOrderDetailHandler(req: Request, res: Response, next
 
 export async function createOneOrderDetailHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    OrderDetailValidation.instance.createOrderDetail(req.body);
-
     const orderDetail = await OrderDetailUseCases.createOrderDetail(req.body);
     res.status(200).send(orderDetail);
   } catch (error: any) {
@@ -39,8 +34,6 @@ export async function createOneOrderDetailHandler(req: Request, res: Response, n
 
 export async function updateOrderDetailHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    OrderDetailValidation.instance.updateOneOrderDetail(req.body);
-
     const orderDetail = await OrderDetailUseCases.updateOneOrderDetail(req.body);
     res.status(200).send(orderDetail);
   } catch (error: any) {
@@ -50,8 +43,6 @@ export async function updateOrderDetailHandler(req: Request, res: Response, next
 }
 export async function deleteOneOrderDetailHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    OrderDetailValidation.instance.deleteOneOrderDetail(req.params);
-
     const orderDetail = await OrderDetailUseCases.deleteOneOrderDetail(req.params);
     res.status(200).send(orderDetail);
   } catch (error: any) {

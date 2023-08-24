@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi, { ValidationResult } from 'joi';
 import {
   DeleteOneOrderParams,
   FindAllOrderParams,
@@ -18,15 +18,14 @@ export class OrderValidation {
     return this._instance;
   }
 
-  public getOneOrder(params: FindOneOrderParams): void {
+  public getOneOrderValidate(params: FindOneOrderParams): ValidationResult<FindOneOrderParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
     });
-    const validate = schema.validate(params);
-    if (validate.error) throw new BadRequestError(validate.error.message);
+    return schema.validate(params);
   }
 
-  public getAllOrderParams(params: FindAllOrderParams): void {
+  public getAllOrderValidate(params: FindAllOrderParams): ValidationResult<FindAllOrderParams> {
     const schema = Joi.object({
       id: Joi.string(),
       orderName: Joi.string(),
@@ -38,41 +37,38 @@ export class OrderValidation {
       page: Joi.number(),
       pageSize: Joi.number(),
     });
-    const validate = schema.validate(params);
-    if (validate.error) throw new BadRequestError(validate.error.message);
+    return schema.validate(params);
   }
 
-  public getAllOrderDetailByOrderId(params: FindAllOrderDetailByOrderIdParams): void {
+  public getAllOrderDetailByOrderIdValidate(
+    params: FindAllOrderDetailByOrderIdParams,
+  ): ValidationResult<FindAllOrderDetailByOrderIdParams> {
     const schema = Joi.object({
       orderId: Joi.string().required(),
     });
-    const validate = schema.validate(params);
-    if (validate.error) throw new BadRequestError(validate.error.message);
+    return schema.validate(params);
   }
 
-  public createOneOrder(params: CreateOneOrderParams): void {
+  public createOneOrderValidate(params: CreateOneOrderParams): ValidationResult<CreateOneOrderParams> {
     const schema = Joi.object({
       name: Joi.string().required(),
       userId: Joi.string().required(),
     });
-    const validate = schema.validate(params);
-    if (validate.error) throw new BadRequestError(validate.error.message);
+    return schema.validate(params);
   }
 
-  public updateOrder(params: UpdateOneOrderParams): void {
+  public updateOneOrderValidate(params: UpdateOneOrderParams): ValidationResult<UpdateOneOrderParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
       name: Joi.string().required(),
     });
-    const validate = schema.validate(params);
-    if (validate.error) throw new BadRequestError(validate.error.message);
+    return schema.validate(params);
   }
 
-  public deleteOneOrder(params: DeleteOneOrderParams): void {
+  public deleteOneOrderValidate(params: DeleteOneOrderParams): ValidationResult<DeleteOneOrderParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
     });
-    const validate = schema.validate(params);
-    if (validate.error) throw new BadRequestError(validate.error.message);
+    return schema.validate(params);
   }
 }

@@ -4,7 +4,7 @@ export default class Config {
   public refreshTokenTtl: string;
   public port: string;
   public saltWorkFactor: number;
-  public dbUrl: string;
+  public dbUri: string;
 
   private static _instance: Config;
 
@@ -21,6 +21,6 @@ export default class Config {
     this.refreshTokenTtl = process.env.REFRESH_TOKEN_TTL || '1y';
     this.port = process.env.PORT || '1337';
     this.saltWorkFactor = Number(process.env.SALT_WORK_FACTOR) || 1;
-    this.dbUrl = process.env.SALT_WORK_FACTOR || '';
+    this.dbUri = process.env.DB_URI || '';
   }
 }

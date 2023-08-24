@@ -1,4 +1,4 @@
-import { ConflictError } from '@/errors';
+import { BadRequestError, ConflictError } from '@/errors';
 import OrderDetailModel from '@/models/order.detail.model';
 import {
   FindAllOrderDetailByOrderIdParams,
@@ -11,9 +11,10 @@ import { removeFieldsNotUse } from '@/shared/transformedData';
 export async function getOrderDetailByOrderId(
   params: FindAllOrderDetailByOrderIdParams,
 ): Promise<FindAllOrderDetailByOrderIdResponse> {
-  OrderValidation.instance.getAllOrderDetailByOrderId(params);
-
   try {
+    const validate = OrderValidation.instance.getAllOrderDetailByOrderIdValidate(params);
+    if (validate.error) throw new BadRequestError(validate.error.message);
+
     const orderDetail = await OrderDetailModel.find(params).lean().exec();
     const x: OrderDetail[] = orderDetail.map(_ => removeFieldsNotUse(_));
     return {

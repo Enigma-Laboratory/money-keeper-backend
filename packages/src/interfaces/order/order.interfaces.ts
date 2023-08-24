@@ -38,5 +38,5 @@ export interface DeleteOneOrderParams extends GetOneParams {}
 
 /** Represents the response structure for deleting an order. */
 export interface DeleteOneOrderResponse {
-  result: boolean | undefined;
+  result: number;
 }

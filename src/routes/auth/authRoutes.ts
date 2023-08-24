@@ -5,7 +5,7 @@ const route = express.Router();
 
 /**
  * post /sign in
- * @summary post create token when user
+ * @summary create token for the user
  *
  * @tags user
  *
@@ -16,7 +16,7 @@ const route = express.Router();
  * @return {Token} 200 - Return token - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.post('/sign-in', AuthComponent.postSignInHandler);
+route.post('/sign-in', AuthComponent.signInHandler);
 
 /**
  * post /sign up
@@ -28,9 +28,9 @@ route.post('/sign-in', AuthComponent.postSignInHandler);
  *
  * @param {User} optional userModel and unique email
  **
- * @return {User} 200 - Return user by id - application/json
+ * @return {User} 200 - Return the registered user - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.post('/sign-up', AuthComponent.postSignUpUserHandler);
+route.post('/sign-up', AuthComponent.signUpHandler);
 
 export default route;

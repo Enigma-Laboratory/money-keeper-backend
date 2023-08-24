@@ -1,16 +1,15 @@
 import OrderModel from '@/models/order.model';
 import { DeleteOneOrderParams, DeleteOneOrderResponse } from '@/enigma-laboratory/sdk';
 import { OrderValidation } from '../validation';
-import { ConflictError } from '@/errors';
+import { BadRequestError, ConflictError } from '@/errors';
 
 export async function deleteOneOrder(params: DeleteOneOrderParams): Promise<DeleteOneOrderResponse> {
   try {
-    OrderValidation.instance.deleteOneOrder(params);
+    const validate = OrderValidation.instance.deleteOneOrderValidate(params);
+    if (validate.error) throw new BadRequestError(validate.error.message);
 
     const deleted = await OrderModel.deleteOne(params);
-    if (deleted.deletedCount === 1) return { result: true };
-    else if (deleted.deletedCount === 0) return { result: false };
-    return { result: undefined };
+    return { result: deleted.deletedCount };
   } catch (error: any) {
     throw new ConflictError(error.message);
   }

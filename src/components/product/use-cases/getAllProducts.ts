@@ -1,15 +1,17 @@
-import { omit } from 'lodash';
 import ProductModel from '@/models/product.model';
-import { FindAllProductParams, FindAllProductResponse } from '../interface';
+import { ConflictError } from '@/errors';
+import { FindAllProductParams, FindAllProductResponse, Product } from '@/enigma-laboratory/sdk';
+import { removeFieldsNotUse } from '@/shared/transformedData';
 
 export async function getAllProducts(params: FindAllProductParams): Promise<FindAllProductResponse> {
   try {
-    const products = await ProductModel.find();
+    const products = await ProductModel.find(params);
+    const convertProduct: Product[] = products.map(_ => removeFieldsNotUse(_));
     return {
       count: products.length,
-      rows: omit(products, 'title'),
+      rows: convertProduct,
     };
-  } catch (e: any) {
-    throw new Error(e);
+  } catch (error: any) {
+    throw new ConflictError(error);
   }
 }

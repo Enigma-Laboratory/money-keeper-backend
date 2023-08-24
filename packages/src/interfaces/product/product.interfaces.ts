@@ -5,8 +5,8 @@ export interface Product {
   id: string /** The unique identifier for the product. */;
   user: string /** The user associated with the product. */;
   name: string /** The name of the product. */;
-  description: string /** The description of the product. */;
-  price: string /** The price of the product. */;
+  description?: string /** The description of the product. */;
+  price: number /** The price of the product. */;
   imageUrl?: string /** The URL of the product's image (optional). */;
   createdAt: Date /** The timestamp when the product was created. */;
   updatedAt: Date /** The timestamp when the product was last updated. */;
@@ -34,6 +34,6 @@ export interface FindAllProductResponse extends FindAllResponse<Product> {}
 export interface DeleteProductOneParams extends GetOneParams {}
 
 /** Represents the response structure for deleting a single product. */
-export interface DeleteProductOneResponse {
-  number: number /** The number of affected rows in the database. */;
+export interface DeleteOneProductResponse {
+  result: number /** The number of affected rows in the database. */;
 }

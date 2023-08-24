@@ -10,10 +10,8 @@ const route = express.Router();
  * @tags Order
  *
  * @security BearerAuth
- *
- * @param {FindAllOrderDetailByOrderIdParams}
  **
- * @return {OrderDetail} 200 - Return order by id - application/json
+ * @return {FindAllOrderDetailByOrderIdResponse} 200 - Return list of order details by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
 route.get('/:id/details', OrderComponent.getOrderDetailByOrderIdHandler);

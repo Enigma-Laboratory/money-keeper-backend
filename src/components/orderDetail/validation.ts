@@ -1,5 +1,4 @@
-import Joi from 'joi';
-import { BadRequestError } from '@/errors';
+import Joi, { ValidationResult } from 'joi';
 import {
   CreateOneOrderDetailParams,
   DeleteOneOrderDetailParams,
@@ -15,41 +14,37 @@ export class OrderDetailValidation {
     return this._instance;
   }
 
-  public createOrderDetail(params: CreateOneOrderDetailParams): void {
+  public createOrderDetail(params: CreateOneOrderDetailParams): ValidationResult<CreateOneOrderDetailParams> {
     const schema = Joi.object({
       orderId: Joi.string().required(),
       name: Joi.string().required(),
       description: Joi.string(),
       price: Joi.number().required(),
     });
-    const validate = schema.validate(params);
-    if (validate.error) throw new BadRequestError(validate.error.message);
+    return schema.validate(params);
   }
 
-  public updateOneOrderDetail(params: UpdateOneOrderDetailParams): void {
+  public updateOneOrderDetail(params: UpdateOneOrderDetailParams): ValidationResult<UpdateOneOrderDetailParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
       name: Joi.string(),
       description: Joi.string(),
       price: Joi.number(),
     });
-    const validate = schema.validate(params);
-    if (validate.error) throw new BadRequestError(validate.error.message);
+    return schema.validate(params);
   }
 
-  public getOneOrderDetail(params: FindOneOrderDetailParams): void {
+  public getOneOrderDetailValidate(params: FindOneOrderDetailParams): ValidationResult<FindOneOrderDetailParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
     });
-    const validate = schema.validate(params);
-    if (validate.error) throw new BadRequestError(validate.error.message);
+    return schema.validate(params);
   }
 
-  public deleteOneOrderDetail(params: DeleteOneOrderDetailParams): void {
+  public deleteOneOrderDetail(params: DeleteOneOrderDetailParams): ValidationResult<DeleteOneOrderDetailParams> {
     const schema = Joi.object({
       id: Joi.string(),
     });
-    const validate = schema.validate(params);
-    if (validate.error) throw new BadRequestError(validate.error.message);
+    return schema.validate(params);
   }
 }
