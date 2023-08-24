@@ -5,9 +5,8 @@ import {
   CreateOneOrderParams,
   UpdateOneOrderParams,
   FindOneOrderParams,
+  FindAllOrderDetailParams,
 } from '@/enigma-laboratory/sdk';
-import { FindAllOrderDetailByOrderIdParams } from '@/enigma-laboratory/sdk';
-import { BadRequestError } from '@/errors';
 
 export class OrderValidation {
   private static _instance: OrderValidation;
@@ -41,8 +40,8 @@ export class OrderValidation {
   }
 
   public getAllOrderDetailByOrderIdValidate(
-    params: FindAllOrderDetailByOrderIdParams,
-  ): ValidationResult<FindAllOrderDetailByOrderIdParams> {
+    params: FindAllOrderDetailParams,
+  ): ValidationResult<FindAllOrderDetailParams> {
     const schema = Joi.object({
       orderId: Joi.string().required(),
     });

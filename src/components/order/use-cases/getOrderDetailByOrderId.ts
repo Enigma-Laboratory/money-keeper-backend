@@ -1,16 +1,10 @@
 import { BadRequestError, ConflictError } from '@/errors';
 import OrderDetailModel from '@/models/order.detail.model';
-import {
-  FindAllOrderDetailByOrderIdParams,
-  FindAllOrderDetailByOrderIdResponse,
-  OrderDetail,
-} from '@/enigma-laboratory/sdk';
+import { FindAllOrderDetailParams, FindAllOrderDetailResponse, OrderDetail } from '@/enigma-laboratory/sdk';
 import { OrderValidation } from '../validation';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 
-export async function getOrderDetailByOrderId(
-  params: FindAllOrderDetailByOrderIdParams,
-): Promise<FindAllOrderDetailByOrderIdResponse> {
+export async function getOrderDetailByOrderId(params: FindAllOrderDetailParams): Promise<FindAllOrderDetailResponse> {
   try {
     const validate = OrderValidation.instance.getAllOrderDetailByOrderIdValidate(params);
     if (validate.error) throw new BadRequestError(validate.error.message);

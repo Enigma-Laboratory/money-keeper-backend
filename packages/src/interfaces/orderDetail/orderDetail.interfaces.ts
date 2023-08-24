@@ -24,12 +24,6 @@ export interface FindAllOrderDetailParams extends Partial<OrderDetail>, FindAllP
 /** Represents the response structure for finding multiple order details. */
 export interface FindAllOrderDetailResponse extends FindAllResponse<OrderDetail> {}
 
-/** Represents the parameters for finding multiple orders detail. */
-export interface FindAllOrderDetailByOrderIdParams extends Partial<OrderDetail> {}
-
-/** Represents the response structure for finding multiple order details. */
-export interface FindAllOrderDetailByOrderIdResponse extends FindAllResponse<OrderDetail> {}
-
 /** Represents the parameters for creating a new order detail. */
 export interface CreateOneOrderDetailParams extends Pick<OrderDetail, 'name' | 'orderId' | 'price' | 'description'> {}
 
