@@ -16,14 +16,6 @@ export interface User {
 /** Represents the response structure for finding multiple users. */
 export interface FindAllUserResponse extends FindAllResponse<Omit<User, 'password'>> {}
 
-/** Represents the parameters for finding a single user. */
-export interface FindOneUserParams extends GetOneParams {
-  /** The email of the user for authentication or login purposes. */
-  // email: string;
-  /** The password of the user for authentication or login purposes. */
-  // password: string;
-}
-
 /** Represents the parameters for login. */
 export interface LoginParams extends Pick<User, 'email' | 'password'> {}
 

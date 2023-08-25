@@ -1,5 +1,5 @@
 import { accessToken } from '@/middleware/accessToken';
-import SwaggerUI from '@/services/apiDocsServices';
+import SwaggerUI from '@/services/apiDocsServices/apiDocsServices';
 import { Express } from 'express';
 import AuthRoute from './auth/authRoutes';
 import OrderRoute from './order/orderRoutes';
