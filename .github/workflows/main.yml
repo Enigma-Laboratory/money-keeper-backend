@@ -54,7 +54,7 @@ jobs:
       - name: test
         run: ls
       - name: Publish to npm
-        run: npm publish --access public
+        run: yarn publish --access public
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
