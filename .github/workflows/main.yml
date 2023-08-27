@@ -46,7 +46,7 @@ jobs:
         run: |
           cd packages
           yarn install
-          yarn run build
+          yarn run build:interfaces
           yarn standard-version
           yarn publish --access public
   deploy:
