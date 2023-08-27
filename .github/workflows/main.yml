@@ -45,6 +45,7 @@ jobs:
       - name: Change to 'packages' directory and run commands
         run: |
           cd packages
+          ls
           yarn install
           yarn run build:interfaces
           yarn standard-version
