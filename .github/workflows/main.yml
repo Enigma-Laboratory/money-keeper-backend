@@ -29,7 +29,6 @@ jobs:
 
   publish-package:
     name: Publish Package
-    needs: [build-package]
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
     steps:
@@ -41,6 +40,8 @@ jobs:
           node-version: 16.x
       - name: redirect packages
         run: cd packages
+      - name: test
+        run: ls
       - name: Install Dependencies for packages
         run: yarn install
       - name: Run Build
@@ -50,7 +51,7 @@ jobs:
           git config user.email "${{ secrets.GIT_USER_EMAIL }}"
           git config user.name "${{ secrets.GIT_USER_NAME }}"
       - name: Generate Changelog and Bump Version
-        run: npx standard-version
+        run: yarn standard-version
       - name: test
         run: ls
       - name: Publish to npm
