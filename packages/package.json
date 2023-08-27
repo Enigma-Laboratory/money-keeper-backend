@@ -1,6 +1,6 @@
 {
   "name": "enigma-laboratory-sdk",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "we are dedicated to deciphering the intricate puzzles that surround us, be they historical enigmas, technological challenges, or intellectual conundrums. Our team of brilliant minds collaborates on a diverse range of projects, from unraveling cryptic codes to forging groundbreaking solutions. We believe that every puzzle holds the key to expanding our understanding and advancing our capabilities.",
   "main": "index.js",
   "scripts": {
@@ -10,5 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "standard-version": "^9.5.0"
   }
 }
