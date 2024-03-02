@@ -84,7 +84,7 @@ route.post('/', OrderComponent.createOneOrderHandler);
  * @security BearerAuth
  *
  **
- * @return {Order} 200 - Return order by id - application/json
+ * @return {Order} 200 - Return order - application/json
  * @return {Error} default - Unexpected error - application/json
  */
 route.get('/', OrderComponent.getAllOrderHandler);

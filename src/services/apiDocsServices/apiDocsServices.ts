@@ -36,7 +36,7 @@ export default class SwaggerUI {
           { name: 'session', description: '' },
         ],
       },
-      apis: ['./src/routes/**/*.ts'],
+      apis: ['./src/services/apiDocsServices/swagger/*.yaml'],
     };
     this.swaggerSpec = swaggerJsdoc(this.options);
   }

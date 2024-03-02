@@ -1,0 +1,176 @@
+components:
+  schemas:
+    FindAllParams:
+      type: object
+      properties:
+        scope:
+          type: string
+          example:
+        sorters:
+          type: array
+          example: ['name', 'price']
+          items:
+            type: string
+        page:
+          type: number
+        pageSize:
+          type: number
+    User:
+      type: object
+      required:
+        - id
+        - name
+        - email
+        - password
+      properties:
+        id:
+          type: string
+          example: 64e5dc618595e2bd334838e3
+        name:
+          type: string
+          example: Sandra Foster
+        email:
+          type: string
+          example: example@gmail.com
+        address:
+          type: string
+          example: 12 Main ST Sà Francisco CA
+        numberPhone:
+          type: string
+          example: '0484927564'
+        avatar:
+          type: string
+          example: https://example.com/0f23ifoji2fp3
+        password:
+          type: string
+          format: password
+          example: example
+    Order:
+      type: object
+      required:
+        - id
+        - name
+        - userId
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          type: string
+          example: 64e5dc618595e2bd334838e3
+        name:
+          type: string
+          example: Party
+        userId:
+          type: string
+          example: 64e5dc618595e2bd334838e3
+        createdAt:
+          type: string
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        updatedAt:
+          type: string
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+    Partial<Order>:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 64e5dc618595e2bd334838e3
+        name:
+          type: string
+          example: Party
+        userId:
+          type: string
+          example: 64e5dc618595e2bd334838e3
+        createdAt:
+          type: string
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        updatedAt:
+          type: string
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+    Order Detail:
+      type: object
+      required:
+        - orderId
+        - name
+        - price
+      properties:
+        id:
+          type: string
+          example: 64e5dc618595e2bd334838e3
+        orderId:
+          type: string
+          example: 64e5dc618595e2bd334838e3
+        name:
+          type: string
+          example: Tomato
+        description:
+          type: string
+          example: 3kg
+        price:
+          type: number
+          example: 50000
+    FindAllOrderParams:
+      allOf:
+        - $ref: '#/components/schemas/Partial<Order>'
+        - $ref: '#/components/schemas/FindAllParams'
+    FindOneOrderResponse:
+      allOf:
+        - $ref: '#/components/schemas/Patial<Order>'
+    FindAllResponse:
+      type: object
+      required:
+        - count
+        - rows
+      properties:
+        count:
+          type: number
+          example: 1
+        rows:
+          type: array
+    FindAllResponse<Order>:
+      allOf:
+        - $ref: '#/components/schemas/FindAllResponse'
+      type: object
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+    FindAllOrderResponse:
+      allOf:
+        - $ref: '#/components/schemas/FindAllResponse<Order>'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+  parameters:
+    scope:
+      in: query
+      name: scope
+      required: false
+      schema:
+        type: string
+    sorters:
+      in: query
+      name: sorters
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+    page:
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    pageSize:
+      in: query
+      name: pageSize
+      required: false
+      schema:
+        type: number
