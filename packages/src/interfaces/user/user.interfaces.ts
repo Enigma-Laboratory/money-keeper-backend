@@ -2,15 +2,25 @@ import { FindAllResponse, GetOneParams } from '../common';
 
 /** Represents a user entity with various properties. */
 export interface User {
-  id: string /** The unique identifier for the user. */;
-  name: string /** The name of the user. */;
-  email: string /** The email address of the user. */;
-  address?: string /** The address of the user (optional). */;
-  numberPhone?: number /** The phone number of the user (optional). */;
-  createdAt?: Date /** The timestamp when the user was created (optional). */;
-  updatedAt?: Date /** The timestamp when the user was last updated (optional). */;
-  avatar?: string /** The avatar image URL of the user (optional). */;
-  password: string /** The password of the user. */;
+  id: number;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  gender: string;
+  gsm: string;
+  createdAt: string;
+  isActive: boolean;
+  avatar: Avatar;
+}
+
+export interface Avatar {
+  name: string;
+  percent: number;
+  size: number;
+  status: string;
+  type: string;
+  uid: string;
+  url: string;
 }
 
 /** Represents the response structure for finding multiple users. */

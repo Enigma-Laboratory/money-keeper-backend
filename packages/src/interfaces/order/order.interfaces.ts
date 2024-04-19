@@ -1,4 +1,6 @@
 import { FindAllParams, FindAllResponse, GetOneParams } from '../common';
+import { OrderDetail } from '../orderDetail';
+import { User } from '../user';
 
 /** Represents an order entity with various properties. */
 export interface Order {
@@ -7,6 +9,7 @@ export interface Order {
   userId: string /** The ID of the user associated with the order. */;
   createdAt: Date /** The timestamp when the order was created. */;
   updatedAt: Date /** The timestamp when the order was last updated. */;
+  createdOrderAt: Date;
 }
 
 /** Represents the parameters for finding a single order. */
@@ -22,10 +25,14 @@ export interface FindAllOrderParams extends Partial<Order>, FindAllParams {}
 export interface FindAllOrderResponse extends FindAllResponse<Order> {}
 
 /** Represents the parameters for creating a new order. */
-export interface CreateOneOrderParams extends Pick<Order, 'name' | 'userId'> {}
+export interface CreateOneOrderParams extends Pick<Order, 'name' | 'userId' | 'createdOrderAt'> {
+  orderDetails?: Partial<OrderDetail>[];
+}
 
 /** Represents the response structure for finding multiple orders.  */
-export interface CreateOneOrderResponse extends Order {}
+export interface CreateOneOrderResponse extends Order {
+  orderDetails: Partial<OrderDetail>[];
+}
 
 /** Represents the parameters for updating an order. */
 export interface UpdateOneOrderParams extends Partial<Order> {}

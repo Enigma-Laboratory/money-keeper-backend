@@ -1,4 +1,5 @@
 import { Types, Schema, Document, model } from 'mongoose';
+import { OrderDetailMode } from 'packages';
 
 const orderDetailSchema = new Schema(
   {
@@ -12,6 +13,12 @@ const orderDetailSchema = new Schema(
     name: { type: String, required: true },
     description: { type: String },
     price: { type: Number, required: true },
+    userIds: [{ type: Types.ObjectId, required: true, ref: 'User' }],
+    mode: {
+      type: String,
+      enum: ['default', 'customized'],
+      default: 'default',
+    },
   },
   {
     timestamps: true,
@@ -25,6 +32,8 @@ export interface OrderDetailDocument extends Document {
   name: string;
   description?: string;
   price: number;
+  userIds: string[];
+  mode: OrderDetailMode;
   createdAt: Date;
   updatedAt: Date;
 }

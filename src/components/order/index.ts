@@ -4,7 +4,7 @@ import * as OrderUseCases from './use-cases';
 
 export async function createOneOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const order = await OrderUseCases.postCreateOneOrder(req.body);
+    const order = await OrderUseCases.postCreateOneOrderWithOrderDetail(req.body);
     logger.info({ component: 'OrderService', func: 'postCreateOneOrderHandler', additionalInfo: order });
     res.status(200).send(order);
   } catch (error) {

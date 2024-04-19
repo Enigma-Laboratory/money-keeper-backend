@@ -10,6 +10,7 @@ const orderSchema = new Schema(
     },
     name: { type: String, required: true },
     userId: { type: Types.ObjectId, ref: 'User' },
+    createdOrderAt: { type: Date, required: true },
   },
   {
     timestamps: true,
@@ -21,6 +22,7 @@ export interface OrderDocument extends Document {
   id: string;
   name: string;
   userId: string;
+  createdOrderAt: Date;
   createdAt: Date;
   updatedAt: Date;
 }

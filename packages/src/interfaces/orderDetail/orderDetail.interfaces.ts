@@ -1,4 +1,5 @@
 import { FindAllParams, FindAllResponse, GetOneParams } from '../common';
+import { OrderDetailMode } from './orderDetail.types';
 
 /** Represents an order entity with various properties. */
 
@@ -10,6 +11,8 @@ export interface OrderDetail {
   price: number /** The price of order detail. */;
   createdAt: Date /** The timestamp when the order detail was created. */;
   updatedAt: Date /** The timestamp when the order detail was last updated. */;
+  userIds: string[];
+  mode: OrderDetailMode;
 }
 
 /** Represents the parameters for finding a single order detail. */

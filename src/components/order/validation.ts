@@ -52,6 +52,8 @@ export class OrderValidation {
     const schema = Joi.object({
       name: Joi.string().required(),
       userId: Joi.string().required(),
+      createdOrderAt: Joi.string().optional(),
+      orderDetails: Joi.array().optional(),
     });
     return schema.validate(params);
   }
