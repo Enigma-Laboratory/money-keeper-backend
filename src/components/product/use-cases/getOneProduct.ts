@@ -5,7 +5,7 @@ import { FindOneProductParams, FindOneProductResponse } from '@/enigma-laborator
 export async function getOneProduct(params: FindOneProductParams): Promise<FindOneProductResponse> {
   try {
     const product = await ProductModel.findOne(params);
-    return omit(product?.toJSON(), ['_id', '__v']);
+    return product?.toJSON() as any;
   } catch (e: any) {
     throw new Error(e);
   }

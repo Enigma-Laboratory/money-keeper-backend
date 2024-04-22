@@ -4,7 +4,7 @@ import { User } from '@/enigma-laboratory/sdk';
 import Config from '@/services/configServices';
 
 export interface UserDocument extends User, Document {
-  id: string;
+  _id: string;
   createdAt: Date;
   updateAt: Date;
   comparePassword(candidatePassword: String): Promise<Boolean>;

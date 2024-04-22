@@ -6,10 +6,9 @@ import { removeFieldsNotUse } from '@/shared/transformedData';
 export async function getAllProducts(params: FindAllProductParams): Promise<FindAllProductResponse> {
   try {
     const products = await ProductModel.find(params);
-    const convertProduct: Product[] = products.map(_ => removeFieldsNotUse(_));
     return {
       count: products.length,
-      rows: convertProduct,
+      rows: products as any[],
     };
   } catch (error: any) {
     throw new ConflictError(error);

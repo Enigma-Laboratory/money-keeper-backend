@@ -6,7 +6,7 @@ import { omit } from 'lodash';
 
 export async function updateOneUser(params: UpdateOneUserParams) {
   try {
-    const user = await UserModel.findOneAndUpdate({ id: params.id }, omit(params, ['id']), { new: true });
+    const user = await UserModel.findOneAndUpdate({ _id: params._id }, omit(params, ['id']), { new: true });
     if (!user) throw new BadRequestError("Don't have the user updated.");
 
     return removeFieldsNotUse(user);
