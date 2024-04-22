@@ -2,7 +2,7 @@ import { FindAllResponse, GetOneParams } from '../common';
 
 /** Represents a user entity with various properties. */
 export interface User {
-  id: string /** The unique identifier for the user. */;
+  _id: string /** The unique identifier for the user. */;
   name: string /** The name of the user. */;
   email: string /** The email address of the user. */;
   address?: string /** The address of the user (optional). */;
