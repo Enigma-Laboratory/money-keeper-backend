@@ -21,7 +21,7 @@ export interface FindAllParams<Scope = string> {
  */
 export interface GetOneParams<T = string> {
   /** The ID of the item to fetch. */
-  id?: string;
+  _id?: string;
 }
 
 /**

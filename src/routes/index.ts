@@ -7,6 +7,7 @@ import OrderDetailRoute from './orderDetail/orderDetailRoutes';
 import ProductRoute from './product/productRoutes';
 import AdditionalHttpStatusCodes from './serverError/serverError';
 import UserRoute from './user/userRoutes';
+import operationalSettingRoutes from './operationalSetting/operationalSettingRoutes';
 // import RemoveRoute from '@/utils/remove_data';
 
 function routes(app: Express) {
@@ -16,6 +17,7 @@ function routes(app: Express) {
   app.use('/orders', accessToken, OrderRoute);
   app.use('/order-details', accessToken, OrderDetailRoute);
   app.use('/users', accessToken, UserRoute);
+  app.use('/operational-settings', accessToken, operationalSettingRoutes);
 
   // app.use('/remove', accessToken, RemoveRoute); // remove all datas for each table.
 

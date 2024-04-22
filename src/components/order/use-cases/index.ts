@@ -4,3 +4,4 @@ export * from './getOrderDetailByOrderId';
 export * from './createOneOrder';
 export * from './updateOneOrder';
 export * from './deleteOneOrder';
+export * from './updateOrderEvent';

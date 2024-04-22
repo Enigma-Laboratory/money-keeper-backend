@@ -10,7 +10,7 @@ export interface UserDocument extends User, Document {
   comparePassword(candidatePassword: String): Promise<Boolean>;
 }
 
-const userSchema = new Schema(
+export const userSchema = new Schema(
   {
     id: {
       type: String,
@@ -23,6 +23,7 @@ const userSchema = new Schema(
     password: { type: String, required: true },
     address: { type: String, required: false },
     numberPhone: { type: String, required: false },
+    image: { type: String },
   },
   {
     timestamps: true,

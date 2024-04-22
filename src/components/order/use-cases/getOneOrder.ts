@@ -10,7 +10,7 @@ export async function getOneOrder(params: FindOneOrderParams): Promise<FindOneOr
     if (validate.error) throw new BadRequestError(validate.error.message);
 
     const order = await OrderModel.findOne(params).lean().exec();
-    if (!order) throw new BadRequestError(`Can not get one order with id = ${params.id}`);
+    if (!order) throw new BadRequestError(`Can not get one order with id = ${params._id}`);
 
     return removeFieldsNotUse(order);
   } catch (error: any) {

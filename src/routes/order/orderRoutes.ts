@@ -47,6 +47,21 @@ route.get('/:id', OrderComponent.getOneOrderHandler);
 route.put('/', OrderComponent.updateOneOrderHandler);
 
 /**
+ * put /order
+ * @summary update one order event
+ *
+ * @tags OrderEvent
+ *
+ * @security BearerAuth
+ *
+ * @param {OrderEvent}
+ **
+ * @return {Result} 200 - Return order when deleted - application/json
+ * @return {Error} default - Unexpected error - application/json
+ */
+route.put('/order-event', OrderComponent.updateOrderEventHandler);
+
+/**
  * delete /orders/:id
  * @summary delete one order
  *

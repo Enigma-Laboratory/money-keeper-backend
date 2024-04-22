@@ -2,14 +2,17 @@ import { FindAllParams, FindAllResponse, GetOneParams } from '../common';
 
 /** Represents a product entity with various properties. */
 export interface Product {
-  id: string /** The unique identifier for the product. */;
-  user: string /** The user associated with the product. */;
+  _id: string /** The unique identifier for the product. */;
   name: string /** The name of the product. */;
+  quantity: number;
+  isActive?: boolean;
+  user: string /** The user associated with the product. */;
   description?: string /** The description of the product. */;
   price: number /** The price of the product. */;
-  imageUrl?: string /** The URL of the product's image (optional). */;
+  image?: string /** The URL of the product's image (optional). */;
   createdAt: Date /** The timestamp when the product was created. */;
   updatedAt: Date /** The timestamp when the product was last updated. */;
+  note?: string;
 }
 
 /** Represents the parameters for creating a new product. */

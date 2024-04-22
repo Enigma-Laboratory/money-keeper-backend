@@ -1,0 +1,21 @@
+import Joi, { ValidationResult } from 'joi';
+import { CreateOneOperationalSettingParams, CreateOneOperationalSettingResponse } from '@/enigma-laboratory/sdk';
+
+export class OperationalSettingValidation {
+  private static _instance: OperationalSettingValidation;
+  public static get instance(): OperationalSettingValidation {
+    if (!OperationalSettingValidation._instance) {
+      this._instance = new OperationalSettingValidation();
+    }
+    return this._instance;
+  }
+
+  public postAllGroupValidate(
+    params: CreateOneOperationalSettingParams,
+  ): ValidationResult<CreateOneOperationalSettingResponse> {
+    const schema = Joi.object({
+      group: Joi.string().required(),
+    });
+    return schema.validate(params);
+  }
+}

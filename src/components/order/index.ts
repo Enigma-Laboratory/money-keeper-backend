@@ -4,7 +4,7 @@ import * as OrderUseCases from './use-cases';
 
 export async function createOneOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const order = await OrderUseCases.postCreateOneOrderWithOrderDetail(req.body);
+    const order = await OrderUseCases.postCreateOneOrder(req.body);
     logger.info({ component: 'OrderService', func: 'postCreateOneOrderHandler', additionalInfo: order });
     res.status(200).send(order);
   } catch (error) {
@@ -24,9 +24,9 @@ export async function getAllOrderHandler(req: Request, res: Response, next: Next
 }
 
 export async function getOneOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
-  const id = req.url.replace('/', '');
+  const _id = req.url.replace('/', '');
   try {
-    const order = await OrderUseCases.getOneOrder({ id });
+    const order = await OrderUseCases.getOneOrder({ _id });
     logger.info({ component: 'OrderService', func: 'getOneOrderHandler', additionalInfo: order });
     res.status(200).send(order);
   } catch (error) {
@@ -65,6 +65,17 @@ export async function updateOneOrderHandler(req: Request, res: Response, next: N
     res.status(200).send(order);
   } catch (error) {
     logger.error({ component: 'OrderService', func: 'putOneOrderHandler', additionalInfo: error });
+    next(error);
+  }
+}
+
+export async function updateOrderEventHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const order = await OrderUseCases.updateOrderEvent(req.body);
+    logger.info({ component: 'OrderService', func: 'updateOrderEventHandler', additionalInfo: order });
+    res.status(200).send(order);
+  } catch (error) {
+    logger.error({ component: 'OrderService', func: 'updateOrderEventHandler', additionalInfo: error });
     next(error);
   }
 }

@@ -1,32 +1,31 @@
-import { Types, Schema, Document, model } from 'mongoose';
-import { customAlphabet } from 'nanoid';
-
-const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 10);
+import { Schema, Document, model } from 'mongoose';
 
 export interface ProductDocument extends Document {
   id: string;
   name: string;
-  user: string;
-  description: string;
-  image: string;
+  quantity: number;
+  isActive?: boolean;
+  userIds: string[];
+  description?: string;
   price: number;
+  image?: string;
   createdAt: Date;
   updatedAt: Date;
+  note?: string;
 }
 
-const productSchema = new Schema(
+export const productSchema = new Schema(
   {
-    id: {
-      type: String,
-      required: true,
-      unique: true,
-      default: () => `${nanoid()}`,
-    },
     name: { type: String, required: true },
-    description: { type: String, required: false },
-    image: { type: String, required: true },
+    quantity: { type: Number, required: true },
+    isActive: { type: Boolean, default: true },
+    userIds: { type: [String], required: true },
+    description: { type: String },
     price: { type: Number, required: true },
-    user: { type: Number, required: true },
+    image: { type: String },
+    note: { type: String },
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now },
   },
   {
     timestamps: true,

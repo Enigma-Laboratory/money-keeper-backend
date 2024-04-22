@@ -6,6 +6,8 @@ import {
   UpdateOneOrderParams,
   FindOneOrderParams,
   FindAllOrderDetailParams,
+  UpdateOrderEventParams,
+  UpdateOrderEventResponse,
 } from '@/enigma-laboratory/sdk';
 
 export class OrderValidation {
@@ -19,22 +21,21 @@ export class OrderValidation {
 
   public getOneOrderValidate(params: FindOneOrderParams): ValidationResult<FindOneOrderParams> {
     const schema = Joi.object({
-      id: Joi.string().required(),
+      _id: Joi.string().required(),
     });
     return schema.validate(params);
   }
 
   public getAllOrderValidate(params: FindAllOrderParams): ValidationResult<FindAllOrderParams> {
     const schema = Joi.object({
-      id: Joi.string(),
-      orderName: Joi.string(),
-      userId: Joi.string(),
-      createdAt: Joi.date(),
-      updatedAt: Joi.date(),
       scope: Joi.string(),
       sorters: Joi.array().items(Joi.string()),
       page: Joi.number(),
       pageSize: Joi.number(),
+      startDate: Joi.date(),
+      endDate: Joi.date(),
+      month: Joi.number(),
+      group: Joi.string(),
     });
     return schema.validate(params);
   }
@@ -52,23 +53,47 @@ export class OrderValidation {
     const schema = Joi.object({
       name: Joi.string().required(),
       userId: Joi.string().required(),
-      createdOrderAt: Joi.string().optional(),
-      orderDetails: Joi.array().optional(),
+      createdOrderAt: Joi.date().required(),
+      status: Joi.string().optional(),
+      amount: Joi.number().required(),
+      products: Joi.array().items(Joi.object()).optional(),
+      user: Joi.object().optional(),
+      event: Joi.array().items(Joi.object()).optional(),
+      orderNumber: Joi.number().optional(),
     });
     return schema.validate(params);
   }
 
   public updateOneOrderValidate(params: UpdateOneOrderParams): ValidationResult<UpdateOneOrderParams> {
     const schema = Joi.object({
-      id: Joi.string().required(),
+      _id: Joi.string().required(),
       name: Joi.string().required(),
+      userId: Joi.string().required(),
+      createdAt: Joi.date().optional(),
+      updatedAt: Joi.date().optional(),
+      createdOrderAt: Joi.date().required(),
+      status: Joi.string().optional(),
+      amount: Joi.number().required(),
+      products: Joi.array().items(Joi.object()).optional(),
+      user: Joi.object().optional(),
+      event: Joi.array().items(Joi.object()).optional(),
+      orderNumber: Joi.number().optional(),
+    });
+    return schema.validate(params);
+  }
+
+  public updateOrderEvent(params: UpdateOrderEventParams): ValidationResult<UpdateOrderEventResponse> {
+    const schema = Joi.object({
+      date: Joi.date().optional(),
+      status: Joi.string().required(),
+      orderId: Joi.string().required(),
     });
     return schema.validate(params);
   }
 
   public deleteOneOrderValidate(params: DeleteOneOrderParams): ValidationResult<DeleteOneOrderParams> {
     const schema = Joi.object({
-      id: Joi.string().required(),
+      _id: Joi.string().required(),
     });
     return schema.validate(params);
   }
