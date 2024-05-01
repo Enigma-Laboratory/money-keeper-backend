@@ -31,4 +31,18 @@ route.post('/', OperationalSettingComponent.createOneOperationalSettingHandler);
  */
 route.get('/', OperationalSettingComponent.getAllOperationalSettingHandler);
 
+/**
+ * put /OperationalSettings
+ * @summary update operational setting
+ *
+ * @tags OperationalSettings
+ *
+ * @security BearerAuth
+ *
+ **
+ * @return {OperationalSettings} 200 - Return operational setting - application/json
+ * @return {Error} default - Unexpected error - application/json
+ */
+route.put('/', OperationalSettingComponent.updateOperationalStatusHandler);
+
 export default route;

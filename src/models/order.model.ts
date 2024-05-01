@@ -15,7 +15,7 @@ export interface OrderDocument extends Order, Document {
   user?: User;
   event?: OrderEvent[];
   orderNumber: number;
-  group?: string;
+  groupId?: string;
 }
 
 const orderEventSchema = new Schema({
@@ -34,9 +34,19 @@ const orderSchema: Schema<OrderDocument> = new Schema<OrderDocument>({
   products: [productSchema], // Reference to Product documents
   user: { type: Schema.Types.ObjectId, ref: 'User' }, // Reference to User document
   event: [orderEventSchema], // Embedded array of OrderEvent documents
-  orderNumber: { type: Number, required: true }, // Order number
-  group: { type: String },
+  orderNumber: { type: Number }, // Order number
+  groupId: { type: String, required: true },
 });
+
+orderSchema.pre<OrderDocument>('save', async function (next) {
+  if (!this.orderNumber) {
+    const latestOrder = await OrderModel.findOne({}, {}, { sort: { createdAt: -1 } }); // Get the latest order
+    const orderNumber = latestOrder ? latestOrder.orderNumber + 1 : 1; // Increment the order number
+    this.orderNumber = orderNumber;
+  }
+  next();
+});
+
 const OrderModel = model<OrderDocument>('Order', orderSchema);
 
 export default OrderModel;

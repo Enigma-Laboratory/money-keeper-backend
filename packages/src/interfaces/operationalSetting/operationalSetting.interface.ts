@@ -3,6 +3,7 @@ import { FindAllResponse, GetOneParams } from '../common';
 export interface OperationalSetting {
   _id: string;
   group: string;
+  status: 'opening' | 'closed';
 }
 
 export interface FindAllOperationalSettingResponse extends FindAllResponse<OperationalSetting> {}

@@ -17,7 +17,7 @@ export interface Order {
   products?: Product[];
   user?: User /** The ID of the user associated with the order. */;
   event?: OrderEvent[];
-  group?: string;
+  groupId?: string;
 }
 
 export interface OrderEvent {
@@ -36,7 +36,7 @@ export interface FindAllOrderParams extends FindAllParams {
   startDate?: Date;
   endDate?: Date;
   month?: number;
-  group?: string;
+  groupId?: string;
 }
 
 /** Represents the response structure for finding multiple orders. */
@@ -69,3 +69,9 @@ export interface DeleteOneOrderParams extends GetOneParams {}
 export interface DeleteOneOrderResponse {
   result: number;
 }
+
+export interface DailyOrderParams {
+  orderBy: 'week' | 'mouth' | 'year';
+}
+
+export interface DailyOrderResponse {}

@@ -59,7 +59,7 @@ export class OrderValidation {
       products: Joi.array().items(Joi.object()).optional(),
       user: Joi.object().optional(),
       event: Joi.array().items(Joi.object()).optional(),
-      orderNumber: Joi.number().optional(),
+      groupId: Joi.string().required(),
     });
     return schema.validate(params);
   }
@@ -77,7 +77,7 @@ export class OrderValidation {
       products: Joi.array().items(Joi.object()).optional(),
       user: Joi.object().optional(),
       event: Joi.array().items(Joi.object()).optional(),
-      orderNumber: Joi.number().optional(),
+      groupId: Joi.string().optional(),
     });
     return schema.validate(params);
   }
