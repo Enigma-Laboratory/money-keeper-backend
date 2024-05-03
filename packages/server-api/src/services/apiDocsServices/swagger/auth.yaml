@@ -1,0 +1,49 @@
+paths:
+  /auth/sign-in:
+    post:
+      tags:
+        - auth
+      summary: create token for the user
+      description: create token for the user
+      requestBody:
+        description: Update an existent pet in the store
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  example: example@gmail.com
+                password:
+                  type: string
+                  example: password
+  /auth/sign-up:
+    post:
+      tags:
+        - auth
+      summary: create token for the user
+      description: create token for the user
+      requestBody:
+        description: Update an existent pet in the store
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+                - name
+              properties:
+                email:
+                  type: string
+                  example: example@gmail.com
+                password:
+                  type: string
+                  example: password
+                name:
+                  type: string
+                  example: Sandra Foster

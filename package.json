@@ -1,0 +1,29 @@
+{
+  "name": "money-keeper-backend",
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "lerna": "^8.1.2"
+  },
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bootstrap": "pnpm i",
+    "run:server-api": "npx lerna run --scope=server-api dev",
+    "build:interfaces": "npx lerna run --scope=@enigma-laboratory/shared build",
+    "clean": "lerna clean ",
+    "clean:all": "lerna clean && pnpm store prune && lerna exec -- rm -rf node_modules",
+    "format:server-api": "npx lerna run --scope=server-api format",
+    "build:server-api": "npx lerna run --scope=server-api build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@lerna/add": "^6.6.2"
+  }
+}
