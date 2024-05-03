@@ -50,7 +50,7 @@ jobs:
         run: |
           pnpm  bootstrap
           pnpm build:interfaces
-          pnpm standard-version
+          pnpm bump-version
           npm publish --access public
   deploy:
     name: Deploy

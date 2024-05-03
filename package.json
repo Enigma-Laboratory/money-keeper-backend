@@ -18,7 +18,8 @@
     "clean": "lerna clean ",
     "clean:all": "lerna clean && pnpm store prune && lerna exec -- rm -rf node_modules",
     "format:server-api": "npx lerna run --scope=server-api format",
-    "build:server-api": "npx lerna run --scope=server-api build"
+    "build:server-api": "npx lerna run --scope=server-api build",
+    "bump-version": "npx lerna run --scope=@enigma-laboratory/shared bump-version"
   },
   "keywords": [],
   "author": "",
