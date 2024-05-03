@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.7](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.0.6...v1.0.7) (2024-05-03)
+
+
+### Bug Fixes
+
+* add auth token to npm ([a89e755](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/a89e755e84ba4eca948fc4c994851cf1573971c1))
+* command standard version notfound ([e7f31ea](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/e7f31eaa2404562b23839c93958a56d7f23754b6))
+* confused deploy backend to npm ([735fe42](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/735fe42bdf1f20e8840f0275dba2867150769ac9))
+
 ### [1.0.6](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.0.5...v1.0.6) (2024-05-03)
 
 ### [1.0.5](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.0.4...v1.0.5) (2024-05-03)
