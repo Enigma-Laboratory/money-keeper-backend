@@ -1,2 +1,2 @@
-export * from "./validatePassword";
-export * from "./validateUserExistById";
+export * from './validatePassword';
+export * from './validateUserExistById';

@@ -1,13 +1,7 @@
-import ProductModel from "@/models/product.model";
-import {
-  ConflictError,
-  FindAllProductParams,
-  FindAllProductResponse,
-} from "@enigma-laboratory/shared";
+import ProductModel from '@/models/product.model';
+import { ConflictError, FindAllProductParams, FindAllProductResponse } from '@enigma-laboratory/shared';
 
-export async function getAllProducts(
-  params: FindAllProductParams
-): Promise<FindAllProductResponse> {
+export async function getAllProducts(params: FindAllProductParams): Promise<FindAllProductResponse> {
   try {
     const products = await ProductModel.find(params);
     return {

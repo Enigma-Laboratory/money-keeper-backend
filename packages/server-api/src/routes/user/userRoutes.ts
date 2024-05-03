@@ -1,5 +1,5 @@
-import * as UserComponent from "@/components/user";
-import express from "express";
+import * as UserComponent from '@/components/user';
+import express from 'express';
 
 const route = express.Router();
 
@@ -16,7 +16,7 @@ const route = express.Router();
  * @return {User} 200 - Return user by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get("/:id", UserComponent.getOneUserHandler);
+route.get('/:id', UserComponent.getOneUserHandler);
 
 /**
  * put /users
@@ -31,7 +31,7 @@ route.get("/:id", UserComponent.getOneUserHandler);
  * @return {User} 200 - Return user by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.put("/", UserComponent.updateOneUserHandler);
+route.put('/', UserComponent.updateOneUserHandler);
 
 /**
  * get /users
@@ -44,6 +44,6 @@ route.put("/", UserComponent.updateOneUserHandler);
  * @return {User} 200 - Return array user  - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get("/", UserComponent.getAllUserHandler);
+route.get('/', UserComponent.getAllUserHandler);
 
 export default route;

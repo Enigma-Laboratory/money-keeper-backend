@@ -1,16 +1,16 @@
-import * as OrderDetailComponent from "@/components/orderDetail";
-import express from "express";
+import * as OrderDetailComponent from '@/components/orderDetail';
+import express from 'express';
 
 const route = express.Router();
 
-route.get("/:id", OrderDetailComponent.getOneOrderDetailHandler);
+route.get('/:id', OrderDetailComponent.getOneOrderDetailHandler);
 
-route.post("/", OrderDetailComponent.createOneOrderDetailHandler);
+route.post('/', OrderDetailComponent.createOneOrderDetailHandler);
 
-route.put("/", OrderDetailComponent.updateOrderDetailHandler);
+route.put('/', OrderDetailComponent.updateOrderDetailHandler);
 
-route.delete("/", OrderDetailComponent.deleteOneOrderDetailHandler);
+route.delete('/', OrderDetailComponent.deleteOneOrderDetailHandler);
 
-route.get("/", OrderDetailComponent.getAllOrderDetailHandler);
+route.get('/', OrderDetailComponent.getAllOrderDetailHandler);
 
 export default route;

@@ -26,11 +26,11 @@ cp .env.example .env
 ### Installing NPM Packages
 
 ```console
-yarn install
+pnpm bootstrap
 ```
 
 ### Runs the app in the development mode.
 
 ```console
-yarn run dev
+pnpm run:server-api
 ```

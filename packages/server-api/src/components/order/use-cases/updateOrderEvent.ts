@@ -1,14 +1,8 @@
-import OrderModel, { OrderDocument } from "@/models/order.model";
-import {
-  BadRequestError,
-  UpdateOrderEventParams,
-  UpdateOrderEventResponse,
-} from "@enigma-laboratory/shared";
-import { OrderValidation } from "../validation";
+import OrderModel, { OrderDocument } from '@/models/order.model';
+import { BadRequestError, UpdateOrderEventParams, UpdateOrderEventResponse } from '@enigma-laboratory/shared';
+import { OrderValidation } from '../validation';
 
-export async function updateOrderEvent(
-  params: UpdateOrderEventParams
-): Promise<UpdateOrderEventResponse> {
+export async function updateOrderEvent(params: UpdateOrderEventParams): Promise<UpdateOrderEventResponse> {
   try {
     // Validate the input parameters
     const validationResult = OrderValidation.instance.updateOrderEvent(params);
@@ -17,9 +11,7 @@ export async function updateOrderEvent(
     }
 
     // Find the order by its ID
-    const order: OrderDocument | null = await OrderModel.findById(
-      params.orderId
-    );
+    const order: OrderDocument | null = await OrderModel.findById(params.orderId);
     if (!order || !order?.event) {
       return { result: 0 };
     }
@@ -27,9 +19,7 @@ export async function updateOrderEvent(
     // update order status
     order.status = params.status;
 
-    const isDoneOrder = order.event.some(
-      ({ status }) => status === params.status
-    );
+    const isDoneOrder = order.event.some(({ status }) => status === params.status);
     //insert orderEvent
     !isDoneOrder &&
       order.event.push({

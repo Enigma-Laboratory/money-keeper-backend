@@ -1,5 +1,5 @@
-import { CreateUserParams, LoginParams } from "@enigma-laboratory/shared";
-import Joi, { ValidationResult } from "joi";
+import { CreateUserParams, LoginParams } from '@enigma-laboratory/shared';
+import Joi, { ValidationResult } from 'joi';
 export class AuthValidation {
   private static _instance: AuthValidation;
 
@@ -18,9 +18,7 @@ export class AuthValidation {
     return schema.validate(params);
   }
 
-  public signUpValidate(
-    params: CreateUserParams,
-  ): ValidationResult<CreateUserParams> {
+  public signUpValidate(params: CreateUserParams): ValidationResult<CreateUserParams> {
     const schema = Joi.object({
       name: Joi.string().required(),
       email: Joi.string().email().required(),

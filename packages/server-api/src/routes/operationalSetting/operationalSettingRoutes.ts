@@ -1,5 +1,5 @@
-import * as OperationalSettingComponent from "@/components/operationalSettings";
-import express from "express";
+import * as OperationalSettingComponent from '@/components/operationalSettings';
+import express from 'express';
 
 const route = express.Router();
 
@@ -15,7 +15,7 @@ const route = express.Router();
  * @return {OperationalSetting} 200 - Return operational setting by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.post("/", OperationalSettingComponent.createOneOperationalSettingHandler);
+route.post('/', OperationalSettingComponent.createOneOperationalSettingHandler);
 
 /**
  * get /OperationalSettings
@@ -29,7 +29,7 @@ route.post("/", OperationalSettingComponent.createOneOperationalSettingHandler);
  * @return {OperationalSettings} 200 - Return operational setting - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get("/", OperationalSettingComponent.getAllOperationalSettingHandler);
+route.get('/', OperationalSettingComponent.getAllOperationalSettingHandler);
 
 /**
  * put /OperationalSettings
@@ -43,6 +43,6 @@ route.get("/", OperationalSettingComponent.getAllOperationalSettingHandler);
  * @return {OperationalSettings} 200 - Return operational setting - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.put("/", OperationalSettingComponent.updateOperationalStatusHandler);
+route.put('/', OperationalSettingComponent.updateOperationalStatusHandler);
 
 export default route;

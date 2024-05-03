@@ -1,5 +1,5 @@
-import { OrderDetailMode } from "@enigma-laboratory/shared";
-import { Document, Schema, Types, model } from "mongoose";
+import { OrderDetailMode } from '@enigma-laboratory/shared';
+import { Document, Schema, Types, model } from 'mongoose';
 
 const orderDetailSchema = new Schema(
   {
@@ -9,21 +9,21 @@ const orderDetailSchema = new Schema(
       unique: true,
       default: () => new Types.ObjectId().toString(),
     },
-    orderId: { type: Types.ObjectId, required: true, ref: "Order" },
+    orderId: { type: Types.ObjectId, required: true, ref: 'Order' },
     name: { type: String, required: true },
     description: { type: String },
     price: { type: Number, required: true },
-    userIds: [{ type: Types.ObjectId, required: true, ref: "User" }],
+    userIds: [{ type: Types.ObjectId, required: true, ref: 'User' }],
     mode: {
       type: String,
-      enum: ["default", "customized"],
-      default: "default",
+      enum: ['default', 'customized'],
+      default: 'default',
     },
   },
   {
     timestamps: true,
-    primaryKey: "id",
-  }
+    primaryKey: 'id',
+  },
 );
 
 export interface OrderDetailDocument extends Document {
@@ -38,9 +38,6 @@ export interface OrderDetailDocument extends Document {
   updatedAt: Date;
 }
 
-const OrderDetailModel = model<OrderDetailDocument>(
-  "OrderDetail",
-  orderDetailSchema
-);
+const OrderDetailModel = model<OrderDetailDocument>('OrderDetail', orderDetailSchema);
 
 export default OrderDetailModel;

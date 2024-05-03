@@ -1,7 +1,7 @@
-import Config from "@/services/configServices";
-import { User } from "@enigma-laboratory/shared";
-import bcrypt from "bcrypt";
-import { Document, Schema, Types, model } from "mongoose";
+import Config from '@/services/configServices';
+import { User } from '@enigma-laboratory/shared';
+import bcrypt from 'bcrypt';
+import { Document, Schema, Types, model } from 'mongoose';
 
 export interface UserDocument extends User, Document {
   _id: string;
@@ -27,14 +27,14 @@ export const userSchema = new Schema(
   },
   {
     timestamps: true,
-    primaryKey: "id",
-  }
+    primaryKey: 'id',
+  },
 );
 
-userSchema.pre("save", async function (next) {
+userSchema.pre('save', async function (next) {
   let user = this as unknown as UserDocument;
 
-  if (!user.isModified("password")) {
+  if (!user.isModified('password')) {
     return next();
   }
   const salt = await bcrypt.genSalt(Config.instance.saltWorkFactor);
@@ -46,14 +46,12 @@ userSchema.pre("save", async function (next) {
   return next();
 });
 
-userSchema.methods.comparePassword = async function (
-  candidatePassword: string
-): Promise<boolean> {
+userSchema.methods.comparePassword = async function (candidatePassword: string): Promise<boolean> {
   const user = this as UserDocument;
 
-  return bcrypt.compare(candidatePassword, user.password).catch((e) => false);
+  return bcrypt.compare(candidatePassword, user.password).catch(e => false);
 };
 
-const UserModel = model<UserDocument>("User", userSchema);
+const UserModel = model<UserDocument>('User', userSchema);
 
 export default UserModel;

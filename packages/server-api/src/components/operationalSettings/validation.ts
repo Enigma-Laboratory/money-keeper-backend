@@ -1,10 +1,10 @@
-import Joi, { ValidationResult } from "joi";
+import Joi, { ValidationResult } from 'joi';
 import {
   CreateOneOperationalSettingParams,
   CreateOneOperationalSettingResponse,
   UpdateOneOperationalSettingParams,
   UpdateOneOperationalSettingResponse,
-} from "@enigma-laboratory/shared";
+} from '@enigma-laboratory/shared';
 
 export class OperationalSettingValidation {
   private static _instance: OperationalSettingValidation;
@@ -29,7 +29,7 @@ export class OperationalSettingValidation {
   ): ValidationResult<UpdateOneOperationalSettingResponse> {
     const schema = Joi.object({
       _id: Joi.string().required(),
-      status: Joi.string().valid("opening", "closed").required(),
+      status: Joi.string().valid('opening', 'closed').required(),
     });
     return schema.validate(params);
   }

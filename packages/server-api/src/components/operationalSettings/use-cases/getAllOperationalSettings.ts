@@ -1,6 +1,6 @@
-import { InternalServerError } from "@enigma-laboratory/shared";
-import { FindAllOperationalSettingResponse } from "@enigma-laboratory/shared";
-import OperationalSettingModel from "@/models/operationalSetting.model";
+import { InternalServerError } from '@enigma-laboratory/shared';
+import { FindAllOperationalSettingResponse } from '@enigma-laboratory/shared';
+import OperationalSettingModel from '@/models/operationalSetting.model';
 
 export async function getAllOperationalSettings(): Promise<FindAllOperationalSettingResponse> {
   try {

@@ -1,4 +1,4 @@
-import { Document, Schema, model } from "mongoose";
+import { Document, Schema, model } from 'mongoose';
 
 export interface ProductDocument extends Document {
   id: string;
@@ -29,9 +29,9 @@ export const productSchema = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-const ProductModel = model<ProductDocument>("Product", productSchema);
+const ProductModel = model<ProductDocument>('Product', productSchema);
 
 export default ProductModel;

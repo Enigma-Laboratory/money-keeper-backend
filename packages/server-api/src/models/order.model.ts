@@ -1,12 +1,6 @@
-import {
-  Order,
-  OrderEvent,
-  OrderStatus,
-  Product,
-  User,
-} from "@enigma-laboratory/shared";
-import { Document, Schema, model } from "mongoose";
-import { productSchema } from "./product.model";
+import { Order, OrderEvent, OrderStatus, Product, User } from '@enigma-laboratory/shared';
+import { Document, Schema, model } from 'mongoose';
+import { productSchema } from './product.model';
 
 export interface OrderDocument extends Order, Document {
   _id: string;
@@ -38,25 +32,21 @@ const orderSchema: Schema<OrderDocument> = new Schema<OrderDocument>({
   status: { type: String, required: true },
   amount: { type: Number, required: true },
   products: [productSchema], // Reference to Product documents
-  user: { type: Schema.Types.ObjectId, ref: "User" }, // Reference to User document
+  user: { type: Schema.Types.ObjectId, ref: 'User' }, // Reference to User document
   event: [orderEventSchema], // Embedded array of OrderEvent documents
   orderNumber: { type: Number }, // Order number
   groupId: { type: String, required: true },
 });
 
-orderSchema.pre<OrderDocument>("save", async function (next) {
+orderSchema.pre<OrderDocument>('save', async function (next) {
   if (!this.orderNumber) {
-    const latestOrder = await OrderModel.findOne(
-      {},
-      {},
-      { sort: { createdAt: -1 } }
-    ); // Get the latest order
+    const latestOrder = await OrderModel.findOne({}, {}, { sort: { createdAt: -1 } }); // Get the latest order
     const orderNumber = latestOrder ? latestOrder.orderNumber + 1 : 1; // Increment the order number
     this.orderNumber = orderNumber;
   }
   next();
 });
 
-const OrderModel = model<OrderDocument>("Order", orderSchema);
+const OrderModel = model<OrderDocument>('Order', orderSchema);
 
 export default OrderModel;

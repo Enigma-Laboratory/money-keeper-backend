@@ -1,5 +1,5 @@
-import * as AuthComponent from "@/components/auth";
-import express from "express";
+import * as AuthComponent from '@/components/auth';
+import express from 'express';
 
 const route = express.Router();
 
@@ -16,7 +16,7 @@ const route = express.Router();
  * @return {Token} 200 - Return token - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.post("/sign-in", AuthComponent.signInHandler);
+route.post('/sign-in', AuthComponent.signInHandler);
 
 /**
  * post /sign up
@@ -31,6 +31,6 @@ route.post("/sign-in", AuthComponent.signInHandler);
  * @return {User} 200 - Return the registered user - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.post("/sign-up", AuthComponent.signUpHandler);
+route.post('/sign-up', AuthComponent.signUpHandler);
 
 export default route;

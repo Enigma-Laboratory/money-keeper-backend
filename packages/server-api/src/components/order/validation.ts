@@ -7,8 +7,8 @@ import {
   UpdateOneOrderParams,
   UpdateOrderEventParams,
   UpdateOrderEventResponse,
-} from "@enigma-laboratory/shared";
-import Joi, { ValidationResult } from "joi";
+} from '@enigma-laboratory/shared';
+import Joi, { ValidationResult } from 'joi';
 
 export class OrderValidation {
   private static _instance: OrderValidation;
@@ -19,18 +19,14 @@ export class OrderValidation {
     return this._instance;
   }
 
-  public getOneOrderValidate(
-    params: FindOneOrderParams
-  ): ValidationResult<FindOneOrderParams> {
+  public getOneOrderValidate(params: FindOneOrderParams): ValidationResult<FindOneOrderParams> {
     const schema = Joi.object({
       _id: Joi.string().required(),
     });
     return schema.validate(params);
   }
 
-  public getAllOrderValidate(
-    params: FindAllOrderParams
-  ): ValidationResult<FindAllOrderParams> {
+  public getAllOrderValidate(params: FindAllOrderParams): ValidationResult<FindAllOrderParams> {
     const schema = Joi.object({
       scope: Joi.string(),
       sorters: Joi.array().items(Joi.string()),
@@ -45,7 +41,7 @@ export class OrderValidation {
   }
 
   public getAllOrderDetailByOrderIdValidate(
-    params: FindAllOrderDetailParams
+    params: FindAllOrderDetailParams,
   ): ValidationResult<FindAllOrderDetailParams> {
     const schema = Joi.object({
       orderId: Joi.string().required(),
@@ -53,9 +49,7 @@ export class OrderValidation {
     return schema.validate(params);
   }
 
-  public createOneOrderValidate(
-    params: CreateOneOrderParams
-  ): ValidationResult<CreateOneOrderParams> {
+  public createOneOrderValidate(params: CreateOneOrderParams): ValidationResult<CreateOneOrderParams> {
     const schema = Joi.object({
       name: Joi.string().required(),
       userId: Joi.string().required(),
@@ -70,9 +64,7 @@ export class OrderValidation {
     return schema.validate(params);
   }
 
-  public updateOneOrderValidate(
-    params: UpdateOneOrderParams
-  ): ValidationResult<UpdateOneOrderParams> {
+  public updateOneOrderValidate(params: UpdateOneOrderParams): ValidationResult<UpdateOneOrderParams> {
     const schema = Joi.object({
       _id: Joi.string().required(),
       name: Joi.string().required(),
@@ -90,9 +82,7 @@ export class OrderValidation {
     return schema.validate(params);
   }
 
-  public updateOrderEvent(
-    params: UpdateOrderEventParams
-  ): ValidationResult<UpdateOrderEventResponse> {
+  public updateOrderEvent(params: UpdateOrderEventParams): ValidationResult<UpdateOrderEventResponse> {
     const schema = Joi.object({
       date: Joi.date().optional(),
       status: Joi.string().required(),
@@ -101,9 +91,7 @@ export class OrderValidation {
     return schema.validate(params);
   }
 
-  public deleteOneOrderValidate(
-    params: DeleteOneOrderParams
-  ): ValidationResult<DeleteOneOrderParams> {
+  public deleteOneOrderValidate(params: DeleteOneOrderParams): ValidationResult<DeleteOneOrderParams> {
     const schema = Joi.object({
       _id: Joi.string().required(),
     });

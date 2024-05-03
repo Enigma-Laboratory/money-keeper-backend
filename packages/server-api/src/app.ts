@@ -1,16 +1,16 @@
-import moduleAlias from "./utils/moduleAlias";
+import moduleAlias from './utils/moduleAlias';
 
 moduleAlias();
 
-import routes from "@/routes/index";
-import Config from "@/services/configServices";
-import connect from "@/utils/connect";
-import { corsOptions } from "@/utils/cors";
-import logger from "@/utils/logger";
-import cors from "cors";
-import express from "express";
+import routes from '@/routes/index';
+import Config from '@/services/configServices';
+import connect from '@/utils/connect';
+import { corsOptions } from '@/utils/cors';
+import logger from '@/utils/logger';
+import cors from 'cors';
+import express from 'express';
 
-require("dotenv").config();
+require('dotenv').config();
 
 const app = express();
 

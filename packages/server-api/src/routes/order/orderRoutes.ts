@@ -1,5 +1,5 @@
-import * as OrderComponent from "@/components/order";
-import express from "express";
+import * as OrderComponent from '@/components/order';
+import express from 'express';
 
 const route = express.Router();
 
@@ -14,7 +14,7 @@ const route = express.Router();
  * @return {FindAllOrderDetailByOrderIdResponse} 200 - Return list of order details by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get("/:id/details", OrderComponent.getOrderDetailByOrderIdHandler);
+route.get('/:id/details', OrderComponent.getOrderDetailByOrderIdHandler);
 
 /**
  * get /order/{id}
@@ -29,7 +29,7 @@ route.get("/:id/details", OrderComponent.getOrderDetailByOrderIdHandler);
  * @return {Order} 200 - Return order by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get("/:id", OrderComponent.getOneOrderHandler);
+route.get('/:id', OrderComponent.getOneOrderHandler);
 
 /**
  * put /order
@@ -44,7 +44,7 @@ route.get("/:id", OrderComponent.getOneOrderHandler);
  * @return {Order} 200 - Return order when deleted - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.put("/", OrderComponent.updateOneOrderHandler);
+route.put('/', OrderComponent.updateOneOrderHandler);
 
 /**
  * put /order
@@ -59,7 +59,7 @@ route.put("/", OrderComponent.updateOneOrderHandler);
  * @return {Result} 200 - Return order when deleted - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.put("/order-event", OrderComponent.updateOrderEventHandler);
+route.put('/order-event', OrderComponent.updateOrderEventHandler);
 
 /**
  * delete /orders/:id
@@ -74,7 +74,7 @@ route.put("/order-event", OrderComponent.updateOrderEventHandler);
  * @return {Order} 200 - Return order when deleted - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.delete("/", OrderComponent.deleteOneOrderHandler);
+route.delete('/', OrderComponent.deleteOneOrderHandler);
 
 /**
  * post /order
@@ -88,7 +88,7 @@ route.delete("/", OrderComponent.deleteOneOrderHandler);
  * @return {Order} 200 - Return order by id - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.post("/", OrderComponent.createOneOrderHandler);
+route.post('/', OrderComponent.createOneOrderHandler);
 
 /**
  * get /order
@@ -102,6 +102,6 @@ route.post("/", OrderComponent.createOneOrderHandler);
  * @return {Order} 200 - Return order - application/json
  * @return {Error} default - Unexpected error - application/json
  */
-route.get("/", OrderComponent.getAllOrderHandler);
+route.get('/', OrderComponent.getAllOrderHandler);
 
 export default route;

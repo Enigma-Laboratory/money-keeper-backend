@@ -1,9 +1,5 @@
-import {
-  BadRequestError,
-  FindOneUserParams,
-  UpdateOneUserParams,
-} from "@enigma-laboratory/shared";
-import Joi, { ValidationResult } from "joi";
+import { BadRequestError, FindOneUserParams, UpdateOneUserParams } from '@enigma-laboratory/shared';
+import Joi, { ValidationResult } from 'joi';
 
 export class UserValidation {
   private static _instance: UserValidation;
@@ -15,9 +11,7 @@ export class UserValidation {
     return UserValidation._instance;
   }
 
-  public getOneUserValidate(
-    params: FindOneUserParams
-  ): ValidationResult<FindOneUserParams> {
+  public getOneUserValidate(params: FindOneUserParams): ValidationResult<FindOneUserParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
     });
