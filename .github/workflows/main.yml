@@ -61,7 +61,7 @@ jobs:
         run: |
           git push --follow-tags origin main
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         shell: bash
       - name: deploy package to npm
         run: |
