@@ -13,7 +13,7 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
         with:
@@ -22,13 +22,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Install PNPM
+        run: npm install -g pnpm
       - name: install dependencies
-        run: yarn install
-      - name: run build
-        run: yarn run build
+        run: pnpm bootstrap
+      - name: run build server api
+        run: pnpm build:server-api
 
   publish-package:
-    name: Publish Package
+    name: Publish Package to npm
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
     steps:
@@ -37,19 +39,33 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 16.x
+          node-version: 18.x
       - name: Set Git user info
         run: |
           git config user.email "${{ secrets.GIT_USER_EMAIL }}"
           git config user.name "${{ secrets.GIT_USER_NAME }}"
+
+      - name: Authenticate with npm
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+      - name: Install PNPM
+        run: npm install -g pnpm
       - name: Change to 'packages' directory and run commands
         run: |
-          cd packages
-          ls
-          yarn install
-          yarn run build:interfaces
-          yarn standard-version
-          yarn publish --access public
+          pnpm  bootstrap
+          pnpm build:interfaces
+          pnpm bump-version
+      - name: Get latest version
+        id: get_version
+        run: echo ::set-output name=bump-version:$(npm show @enigma-laboratory/shared version )
+      - name: Update commit with new version
+        run: |
+          git push --follow-tags origin main
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        shell: bash
+      - name: deploy package to npm
+        run: |
+          pnpm deploy:prod
   deploy:
     name: Deploy
     runs-on: ubuntu-latest

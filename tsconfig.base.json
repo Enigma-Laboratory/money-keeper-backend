@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["ES2021", "dom"],
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "target": "ES2021",
+    "jsx": "react",
+    "skipLibCheck": true,
+    "esModuleInterop": true
+  },
+  "types": ["jest"]
+}
