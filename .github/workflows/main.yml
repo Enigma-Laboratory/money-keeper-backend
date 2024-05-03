@@ -55,6 +55,13 @@ jobs:
           pnpm build:interfaces
           pnpm bump-version
           pnpm deploy:prod
+      - name: Get latest version
+        id: get_version
+        run: echo ::set-output name=bump-version:$(npm show @enigma-laboratory/shared version )
+      - name: Update commit with new version
+        run: |
+          git push
+        shell: bash
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
@@ -66,12 +73,3 @@ jobs:
         with:
           service-id: ${{ secrets.SERVICE_ID }}
           api-key: ${{ secrets.RENDER_API_KEY }}
-      - name: Get latest version
-        id: get_version
-        run: echo ::set-output name=bump-version:$(npm show @enigma-laboratory/shared version )
-      - name: Update commit with new version
-        run: |
-          git config user.email "${{ secrets.GIT_USER_EMAIL }}"
-          git config user.name "${{ secrets.GIT_USER_NAME }}"
-          git commit -m "Version v${{ steps.get_version }}"
-          git push
