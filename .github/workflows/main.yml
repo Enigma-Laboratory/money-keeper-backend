@@ -54,7 +54,7 @@ jobs:
           pnpm  bootstrap
           pnpm build:interfaces
           pnpm bump-version
-          npm publish --access public
+          pnpm deploy:prod
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
