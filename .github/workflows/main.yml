@@ -44,6 +44,9 @@ jobs:
         run: |
           git config user.email "${{ secrets.GIT_USER_EMAIL }}"
           git config user.name "${{ secrets.GIT_USER_NAME }}"
+
+      - name: Authenticate with npm
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
       - name: Install PNPM
         run: npm install -g pnpm
       - name: Change to 'packages' directory and run commands
