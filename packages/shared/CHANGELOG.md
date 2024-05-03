@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.4 (2024-05-03)
+
+
+### Bug Fixes
+
+* can not install pnpm to pipeline ([6345911](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/634591135d702a61ac91b4cb0630a46e4309e40a))
+* the version of pnpm required least node.js 18.x ([ba875c1](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/ba875c1cce47800a967f673239d878c6ea329df3))
+
 ### [1.1.1](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.1.0...v1.1.1) (2024-04-22)
 
 ## 1.1.0 (2024-03-02)
