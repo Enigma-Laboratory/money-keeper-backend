@@ -22,6 +22,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Install PNPM
+        run: npm install -g pnpm
       - name: install dependencies
         run: pnpm bootstrap
       - name: run build server api
@@ -42,6 +44,8 @@ jobs:
         run: |
           git config user.email "${{ secrets.GIT_USER_EMAIL }}"
           git config user.name "${{ secrets.GIT_USER_NAME }}"
+      - name: Install PNPM
+        run: npm install -g pnpm
       - name: Change to 'packages' directory and run commands
         run: |
           pnpm  bootstrap
