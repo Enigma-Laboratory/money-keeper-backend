@@ -66,3 +66,12 @@ jobs:
         with:
           service-id: ${{ secrets.SERVICE_ID }}
           api-key: ${{ secrets.RENDER_API_KEY }}
+      - name: Get latest version
+        id: get_version
+        run: echo ::set-output name=bump-version:$(npm show @enigma-laboratory/shared version )
+      - name: Update commit with new version
+        run: |
+          git config user.email "${{ secrets.GIT_USER_EMAIL }}"
+          git config user.name "${{ secrets.GIT_USER_NAME }}"
+          git tag -a v${{ steps.get_version.outputs.version }} -m "Version v${{ steps.get_version.outputs.version }}"
+          git push origin v${{ steps.get_version.outputs.version }}
