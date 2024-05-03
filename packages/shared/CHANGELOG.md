@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.8](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.0.7...v1.0.8) (2024-05-03)
+
+
+### Bug Fixes
+
+* update new commit when publish success package ([96966e5](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/96966e54baba7a13d837e463b849fbe428b03686))
+* update new commit when publish success package ([4a0daee](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/4a0daee78d562f90a30c4c7b956282abce922efe))
+
 ### [1.0.7](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.0.6...v1.0.7) (2024-05-03)
 
 
