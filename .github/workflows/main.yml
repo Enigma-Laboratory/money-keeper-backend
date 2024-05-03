@@ -73,5 +73,5 @@ jobs:
         run: |
           git config user.email "${{ secrets.GIT_USER_EMAIL }}"
           git config user.name "${{ secrets.GIT_USER_NAME }}"
-          git tag -a v${{ steps.get_version.outputs.version }} -m "Version v${{ steps.get_version.outputs.version }}"
+          git commit -m "Version v${{ steps.get_version }}"
           git push
