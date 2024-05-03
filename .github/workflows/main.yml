@@ -60,7 +60,9 @@ jobs:
         run: echo ::set-output name=bump-version:$(npm show @enigma-laboratory/shared version )
       - name: Update commit with new version
         run: |
-          git push
+          git push --follow-tags origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         shell: bash
   deploy:
     name: Deploy
