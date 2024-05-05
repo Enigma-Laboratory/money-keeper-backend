@@ -13,14 +13,15 @@ export class UserValidation {
 
   public getOneUserValidate(params: FindOneUserParams): ValidationResult<FindOneUserParams> {
     const schema = Joi.object({
-      id: Joi.string().required(),
+      _id: Joi.string().optional(),
+      email: Joi.string().optional(),
     });
     return schema.validate(params);
   }
 
   public updateOneUserValidation(params: UpdateOneUserParams): void {
     const schema = Joi.object({
-      id: Joi.string().required(),
+      _id: Joi.string().required(),
       name: Joi.string().required(),
     });
 

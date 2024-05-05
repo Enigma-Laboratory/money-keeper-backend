@@ -1,4 +1,4 @@
-import { FindAllResponse, GetOneParams } from "../common";
+import { FindAllResponse, GetOneParams } from '../common';
 
 /** Represents a user entity with various properties. */
 export interface User {
@@ -14,11 +14,10 @@ export interface User {
 }
 
 /** Represents the response structure for finding multiple users. */
-export interface FindAllUserResponse
-  extends FindAllResponse<Omit<User, "password">> {}
+export interface FindAllUserResponse extends FindAllResponse<Omit<User, 'password'>> {}
 
 /** Represents the parameters for login. */
-export interface LoginParams extends Pick<User, "email" | "password"> {}
+export interface LoginParams extends Pick<User, 'email' | 'password'> {}
 
 export interface LoginResponse {
   token?: string;
@@ -26,12 +25,13 @@ export interface LoginResponse {
 }
 
 /** Represents the parameters for finding a single user. */
-export interface FindOneUserParams extends GetOneParams {}
+export interface FindOneUserParams extends GetOneParams {
+  email?: string;
+}
 export interface FindOneUserResponse extends User {}
 
 /** Represents the parameters for creating a new user. */
-export interface CreateUserParams
-  extends Pick<User, "name" | "email" | "password"> {}
+export interface CreateUserParams extends Pick<User, 'name' | 'email' | 'password'> {}
 
 export interface CreateUserResponse extends User {}
 

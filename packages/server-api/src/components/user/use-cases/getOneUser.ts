@@ -1,6 +1,12 @@
 import UserModel from '@/models/user.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
-import { BadRequestError, ConflictError, FindOneUserParams, NotFoundError, User } from '@enigma-laboratory/shared';
+import {
+  BadRequestError,
+  FindOneUserParams,
+  InternalServerError,
+  NotFoundError,
+  User,
+} from '@enigma-laboratory/shared';
 import { UserValidation } from '../validation';
 
 export async function getOneUser(params: FindOneUserParams): Promise<User> {
@@ -13,6 +19,6 @@ export async function getOneUser(params: FindOneUserParams): Promise<User> {
 
     return removeFieldsNotUse(user.toJSON(), ['password']);
   } catch (error: any) {
-    throw new ConflictError(error.message);
+    throw new InternalServerError(error.message);
   }
 }
