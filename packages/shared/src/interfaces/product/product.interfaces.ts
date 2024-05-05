@@ -5,8 +5,7 @@ export interface Product {
   _id: string /** The unique identifier for the product. */;
   name: string /** The name of the product. */;
   quantity: number;
-  isActive?: boolean;
-  user: string /** The user associated with the product. */;
+  userIds: string[] /** The user associated with the product. */;
   description?: string /** The description of the product. */;
   price: number /** The price of the product. */;
   image?: string /** The URL of the product's image (optional). */;

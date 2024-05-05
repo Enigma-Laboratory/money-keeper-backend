@@ -5,6 +5,7 @@ export interface OperationalSetting {
   name: string;
   status: 'opening' | 'closed';
   createdAt: Date;
+  description?: string;
 }
 
 export interface FindAllOperationalSettingResponse extends FindAllResponse<OperationalSetting> {}

@@ -1,7 +1,7 @@
-import { FindAllParams, FindAllResponse, GetOneParams } from "../common";
-import { Product } from "../product";
-import { User } from "../user";
-import { OrderStatus } from "./order.types";
+import { FindAllParams, FindAllResponse, GetOneParams } from '../common';
+import { Product } from '../product';
+import { User } from '../user';
+import { OrderStatus } from './order.types';
 
 /** Represents an order entity with various properties. */
 export interface Order {
@@ -17,6 +17,7 @@ export interface Order {
   user?: User /** The ID of the user associated with the order. */;
   event?: OrderEvent[];
   groupId?: string;
+  description: string;
 }
 
 export interface OrderEvent {
@@ -70,7 +71,7 @@ export interface DeleteOneOrderResponse {
 }
 
 export interface DailyOrderParams {
-  orderBy: "week" | "mouth" | "year";
+  orderBy: 'week' | 'mouth' | 'year';
 }
 
 export interface DailyOrderResponse {}

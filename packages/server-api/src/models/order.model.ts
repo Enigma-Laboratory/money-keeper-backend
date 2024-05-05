@@ -10,7 +10,6 @@ export interface OrderDocument extends Order, Document {
   updatedAt: Date;
   createdOrderAt: Date;
   status: OrderStatus;
-  amount: number;
   products?: Product[];
   user?: User;
   event?: OrderEvent[];
@@ -30,7 +29,6 @@ const orderSchema: Schema<OrderDocument> = new Schema<OrderDocument>({
   updatedAt: { type: Date, default: Date.now },
   createdOrderAt: { type: Date, required: true },
   status: { type: String, required: true },
-  amount: { type: Number, required: true },
   products: [productSchema], // Reference to Product documents
   user: { type: Schema.Types.ObjectId, ref: 'User' }, // Reference to User document
   event: [orderEventSchema], // Embedded array of OrderEvent documents

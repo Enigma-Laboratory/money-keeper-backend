@@ -54,8 +54,6 @@ export class OrderValidation {
       name: Joi.string().required(),
       userId: Joi.string().required(),
       createdOrderAt: Joi.date().required(),
-      status: Joi.string().optional(),
-      amount: Joi.number().required(),
       products: Joi.array().items(Joi.object()).optional(),
       user: Joi.object().optional(),
       event: Joi.array().items(Joi.object()).optional(),

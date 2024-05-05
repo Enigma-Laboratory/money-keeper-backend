@@ -23,6 +23,7 @@ export async function postCreateOneOrder(params: CreateOneOrderParams): Promise<
 
     const newEvent = {
       ...(!params.event && {
+        status: OrderStatus.PENDING,
         event: [
           {
             date: new Date(),
