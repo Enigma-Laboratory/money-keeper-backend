@@ -1,8 +1,12 @@
-import { BadRequestError, ConflictError } from '@enigma-laboratory/shared';
-import { OperationalSettingValidation } from '../validation';
-import { CreateOneOperationalSettingParams, CreateOneOperationalSettingResponse } from '@enigma-laboratory/shared';
-import { removeFieldsNotUse } from '@/shared/transformedData';
 import OperationalSettingModel from '@/models/operationalSetting.model';
+import { removeFieldsNotUse } from '@/shared/transformedData';
+import {
+  BadRequestError,
+  ConflictError,
+  CreateOneOperationalSettingParams,
+  CreateOneOperationalSettingResponse,
+} from '@enigma-laboratory/shared';
+import { OperationalSettingValidation } from '../validation';
 
 export async function postCreateOperationalSettings(
   params: CreateOneOperationalSettingParams,
@@ -13,7 +17,7 @@ export async function postCreateOperationalSettings(
 
     const groups = await OperationalSettingModel.find();
 
-    if (groups.map(({ group }) => group).includes(params.group)) {
+    if (groups.map(({ name }) => name).includes(params.name)) {
       throw new ConflictError('group name is duplicated');
     }
     // when user create order set default status is opening

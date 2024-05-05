@@ -22,8 +22,8 @@ importers:
   packages/server-api:
     dependencies:
       '@enigma-laboratory/shared':
-        specifier: ^1.0.3
-        version: 1.0.3
+        specifier: ^1.1.2
+        version: 1.1.2
       '@types/joi':
         specifier: ^17.2.3
         version: 17.2.3
@@ -180,8 +180,8 @@ packages:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
 
-  '@enigma-laboratory/shared@1.0.3':
-    resolution: {integrity: sha512-hzvRUXVnod0VoI9twEf54nnITP25TZq4D2WYGq0KS3ImZ6HlDlM2fP09Wh7Y6fcuRRJdFZ2JB30K7LbMNkMV/w==}
+  '@enigma-laboratory/shared@1.1.2':
+    resolution: {integrity: sha512-9g9UYwTvdx9CM7I6NMTcglK0jEJAHcOA/kv49Fgy0l3HFLjxzXR/s8H1KcZpygaMCVBPX2hwwaxzWkDLSC7UjQ==}
 
   '@esbuild/aix-ppc64@0.19.12':
     resolution: {integrity: sha512-bmoCYyWdEL3wDQIVbcyzRyeKLgk2WtWLTWz1ZIAZF/EGbNOwSA6ew3PftJ1PqMiOOGu0OyFMzG53L0zqIpPeNA==}
@@ -4288,9 +4288,8 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
-  '@enigma-laboratory/shared@1.0.3':
+  '@enigma-laboratory/shared@1.1.2':
     dependencies:
-      '@types/node': 20.12.8
       typescript: 5.4.5
 
   '@esbuild/aix-ppc64@0.19.12':

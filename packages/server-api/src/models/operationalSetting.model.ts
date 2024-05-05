@@ -1,12 +1,12 @@
 import { Document, Schema, model } from 'mongoose';
 
 export interface OperationalSetting extends Document {
-  group: string;
+  name: string;
   status: 'opening' | 'closed';
 }
 export const operationalSettingSchema = new Schema(
   {
-    group: { type: String, required: true },
+    name: { type: String, required: true },
     status: { type: String, required: true, enum: ['opening', 'closed'] },
   },
   {
