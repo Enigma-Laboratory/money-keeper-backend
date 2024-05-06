@@ -3,6 +3,7 @@ import { Document, Schema, model } from 'mongoose';
 export interface OperationalSetting extends Document {
   name: string;
   status: 'opening' | 'closed';
+  createdAt: Date;
 }
 export const operationalSettingSchema = new Schema(
   {
