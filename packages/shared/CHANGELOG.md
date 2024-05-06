@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.6](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.1.5...v1.1.6) (2024-05-06)
+
+
+### Bug Fixes
+
+* build: server api ([8a9ecea](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/8a9ecea7bc714071e9e5ceb9b125b5bfced4b90e))
+* remove cache ([7a8a5cc](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/7a8a5cc018f40fb0da6dab674c2c229ed056cd26))
+* remove cache ([df39a53](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/df39a5394b2d7591faa21679c67768a1c54d47f4))
+* remove cache ([c756664](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/c7566647b7bb2719d0cba9f1e24f22a181b02151))
+* remove file node modules ([d88db33](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/d88db339af4dbfd619c42ca7d59a1e92f2700b70))
+* uipdate crate order model ([f67853e](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/f67853e74b2dda2ad93d7ce6afd4601b19f2345e))
+
 ### [1.1.5](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.1.4...v1.1.5) (2024-05-05)
 
 ### [1.1.4](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.1.3...v1.1.4) (2024-05-05)
