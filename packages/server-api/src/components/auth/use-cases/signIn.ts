@@ -1,9 +1,9 @@
+import { BadRequestError, ConflictError } from '@/errors';
 import UserModel from '@/models/user.model';
-import { AuthValidation } from '../validation';
-import { BadRequestError, ConflictError } from '@enigma-laboratory/shared';
+import Config from '@/services/configServices';
 import Jwt from '@/services/jwtServices';
 import { LoginParams } from '@enigma-laboratory/shared';
-import Config from '@/services/configServices';
+import { AuthValidation } from '../validation';
 
 export async function signIn(params: LoginParams): Promise<string> {
   try {

@@ -1,12 +1,7 @@
+import { BadRequestError, InternalServerError, NotFoundError } from '@/errors';
 import UserModel from '@/models/user.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
-import {
-  BadRequestError,
-  FindOneUserParams,
-  InternalServerError,
-  NotFoundError,
-  User,
-} from '@enigma-laboratory/shared';
+import { FindOneUserParams, User } from '@enigma-laboratory/shared';
 import { UserValidation } from '../validation';
 
 export async function getOneUser(params: FindOneUserParams): Promise<User> {

@@ -1,4 +1,5 @@
-import { BadRequestError, FindOneUserParams, UpdateOneUserParams } from '@enigma-laboratory/shared';
+import { BadRequestError } from '@/errors';
+import { FindOneUserParams, UpdateOneUserParams } from '@enigma-laboratory/shared';
 import Joi, { ValidationResult } from 'joi';
 
 export class UserValidation {

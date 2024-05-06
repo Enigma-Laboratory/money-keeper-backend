@@ -1,10 +1,20 @@
 {
-  "extends": "../../tsconfig.base",
   "compilerOptions": {
+    "baseUrl": "src",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["ES2021", "dom"],
+    "moduleResolution": "node",
+    "target": "ES2021",
+    "jsx": "react",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
     "module": "commonjs",
     "outDir": "dist",
     "strict": true
   },
+  "types": ["jest"],
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
 }

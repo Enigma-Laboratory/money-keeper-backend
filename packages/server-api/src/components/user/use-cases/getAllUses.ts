@@ -1,6 +1,7 @@
+import { ConflictError } from '@/errors';
 import UserModel from '@/models/user.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
-import { ConflictError, FindAllUserResponse } from '@enigma-laboratory/shared';
+import { FindAllUserResponse } from '@enigma-laboratory/shared';
 
 export async function getAllUsers(): Promise<FindAllUserResponse> {
   try {

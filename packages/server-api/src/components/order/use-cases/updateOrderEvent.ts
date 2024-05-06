@@ -1,6 +1,8 @@
 import OrderModel, { OrderDocument } from '@/models/order.model';
-import { BadRequestError, UpdateOrderEventParams, UpdateOrderEventResponse } from '@enigma-laboratory/shared';
+import { UpdateOrderEventParams, UpdateOrderEventResponse } from '@enigma-laboratory/shared';
 import { OrderValidation } from '../validation';
+
+import { BadRequestError } from '@/errors';
 
 export async function updateOrderEvent(params: UpdateOrderEventParams): Promise<UpdateOrderEventResponse> {
   try {

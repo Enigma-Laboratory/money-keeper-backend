@@ -1,13 +1,10 @@
 import OrderDetailModel from '@/models/order.detail.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
-import {
-  BadRequestError,
-  ConflictError,
-  UpdateOneOrderDetailParams,
-  UpdateOneOrderDetailResponse,
-} from '@enigma-laboratory/shared';
+import { UpdateOneOrderDetailParams, UpdateOneOrderDetailResponse } from '@enigma-laboratory/shared';
 import { omit } from 'lodash';
 import { OrderDetailValidation } from '../validation';
+
+import { BadRequestError, ConflictError } from '@/errors';
 
 export async function updateOneOrderDetail(params: UpdateOneOrderDetailParams): Promise<UpdateOneOrderDetailResponse> {
   try {

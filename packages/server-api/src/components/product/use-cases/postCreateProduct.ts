@@ -1,5 +1,6 @@
+import { BadRequestError, ConflictError } from '@/errors';
 import ProductModel from '@/models/product.model';
-import { BadRequestError, ConflictError, CreateProductResponse, FindOneProductParams } from '@enigma-laboratory/shared';
+import { CreateProductResponse, FindOneProductParams } from '@enigma-laboratory/shared';
 import { ProductValidation } from '../validation';
 
 export async function postCreateProduct(params: FindOneProductParams): Promise<CreateProductResponse> {

@@ -1,11 +1,8 @@
 import OrderDetailModel from '@/models/order.detail.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
-import {
-  ConflictError,
-  FindAllOrderDetailParams,
-  FindAllOrderDetailResponse,
-  OrderDetail,
-} from '@enigma-laboratory/shared';
+import { FindAllOrderDetailParams, FindAllOrderDetailResponse, OrderDetail } from '@enigma-laboratory/shared';
+
+import { ConflictError } from '@/errors';
 
 export async function getAllOrderDetail(params: FindAllOrderDetailParams): Promise<FindAllOrderDetailResponse> {
   try {

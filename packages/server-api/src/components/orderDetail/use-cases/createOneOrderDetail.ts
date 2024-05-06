@@ -1,5 +1,6 @@
+import { BadRequestError, ConflictError } from '@/errors';
 import OrderDetailModel from '@/models/order.detail.model';
-import { BadRequestError, ConflictError, CreateOneOrderDetailParams } from '@enigma-laboratory/shared';
+import { CreateOneOrderDetailParams } from '@enigma-laboratory/shared';
 import { OrderDetailValidation } from '../validation';
 
 export async function createOrderDetail(params: CreateOneOrderDetailParams): Promise<CreateOneOrderDetailParams> {

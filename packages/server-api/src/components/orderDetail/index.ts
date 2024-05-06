@@ -18,7 +18,8 @@ export async function getAllOrderDetailHandler(req: Request, res: Response, next
 
 export async function getOneOrderDetailHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const orderDetail = await OrderDetailUseCases.deleteOneOrderDetail(req.params);
+    const _id = req.params as unknown as string;
+    const orderDetail = await OrderDetailUseCases.deleteOneOrderDetail({ _id });
     res.status(200).send(orderDetail);
   } catch (error: any) {
     logger.error({
@@ -59,7 +60,7 @@ export async function updateOrderDetailHandler(req: Request, res: Response, next
 }
 export async function deleteOneOrderDetailHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const orderDetail = await OrderDetailUseCases.deleteOneOrderDetail(req.params);
+    const orderDetail = await OrderDetailUseCases.deleteOneOrderDetail(req.params as any);
     res.status(200).send(orderDetail);
   } catch (error: any) {
     logger.error({

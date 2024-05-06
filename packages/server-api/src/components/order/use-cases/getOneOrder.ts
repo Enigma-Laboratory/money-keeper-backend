@@ -1,6 +1,7 @@
+import { BadRequestError, ConflictError } from '@/errors';
 import OrderModel from '@/models/order.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
-import { BadRequestError, ConflictError, FindOneOrderParams, FindOneOrderResponse } from '@enigma-laboratory/shared';
+import { FindOneOrderParams, FindOneOrderResponse } from '@enigma-laboratory/shared';
 import { OrderValidation } from '../validation';
 
 export async function getOneOrder(params: FindOneOrderParams): Promise<FindOneOrderResponse> {

@@ -1,8 +1,9 @@
 import { validateUserExistById } from '@/components/user/shared';
+import { UnauthorizedError } from '@/errors';
 import { RequestWithUser } from '@/interface';
 import Config from '@/services/configServices';
 import Jwt from '@/services/jwtServices';
-import { UnauthorizedError, User } from '@enigma-laboratory/shared';
+import { User } from '@enigma-laboratory/shared';
 import { NextFunction, Response } from 'express';
 import { JwtPayload } from 'jsonwebtoken';
 import { get } from 'lodash';

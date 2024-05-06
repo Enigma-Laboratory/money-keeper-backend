@@ -1,6 +1,6 @@
-import { BadRequestError, ConflictError } from '@enigma-laboratory/shared';
-import { removeFieldsNotUse } from '@/shared/transformedData';
+import { BadRequestError, ConflictError } from '@/errors';
 import UserModel from '@/models/user.model';
+import { removeFieldsNotUse } from '@/shared/transformedData';
 import { CreateUserParams, User } from '@enigma-laboratory/shared';
 import { AuthValidation } from '../validation';
 

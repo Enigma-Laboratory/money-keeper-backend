@@ -25,7 +25,7 @@ export interface LoginResponse {
 }
 
 /** Represents the parameters for finding a single user. */
-export interface FindOneUserParams extends GetOneParams {
+export interface FindOneUserParams {
   email?: string;
 }
 export interface FindOneUserResponse extends User {}

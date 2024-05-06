@@ -1,11 +1,8 @@
 import OperationalSettingModel from '@/models/operationalSetting.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
-import {
-  BadRequestError,
-  ConflictError,
-  CreateOneOperationalSettingParams,
-  CreateOneOperationalSettingResponse,
-} from '@enigma-laboratory/shared';
+import { CreateOneOperationalSettingParams, CreateOneOperationalSettingResponse } from '@enigma-laboratory/shared';
+
+import { BadRequestError, ConflictError } from '@/errors';
 import { OperationalSettingValidation } from '../validation';
 
 export async function postCreateOperationalSettings(

@@ -1,4 +1,4 @@
-import { HttpError } from '@enigma-laboratory/shared';
+import { HttpError } from '@/errors';
 import { NextFunction, Request, Response } from 'express';
 
 const AdditionalHttpStatusCodes = (err: HttpError, req: Request, res: Response, next: NextFunction) => {

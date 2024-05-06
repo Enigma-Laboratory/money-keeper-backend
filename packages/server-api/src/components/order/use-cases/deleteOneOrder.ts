@@ -1,11 +1,8 @@
 import OrderModel from '@/models/order.model';
-import {
-  BadRequestError,
-  ConflictError,
-  DeleteOneOrderParams,
-  DeleteOneOrderResponse,
-} from '@enigma-laboratory/shared';
+import { DeleteOneOrderParams, DeleteOneOrderResponse } from '@enigma-laboratory/shared';
 import { OrderValidation } from '../validation';
+
+import { BadRequestError, ConflictError } from '@/errors';
 
 export async function deleteOneOrder(params: DeleteOneOrderParams): Promise<DeleteOneOrderResponse> {
   try {

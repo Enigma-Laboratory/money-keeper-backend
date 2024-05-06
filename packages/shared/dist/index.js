@@ -20,16 +20,9 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // index.ts
 var shared_exports = {};
 __export(shared_exports, {
-  BadRequestError: () => BadRequestError,
-  ConflictError: () => ConflictError,
-  ForbiddenError: () => ForbiddenError,
-  HttpError: () => HttpError,
-  InternalServerError: () => InternalServerError,
-  NotFoundError: () => NotFoundError,
   OrderDetailMode: () => OrderDetailMode,
   OrderStatus: () => OrderStatus,
   ProductType: () => ProductType,
-  UnauthorizedError: () => UnauthorizedError,
   UserTypes: () => UserTypes,
   clearAllIds: () => clearAllIds,
   createId: () => createId,
@@ -100,81 +93,11 @@ var createId = (proposedId) => {
 };
 var removeId = (id) => usedIds.delete(id);
 var clearAllIds = () => usedIds.clear();
-
-// src/errors/httpError.ts
-var import_http = require("http");
-var HttpError = class extends Error {
-  constructor(status, message, name, component) {
-    super(message);
-    this.status = status || 500;
-    this.message = message || import_http.STATUS_CODES[this.status] || "HttpError";
-    Error.captureStackTrace(this, this.constructor);
-    if (component)
-      this.component = component;
-  }
-  toObject() {
-    return {
-      status: this.status,
-      message: this.message,
-      stack: this.stack,
-      ...this.component && { component: this.component }
-    };
-  }
-};
-
-// src/errors/BadRequestError.ts
-var BadRequestError = class extends HttpError {
-  constructor(message = "Bad request", component) {
-    super(400, message, "BadRequestError", component);
-  }
-};
-
-// src/errors/ConflictError.ts
-var ConflictError = class extends HttpError {
-  constructor(message = "Conflict", component) {
-    super(409, message, "ConflictError", component);
-  }
-};
-
-// src/errors/ForbiddenError.ts
-var ForbiddenError = class extends HttpError {
-  constructor(message = "Forbidden", component) {
-    super(403, message, "ForbiddenError", component);
-  }
-};
-
-// src/errors/InternalServerError.ts
-var InternalServerError = class extends HttpError {
-  constructor(message = "Internal Server Error", component) {
-    super(500, message, "InternalServerError", component);
-  }
-};
-
-// src/errors/NotFoundError.ts
-var NotFoundError = class extends HttpError {
-  constructor(message = "Not Found", component) {
-    super(404, message, "NotFoundError", component);
-  }
-};
-
-// src/errors/UnauthorizedError.ts
-var UnauthorizedError = class extends HttpError {
-  constructor(message = "Unauthorized", component) {
-    super(401, message, "UnauthorizedError", component);
-  }
-};
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  BadRequestError,
-  ConflictError,
-  ForbiddenError,
-  HttpError,
-  InternalServerError,
-  NotFoundError,
   OrderDetailMode,
   OrderStatus,
   ProductType,
-  UnauthorizedError,
   UserTypes,
   clearAllIds,
   createId,

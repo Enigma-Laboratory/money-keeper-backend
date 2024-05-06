@@ -1,5 +1,5 @@
+import { ConflictError } from '@/errors';
 import UserModel from '@/models/user.model';
-import { ConflictError } from '@enigma-laboratory/shared';
 import { omit } from 'lodash';
 
 export async function validatePassword({ email, password }: { email: string; password: string }) {

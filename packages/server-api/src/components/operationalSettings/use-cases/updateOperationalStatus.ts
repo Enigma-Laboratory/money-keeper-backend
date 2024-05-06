@@ -1,12 +1,10 @@
 import OperationalSettingModel from '@/models/operationalSetting.model';
 import OrderModel from '@/models/order.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
-import {
-  BadRequestError,
-  InternalServerError,
-  UpdateOneOperationalSettingParams,
-  UpdateOneOperationalSettingResponse,
-} from '@enigma-laboratory/shared';
+import { UpdateOneOperationalSettingParams, UpdateOneOperationalSettingResponse } from '@enigma-laboratory/shared';
+
+import { BadRequestError, InternalServerError } from '@/errors';
+
 import { OperationalSettingValidation } from '../validation';
 
 export async function updateOperationalStatus(
