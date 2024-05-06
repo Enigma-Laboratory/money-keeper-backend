@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+/.vscode
+
 
 /packages/server-api/node_modules
 /packages/shared/node_modules
