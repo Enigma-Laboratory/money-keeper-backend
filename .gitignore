@@ -7,12 +7,7 @@
 /.vscode
 
 
-/packages/server-api/node_modules
-/packages/shared/node_modules
-/packages/shared/.env.local
-/packages/shared/.env.development.local
-/packages/shared/.env.test.local
-/packages/shared/.env.production.local
+
 # testing
 /coverage
 
