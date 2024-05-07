@@ -54,10 +54,9 @@ export class OrderValidation {
       name: Joi.string().required(),
       userId: Joi.string().required(),
       createdOrderAt: Joi.date().required(),
-      products: Joi.array().items(Joi.object()).optional(),
-      user: Joi.object().optional(),
-      event: Joi.array().items(Joi.object()).optional(),
+      products: Joi.array().items(Joi.object()).required(),
       groupId: Joi.string().required(),
+      description: Joi.string().optional(),
     });
     return schema.validate(params);
   }
@@ -67,15 +66,10 @@ export class OrderValidation {
       _id: Joi.string().required(),
       name: Joi.string().required(),
       userId: Joi.string().required(),
-      createdAt: Joi.date().optional(),
-      updatedAt: Joi.date().optional(),
       createdOrderAt: Joi.date().required(),
-      status: Joi.string().optional(),
-      amount: Joi.number().required(),
-      products: Joi.array().items(Joi.object()).optional(),
-      user: Joi.object().optional(),
-      event: Joi.array().items(Joi.object()).optional(),
-      groupId: Joi.string().optional(),
+      products: Joi.array().items(Joi.object()).required(),
+      groupId: Joi.string().required(),
+      description: Joi.string().optional(),
     });
     return schema.validate(params);
   }

@@ -1,10 +1,11 @@
 import OrderModel, { OrderDocument } from '@/models/order.model';
-import { UpdateOrderEventParams, UpdateOrderEventResponse } from '@enigma-laboratory/shared';
+import { OrderEvent, UpdateOrderEventParams, UpdateOrderEventResponse, User } from '@enigma-laboratory/shared';
 import { OrderValidation } from '../validation';
 
+import { CreateApplication } from '@/app';
 import { BadRequestError } from '@/errors';
 
-export async function updateOrderEvent(params: UpdateOrderEventParams): Promise<UpdateOrderEventResponse> {
+export async function updateOrderEvent(user: User, params: UpdateOrderEventParams): Promise<UpdateOrderEventResponse> {
   try {
     // Validate the input parameters
     const validationResult = OrderValidation.instance.updateOrderEvent(params);
@@ -27,10 +28,11 @@ export async function updateOrderEvent(params: UpdateOrderEventParams): Promise<
       order.event.push({
         status: params.status,
         date: params.date || new Date(),
+        userId: user._id,
       });
 
     await order.save();
-
+    CreateApplication.instance.socket?.broadcast.emit(OrderEvent.UPDATED, order);
     return { result: 1 };
   } catch (error: any) {
     console.log(error);

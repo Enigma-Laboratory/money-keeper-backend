@@ -1,7 +1,8 @@
 import OrderModel from '@/models/order.model';
-import { DeleteOneOrderParams, DeleteOneOrderResponse } from '@enigma-laboratory/shared';
+import { DeleteOneOrderParams, DeleteOneOrderResponse, OrderEvent } from '@enigma-laboratory/shared';
 import { OrderValidation } from '../validation';
 
+import { CreateApplication } from '@/app';
 import { BadRequestError, ConflictError } from '@/errors';
 
 export async function deleteOneOrder(params: DeleteOneOrderParams): Promise<DeleteOneOrderResponse> {
@@ -10,6 +11,7 @@ export async function deleteOneOrder(params: DeleteOneOrderParams): Promise<Dele
     if (validate.error) throw new BadRequestError(validate.error.message);
 
     const deleted = await OrderModel.deleteOne(params);
+    CreateApplication.instance.socket?.broadcast.emit(OrderEvent.DELETE, deleted);
     return { result: deleted.deletedCount };
   } catch (error: any) {
     throw new ConflictError(error.message);

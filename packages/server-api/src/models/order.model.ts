@@ -1,4 +1,4 @@
-import { Order, OrderEvent, OrderStatus, Product, User } from '@enigma-laboratory/shared';
+import { LogOrderEvent, Order, OrderStatus, Product } from '@enigma-laboratory/shared';
 import { Document, Schema, model } from 'mongoose';
 import { productSchema } from './product.model';
 
@@ -10,16 +10,16 @@ export interface OrderDocument extends Order, Document {
   updatedAt: Date;
   createdOrderAt: Date;
   status: OrderStatus;
-  products?: Product[];
-  user?: User;
-  event?: OrderEvent[];
+  products: Product[];
+  event: LogOrderEvent[];
   orderNumber: number;
-  groupId?: string;
+  groupId: string;
 }
 
 const orderEventSchema = new Schema({
   date: { type: Date, required: true },
   status: { type: String, required: true },
+  userId: { type: String, required: true },
 });
 
 const orderSchema: Schema<OrderDocument> = new Schema<OrderDocument>({
@@ -29,10 +29,9 @@ const orderSchema: Schema<OrderDocument> = new Schema<OrderDocument>({
   updatedAt: { type: Date, default: Date.now },
   createdOrderAt: { type: Date, required: true },
   status: { type: String, required: true },
-  products: [productSchema], // Reference to Product documents
-  user: { type: Schema.Types.ObjectId, ref: 'User' }, // Reference to User document
-  event: [orderEventSchema], // Embedded array of OrderEvent documents
-  orderNumber: { type: Number }, // Order number
+  products: { type: [productSchema], required: true }, // Reference to Product documents
+  event: { type: [orderEventSchema], required: true }, // Embedded array of OrderEvent documents
+  orderNumber: { type: Number },
   groupId: { type: String, required: true },
 });
 

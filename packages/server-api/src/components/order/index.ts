@@ -1,3 +1,4 @@
+import { RequestWithUser } from '@/interface';
 import logger from '@/utils/logger';
 import { NextFunction, Request, Response } from 'express';
 import * as OrderUseCases from './use-cases';
@@ -115,9 +116,9 @@ export async function updateOneOrderHandler(req: Request, res: Response, next: N
   }
 }
 
-export async function updateOrderEventHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
+export async function updateOrderEventHandler(req: RequestWithUser, res: Response, next: NextFunction): Promise<void> {
   try {
-    const order = await OrderUseCases.updateOrderEvent(req.body);
+    const order = await OrderUseCases.updateOrderEvent(req.actor, req.body);
     logger.info({
       component: 'OrderService',
       func: 'updateOrderEventHandler',

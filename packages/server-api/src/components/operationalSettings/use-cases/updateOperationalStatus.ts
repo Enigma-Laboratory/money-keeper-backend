@@ -1,10 +1,15 @@
 import OperationalSettingModel from '@/models/operationalSetting.model';
 import OrderModel from '@/models/order.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
-import { UpdateOneOperationalSettingParams, UpdateOneOperationalSettingResponse } from '@enigma-laboratory/shared';
+import {
+  OperationalSettingEvent,
+  UpdateOneOperationalSettingParams,
+  UpdateOneOperationalSettingResponse,
+} from '@enigma-laboratory/shared';
 
 import { BadRequestError, InternalServerError } from '@/errors';
 
+import { CreateApplication } from '@/app';
 import { OperationalSettingValidation } from '../validation';
 
 export async function updateOperationalStatus(
@@ -30,7 +35,9 @@ export async function updateOperationalStatus(
 
     if (!groups) throw new BadRequestError("Don't have the group updated.");
 
-    return removeFieldsNotUse(groups);
+    const operationalSettings = removeFieldsNotUse(groups);
+    CreateApplication.instance.socket?.broadcast.emit(OperationalSettingEvent.UPDATED, operationalSettings);
+    return operationalSettings;
   } catch (error: any) {
     throw new InternalServerError(error.message);
   }

@@ -11,6 +11,7 @@ moduleAlias.addAliases({
   '@/errors': path.resolve(__dirname, '..', 'errors'),
   '@/shared': path.resolve(__dirname, '..', 'shared'),
   '@/services': path.resolve(__dirname, '..', 'services'),
+  '@/app': path.resolve(__dirname, '../', 'app.ts'),
 });
 
 export default moduleAlias;

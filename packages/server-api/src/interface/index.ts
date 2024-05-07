@@ -1,3 +1,4 @@
+import { User } from '@enigma-laboratory/shared';
 import { Request } from 'express';
 export interface FindAllParams<Scope = string> {
   scope?: Scope | string;
@@ -16,5 +17,5 @@ export interface FindAllResponse<T> {
 }
 
 export interface RequestWithUser extends Request {
-  actor?: object | string;
+  actor: User;
 }

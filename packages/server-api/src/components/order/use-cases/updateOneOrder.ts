@@ -1,9 +1,10 @@
 import OrderModel from '@/models/order.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
-import { UpdateOneOrderParams, UpdateOneOrderResponse } from '@enigma-laboratory/shared';
+import { OrderEvent, UpdateOneOrderParams, UpdateOneOrderResponse } from '@enigma-laboratory/shared';
 import { omit } from 'lodash';
 import { OrderValidation } from '../validation';
 
+import { CreateApplication } from '@/app';
 import { BadRequestError, ConflictError } from '@/errors';
 
 export async function updateOneOrder(params: UpdateOneOrderParams): Promise<UpdateOneOrderResponse> {
@@ -14,7 +15,10 @@ export async function updateOneOrder(params: UpdateOneOrderParams): Promise<Upda
     const order = await OrderModel.findOneAndUpdate({ _id: params._id }, omit(params, ['id']), { new: true }).lean();
     if (!order) throw new BadRequestError("Don't have the order updated.");
 
-    return removeFieldsNotUse(order);
+    const newOrder = removeFieldsNotUse(order);
+    CreateApplication.instance.socket?.broadcast.emit(OrderEvent.UPDATED, newOrder);
+
+    return newOrder;
   } catch (error: any) {
     throw new ConflictError(error.message);
   }

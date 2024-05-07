@@ -1,9 +1,8 @@
+import { BadRequestError, ConflictError } from '@/errors';
 import OrderModel from '@/models/order.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 import { FindAllOrderParams, FindAllOrderResponse, Order } from '@enigma-laboratory/shared';
 import { OrderValidation } from '../validation';
-
-import { BadRequestError, ConflictError } from '@/errors';
 
 export async function getAllOrders(params: FindAllOrderParams): Promise<FindAllOrderResponse> {
   try {
@@ -12,6 +11,7 @@ export async function getAllOrders(params: FindAllOrderParams): Promise<FindAllO
 
     const orders = await OrderModel.find().lean().exec();
     const convertOrder: Order[] = orders.map(_ => removeFieldsNotUse(_));
+
     return {
       count: orders.length,
       rows: convertOrder,

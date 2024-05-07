@@ -20,9 +20,12 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // index.ts
 var shared_exports = {};
 __export(shared_exports, {
+  OperationalSettingEvent: () => OperationalSettingEvent,
   OrderDetailMode: () => OrderDetailMode,
+  OrderEvent: () => OrderEvent,
   OrderStatus: () => OrderStatus,
   ProductType: () => ProductType,
+  SocketEvents: () => SocketEvents,
   UserTypes: () => UserTypes,
   clearAllIds: () => clearAllIds,
   createId: () => createId,
@@ -33,15 +36,32 @@ __export(shared_exports, {
 });
 module.exports = __toCommonJS(shared_exports);
 
+// src/interfaces/common/common.types.ts
+var SocketEvents = /* @__PURE__ */ ((SocketEvents2) => {
+  SocketEvents2["CONNECTION"] = "connection";
+  SocketEvents2["DISCONNECT"] = "disconnect";
+  SocketEvents2["MESSAGE_RECEIVED"] = "message_received";
+  return SocketEvents2;
+})(SocketEvents || {});
+
 // src/interfaces/order/order.types.ts
 var OrderStatus = /* @__PURE__ */ ((OrderStatus2) => {
-  OrderStatus2["PENDING"] = "pending";
-  OrderStatus2["CANCELLED"] = "cancelled";
   OrderStatus2["PROCESSING"] = "processing";
   OrderStatus2["CONFIRM"] = "confirm";
   OrderStatus2["DONE"] = "done";
+  OrderStatus2["CANCELLED"] = "cancelled";
   return OrderStatus2;
 })(OrderStatus || {});
+var OrderEvent = /* @__PURE__ */ ((OrderEvent2) => {
+  OrderEvent2["CREATED"] = "order:created";
+  OrderEvent2["UPDATED"] = "order:updated";
+  OrderEvent2["DELETED"] = "order:deleted";
+  OrderEvent2["CREATE"] = "order:create";
+  OrderEvent2["UPDATE"] = "order:update";
+  OrderEvent2["READ"] = "order:read";
+  OrderEvent2["DELETE"] = "order:delete";
+  return OrderEvent2;
+})(OrderEvent || {});
 
 // src/interfaces/user/user.types.ts
 var UserTypes = /* @__PURE__ */ ((UserTypes2) => {
@@ -66,6 +86,18 @@ var OrderDetailMode = /* @__PURE__ */ ((OrderDetailMode2) => {
   OrderDetailMode2["CUSTOMIZED"] = "customized";
   return OrderDetailMode2;
 })(OrderDetailMode || {});
+
+// src/interfaces/operationalSetting/operationalSetting.types.ts
+var OperationalSettingEvent = /* @__PURE__ */ ((OperationalSettingEvent2) => {
+  OperationalSettingEvent2["CREATED"] = "operational_setting:created";
+  OperationalSettingEvent2["UPDATED"] = "operational_setting:updated";
+  OperationalSettingEvent2["DELETED"] = "operational_setting:deleted";
+  OperationalSettingEvent2["CREATE"] = "operational_setting:create";
+  OperationalSettingEvent2["UPDATE"] = "operational_setting:update";
+  OperationalSettingEvent2["READ"] = "operational_setting:read";
+  OperationalSettingEvent2["DELETE"] = "operational_setting:delete";
+  return OperationalSettingEvent2;
+})(OperationalSettingEvent || {});
 
 // src/utils/defaultFormatDate.ts
 var defaultDateFormat = "YYYY-MM-DD";
@@ -95,9 +127,12 @@ var removeId = (id) => usedIds.delete(id);
 var clearAllIds = () => usedIds.clear();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
+  OperationalSettingEvent,
   OrderDetailMode,
+  OrderEvent,
   OrderStatus,
   ProductType,
+  SocketEvents,
   UserTypes,
   clearAllIds,
   createId,

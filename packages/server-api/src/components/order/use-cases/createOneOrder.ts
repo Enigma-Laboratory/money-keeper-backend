@@ -1,9 +1,9 @@
+import { CreateApplication } from '@/app';
+import { BadRequestError, ConflictError } from '@/errors';
 import OperationalSettingModel from '@/models/operationalSetting.model';
 import OrderModel from '@/models/order.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
-import { CreateOneOrderParams, CreateOneOrderResponse, OrderStatus } from '@enigma-laboratory/shared';
-
-import { BadRequestError, ConflictError } from '@/errors';
+import { CreateOneOrderParams, CreateOneOrderResponse, OrderEvent, OrderStatus } from '@enigma-laboratory/shared';
 import { OrderValidation } from '../validation';
 
 export async function postCreateOneOrder(params: CreateOneOrderParams): Promise<CreateOneOrderResponse> {
@@ -18,19 +18,20 @@ export async function postCreateOneOrder(params: CreateOneOrderParams): Promise<
     }
 
     const newEvent = {
-      ...(!params.event && {
-        status: OrderStatus.PENDING,
-        event: [
-          {
-            date: new Date(),
-            status: OrderStatus.PENDING,
-          },
-        ],
-      }),
+      status: OrderStatus.PROCESSING,
+      event: [
+        {
+          date: new Date(),
+          status: OrderStatus.PROCESSING,
+          userId: params.userId,
+        },
+      ],
     };
 
     const order = await OrderModel.create({ ...params, ...newEvent });
     if (!order) throw new BadRequestError('Can not create order.');
+
+    CreateApplication.instance.socket?.broadcast.emit(OrderEvent.CREATED, order.toJSON());
 
     return removeFieldsNotUse(order.toJSON());
   } catch (error: any) {
