@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.18](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.1.17...v1.1.18) (2024-05-07)
+
 ### [1.1.17](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.1.16...v1.1.17) (2024-05-07)
 
 
