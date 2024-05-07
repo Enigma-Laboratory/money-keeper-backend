@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.17](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.1.16...v1.1.17) (2024-05-07)
+
+
+### Bug Fixes
+
+* remove http to package server api ([65e630b](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/65e630ba030ab43f80b1fe85b7ffa804f0e5f507))
+
 ### [1.1.16](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.1.15...v1.1.16) (2024-05-06)
 
 ### [1.1.15](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.1.14...v1.1.15) (2024-05-06)
