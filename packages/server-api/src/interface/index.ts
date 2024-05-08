@@ -17,5 +17,5 @@ export interface FindAllResponse<T> {
 }
 
 export interface RequestWithUser extends Request {
-  actor: User;
+  actor?: User;
 }

@@ -1,11 +1,12 @@
 import { RequestWithUser } from '@/interface';
 import logger from '@/utils/logger';
+import { User } from '@enigma-laboratory/shared';
 import { NextFunction, Request, Response } from 'express';
 import * as OrderUseCases from './use-cases';
 
-export async function createOneOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
+export async function createOneOrderHandler(req: RequestWithUser, res: Response, next: NextFunction): Promise<void> {
   try {
-    const order = await OrderUseCases.postCreateOneOrder(req.body);
+    const order = await OrderUseCases.postCreateOneOrder(req?.actor as User, req.body);
     logger.info({
       component: 'OrderService',
       func: 'postCreateOneOrderHandler',
@@ -118,7 +119,7 @@ export async function updateOneOrderHandler(req: Request, res: Response, next: N
 
 export async function updateOrderEventHandler(req: RequestWithUser, res: Response, next: NextFunction): Promise<void> {
   try {
-    const order = await OrderUseCases.updateOrderEvent(req.actor, req.body);
+    const order = await OrderUseCases.updateOrderEvent(req?.actor as User, req.body);
     logger.info({
       component: 'OrderService',
       func: 'updateOrderEventHandler',

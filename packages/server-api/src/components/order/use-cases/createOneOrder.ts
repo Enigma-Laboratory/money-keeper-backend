@@ -3,10 +3,10 @@ import { BadRequestError, ConflictError } from '@/errors';
 import OperationalSettingModel from '@/models/operationalSetting.model';
 import OrderModel from '@/models/order.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
-import { CreateOneOrderParams, CreateOneOrderResponse, OrderEvent, OrderStatus } from '@enigma-laboratory/shared';
+import { CreateOneOrderParams, CreateOneOrderResponse, OrderEvent, OrderStatus, User } from '@enigma-laboratory/shared';
 import { OrderValidation } from '../validation';
 
-export async function postCreateOneOrder(params: CreateOneOrderParams): Promise<CreateOneOrderResponse> {
+export async function postCreateOneOrder(user: User, params: CreateOneOrderParams): Promise<CreateOneOrderResponse> {
   try {
     const validate = OrderValidation.instance.createOneOrderValidate(params);
     if (validate.error) throw new BadRequestError(validate.error.message);
@@ -23,7 +23,7 @@ export async function postCreateOneOrder(params: CreateOneOrderParams): Promise<
         {
           date: new Date(),
           status: OrderStatus.PROCESSING,
-          userId: params.userId,
+          userId: user._id,
         },
       ],
     };
