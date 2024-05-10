@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.1.19...v1.2.0) (2024-05-10)
+
+
+### Features
+
+* setup socket.io for order and operational setting ([5173b51](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/5173b51c2256aef2e062295b43c483e8b4be3a26))
+
+
+### Bug Fixes
+
+* order route ([489f70e](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/489f70ea71e4928f704abac3d12fd7183921142b))
+
 ### [1.1.19](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.1.18...v1.1.19) (2024-05-07)
 
 ### [1.1.18](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.1.17...v1.1.18) (2024-05-07)
