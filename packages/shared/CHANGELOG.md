@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.2.0...v1.2.1) (2024-05-12)
+
+
+### Bug Fixes
+
+* handle publish event emit socket with CRUD ([715f114](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/715f114ce98a43ccf3b424c4c39d192dd875795f))
+
 ## [1.2.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.1.19...v1.2.0) (2024-05-10)
 
 
