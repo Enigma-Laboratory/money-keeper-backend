@@ -36,7 +36,8 @@ export async function updateOperationalStatus(
     if (!groups) throw new BadRequestError("Don't have the group updated.");
 
     const operationalSettings = removeFieldsNotUse(groups);
-    CreateApplication.instance.socket?.broadcast.emit(OperationalSettingEvent.UPDATED, operationalSettings);
+
+    CreateApplication.instance.broadcastEvent(OperationalSettingEvent.UPDATED, operationalSettings);
     return operationalSettings;
   } catch (error: any) {
     throw new InternalServerError(error.message);

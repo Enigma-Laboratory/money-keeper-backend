@@ -13,8 +13,7 @@ export class CreateApplication {
   private static _instance: CreateApplication;
   private app: Express;
   private server: http.Server;
-  private ioInstance: Server | undefined;
-  public socket: Socket | undefined;
+  private io: Server | undefined;
 
   private constructor() {
     this.app = express();
@@ -41,20 +40,30 @@ export class CreateApplication {
 
   private initSocketIO(): void {
     logger.info(`✔️ Init socketIO`);
-    this.ioInstance = new Server(this.server, {
+    this.io = new Server(this.server, {
       cors: {
         origin: '*',
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
       },
     });
 
-    this.ioInstance.on(SocketEvents.CONNECTION, (socket: Socket) => {
+    this.io.on(SocketEvents.CONNECTION, (socket: Socket) => {
       logger.debug(`🚀 Socket.IO: Client connected - ID: ${socket.id}`);
-      this.socket = socket;
+
+      socket.onAnyOutgoing((eventName, ...args) => {
+        logger.debug({ args }, `🔊 Socket.IO: ${socket.id} emitted event '${eventName}' with data:`);
+      });
+
       socket.on(SocketEvents.DISCONNECT, reason => {
         logger.debug(`🚀 Socket ${socket.id} disconnected due to ${reason}`);
       });
     });
+  }
+
+  public broadcastEvent<T = any>(eventName: string, eventData: T): void {
+    if (this.io) {
+      this.io.emit(eventName, eventData);
+    }
   }
 
   private setupRoutes(): void {

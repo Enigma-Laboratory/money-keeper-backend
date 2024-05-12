@@ -16,7 +16,8 @@ export async function updateOneOrder(params: UpdateOneOrderParams): Promise<Upda
     if (!order) throw new BadRequestError("Don't have the order updated.");
 
     const newOrder = removeFieldsNotUse(order);
-    CreateApplication.instance.socket?.broadcast.emit(OrderEvent.UPDATED, newOrder);
+
+    CreateApplication.instance.broadcastEvent(OrderEvent.UPDATED, newOrder);
 
     return newOrder;
   } catch (error: any) {

@@ -1,4 +1,4 @@
-import { BadRequestError, ConflictError } from '@/errors';
+import { BadRequestError, InternalServerError } from '@/errors';
 import UserModel from '@/models/user.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 import { CreateUserParams, User } from '@enigma-laboratory/shared';
@@ -14,6 +14,6 @@ export async function signUp(params: CreateUserParams): Promise<User> {
 
     return removeFieldsNotUse(user).toJSON();
   } catch (error: any) {
-    throw new ConflictError(error.message);
+    throw new InternalServerError(error.message);
   }
 }

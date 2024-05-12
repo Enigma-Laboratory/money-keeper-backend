@@ -31,7 +31,7 @@ export async function postCreateOneOrder(user: User, params: CreateOneOrderParam
     const order = await OrderModel.create({ ...params, ...newEvent });
     if (!order) throw new BadRequestError('Can not create order.');
 
-    CreateApplication.instance.socket?.broadcast.emit(OrderEvent.CREATED, order.toJSON());
+    CreateApplication.instance.broadcastEvent(OrderEvent.CREATED, order.toJSON());
 
     return removeFieldsNotUse(order.toJSON());
   } catch (error: any) {

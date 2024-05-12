@@ -11,7 +11,9 @@ export async function deleteOneOrder(params: DeleteOneOrderParams): Promise<Dele
     if (validate.error) throw new BadRequestError(validate.error.message);
 
     const deleted = await OrderModel.deleteOne(params);
-    CreateApplication.instance.socket?.broadcast.emit(OrderEvent.DELETE, deleted);
+
+    CreateApplication.instance.broadcastEvent(OrderEvent.DELETED, deleted);
+
     return { result: deleted.deletedCount };
   } catch (error: any) {
     throw new ConflictError(error.message);

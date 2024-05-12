@@ -1,7 +1,7 @@
 import Config from '@/services/configServices';
 import { User } from '@enigma-laboratory/shared';
 import bcrypt from 'bcrypt';
-import { Document, Schema, model } from 'mongoose';
+import { Document, Schema, Types, model } from 'mongoose';
 
 export interface UserDocument extends User, Document {
   _id: string;
@@ -12,15 +12,22 @@ export interface UserDocument extends User, Document {
 
 export const userSchema = new Schema(
   {
+    id: {
+      type: String,
+      required: true,
+      unique: true,
+      default: () => new Types.ObjectId().toString(),
+    },
     email: { type: String, required: true, unique: true },
     name: { type: String, required: true },
     password: { type: String, required: true },
     address: { type: String, required: false },
     numberPhone: { type: String, required: false },
-    image: { type: String },
+    image: { type: String, required: false },
   },
   {
     timestamps: true,
+    primaryKey: 'id',
   },
 );
 

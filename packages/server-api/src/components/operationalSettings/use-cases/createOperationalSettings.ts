@@ -31,7 +31,8 @@ export async function postCreateOperationalSettings(
 
     const operationalSetting = removeFieldsNotUse(order.toJSON());
 
-    CreateApplication.instance.socket?.broadcast.emit(OperationalSettingEvent.CREATED, operationalSetting);
+    CreateApplication.instance.broadcastEvent(OperationalSettingEvent.CREATED, operationalSetting);
+
     return operationalSetting;
   } catch (error: any) {
     throw new ConflictError(error.message);

@@ -16,4 +16,9 @@ export enum SocketEvents {
    * Event emitted when a message is received via the socket connection.
    */
   MESSAGE_RECEIVED = 'message_received',
+
+  /**
+   * Event emitted when a socket join room.
+   */
+  JOIN_ROOM = 'join_room',
 }

@@ -14,6 +14,7 @@ export interface Order {
   products: Product[];
   event: LogOrderEvent[];
   groupId: string;
+  orderNumber: string;
   description?: string;
 }
 
@@ -41,7 +42,8 @@ export interface FindAllOrderParams extends FindAllParams {
 export interface FindAllOrderResponse extends FindAllResponse<Order> {}
 
 /** Represents the parameters for creating a new order. */
-export interface CreateOneOrderParams extends Omit<Order, '_id' | 'createdAt' | 'updatedAt' | 'status' | 'event'> {}
+export interface CreateOneOrderParams
+  extends Omit<Order, '_id' | 'createdAt' | 'orderNumber' | 'updatedAt' | 'status' | 'event'> {}
 
 /** Represents the response structure for finding multiple orders.  */
 export interface CreateOneOrderResponse extends Order {}
