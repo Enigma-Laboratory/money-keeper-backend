@@ -3,7 +3,7 @@ import UserModel from '@/models/user.model';
 
 export async function validateUserExistById(id: string): Promise<any> {
   try {
-    const user = await UserModel.findOne({ id });
+    const user = await UserModel.findById(id);
     if (!user) throw new NotFoundError('validate user exist by id error.');
     return user;
   } catch (error: any) {
