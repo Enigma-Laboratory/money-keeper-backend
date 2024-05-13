@@ -110,6 +110,7 @@ var SocketEvents = /* @__PURE__ */ ((SocketEvents2) => {
   SocketEvents2["CONNECTION"] = "connection";
   SocketEvents2["DISCONNECT"] = "disconnect";
   SocketEvents2["MESSAGE_RECEIVED"] = "message_received";
+  SocketEvents2["JOIN_ROOM"] = "join_room";
   return SocketEvents2;
 })(SocketEvents || {});
 
@@ -171,7 +172,7 @@ var OperationalSettingEvent = /* @__PURE__ */ ((OperationalSettingEvent2) => {
 // src/utils/defaultFormatDate.ts
 var defaultDateFormat = "YYYY-MM-DD";
 var defaultTimeFormat = "HH:mm:ss";
-var defaultDateTimeFormat = "YYYY-MM-DDTHH:mm:ss.sssZ";
+var defaultDateTimeFormat = "DD/MM/YYYY HH:mm:ss";
 
 // src/utils/ids.ts
 var usedIds = /* @__PURE__ */ new Set();
