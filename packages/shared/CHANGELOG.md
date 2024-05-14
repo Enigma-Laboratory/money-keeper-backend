@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.3](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.2.2...v1.2.3) (2024-05-14)
+
+
+### Bug Fixes
+
+* accept address locolhost:4000 ([b7450cd](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/b7450cd8a1822f211e6d98123a8b2705a3255a49))
+* can user model not use id ([1452d82](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/1452d82e6c9320448ae1b16938f2ac3ee1e82a51))
+* remove field id from collection user but not change access token when fetching old field ([e44089a](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/e44089a7c042e8d1044cbbf28b872208b4363b1c))
+
 ### [1.2.2](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.2.1...v1.2.2) (2024-05-12)
 
 ### [1.2.1](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.2.0...v1.2.1) (2024-05-12)
