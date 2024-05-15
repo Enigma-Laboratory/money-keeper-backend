@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.2.6...v1.3.0) (2024-05-15)
+
+
+### Features
+
+* add nodemailer && handle CRUD update user ([27bfa00](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/27bfa0082287651e8dee57239c9687463e380cc9))
+
+
+### Bug Fixes
+
+* build pipe line ([8fa3000](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/8fa300052cf16e97c91226d3fb170b2c3583f905))
+* delete order && update order event ([52b83a5](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/52b83a51bffaa3b6cda71d76262f320ebfa0a8b9))
+* user create order allow edit ([203f789](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/203f789a68e9c1ffd3005dd2d40e242463515604))
+
 ### [1.2.6](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.2.5...v1.2.6) (2024-05-15)
 
 ### [1.2.5](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.2.4...v1.2.5) (2024-05-14)
