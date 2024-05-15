@@ -21,7 +21,7 @@ export async function updateOperationalStatus(
 
     const orders = await OrderModel.find({ groupId: params?._id });
 
-    if ((orders || []).some(order => order.status !== 'done')) {
+    if ((orders || []).some(order => Object.values(order.usersStatus || {}).some(value => value !== 'done'))) {
       throw new BadRequestError('The order status is not done ');
     }
 

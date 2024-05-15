@@ -49,7 +49,7 @@ jobs:
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
       - name: Install PNPM
         run: npm install -g pnpm
-      - name: Change to 'packages' directory and run commands
+      - name: Install dependencies, build interfaces, and bump version
         run: |
           pnpm  bootstrap
           pnpm build:interfaces
@@ -57,7 +57,7 @@ jobs:
       - name: Get latest version
         id: get_version
         run: echo ::set-output name=bump-version:$(npm show @enigma-laboratory/shared version )
-      - name: Update commit with new version
+      - name: Push changes and tags to main branch
         run: |
           git push --follow-tags origin main
         env:
@@ -72,7 +72,7 @@ jobs:
     needs: [build-package]
     if: ${{ github.event_name == 'push' }}
     steps:
-      - name: Deploy to production
+      - name: Deploy to Production
         uses: johnbeynon/render-deploy-action@v0.0.8
         with:
           service-id: ${{ secrets.SERVICE_ID }}
