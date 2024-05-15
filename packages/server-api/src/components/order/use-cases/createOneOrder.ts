@@ -26,6 +26,10 @@ export async function postCreateOneOrder(user: User, params: CreateOneOrderParam
 
     const userIds = uniqueUserIdsByProduct(params.products);
 
+    if (!userIds.includes(params.userId)) {
+      userIds.push(params.userId);
+    }
+
     const newEvent = {
       usersStatus: userIds.reduce(
         (acc, userId) => {
