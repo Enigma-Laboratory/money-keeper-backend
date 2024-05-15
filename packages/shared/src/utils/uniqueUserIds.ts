@@ -1,4 +1,4 @@
-import { Order } from 'interfaces';
+import { Order } from '../interfaces';
 
 /**
  * Extracts unique user IDs from a list of products.
