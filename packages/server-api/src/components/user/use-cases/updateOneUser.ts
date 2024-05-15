@@ -2,12 +2,29 @@ import { BadRequestError, InternalServerError } from '@/errors';
 import UserModel from '@/models/user.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
 import { UpdateOneUserParams } from '@enigma-laboratory/shared';
-import { omit } from 'lodash';
+import { UserValidation } from '../validation';
 
 export async function updateOneUser(params: UpdateOneUserParams) {
   try {
-    const user = await UserModel.findOneAndUpdate({ _id: params._id }, omit(params, ['id']), { new: true });
-    if (!user) throw new BadRequestError("Don't have the user updated.");
+    const validate = UserValidation.instance.updateOneUserValidation(params);
+    if (validate.error) throw new BadRequestError(validate.error.message);
+
+    const { email, _id, ...remaining } = params;
+
+    let query: any = {};
+    if (_id) {
+      query = { _id: params._id };
+    } else if (email) {
+      query = { email: params.email };
+    } else {
+      throw new Error('Invalid identifier');
+    }
+
+    const user = await UserModel.findOneAndUpdate(query, remaining, { new: true }).lean();
+
+    if (!user) {
+      throw new BadRequestError('User not found or not updated.');
+    }
 
     return removeFieldsNotUse(user);
   } catch (error: any) {

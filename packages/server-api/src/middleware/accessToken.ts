@@ -8,10 +8,12 @@ import { NextFunction, Response } from 'express';
 import { JwtPayload } from 'jsonwebtoken';
 import { get } from 'lodash';
 
+const excludedPaths = ['sign-in', 'sign-up', 'forget-password'];
+
 export const accessToken = async (req: RequestWithUser, res: Response, next: NextFunction) => {
   const accessToken = get(req, 'headers.authorization', '').replace(/^Bearer\s/, '');
   try {
-    if (req.url.includes('sign-in') || req.url.includes('sign-up')) return next();
+    if (excludedPaths.some(path => req.url.includes(path))) return next();
     if (!accessToken) throw new UnauthorizedError('accessToken not exist.');
     const { decoded, expired } = Jwt.verifyJwt(accessToken, Config.instance.accessTokenSecret);
 

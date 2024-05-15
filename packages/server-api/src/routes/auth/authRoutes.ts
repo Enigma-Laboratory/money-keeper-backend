@@ -33,4 +33,19 @@ route.post('/sign-in', AuthComponent.signInHandler);
  */
 route.post('/sign-up', AuthComponent.signUpHandler);
 
+/**
+ * post /forget-password
+ * @summary Forget password
+ *
+ * @tags user
+ *
+ * @param {ForgetPasswordParams} email.body.required - The email address of the user
+ *
+ * @return {string} 200 - A message indicating that the password reset instructions have been sent
+ * @return {Error} 400 - Bad request, invalid email format
+ * @return {Error} 404 - User not found with the provided email address
+ * @return {Error} default - Unexpected error
+ */
+route.post('/forget-password', AuthComponent.resetPasswordHandler);
+
 export default route;

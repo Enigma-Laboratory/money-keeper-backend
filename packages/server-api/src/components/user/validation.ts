@@ -1,4 +1,3 @@
-import { BadRequestError } from '@/errors';
 import { FindOneUserParams, UpdateOneUserParams } from '@enigma-laboratory/shared';
 import Joi, { ValidationResult } from 'joi';
 
@@ -20,13 +19,17 @@ export class UserValidation {
     return schema.validate(params);
   }
 
-  public updateOneUserValidation(params: UpdateOneUserParams): void {
+  public updateOneUserValidation(params: UpdateOneUserParams): ValidationResult<UpdateOneUserParams> {
     const schema = Joi.object({
-      _id: Joi.string().required(),
-      name: Joi.string().required(),
+      _id: Joi.string().optional(),
+      email: Joi.string().optional(),
+      name: Joi.string().optional(),
+      address: Joi.string().optional(),
+      numberPhone: Joi.string().optional(),
+      image: Joi.string().optional(),
+      password: Joi.string().optional(),
     });
 
-    const validate = schema.validate(params);
-    if (validate.error) throw new BadRequestError(validate.error.message);
+    return schema.validate(params);
   }
 }

@@ -1,5 +1,5 @@
-import { NextFunction, Response, Request } from 'express';
 import logger from '@/utils/logger';
+import { NextFunction, Request, Response } from 'express';
 import * as AuthUseCases from './use-cases';
 
 export interface RequestWithUser extends Request {
@@ -28,6 +28,20 @@ export async function signUpHandler(req: RequestWithUser, res: Response, next: N
     logger.error({
       component: 'AuthService',
       func: 'postSignUpHandler',
+      additionalInfo: error,
+    });
+    return next(error);
+  }
+}
+
+export async function resetPasswordHandler(req: RequestWithUser, res: Response, next: NextFunction): Promise<void> {
+  try {
+    await AuthUseCases.resetPasswordByEmail(req.body.email);
+    res.status(200).send({ message: 'Password reset instructions have been sent to your email address' });
+  } catch (error) {
+    logger.error({
+      component: 'AuthService',
+      func: 'postForgotPasswordHandler',
       additionalInfo: error,
     });
     return next(error);

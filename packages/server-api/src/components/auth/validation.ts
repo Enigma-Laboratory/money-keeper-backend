@@ -26,4 +26,12 @@ export class AuthValidation {
     });
     return schema.validate(params);
   }
+
+  public forgotPasswordValidate(params: { email: string }): ValidationResult<{ email: string }> {
+    console.log(' params', params);
+    const schema = Joi.object({
+      email: Joi.string().email().required(),
+    });
+    return schema.validate(params);
+  }
 }
