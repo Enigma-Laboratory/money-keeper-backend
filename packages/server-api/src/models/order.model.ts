@@ -9,7 +9,7 @@ export interface OrderDocument extends Order, Document {
   createdAt: Date;
   updatedAt: Date;
   createdOrderAt: Date;
-  status: OrderStatus;
+  usersStatus: { [userId: string]: OrderStatus };
   products: Product[];
   event: LogOrderEvent[];
   orderNumber: number;
@@ -28,11 +28,11 @@ const orderSchema: Schema<OrderDocument> = new Schema<OrderDocument>({
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
   createdOrderAt: { type: Date, required: true },
-  status: { type: String, required: true },
   products: { type: [productSchema], required: true }, // Reference to Product documents
   event: { type: [orderEventSchema], required: true }, // Embedded array of OrderEvent documents
   orderNumber: { type: Number },
   groupId: { type: String, required: true },
+  usersStatus: { type: Map, of: String, enum: Object.values(OrderStatus) },
 });
 
 orderSchema.pre<OrderDocument>('save', async function (next) {

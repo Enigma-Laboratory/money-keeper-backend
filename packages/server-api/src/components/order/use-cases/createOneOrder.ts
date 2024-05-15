@@ -3,7 +3,14 @@ import { BadRequestError, ConflictError } from '@/errors';
 import OperationalSettingModel from '@/models/operationalSetting.model';
 import OrderModel from '@/models/order.model';
 import { removeFieldsNotUse } from '@/shared/transformedData';
-import { CreateOneOrderParams, CreateOneOrderResponse, OrderEvent, OrderStatus, User } from '@enigma-laboratory/shared';
+import {
+  CreateOneOrderParams,
+  CreateOneOrderResponse,
+  OrderEvent,
+  OrderStatus,
+  User,
+  uniqueUserIdsByProduct,
+} from '@enigma-laboratory/shared';
 import { OrderValidation } from '../validation';
 
 export async function postCreateOneOrder(user: User, params: CreateOneOrderParams): Promise<CreateOneOrderResponse> {
@@ -17,15 +24,17 @@ export async function postCreateOneOrder(user: User, params: CreateOneOrderParam
       throw new BadRequestError(' The group name is closed');
     }
 
+    const userIds = uniqueUserIdsByProduct(params.products);
+
     const newEvent = {
-      status: OrderStatus.PROCESSING,
-      event: [
-        {
-          date: new Date(),
-          status: OrderStatus.PROCESSING,
-          userId: user._id,
+      usersStatus: userIds.reduce(
+        (acc, userId) => {
+          acc[userId] = OrderStatus.PROCESSING;
+          return acc;
         },
-      ],
+        {} as { [key: string]: OrderStatus },
+      ),
+      event: userIds.map(userId => ({ userId, date: new Date(), status: OrderStatus.PROCESSING })),
     };
 
     const order = await OrderModel.create({ ...params, ...newEvent });

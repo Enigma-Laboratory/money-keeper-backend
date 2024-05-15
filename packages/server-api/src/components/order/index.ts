@@ -81,7 +81,7 @@ export async function getOrderDetailByOrderIdHandler(req: Request, res: Response
 
 export async function deleteOneOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const deleteOrder = await OrderUseCases.deleteOneOrder(req.body);
+    const deleteOrder = await OrderUseCases.deleteOneOrder({ _id: req.params.id });
     logger.info({
       component: 'OrderService',
       func: 'deleteOneOrderHandler',

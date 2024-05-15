@@ -20,13 +20,8 @@ export async function updateOrderEvent(user: User, params: UpdateOrderEventParam
     }
 
     // update order status
-    order.status = params.status;
+    (order.usersStatus as unknown as Map<string, string>).set(user._id, params.status);
 
-    const isDoneOrder = order.event
-      .filter(({ userId }) => userId === user._id)
-      .some(({ status }) => status === params.status);
-    //insert orderEvent
-    // !isDoneOrder &&
     order.event.push({
       status: params.status,
       date: params.date || new Date(),

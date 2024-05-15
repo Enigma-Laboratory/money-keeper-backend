@@ -39,7 +39,8 @@ __export(shared_exports, {
   defaultDateFormat: () => defaultDateFormat,
   defaultDateTimeFormat: () => defaultDateTimeFormat,
   defaultTimeFormat: () => defaultTimeFormat,
-  removeId: () => removeId
+  removeId: () => removeId,
+  uniqueUserIdsByProduct: () => uniqueUserIdsByProduct
 });
 module.exports = __toCommonJS(shared_exports);
 
@@ -195,6 +196,11 @@ var createId = (proposedId) => {
 };
 var removeId = (id) => usedIds.delete(id);
 var clearAllIds = () => usedIds.clear();
+
+// src/utils/uniqueUserIds.ts
+var uniqueUserIdsByProduct = (products) => {
+  return Array.from(new Set(products.flatMap(({ userIds }) => userIds)));
+};
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BadRequestError,
@@ -216,5 +222,6 @@ var clearAllIds = () => usedIds.clear();
   defaultDateFormat,
   defaultDateTimeFormat,
   defaultTimeFormat,
-  removeId
+  removeId,
+  uniqueUserIdsByProduct
 });
