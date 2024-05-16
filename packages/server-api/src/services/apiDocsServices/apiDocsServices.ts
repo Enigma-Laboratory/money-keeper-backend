@@ -1,7 +1,7 @@
-import Config from "@/services/configServices";
-import { RequestHandler } from "express";
-import swaggerJsdoc, { Options } from "swagger-jsdoc";
-import swaggerUi from "swagger-ui-express";
+import Config from '@/services/configServices';
+import { RequestHandler } from 'express';
+import swaggerJsdoc, { Options } from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
 export default class SwaggerUI {
   private static _instance: SwaggerUI;
@@ -18,31 +18,31 @@ export default class SwaggerUI {
     this.port = Config.instance.port;
     this.options = {
       definition: {
-        openapi: "3.1.0",
+        openapi: '3.1.0',
         info: {
-          title: "Nodejs API for Money Keeper Project + mongodb",
-          version: "1.0.0",
+          title: 'Nodejs API for Money Keeper Project + mongodb',
+          version: '1.0.0',
         },
         servers: [
           {
-            url: "http://localhost:" + this.port,
-            description: "Development server",
+            url: 'http://localhost:' + this.port,
+            description: 'Development server',
           },
           {
-            url: "https://money-keeper-dev.onrender.com",
-            description: "Production server",
+            url: 'https://money-keeper-dev.onrender.com',
+            description: 'Production server',
           },
         ],
         tags: [
-          { name: "user", description: "" },
-          { name: "auth", description: "" },
-          { name: "order", description: "" },
-          { name: "order detail", description: "" },
-          { name: "product", description: "" },
-          { name: "session", description: "" },
+          { name: 'user', description: '' },
+          { name: 'auth', description: '' },
+          { name: 'order', description: '' },
+          { name: 'order detail', description: '' },
+          { name: 'product', description: '' },
+          { name: 'session', description: '' },
         ],
       },
-      apis: ["./src/services/apiDocsServices/swagger/*.yaml"],
+      apis: ['./src/services/apiDocsServices/swagger/*.yaml'],
     };
     this.swaggerSpec = swaggerJsdoc(this.options);
   }

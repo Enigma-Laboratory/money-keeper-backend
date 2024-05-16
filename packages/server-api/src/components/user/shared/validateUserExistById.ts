@@ -1,12 +1,12 @@
-import UserModel from "@/models/user.model";
-import { BadRequestError, ConflictError } from "@enigma-laboratory/shared";
+import { InternalServerError, NotFoundError } from '@/errors';
+import UserModel from '@/models/user.model';
 
 export async function validateUserExistById(id: string): Promise<any> {
   try {
-    const user = await UserModel.findOne({ id });
-    if (!user) throw new BadRequestError("validate user exist by id error.");
+    const user = await UserModel.findById(id);
+    if (!user) throw new NotFoundError('validate user exist by id error.');
     return user;
   } catch (error: any) {
-    throw new ConflictError(error.message);
+    throw new InternalServerError(error.message);
   }
 }

@@ -1,30 +1,28 @@
+import OperationalSettingModel from '@/models/operationalSetting.model';
+import OrderModel from '@/models/order.model';
+import { removeFieldsNotUse } from '@/shared/transformedData';
 import {
-  BadRequestError,
-  InternalServerError,
-} from "@enigma-laboratory/shared";
-import { OperationalSettingValidation } from "../validation";
-import {
+  OperationalSettingEvent,
   UpdateOneOperationalSettingParams,
   UpdateOneOperationalSettingResponse,
-} from "@enigma-laboratory/shared";
-import { removeFieldsNotUse } from "@/shared/transformedData";
-import OperationalSettingModel from "@/models/operationalSetting.model";
-import OrderModel from "@/models/order.model";
+} from '@enigma-laboratory/shared';
+
+import { BadRequestError, InternalServerError } from '@/errors';
+
+import { CreateApplication } from '@/app';
+import { OperationalSettingValidation } from '../validation';
 
 export async function updateOperationalStatus(
   params: UpdateOneOperationalSettingParams,
 ): Promise<UpdateOneOperationalSettingResponse> {
   try {
-    const validate =
-      OperationalSettingValidation.instance.putOperationalSettingValidate(
-        params,
-      );
+    const validate = OperationalSettingValidation.instance.putOperationalSettingValidate(params);
     if (validate.error) throw new BadRequestError(validate.error.message);
 
     const orders = await OrderModel.find({ groupId: params?._id });
 
-    if ((orders || []).some((order) => order.status !== "done")) {
-      throw new BadRequestError("The order status is not done ");
+    if ((orders || []).some(order => Object.values(order.usersStatus || {}).some(value => value !== 'done'))) {
+      throw new BadRequestError('The order status is not done ');
     }
 
     const groups = await OperationalSettingModel.findByIdAndUpdate(
@@ -37,7 +35,10 @@ export async function updateOperationalStatus(
 
     if (!groups) throw new BadRequestError("Don't have the group updated.");
 
-    return removeFieldsNotUse(groups);
+    const operationalSettings = removeFieldsNotUse(groups);
+
+    CreateApplication.instance.broadcastEvent(OperationalSettingEvent.UPDATED, operationalSettings);
+    return operationalSettings;
   } catch (error: any) {
     throw new InternalServerError(error.message);
   }

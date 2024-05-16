@@ -8,16 +8,16 @@ paths:
       security:
         - BearerAuth: []
       parameters:
-        - $ref: "#/components/parameters/scope"
-        - $ref: "#/components/parameters/sorters"
-        - $ref: "#/components/parameters/page"
-        - $ref: "#/components/parameters/pageSize"
+        - $ref: '#/components/parameters/scope'
+        - $ref: '#/components/parameters/sorters'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/pageSize'
       responses:
-        "200":
+        '200':
           description: Return order
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/FindAllOrderResponse"
-        "401":
+                $ref: '#/components/schemas/FindAllOrderResponse'
+        '401':
           description: Not authenticated

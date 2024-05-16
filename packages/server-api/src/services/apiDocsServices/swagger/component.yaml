@@ -8,7 +8,7 @@ components:
           example:
         sorters:
           type: array
-          example: ["name", "price"]
+          example: ['name', 'price']
           items:
             type: string
         page:
@@ -37,7 +37,7 @@ components:
           example: 12 Main ST Sà Francisco CA
         numberPhone:
           type: string
-          example: "0484927564"
+          example: '0484927564'
         avatar:
           type: string
           example: https://example.com/0f23ifoji2fp3
@@ -66,11 +66,11 @@ components:
         createdAt:
           type: string
           format: date-time
-          example: "2017-07-21T17:32:28Z"
+          example: '2017-07-21T17:32:28Z'
         updatedAt:
           type: string
           format: date-time
-          example: "2017-07-21T17:32:28Z"
+          example: '2017-07-21T17:32:28Z'
     Partial<Order>:
       type: object
       properties:
@@ -86,11 +86,11 @@ components:
         createdAt:
           type: string
           format: date-time
-          example: "2017-07-21T17:32:28Z"
+          example: '2017-07-21T17:32:28Z'
         updatedAt:
           type: string
           format: date-time
-          example: "2017-07-21T17:32:28Z"
+          example: '2017-07-21T17:32:28Z'
     Order Detail:
       type: object
       required:
@@ -115,11 +115,11 @@ components:
           example: 50000
     FindAllOrderParams:
       allOf:
-        - $ref: "#/components/schemas/Partial<Order>"
-        - $ref: "#/components/schemas/FindAllParams"
+        - $ref: '#/components/schemas/Partial<Order>'
+        - $ref: '#/components/schemas/FindAllParams'
     FindOneOrderResponse:
       allOf:
-        - $ref: "#/components/schemas/Patial<Order>"
+        - $ref: '#/components/schemas/Patial<Order>'
     FindAllResponse:
       type: object
       required:
@@ -133,16 +133,16 @@ components:
           type: array
     FindAllResponse<Order>:
       allOf:
-        - $ref: "#/components/schemas/FindAllResponse"
+        - $ref: '#/components/schemas/FindAllResponse'
       type: object
       properties:
         rows:
           type: array
           items:
-            $ref: "#/components/schemas/Order"
+            $ref: '#/components/schemas/Order'
     FindAllOrderResponse:
       allOf:
-        - $ref: "#/components/schemas/FindAllResponse<Order>"
+        - $ref: '#/components/schemas/FindAllResponse<Order>'
   securitySchemes:
     BearerAuth:
       type: http

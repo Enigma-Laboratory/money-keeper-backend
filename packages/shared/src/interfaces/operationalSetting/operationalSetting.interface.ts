@@ -2,13 +2,15 @@ import { FindAllResponse, GetOneParams } from '../common';
 
 export interface OperationalSetting {
   _id: string;
-  group: string;
+  name: string;
   status: 'opening' | 'closed';
+  createdAt: Date;
+  description?: string;
 }
 
 export interface FindAllOperationalSettingResponse extends FindAllResponse<OperationalSetting> {}
 
-export interface CreateOneOperationalSettingParams extends Pick<OperationalSetting, 'group'> {}
+export interface CreateOneOperationalSettingParams extends Pick<OperationalSetting, 'name'> {}
 
 export interface CreateOneOperationalSettingResponse extends OperationalSetting {}
 

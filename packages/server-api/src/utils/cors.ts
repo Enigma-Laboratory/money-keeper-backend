@@ -1,4 +1,4 @@
-const whitelist = ["http://localhost:3000"];
+const whitelist = ['http://localhost:3000', 'http://localhost:4000', 'https://moneykeeper-dev.netlify.app'];
 
 const corsOptions = (req: any, callback: Function): void => {
   const origin = req.headers.origin;

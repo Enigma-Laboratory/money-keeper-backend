@@ -1,4 +1,4 @@
-import { Document, Schema, Types } from "mongoose";
+import { Document, Schema, Types } from 'mongoose';
 
 export interface FinalSettlement extends Document {
   operationalSettingId: Types.ObjectId;
@@ -9,12 +9,12 @@ const FinalSettlementModel = new Schema(
   {
     operationalSettingId: {
       type: Schema.Types.ObjectId,
-      ref: "OperationalSetting",
+      ref: 'OperationalSetting',
       required: true,
     },
-    orderIds: [{ type: Schema.Types.ObjectId, ref: "Order" }],
+    orderIds: [{ type: Schema.Types.ObjectId, ref: 'Order' }],
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default FinalSettlementModel;

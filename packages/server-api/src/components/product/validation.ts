@@ -1,8 +1,5 @@
-import {
-  FindAllProductParams,
-  FindOneProductParams,
-} from "@enigma-laboratory/shared";
-import Joi, { ValidationResult } from "joi";
+import { FindAllProductParams, FindOneProductParams } from '@enigma-laboratory/shared';
+import Joi, { ValidationResult } from 'joi';
 
 export class ProductValidation {
   private static _instance: ProductValidation;
@@ -24,18 +21,14 @@ export class ProductValidation {
     return schema.validate(params);
   }
 
-  public getOneProductValidate(
-    params: FindOneProductParams
-  ): ValidationResult<FindOneProductParams> {
+  public getOneProductValidate(params: FindOneProductParams): ValidationResult<FindOneProductParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
     });
     return schema.validate(params);
   }
 
-  public getAllProductValidate(
-    params: Partial<FindAllProductParams>
-  ): ValidationResult<FindAllProductParams> {
+  public getAllProductValidate(params: Partial<FindAllProductParams>): ValidationResult<FindAllProductParams> {
     const schema = Joi.object({
       scope: Joi.string(),
       page: Joi.number(),

@@ -3,8 +3,8 @@ import {
   DeleteOneOrderDetailParams,
   FindOneOrderDetailParams,
   UpdateOneOrderDetailParams,
-} from "@enigma-laboratory/shared";
-import Joi, { ValidationResult } from "joi";
+} from '@enigma-laboratory/shared';
+import Joi, { ValidationResult } from 'joi';
 export class OrderDetailValidation {
   private static _instance: OrderDetailValidation;
   public static get instance(): OrderDetailValidation {
@@ -14,9 +14,7 @@ export class OrderDetailValidation {
     return this._instance;
   }
 
-  public createOrderDetail(
-    params: CreateOneOrderDetailParams
-  ): ValidationResult<CreateOneOrderDetailParams> {
+  public createOrderDetail(params: CreateOneOrderDetailParams): ValidationResult<CreateOneOrderDetailParams> {
     const schema = Joi.object({
       orderId: Joi.string().required(),
       name: Joi.string().required(),
@@ -26,9 +24,7 @@ export class OrderDetailValidation {
     return schema.validate(params);
   }
 
-  public updateOneOrderDetail(
-    params: UpdateOneOrderDetailParams
-  ): ValidationResult<UpdateOneOrderDetailParams> {
+  public updateOneOrderDetail(params: UpdateOneOrderDetailParams): ValidationResult<UpdateOneOrderDetailParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
       name: Joi.string(),
@@ -38,18 +34,14 @@ export class OrderDetailValidation {
     return schema.validate(params);
   }
 
-  public getOneOrderDetailValidate(
-    params: FindOneOrderDetailParams
-  ): ValidationResult<FindOneOrderDetailParams> {
+  public getOneOrderDetailValidate(params: FindOneOrderDetailParams): ValidationResult<FindOneOrderDetailParams> {
     const schema = Joi.object({
       id: Joi.string().required(),
     });
     return schema.validate(params);
   }
 
-  public deleteOneOrderDetail(
-    params: DeleteOneOrderDetailParams
-  ): ValidationResult<DeleteOneOrderDetailParams> {
+  public deleteOneOrderDetail(params: DeleteOneOrderDetailParams): ValidationResult<DeleteOneOrderDetailParams> {
     const schema = Joi.object({
       id: Joi.string(),
     });

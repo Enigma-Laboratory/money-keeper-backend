@@ -1,14 +1,11 @@
-import OrderModel, { OrderDocument } from "@/models/order.model";
-import {
-  BadRequestError,
-  UpdateOrderEventParams,
-  UpdateOrderEventResponse,
-} from "@enigma-laboratory/shared";
-import { OrderValidation } from "../validation";
+import OrderModel from '@/models/order.model';
+import { OrderEvent, UpdateOrderEventParams, UpdateOrderEventResponse, User } from '@enigma-laboratory/shared';
+import { OrderValidation } from '../validation';
 
-export async function updateOrderEvent(
-  params: UpdateOrderEventParams
-): Promise<UpdateOrderEventResponse> {
+import { CreateApplication } from '@/app';
+import { BadRequestError } from '@/errors';
+
+export async function updateOrderEvent(user: User, params: UpdateOrderEventParams): Promise<UpdateOrderEventResponse> {
   try {
     // Validate the input parameters
     const validationResult = OrderValidation.instance.updateOrderEvent(params);
@@ -17,27 +14,23 @@ export async function updateOrderEvent(
     }
 
     // Find the order by its ID
-    const order: OrderDocument | null = await OrderModel.findById(
-      params.orderId
-    );
+    const order = await OrderModel.findById(params.orderId);
     if (!order || !order?.event) {
       return { result: 0 };
     }
 
     // update order status
-    order.status = params.status;
+    (order.usersStatus as unknown as Map<string, string>).set(user._id, params.status);
 
-    const isDoneOrder = order.event.some(
-      ({ status }) => status === params.status
-    );
-    //insert orderEvent
-    !isDoneOrder &&
-      order.event.push({
-        status: params.status,
-        date: params.date || new Date(),
-      });
+    order.event.push({
+      status: params.status,
+      date: params.date || new Date(),
+      userId: user._id,
+    });
 
     await order.save();
+
+    CreateApplication.instance.broadcastEvent(OrderEvent.UPDATED, order);
 
     return { result: 1 };
   } catch (error: any) {

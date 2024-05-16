@@ -1,4 +1,4 @@
-import { Document, Schema, model } from "mongoose";
+import { Document, Schema, model } from 'mongoose';
 
 export interface ProductDocument extends Document {
   id: string;
@@ -17,8 +17,7 @@ export interface ProductDocument extends Document {
 export const productSchema = new Schema(
   {
     name: { type: String, required: true },
-    quantity: { type: Number, required: true },
-    isActive: { type: Boolean, default: true },
+    quantity: { type: Number },
     userIds: { type: [String], required: true },
     description: { type: String },
     price: { type: Number, required: true },
@@ -29,9 +28,9 @@ export const productSchema = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-const ProductModel = model<ProductDocument>("Product", productSchema);
+const ProductModel = model<ProductDocument>('Product', productSchema);
 
 export default ProductModel;

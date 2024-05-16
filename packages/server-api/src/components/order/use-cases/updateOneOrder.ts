@@ -1,29 +1,25 @@
-import OrderModel from "@/models/order.model";
-import { removeFieldsNotUse } from "@/shared/transformedData";
-import {
-  BadRequestError,
-  ConflictError,
-  UpdateOneOrderParams,
-  UpdateOneOrderResponse,
-} from "@enigma-laboratory/shared";
-import { omit } from "lodash";
-import { OrderValidation } from "../validation";
+import OrderModel from '@/models/order.model';
+import { removeFieldsNotUse } from '@/shared/transformedData';
+import { OrderEvent, UpdateOneOrderParams, UpdateOneOrderResponse } from '@enigma-laboratory/shared';
+import { omit } from 'lodash';
+import { OrderValidation } from '../validation';
 
-export async function updateOneOrder(
-  params: UpdateOneOrderParams
-): Promise<UpdateOneOrderResponse> {
+import { CreateApplication } from '@/app';
+import { BadRequestError, ConflictError } from '@/errors';
+
+export async function updateOneOrder(params: UpdateOneOrderParams): Promise<UpdateOneOrderResponse> {
   try {
     const validate = OrderValidation.instance.updateOneOrderValidate(params);
     if (validate.error) throw new BadRequestError(validate.error.message);
 
-    const order = await OrderModel.findOneAndUpdate(
-      { _id: params._id },
-      omit(params, ["id"]),
-      { new: true }
-    ).lean();
+    const order = await OrderModel.findOneAndUpdate({ _id: params._id }, omit(params, ['id']), { new: true }).lean();
     if (!order) throw new BadRequestError("Don't have the order updated.");
 
-    return removeFieldsNotUse(order);
+    const newOrder = removeFieldsNotUse(order);
+
+    CreateApplication.instance.broadcastEvent(OrderEvent.UPDATED, newOrder);
+
+    return newOrder;
   } catch (error: any) {
     throw new ConflictError(error.message);
   }

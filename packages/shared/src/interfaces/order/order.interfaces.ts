@@ -1,7 +1,6 @@
-import { FindAllParams, FindAllResponse, GetOneParams } from "../common";
-import { Product } from "../product";
-import { User } from "../user";
-import { OrderStatus } from "./order.types";
+import { FindAllParams, FindAllResponse, GetOneParams } from '../common';
+import { Product } from '../product';
+import { OrderStatus } from './order.types';
 
 /** Represents an order entity with various properties. */
 export interface Order {
@@ -11,17 +10,18 @@ export interface Order {
   createdAt: Date /** The timestamp when the order was created. */;
   updatedAt: Date /** The timestamp when the order was last updated. */;
   createdOrderAt: Date;
-  status?: OrderStatus;
-  amount: number;
-  products?: Product[];
-  user?: User /** The ID of the user associated with the order. */;
-  event?: OrderEvent[];
-  groupId?: string;
+  usersStatus: { [userId: string]: OrderStatus };
+  products: Product[];
+  event: LogOrderEvent[];
+  groupId: string;
+  orderNumber: number;
+  description?: string;
 }
 
-export interface OrderEvent {
-  date?: Date;
+export interface LogOrderEvent {
+  date: Date;
   status: OrderStatus;
+  userId: string;
 }
 
 /** Represents the parameters for finding a single order. */
@@ -42,7 +42,8 @@ export interface FindAllOrderParams extends FindAllParams {
 export interface FindAllOrderResponse extends FindAllResponse<Order> {}
 
 /** Represents the parameters for creating a new order. */
-export interface CreateOneOrderParams extends Partial<Order> {}
+export interface CreateOneOrderParams
+  extends Omit<Order, '_id' | 'createdAt' | 'orderNumber' | 'updatedAt' | 'usersStatus' | 'event'> {}
 
 /** Represents the response structure for finding multiple orders.  */
 export interface CreateOneOrderResponse extends Order {}
@@ -50,7 +51,7 @@ export interface CreateOneOrderResponse extends Order {}
 /** Represents the parameters for updating an order. */
 export interface UpdateOneOrderParams extends Partial<Order> {}
 
-export interface UpdateOrderEventParams extends OrderEvent {
+export interface UpdateOrderEventParams extends LogOrderEvent {
   orderId: string;
 }
 
@@ -70,7 +71,7 @@ export interface DeleteOneOrderResponse {
 }
 
 export interface DailyOrderParams {
-  orderBy: "week" | "mouth" | "year";
+  orderBy: 'week' | 'mouth' | 'year';
 }
 
 export interface DailyOrderResponse {}
