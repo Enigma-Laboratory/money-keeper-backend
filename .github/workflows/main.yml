@@ -40,7 +40,7 @@ jobs:
     name: Publish Package to npm
     runs-on: ubuntu-latest
     needs: [build-package]
-    if: ${{ github.event_name == 'push' && needs.build-package.outputs['check_changes'] != '0' }}
+    if: ${{ github.event_name == 'push' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -68,6 +68,8 @@ jobs:
       - name: Push changes and tags to main branch
         run: |
           git push --follow-tags origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
       - name: deploy package to npm
         run: |
