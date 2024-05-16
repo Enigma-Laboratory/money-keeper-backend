@@ -14,6 +14,8 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
+    outputs:
+      check_changes: ${{ steps.check_changes.outputs.has_changes }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -28,20 +30,20 @@ jobs:
         run: pnpm bootstrap
       - name: run build server api
         run: pnpm build:server-api
-        id: build_step
       - name: Check for changes in build:interfaces
         id: check_changes
         run: |
           git diff --exit-code HEAD^ HEAD -- build:interfaces
           echo "::set-output name=has_changes::$(echo $?)"
-      - name: Save changes status
+      - name: Set build interfaces changed
         if: steps.check_changes.outputs.has_changes == '0'
-        run: echo "::set-output name=build_interfaces_changed::true"
+        run: echo "BUILD_INTERFACES_CHANGED=true" >> $GITHUB_ENV
 
   publish-package:
     name: Publish Package to npm
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push'  }}
+    if: ${{ github.event_name == 'push' && needs.build-package.outputs.check_changes == '0' }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
