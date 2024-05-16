@@ -1,5 +1,5 @@
-const moduleAlias = require('module-alias');
-const path = require('path');
+import moduleAlias from 'module-alias';
+import path from 'path';
 
 moduleAlias.addAliases({
   '@/utils': path.resolve(__dirname, '..', 'utils'),
