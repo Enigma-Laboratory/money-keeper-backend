@@ -34,16 +34,13 @@ jobs:
         id: check_changes
         run: |
           git diff --exit-code HEAD^ HEAD -- build:interfaces
-          echo "::set-output name=has_changes::$(echo $?)"
-      - name: Set build interfaces changed
-        if: steps.check_changes.outputs.has_changes == '0'
-        run: echo "BUILD_INTERFACES_CHANGED=true" >> $GITHUB_ENV
+          echo "HAS_CHANGES=$(echo $?) >> $GITHUB_ENV"
 
   publish-package:
     name: Publish Package to npm
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' && needs.build-package.outputs.check_changes == '0' }}
-
+    needs: [build-package]
+    if: ${{ github.event_name == 'push' && needs.build-package.outputs['check_changes'] == '0' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
