@@ -40,7 +40,7 @@ jobs:
     name: Publish Package to npm
     runs-on: ubuntu-latest
     needs: [build-package]
-    if: ${{ github.event_name == 'push' && needs.build-package.outputs['check_changes'] != '0' }}
+    if: ${{ github.event_name == 'push' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -66,9 +66,9 @@ jobs:
         id: get_version
         run: echo ::set-output name=bump-version:$(npm show @enigma-laboratory/shared version )
       - name: Push changes and tags to main branch
-        run: |
-          git push --follow-tags origin main
-        shell: bash
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: deploy package to npm
         run: |
           pnpm deploy:prod
