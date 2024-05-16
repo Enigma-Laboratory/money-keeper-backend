@@ -5,7 +5,7 @@
   "author": "TuTuanLe <tutuanletkpt@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Enigma-Laboratory/money-keeper-backend.git"
+    "url": "https://github.com/Enigma-Laboratory/money-keeper-backend.git"
   },
   "license": "ISC",
   "main": "dist/index.js",
