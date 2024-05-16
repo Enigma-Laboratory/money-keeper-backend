@@ -14,11 +14,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "bootstrap": "pnpm i",
     "run:server-api": "npx lerna run --scope=server-api dev",
-    "build:interfaces": "npx lerna run --scope=@enigma-laboratory/shared build",
     "clean": "lerna clean ",
     "clean:all": "lerna clean && pnpm store prune && lerna exec -- rm -rf node_modules",
     "format:server-api": "npx lerna run --scope=server-api format",
     "build:server-api": "npx lerna run --scope=server-api build",
+    "build:interfaces": "npx lerna run --scope=@enigma-laboratory/shared build",
     "bump-version": "npx lerna run --scope=@enigma-laboratory/shared bump-version",
     "deploy:prod": "npx lerna run --scope=@enigma-laboratory/shared deploy"
   },

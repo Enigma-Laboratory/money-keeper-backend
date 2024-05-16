@@ -28,11 +28,20 @@ jobs:
         run: pnpm bootstrap
       - name: run build server api
         run: pnpm build:server-api
+        id: build_step
+      - name: Check for changes in build:interfaces
+        id: check_changes
+        run: |
+          git diff --exit-code HEAD^ HEAD -- build:interfaces
+          echo "::set-output name=has_changes::$(echo $?)"
+      - name: Save changes status
+        if: steps.check_changes.outputs.has_changes == '0'
+        run: echo "::set-output name=build_interfaces_changed::true"
 
   publish-package:
     name: Publish Package to npm
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' }}
+    if: ${{ github.event_name == 'push'  }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
