@@ -34,13 +34,13 @@ jobs:
         id: check_changes
         run: |
           git diff --exit-code HEAD^ HEAD -- build:interfaces
-          echo "HAS_CHANGES=$(echo $?) >> $GITHUB_ENV"
+          echo "HAS_CHANGES=$(echo $?)" >> $GITHUB_ENV
 
   publish-package:
     name: Publish Package to npm
     runs-on: ubuntu-latest
     needs: [build-package]
-    if: ${{ github.event_name == 'push' }}
+    if: ${{ github.event_name == 'push' && github.actor != 'github-actions[bot]' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -63,12 +63,12 @@ jobs:
         run: npm install -g pnpm
       - name: Install dependencies, build interfaces, and bump version
         run: |
-          pnpm  bootstrap
+          pnpm bootstrap
           pnpm build:interfaces
           pnpm bump-version
       - name: Get latest version
         id: get_version
-        run: echo ::set-output name=bump-version:$(npm show @enigma-laboratory/shared version )
+        run: echo ::set-output name=bump-version::$(npm show @enigma-laboratory/shared version)
       - name: Push changes and tags to main branch
         uses: ad-m/github-push-action@master
         with:
@@ -79,11 +79,12 @@ jobs:
       - name: deploy package to npm
         run: |
           pnpm deploy:prod
+
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
     needs: [build-package]
-    if: ${{ github.event_name == 'push' }}
+    if: ${{ github.event_name == 'push' && github.actor != 'github-actions[bot]' }}
     steps:
       - name: Deploy to Production
         uses: johnbeynon/render-deploy-action@v0.0.8
