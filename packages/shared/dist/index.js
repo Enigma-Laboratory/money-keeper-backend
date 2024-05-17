@@ -33,6 +33,7 @@ __export(shared_exports, {
   ProductType: () => ProductType,
   SocketEvents: () => SocketEvents,
   UnauthorizedError: () => UnauthorizedError,
+  UserEvent: () => UserEvent,
   UserTypes: () => UserTypes,
   clearAllIds: () => clearAllIds,
   createId: () => createId,
@@ -140,6 +141,11 @@ var UserTypes = /* @__PURE__ */ ((UserTypes2) => {
   UserTypes2["CUSTOMER"] = "customer";
   return UserTypes2;
 })(UserTypes || {});
+var UserEvent = /* @__PURE__ */ ((UserEvent2) => {
+  UserEvent2["CREATED"] = "user:created";
+  UserEvent2["UPDATED"] = "user:updated";
+  return UserEvent2;
+})(UserEvent || {});
 
 // src/interfaces/product/product.types.ts
 var ProductType = /* @__PURE__ */ ((ProductType2) => {
@@ -216,6 +222,7 @@ var uniqueUserIdsByProduct = (products) => {
   ProductType,
   SocketEvents,
   UnauthorizedError,
+  UserEvent,
   UserTypes,
   clearAllIds,
   createId,
