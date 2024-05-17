@@ -38,11 +38,14 @@ jobs:
           else
             echo "has_changes=true" >> $GITHUB_ENV
           fi
-
+      - name: Output the result
+        run: |
+          echo "Has changes: $has_changes"
   publish-package:
     name: Publish Package to npm
     runs-on: ubuntu-latest
     needs: [build-package]
+
     if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, 'chore(release):') && needs.build-package.outputs['check_changes'] == 'true' }}
     steps:
       - name: Checkout code
