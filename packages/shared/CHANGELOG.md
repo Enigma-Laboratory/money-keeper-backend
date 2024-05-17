@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.5.1...v1.6.0) (2024-05-17)
+
+
+### Features
+
+* add enum user event ([a35277b](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/a35277bc231a509fbf238ffddff6f51cb83a2d2c))
+
 ### [1.5.1](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.5.0...v1.5.1) (2024-05-17)
 
 ## 1.5.0 (2024-05-17)
