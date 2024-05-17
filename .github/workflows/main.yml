@@ -71,7 +71,7 @@ jobs:
           github_token: ${{ secrets.GH_TOKEN }}
           branch: main
           tags: true
-          repository: https://github.com/Enigma-Laboratory/money-keeper-backend
+          repository: Enigma-Laboratory/money-keeper-backend
       - name: deploy package to npm
         run: |
           pnpm deploy:prod
