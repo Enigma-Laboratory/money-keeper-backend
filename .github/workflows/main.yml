@@ -32,6 +32,7 @@ jobs:
   publish-package:
     name: Publish Package to npm
     runs-on: ubuntu-latest
+    needs: [build-package]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -46,11 +47,9 @@ jobs:
         id: check_changes
         run: |
           if git diff --exit-code HEAD^ HEAD -- packages/shared; then
-            echo "HAS_CHANGES=false" >> $GITHUB_ENV
-            echo "::set-output name=has_changes::false"
+            echo "has_changes=false" >> $HAS_CHANGES
           else
-            echo "HAS_CHANGES=true" >> $GITHUB_ENV
-            echo "::set-output name=has_changes::true"
+            echo "has_changes=true" >> $HAS_CHANGES
           fi
       - name: Publish if changes detected
         if: steps.check_changes.outputs.has_changes == 'true' && github.event_name == 'push' && !contains(github.event.head_commit.message, 'chore(release):')
