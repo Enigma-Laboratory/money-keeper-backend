@@ -3,7 +3,7 @@ export enum UserTypes {
   CUSTOMER = 'customer',
 }
 
-export enum UserEvent {
-  CREATED = 'user:created',
-  UPDATED = 'user:updated',
-}
+// export enum UserEvent {
+//   CREATED = 'user:created',
+//   UPDATED = 'user:updated',
+// }
