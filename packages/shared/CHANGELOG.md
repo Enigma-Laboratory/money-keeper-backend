@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.1.0...v1.4.0) (2024-05-17)
+
+
+### Features
+
+* add env github token ([7aad7a7](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/7aad7a7c5315eb9adad03764126521aad47a1ccb))
+* add env github token ([da2028a](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/da2028a555546700540e3ebc6c4b09e5cb110048))
+* add env github token ([f1a04fc](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/f1a04fc5b8cdea0b09a2727b86cddaf020e9b946))
+* add needs build package after build interfaces ([9d3b7a1](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/9d3b7a1436aef519b038afca03ce32e9a3bf4c25))
+* add needs build package after build interfaces ([d23f8ce](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/d23f8ceabaacfe38f2ff7db42c97f73773fb1ff2))
+* add nodemailer && handle CRUD update user ([27bfa00](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/27bfa0082287651e8dee57239c9687463e380cc9))
+* setup socket.io for order and operational setting ([5173b51](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/5173b51c2256aef2e062295b43c483e8b4be3a26))
+
+
+### Bug Fixes
+
+* accept address locolhost:4000 ([b7450cd](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/b7450cd8a1822f211e6d98123a8b2705a3255a49))
+* add npmrc file logchange ([32e3310](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/32e3310e2281aa7efba703e3607d1a75f37c3257))
+* build pipe line ([8fa3000](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/8fa300052cf16e97c91226d3fb170b2c3583f905))
+* build pnpm lock change ([75f38a6](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/75f38a6b349e2afb32ddb26c11cb489da6f90b54))
+* build server api ([2b4668f](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/2b4668f2f8b20939bca4b0549ce2b78dd7813215))
+* build: server api ([8a9ecea](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/8a9ecea7bc714071e9e5ceb9b125b5bfced4b90e))
+* can user model not use id ([1452d82](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/1452d82e6c9320448ae1b16938f2ac3ee1e82a51))
+* check for change in build interface ([53418ba](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/53418ba97f1164b4a995aa0223138f2bdef41d1c))
+* check for change in build interface ([3dd0814](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/3dd0814586956e12e99cfc77f08c48ae274e3835))
+* delete order && update order event ([52b83a5](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/52b83a51bffaa3b6cda71d76262f320ebfa0a8b9))
+* handle publish event emit socket with CRUD ([715f114](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/715f114ce98a43ccf3b424c4c39d192dd875795f))
+* import module alias ([30d6b6d](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/30d6b6d6605570782cbc381f46f6c2717f8c19a0))
+* module alias ([b33982e](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/b33982e7994b38e6bce2b060cfdd4d7ad5297cd1))
+* node version ([b301960](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/b3019604ce387c39f690b3682f01988542a514c8))
+* order route ([489f70e](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/489f70ea71e4928f704abac3d12fd7183921142b))
+* remove cache ([7a8a5cc](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/7a8a5cc018f40fb0da6dab674c2c229ed056cd26))
+* remove cache ([df39a53](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/df39a5394b2d7591faa21679c67768a1c54d47f4))
+* remove cache ([c756664](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/c7566647b7bb2719d0cba9f1e24f22a181b02151))
+* remove field id from collection user but not change access token when fetching old field ([e44089a](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/e44089a7c042e8d1044cbbf28b872208b4363b1c))
+* remove file node modules ([d88db33](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/d88db339af4dbfd619c42ca7d59a1e92f2700b70))
+* remove http to package server api ([65e630b](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/65e630ba030ab43f80b1fe85b7ffa804f0e5f507))
+* uipdate crate order model ([f67853e](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/f67853e74b2dda2ad93d7ce6afd4601b19f2345e))
+* user create order allow edit ([203f789](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/203f789a68e9c1ffd3005dd2d40e242463515604))
+* validattion login ([0d77893](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/0d77893422e09ff8d115fe7d63ac46394a853955))
+* workflows ([c3e94b7](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/c3e94b71aa089e1ec79071b044ca896a4f80b930))
+* workflows ([bdf994c](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/bdf994c32c93706037b16eae4863a8bd0ea0c721))
+
 ### [1.3.1](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.3.0...v1.3.1) (2024-05-15)
 
 ## [1.3.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.2.6...v1.3.0) (2024-05-15)
