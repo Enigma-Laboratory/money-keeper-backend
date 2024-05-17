@@ -43,15 +43,15 @@ jobs:
     if: ${{ github.event_name == 'push' }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 18.x
       - name: Set Git user info
         run: |
-          git config user.email "${{ secrets.GIT_USER_EMAIL }}"
-          git config user.name "${{ secrets.GIT_USER_NAME }}"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
 
       - name: Authenticate with npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
@@ -70,6 +70,8 @@ jobs:
         with:
           github_token: ${{ secrets.GH_TOKEN }}
           branch: main
+          tags: true
+          repository: https://github.com/Enigma-Laboratory/money-keeper-backend
       - name: deploy package to npm
         run: |
           pnpm deploy:prod
