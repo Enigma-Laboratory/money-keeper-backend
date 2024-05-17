@@ -10,5 +10,4 @@ export enum UserEvent {
   CREATE = 'order:create',
   UPDATE = 'order:update',
   READ = 'order:read',
-  DELETE = 'order:delete',
 }
