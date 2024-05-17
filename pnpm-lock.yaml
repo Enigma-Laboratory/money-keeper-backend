@@ -73,8 +73,8 @@ importers:
         specifier: ^7.4.2
         version: 7.6.11
       nanoid:
-        specifier: 3.1.31
-        version: 3.1.31
+        specifier: 5.0.7
+        version: 5.0.7
       nodemailer:
         specifier: ^6.9.13
         version: 6.9.13
@@ -2846,9 +2846,9 @@ packages:
   mz@2.7.0:
     resolution: {integrity: sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==}
 
-  nanoid@3.1.31:
-    resolution: {integrity: sha512-ZivnJm0o9bb13p2Ot5CpgC2rQdzB9Uxm/mFZweqm5eMViqOJe3PV6LU2E30SiLgheesmcPrjquqraoolONSA0A==}
-    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+  nanoid@5.0.7:
+    resolution: {integrity: sha512-oLxFY2gd2IqnjcYyOXD8XGCftpGtZP2AbHbOkthDkvRywH5ayNtPVy9YlOPcHckXzbLTCHpkb7FB+yuxKV13pQ==}
+    engines: {node: ^18 || >=20}
     hasBin: true
 
   negotiator@0.6.3:
@@ -5268,7 +5268,7 @@ snapshots:
 
   '@types/nanoid@3.0.0':
     dependencies:
-      nanoid: 3.1.31
+      nanoid: 5.0.7
 
   '@types/node@20.12.8':
     dependencies:
@@ -7547,7 +7547,7 @@ snapshots:
       object-assign: 4.1.1
       thenify-all: 1.6.0
 
-  nanoid@3.1.31: {}
+  nanoid@5.0.7: {}
 
   negotiator@0.6.3: {}
 
