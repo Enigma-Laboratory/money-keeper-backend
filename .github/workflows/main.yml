@@ -34,9 +34,9 @@ jobs:
         id: check_changes
         run: |
           if git diff --exit-code HEAD^ HEAD -- packages/shared; then
-            echo "HAS_CHANGES=false" >> $GITHUB_ENV
+            echo "has_changes=false" >> $GITHUB_ENV
           else
-            echo "HAS_CHANGES=true" >> $GITHUB_ENV
+            echo "has_changes=true" >> $GITHUB_ENV
           fi
 
   publish-package:
