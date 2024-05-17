@@ -47,9 +47,9 @@ jobs:
         id: check_changes
         run: |
           if git diff --exit-code HEAD^ HEAD -- packages/shared; then
-            echo "has_changes=false" >> $HAS_CHANGES
+            echo "has_changes=false" >> $GITHUB_ENV
           else
-            echo "has_changes=true" >> $HAS_CHANGES
+            echo "has_changes=true" >> $GITHUB_ENV
           fi
       - name: Publish if changes detected
         if: steps.check_changes.outputs.has_changes == 'true' && github.event_name == 'push' && !contains(github.event.head_commit.message, 'chore(release):')
