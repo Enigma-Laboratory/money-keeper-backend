@@ -144,6 +144,10 @@ var UserTypes = /* @__PURE__ */ ((UserTypes2) => {
 var UserEvent = /* @__PURE__ */ ((UserEvent2) => {
   UserEvent2["CREATED"] = "user:created";
   UserEvent2["UPDATED"] = "user:updated";
+  UserEvent2["DELETED"] = "order:deleted";
+  UserEvent2["CREATE"] = "order:create";
+  UserEvent2["UPDATE"] = "order:update";
+  UserEvent2["READ"] = "order:read";
   return UserEvent2;
 })(UserEvent || {});
 

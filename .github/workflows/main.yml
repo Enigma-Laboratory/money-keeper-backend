@@ -68,6 +68,13 @@ jobs:
           pnpm build:interfaces
           pnpm bump-version
 
+          uses: ad-m/github-push-action@master
+          with:
+            github_token: ${{ secrets.GH_TOKEN }}
+            branch: main
+            tags: true
+            repository: Enigma-Laboratory/money-keeper-backend
+            
           # Push changes and tags to main branch
           pnpm deploy:prod
 
