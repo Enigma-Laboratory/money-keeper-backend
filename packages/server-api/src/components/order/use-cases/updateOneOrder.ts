@@ -18,8 +18,6 @@ export async function updateOneOrder(params: UpdateOneOrderParams): Promise<Upda
     const validate = OrderValidation.instance.updateOneOrderValidate(params);
     if (validate.error) throw new BadRequestError(validate.error.message);
 
-    console.log(params);
-
     const order = await findOrderById(params._id);
 
     const userIds = uniqueUserIdsByProduct(params.products || []);
