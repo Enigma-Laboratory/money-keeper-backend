@@ -22,6 +22,10 @@ export async function updateOneOrder(params: UpdateOneOrderParams): Promise<Upda
 
     const userIds = uniqueUserIdsByProduct(params.products || []);
 
+    if (params.userId && !userIds.includes(params.userId)) {
+      userIds.push(params.userId);
+    }
+
     const usersStatus = generateUsersStatus(order, userIds);
 
     await updateOrderInDatabase(order, params as Order, usersStatus);
