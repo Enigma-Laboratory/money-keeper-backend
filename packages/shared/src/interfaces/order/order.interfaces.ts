@@ -49,7 +49,7 @@ export interface CreateOneOrderParams
 export interface CreateOneOrderResponse extends Order {}
 
 /** Represents the parameters for updating an order. */
-export interface UpdateOneOrderParams extends Partial<Order> {}
+export interface UpdateOneOrderParams extends FindOneOrderParams, Partial<Omit<Order, '_id'>> {}
 
 export interface UpdateOrderEventParams extends LogOrderEvent {
   orderId: string;

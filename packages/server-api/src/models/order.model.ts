@@ -14,6 +14,7 @@ export interface OrderDocument extends Order, Document {
   event: LogOrderEvent[];
   orderNumber: number;
   groupId: string;
+  description: string;
 }
 
 const orderEventSchema = new Schema({
@@ -33,6 +34,7 @@ const orderSchema: Schema<OrderDocument> = new Schema<OrderDocument>({
   orderNumber: { type: Number },
   groupId: { type: String, required: true },
   usersStatus: { type: Map, of: String, enum: Object.values(OrderStatus) },
+  description: { type: String, required: false },
 });
 
 orderSchema.pre<OrderDocument>('save', async function (next) {
