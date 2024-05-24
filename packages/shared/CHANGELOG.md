@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.7.2...v1.8.0) (2024-05-24)
+
+
+### Features
+
+* change login response to required ([5b57a43](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/5b57a4303e7de0c24315d973d21ef7d5bb59c459))
+* config access refresh token ttl ([b29c08f](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/b29c08f185830f7715953620749aeade96262602))
+* setup refresh token and signout EL-30 ([d2f1dd8](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/d2f1dd89b61bbe23f37d572d63a5e0f3f67fada0))
+
+
+### Bug Fixes
+
+* user buyer can edit order ([92abe43](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/92abe431b141b7b3fdb685ca88c2d1e4b8c4ecb8))
+
 ### [1.7.2](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.7.1...v1.7.2) (2024-05-20)
 
 ### [1.7.1](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.7.0...v1.7.1) (2024-05-20)
