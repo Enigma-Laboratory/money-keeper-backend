@@ -20,8 +20,8 @@ export interface FindAllUserResponse extends FindAllResponse<Omit<User, 'passwor
 export interface LoginParams extends Pick<User, 'email' | 'password'> {}
 
 export interface LoginResponse {
-  token?: string;
-  refreshToken?: string;
+  token: string;
+  refreshToken: string;
 }
 
 /** Represents the parameters for finding a single user. */
