@@ -23,6 +23,12 @@ cp .env.example .env
 
 ## Getting Started
 
+### Installing NPM lerna and pnpm
+
+```console
+npm install -g pnpm lerna
+```
+
 ### Installing NPM Packages
 
 ```console

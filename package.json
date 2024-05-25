@@ -26,6 +26,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@lerna/add": "^6.6.2"
+    "@lerna/add": "^6.6.2",
+    "lerna": "^8.1.2"
   }
 }
