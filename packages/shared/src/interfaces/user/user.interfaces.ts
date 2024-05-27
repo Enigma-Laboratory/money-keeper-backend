@@ -36,7 +36,9 @@ export interface CreateUserParams extends Pick<User, 'name' | 'email' | 'passwor
 export interface CreateUserResponse extends User {}
 
 /** Represents the parameters for updating a user. */
-export interface UpdateOneUserParams extends User {}
+export interface UpdateOneUserParams extends Partial<User> {
+  currentPassword?: string;
+}
 
 export interface UpdateOneUserResponse extends User {}
 
@@ -45,6 +47,10 @@ export interface DeleteOneUserParams extends GetOneParams<User> {}
 
 export interface DeleteOneUSerResponse {
   result: number;
+}
+
+export interface ForgotPasswordParams {
+  email: string;
 }
 
 // Reusing the GetOneParams interface for finding a single user by their ID.

@@ -9,6 +9,10 @@ export async function signUp(params: CreateUserParams): Promise<User> {
   if (validate.error) throw new BadRequestError(validate.error.message);
 
   try {
+    // Check if email already exists
+    const existingUser = await UserModel.findOne({ email: params.email });
+    if (existingUser) throw new BadRequestError('Email already exists.');
+
     const user = await UserModel.create(params);
     if (!user) throw new BadRequestError('Can not create user.');
 
