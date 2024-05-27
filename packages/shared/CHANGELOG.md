@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.8.0...v1.9.0) (2024-05-27)
+
+
+### Features
+
+* add docker file for server api ([afba77e](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/afba77e5209d935a39cd6240f6c2f3fdef4a7077))
+
+
+### Bug Fixes
+
+* add interfaces and handle compare password ([97855e0](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/97855e02cbbef7bb3f4fd817a642299fea04d971))
+
 ## [1.8.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.7.2...v1.8.0) (2024-05-24)
 
 
