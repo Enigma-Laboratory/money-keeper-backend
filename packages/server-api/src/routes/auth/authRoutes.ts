@@ -46,7 +46,7 @@ route.post('/sign-up', AuthComponent.signUpHandler);
  * @return {Error} 404 - User not found with the provided email address
  * @return {Error} default - Unexpected error
  */
-route.post('/forget-password', AuthComponent.resetPasswordHandler);
+route.post('/forgot-password', AuthComponent.resetPasswordHandler);
 
 /**
  * post /refresh-token
