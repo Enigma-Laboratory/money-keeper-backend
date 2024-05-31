@@ -119,7 +119,7 @@ export async function updateOneOrderHandler(req: Request, res: Response, next: N
 
 export async function updateOrderEventHandler(req: RequestWithUser, res: Response, next: NextFunction): Promise<void> {
   try {
-    const order = await OrderUseCases.updateOrderEvent(req?.actor as User, req.body);
+    const order = await OrderUseCases.updateOrderStatus(req?.actor as User, req.body);
     logger.info({
       component: 'OrderService',
       func: 'updateOrderEventHandler',
@@ -138,7 +138,7 @@ export async function updateOrderEventHandler(req: RequestWithUser, res: Respons
 
 export async function updateOrderEventsHandler(req: RequestWithUser, res: Response, next: NextFunction): Promise<void> {
   try {
-    const orderEventUpdated = await OrderUseCases.updateMultipleOrderEvents(req?.actor as User, req.body);
+    const orderEventUpdated = await OrderUseCases.updateOrderStatuses(req?.actor as User, req.body);
     logger.info({
       component: 'OrderService',
       func: 'updateOrderEventsHandler',

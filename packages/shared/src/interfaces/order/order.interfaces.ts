@@ -51,11 +51,11 @@ export interface CreateOneOrderResponse extends Order {}
 /** Represents the parameters for updating an order. */
 export interface UpdateOneOrderParams extends FindOneOrderParams, Partial<Omit<Order, '_id'>> {}
 
-export interface UpdateOrderEventParams extends LogOrderEvent {
+export interface UpdateOrderStatusParams extends LogOrderEvent {
   orderId: string;
 }
 
-export interface UpdateOrderEventResponse {
+export interface UpdateOrderStatusResponse {
   result: number;
 }
 
@@ -76,12 +76,36 @@ export interface DailyOrderParams {
 
 export interface DailyOrderResponse {}
 
-export interface UpdateMultipleOrderEventsParams {
+/**
+ * Parameters for updating the statuses of multiple orders.
+ */
+export interface UpdateManyOrderStatusesParams {
+  /**
+   * An array of order IDs to be updated.
+   * @example ["60d0fe4f5311236168a109ca", "60d0fe4f5311236168a109cb"]
+   */
   orderIds: string[];
+
+  /**
+   * The new status to be applied to the orders.
+   */
   status: OrderStatus;
+
+  /**
+   * The date of the status update. If not provided, the current date will be used.
+   * @example "2024-06-01T00:00:00Z"
+   */
   date?: Date;
 }
 
-export interface UpdateOrderEventResponse {
+/**
+ * Response for updating the statuses of multiple orders.
+ */
+export interface UpdateManyOrderStatusesResponse {
+  /**
+   * The result of the update operation.
+   * 1 indicates success, 0 indicates failure.
+   * @example 1
+   */
   result: number;
 }

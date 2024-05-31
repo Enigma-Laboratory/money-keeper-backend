@@ -4,10 +4,9 @@ import {
   FindAllOrderDetailParams,
   FindAllOrderParams,
   FindOneOrderParams,
-  UpdateMultipleOrderEventsParams,
+  UpdateManyOrderStatusesParams,
   UpdateOneOrderParams,
-  UpdateOrderEventParams,
-  UpdateOrderEventResponse,
+  UpdateOrderStatusParams,
 } from '@enigma-laboratory/shared';
 import Joi, { ValidationResult } from 'joi';
 
@@ -75,7 +74,7 @@ export class OrderValidation {
     return schema.validate(params);
   }
 
-  public updateOrderEvent(params: UpdateOrderEventParams): ValidationResult<UpdateOrderEventResponse> {
+  public updateOrderStatus(params: UpdateOrderStatusParams): ValidationResult<UpdateOrderStatusParams> {
     const schema = Joi.object({
       date: Joi.date().optional(),
       status: Joi.string().required(),
@@ -85,7 +84,7 @@ export class OrderValidation {
     return schema.validate(params);
   }
 
-  public updateOrderEvents(params: UpdateMultipleOrderEventsParams): ValidationResult<UpdateOrderEventResponse> {
+  public updateOrderStatuses(params: UpdateManyOrderStatusesParams): ValidationResult<UpdateManyOrderStatusesParams> {
     const schema = Joi.object({
       orderIds: Joi.array().items(Joi.string()).required(),
       status: Joi.string().required(),

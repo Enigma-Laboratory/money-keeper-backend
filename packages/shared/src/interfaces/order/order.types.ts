@@ -37,6 +37,8 @@ export enum OrderEvent {
    */
   UPDATED = 'order:updated',
 
+  ALL_UPDATED = 'order:all-updated',
+
   /**
    * Event emitted when an order is deleted.
    */

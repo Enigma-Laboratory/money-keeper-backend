@@ -1,14 +1,17 @@
 import OrderModel from '@/models/order.model';
-import { OrderEvent, UpdateOrderEventParams, UpdateOrderEventResponse, User } from '@enigma-laboratory/shared';
+import { OrderEvent, UpdateOrderStatusParams, UpdateOrderStatusResponse, User } from '@enigma-laboratory/shared';
 import { OrderValidation } from '../validation';
 
 import { CreateApplication } from '@/app';
 import { BadRequestError } from '@/errors';
 
-export async function updateOrderEvent(user: User, params: UpdateOrderEventParams): Promise<UpdateOrderEventResponse> {
+export async function updateOrderStatus(
+  user: User,
+  params: UpdateOrderStatusParams,
+): Promise<UpdateOrderStatusResponse> {
   try {
     // Validate the input parameters
-    const validationResult = OrderValidation.instance.updateOrderEvent(params);
+    const validationResult = OrderValidation.instance.updateOrderStatus(params);
     if (validationResult.error) {
       throw new BadRequestError(validationResult.error.message);
     }
