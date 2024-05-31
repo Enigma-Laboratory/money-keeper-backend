@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.9.0...v1.10.0) (2024-05-31)
+
+
+### Features
+
+* update api for update order statuses ([3e0903b](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/3e0903b3c3a0e198aa71f24eb6fd499559e0d728))
+
+
+### Bug Fixes
+
+* change route name to forgot password ([052ec61](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/052ec613c592c60a24ae80d2801c67db1544493f))
+
 ## [1.9.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.8.0...v1.9.0) (2024-05-27)
 
 
