@@ -62,6 +62,22 @@ route.put('/', OrderComponent.updateOneOrderHandler);
 route.put('/order-status', OrderComponent.updateOrderEventHandler);
 
 /**
+ * PUT /order-statuses
+ * @summary Update the statuses of multiple orders
+ *
+ * @tags OrderEvent
+ *
+ * @security BearerAuth
+ *
+ * @param {UpdateMultipleOrderEventsParams} request.body.required - Multiple order status update parameters
+ *
+ * @return {UpdateOrderEventResponse} 200 - Success response
+ * @return {Error} 400 - Validation error
+ * @return {Error} 500 - Unexpected error
+ */
+route.put('/order-statuses', OrderComponent.updateOrderEventsHandler);
+
+/**
  * delete /orders/:id
  * @summary delete one order
  *

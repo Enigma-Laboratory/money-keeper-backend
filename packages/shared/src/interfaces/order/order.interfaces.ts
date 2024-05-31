@@ -75,3 +75,13 @@ export interface DailyOrderParams {
 }
 
 export interface DailyOrderResponse {}
+
+export interface UpdateMultipleOrderEventsParams {
+  orderIds: string[];
+  status: OrderStatus;
+  date?: Date;
+}
+
+export interface UpdateOrderEventResponse {
+  result: number;
+}

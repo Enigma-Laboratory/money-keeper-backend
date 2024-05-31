@@ -148,6 +148,7 @@ var UserEvent = /* @__PURE__ */ ((UserEvent2) => {
   UserEvent2["CREATE"] = "order:create";
   UserEvent2["UPDATE"] = "order:update";
   UserEvent2["READ"] = "order:read";
+  UserEvent2["DELETE"] = "order:delete";
   return UserEvent2;
 })(UserEvent || {});
 

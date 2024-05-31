@@ -4,6 +4,7 @@ import {
   FindAllOrderDetailParams,
   FindAllOrderParams,
   FindOneOrderParams,
+  UpdateMultipleOrderEventsParams,
   UpdateOneOrderParams,
   UpdateOrderEventParams,
   UpdateOrderEventResponse,
@@ -79,6 +80,15 @@ export class OrderValidation {
       date: Joi.date().optional(),
       status: Joi.string().required(),
       orderId: Joi.string().required(),
+      userId: Joi.string().optional(),
+    });
+    return schema.validate(params);
+  }
+
+  public updateOrderEvents(params: UpdateMultipleOrderEventsParams): ValidationResult<UpdateOrderEventResponse> {
+    const schema = Joi.object({
+      orderIds: Joi.array().items(Joi.string()).required(),
+      status: Joi.string().required(),
     });
     return schema.validate(params);
   }

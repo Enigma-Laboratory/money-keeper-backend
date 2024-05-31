@@ -135,3 +135,22 @@ export async function updateOrderEventHandler(req: RequestWithUser, res: Respons
     next(error);
   }
 }
+
+export async function updateOrderEventsHandler(req: RequestWithUser, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const orderEventUpdated = await OrderUseCases.updateMultipleOrderEvents(req?.actor as User, req.body);
+    logger.info({
+      component: 'OrderService',
+      func: 'updateOrderEventsHandler',
+      additionalInfo: orderEventUpdated,
+    });
+    res.status(200).send(orderEventUpdated);
+  } catch (error) {
+    logger.error({
+      component: 'OrderService',
+      func: 'updateOrdersEventHandler',
+      additionalInfo: error,
+    });
+    next(error);
+  }
+}
