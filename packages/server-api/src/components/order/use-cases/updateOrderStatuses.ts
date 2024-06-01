@@ -18,12 +18,10 @@ export async function updateOrderStatuses(
   if (validationResult.error) {
     throw new BadRequestError(validationResult.error.message);
   }
-  console.log('123');
   const session = await mongoose.startSession();
   session.startTransaction();
   try {
     const ordersToUpdate = [];
-    console.log('456');
     for (const orderId of params.orderIds) {
       // Find the order by its ID
       const order = await OrderModel.findById(orderId);
@@ -48,6 +46,8 @@ export async function updateOrderStatuses(
 
     await session.commitTransaction();
     session.endSession();
+
+    console.log(OrderEvent.ALL_UPDATED);
 
     // Broadcast the update event for all orders
     CreateApplication.instance.broadcastEvent(OrderEvent.ALL_UPDATED, ordersToUpdate);

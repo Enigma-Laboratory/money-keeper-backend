@@ -127,6 +127,7 @@ var OrderStatus = /* @__PURE__ */ ((OrderStatus2) => {
 var OrderEvent = /* @__PURE__ */ ((OrderEvent2) => {
   OrderEvent2["CREATED"] = "order:created";
   OrderEvent2["UPDATED"] = "order:updated";
+  OrderEvent2["ALL_UPDATED"] = "order:all-updated";
   OrderEvent2["DELETED"] = "order:deleted";
   OrderEvent2["CREATE"] = "order:create";
   OrderEvent2["UPDATE"] = "order:update";
