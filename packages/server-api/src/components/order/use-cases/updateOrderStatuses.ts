@@ -50,7 +50,7 @@ export async function updateOrderStatuses(
     console.log(OrderEvent.ALL_UPDATED);
 
     // Broadcast the update event for all orders
-    CreateApplication.instance.broadcastEvent(OrderEvent.ALL_UPDATED, ordersToUpdate);
+    CreateApplication.instance.broadcastEvent(OrderEvent.ALL_UPDATED, { user, ordersToUpdate });
 
     return { result: 1 };
   } catch (error) {

@@ -60,9 +60,9 @@ export class CreateApplication {
     });
   }
 
-  public broadcastEvent<T = any>(eventName: string, eventData: T): void {
+  public broadcastEvent<T = any>(eventName: string, eventData: T, ...args: T[]): void {
     if (this.io) {
-      this.io.emit(eventName, eventData);
+      this.io.emit(eventName, eventData, args);
     }
   }
 
