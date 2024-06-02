@@ -114,7 +114,10 @@ route.post('/', OrderComponent.createOneOrderHandler);
  *
  * @security BearerAuth
  *
- **
+ * @param {Array<string>} [sorters] - Sort criteria in the format ["field:order", "field:order"]
+ * @param {number} [page] - The page number for pagination
+ * @param {number} [pageSize] - The number of items to include in a single page of results
+ *
  * @return {Order} 200 - Return order - application/json
  * @return {Error} default - Unexpected error - application/json
  */
