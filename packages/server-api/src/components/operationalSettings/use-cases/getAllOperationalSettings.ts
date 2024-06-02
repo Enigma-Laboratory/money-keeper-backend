@@ -5,7 +5,7 @@ import { InternalServerError } from '@/errors';
 
 export async function getAllOperationalSettings(): Promise<FindAllOperationalSettingResponse> {
   try {
-    const groups = await OperationalSettingModel.find();
+    const groups = await OperationalSettingModel.find().sort({ createdAt: -1 });
 
     return {
       count: groups.length,
