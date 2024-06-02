@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.12.0...v1.13.0) (2024-06-02)
+
+
+### Features
+
+* EL-39 add api for get daily order ([b14562a](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/b14562ad91ac9eee145757ce2406a945c65a0e14))
+* EL-39 add api for get daily user ([0250955](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/02509550484cce50ea33d18784741b06503a8bf4))
+
+
+### Bug Fixes
+
+* throw internal server error when edit order status not work ([de62130](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/de6213059287f36d0daa3c0fece93f55cbd4129c))
+
 ## [1.12.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.11.0...v1.12.0) (2024-06-02)
 
 
