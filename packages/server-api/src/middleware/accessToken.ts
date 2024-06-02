@@ -8,7 +8,7 @@ import { NextFunction, Response } from 'express';
 import { JwtPayload } from 'jsonwebtoken';
 import { get } from 'lodash';
 
-const excludedPaths = ['sign-in', 'sign-up', 'forget-password', 'refresh-token'];
+const excludedPaths = ['sign-in', 'sign-up', 'forgot-password', 'refresh-token'];
 
 export const accessToken = async (req: RequestWithUser, res: Response, next: NextFunction) => {
   const accessToken = get(req, 'headers.authorization', '').replace(/^Bearer\s/, '');
