@@ -1,5 +1,6 @@
 import { RequestWithUser } from '@/interface';
 import logger from '@/utils/logger';
+import { parseQueryParams } from '@/utils/parseQueryParams';
 import { User } from '@enigma-laboratory/shared';
 import { NextFunction, Request, Response } from 'express';
 import * as OrderUseCases from './use-cases';
@@ -25,7 +26,8 @@ export async function createOneOrderHandler(req: RequestWithUser, res: Response,
 
 export async function getAllOrderHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const orders = await OrderUseCases.getAllOrders(req.params);
+    const params = parseQueryParams(req.query);
+    const orders = await OrderUseCases.getAllOrders(params);
     res.status(200).send(orders);
   } catch (error) {
     logger.error({

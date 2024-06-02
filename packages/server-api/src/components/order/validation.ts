@@ -36,6 +36,8 @@ export class OrderValidation {
       endDate: Joi.date(),
       month: Joi.number(),
       group: Joi.string(),
+      start: Joi.date(),
+      end: Joi.date(),
     });
     return schema.validate(params);
   }

@@ -14,6 +14,12 @@ export interface FindAllParams<Scope = string> {
 
   /** The number of items to include in a single page of results. */
   pageSize?: number;
+
+  /** The start of item to sort from start date */
+  start?: Date;
+
+  /** The end of item to sort from end date */
+  end?: Date;
 }
 
 /**
