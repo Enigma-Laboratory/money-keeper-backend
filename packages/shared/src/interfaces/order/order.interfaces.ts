@@ -109,3 +109,13 @@ export interface UpdateManyOrderStatusesResponse {
    */
   result: number;
 }
+
+export interface FindAllDailyOrderRevenueParams extends Required<Pick<FindAllParams, 'start' | 'end'>> {
+  groupId?: string;
+}
+
+export interface FindAllDailyOrderRevenueResponse {
+  data: { date: Date; value: number }[];
+  total: number;
+  trend: number;
+}

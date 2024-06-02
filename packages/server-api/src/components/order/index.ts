@@ -1,7 +1,7 @@
 import { RequestWithUser } from '@/interface';
 import logger from '@/utils/logger';
 import { parseQueryParams } from '@/utils/parseQueryParams';
-import { User } from '@enigma-laboratory/shared';
+import { FindAllDailyOrderRevenueParams, User } from '@enigma-laboratory/shared';
 import { NextFunction, Request, Response } from 'express';
 import * as OrderUseCases from './use-cases';
 
@@ -151,6 +151,21 @@ export async function updateOrderEventsHandler(req: RequestWithUser, res: Respon
     logger.error({
       component: 'OrderService',
       func: 'updateOrdersEventHandler',
+      additionalInfo: error,
+    });
+    next(error);
+  }
+}
+
+export async function getDailyRevenueHandler(req: RequestWithUser, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const params = parseQueryParams(req.query);
+    const dailyRevenue = await OrderUseCases.getDailyOrderRevenue(params as unknown as FindAllDailyOrderRevenueParams);
+    res.status(200).json(dailyRevenue);
+  } catch (error) {
+    logger.error({
+      component: 'OrderService',
+      func: 'getDailyRevenueHandler',
       additionalInfo: error,
     });
     next(error);
