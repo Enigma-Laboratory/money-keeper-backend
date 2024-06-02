@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.10.3...v1.11.0) (2024-06-02)
+
+
+### Features
+
+* EL-37 get timeline order dashboard ([6995d69](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/6995d695677383c1511d49703c2a98292cfbd6ca))
+
+
+### Bug Fixes
+
+* broad cast event for return user and orders ([2228717](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/2228717957531171ba191dab15a3db11aa95829a))
+* change forget to fogot password ([68b092d](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/68b092d6ca0271ea1530977351e78a22cdbac7e0))
+* cors with pencusto ([55af0d5](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/55af0d5a21f5ea2fa904f0d1f6ea3e227291bbb1))
+* cors with pencusto ([54d576e](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/54d576e98c26537f48e728cf43d309083c80f1f5))
+
 ### [1.10.3](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.10.2...v1.10.3) (2024-06-01)
 
 
