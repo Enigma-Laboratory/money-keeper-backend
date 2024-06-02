@@ -1,4 +1,4 @@
-import { FindAllResponse, GetOneParams } from '../common';
+import { FindAllParams, FindAllResponse, GetOneParams } from '../common';
 
 /** Represents a user entity with various properties. */
 export interface User {
@@ -53,5 +53,29 @@ export interface ForgotPasswordParams {
   email: string;
 }
 
-// Reusing the GetOneParams interface for finding a single user by their ID.
-// This interface is not repeated here since it's already defined in a previous response.
+export interface FindAllDailyUserParams extends Required<Pick<FindAllParams, 'start' | 'end'>> {
+  /**
+   * Optional group ID for filtering.
+   */
+  groupId?: string;
+}
+
+/**
+ * Represents the response structure for finding all daily orders.
+ */
+export interface FindAllDailyUserResponse {
+  /**
+   * An array containing daily order data.
+   */
+  data: { date: Date; value: number }[];
+
+  /**
+   * Total number of orders across all days.
+   */
+  total: number;
+
+  /**
+   * Trend of orders over time.
+   */
+  trend: number;
+}

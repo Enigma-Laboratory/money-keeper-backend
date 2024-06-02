@@ -1,4 +1,4 @@
-import { FindOneUserParams, UpdateOneUserParams } from '@enigma-laboratory/shared';
+import { FindAllDailyUserParams, FindOneUserParams, UpdateOneUserParams } from '@enigma-laboratory/shared';
 import Joi, { ValidationResult } from 'joi';
 
 export class UserValidation {
@@ -30,6 +30,14 @@ export class UserValidation {
       password: Joi.string().optional(),
     });
 
+    return schema.validate(params);
+  }
+
+  public getDailyUserValidate(params: FindAllDailyUserParams): ValidationResult<FindAllDailyUserParams> {
+    const schema = Joi.object({
+      start: Joi.date().required(),
+      end: Joi.date().required(),
+    });
     return schema.validate(params);
   }
 }

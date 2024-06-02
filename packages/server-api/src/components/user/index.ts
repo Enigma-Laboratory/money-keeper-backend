@@ -1,5 +1,8 @@
 import logger from '@/utils/logger';
+import { parseQueryParams } from '@/utils/parseQueryParams';
+import { FindAllDailyUserParams } from '@enigma-laboratory/shared';
 import { NextFunction, Request, Response } from 'express';
+import { RequestWithUser } from '../auth';
 import * as UserUseCases from './use-cases';
 import { UserValidation } from './validation';
 
@@ -42,6 +45,21 @@ export async function updateOneUserHandler(req: Request, res: Response, next: Ne
     logger.error({
       component: 'UserService',
       func: 'putOneUserHandler',
+      additionalInfo: error,
+    });
+    next(error);
+  }
+}
+
+export async function getDailyUserHandler(req: RequestWithUser, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const params = parseQueryParams(req.query);
+    const dailyRevenue = await UserUseCases.getDailyUser(params as unknown as FindAllDailyUserParams);
+    res.status(200).json(dailyRevenue);
+  } catch (error) {
+    logger.error({
+      component: 'OrderService',
+      func: 'getDailyUserHandler',
       additionalInfo: error,
     });
     next(error);

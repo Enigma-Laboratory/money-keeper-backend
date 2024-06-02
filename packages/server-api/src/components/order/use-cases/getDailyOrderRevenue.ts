@@ -56,7 +56,9 @@ export async function getDailyOrderRevenue(
     let trend = 0;
     if (dailyRevenue.length > 1) {
       const previousTotal = dailyRevenue[dailyRevenue.length - 2].value;
-      trend = Math.round(((total - previousTotal) / previousTotal) * 100);
+      if (previousTotal !== 0) {
+        trend = Math.round(((total - previousTotal) / previousTotal) * 100);
+      }
     }
 
     // Return the response with total and trend
