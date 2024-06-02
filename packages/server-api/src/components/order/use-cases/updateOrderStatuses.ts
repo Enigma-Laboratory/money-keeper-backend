@@ -1,5 +1,5 @@
 import { CreateApplication } from '@/app';
-import { BadRequestError } from '@/errors';
+import { BadRequestError, InternalServerError } from '@/errors';
 import OrderModel from '@/models/order.model';
 import {
   OrderEvent,
@@ -47,8 +47,6 @@ export async function updateOrderStatuses(
     await session.commitTransaction();
     session.endSession();
 
-    console.log(OrderEvent.ALL_UPDATED);
-
     // Broadcast the update event for all orders
     CreateApplication.instance.broadcastEvent(OrderEvent.ALL_UPDATED, { user, orders: ordersToUpdate });
 
@@ -56,6 +54,6 @@ export async function updateOrderStatuses(
   } catch (error) {
     await session.abortTransaction();
     session.endSession();
-    return { result: 0 };
+    throw new InternalServerError('An unexpected error occurred.');
   }
 }

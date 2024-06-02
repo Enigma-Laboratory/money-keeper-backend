@@ -3,7 +3,7 @@ import { OrderEvent, UpdateOrderStatusParams, UpdateOrderStatusResponse, User } 
 import { OrderValidation } from '../validation';
 
 import { CreateApplication } from '@/app';
-import { BadRequestError } from '@/errors';
+import { BadRequestError, InternalServerError } from '@/errors';
 
 export async function updateOrderStatus(
   user: User,
@@ -37,7 +37,6 @@ export async function updateOrderStatus(
 
     return { result: 1 };
   } catch (error: any) {
-    console.log(error);
-    return { result: 0 };
+    throw new InternalServerError(error.message);
   }
 }
