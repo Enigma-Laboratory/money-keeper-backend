@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.11.0...v1.12.0) (2024-06-02)
+
+
+### Features
+
+* EL-39 add daily revenue order in dashboard ([4cdc763](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/4cdc7631206158c4915dcb1994f1949eca9a4bf4))
+
 ## [1.11.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.10.3...v1.11.0) (2024-06-02)
 
 
