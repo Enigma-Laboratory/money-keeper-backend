@@ -4,6 +4,24 @@ import express from 'express';
 const route = express.Router();
 
 /**
+ * get /order
+ * @summary Get daily order revenue
+ *
+ * @tags Order
+ *
+ * @security BearerAuth
+ *
+ * @param {string} [start] - Start date for the query in ISO 8601 format (YYYY-MM-DD)
+ * @param {string} [end] - End date for the query in ISO 8601 format (YYYY-MM-DD)
+ * @param {number} [total] - Total sum of daily revenue
+ * @param {number} [trend] - Percentage change in total revenue between consecutive days
+ *
+ * @return {FindAllDailyOrderRevenueResponse} 200 - Returns daily order revenue - application/json
+ * @return {Error} default - Unexpected error - application/json
+ */
+route.get('/daily-revenue', OrderComponent.getDailyRevenueHandler);
+
+/**
  * get /order/{id}/details
  * @summary get all order detail by order id
  *
