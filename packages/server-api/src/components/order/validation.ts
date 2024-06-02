@@ -1,6 +1,7 @@
 import {
   CreateOneOrderParams,
   DeleteOneOrderParams,
+  FindAllDailyOrderParams,
   FindAllDailyOrderRevenueParams,
   FindAllOrderDetailParams,
   FindAllOrderParams,
@@ -105,6 +106,14 @@ export class OrderValidation {
   public getDailyOrderRevenueValidate(
     params: FindAllDailyOrderRevenueParams,
   ): ValidationResult<FindAllDailyOrderRevenueParams> {
+    const schema = Joi.object({
+      start: Joi.date().required(),
+      end: Joi.date().required(),
+    });
+    return schema.validate(params);
+  }
+
+  public getDailyOrderValidate(params: FindAllDailyOrderParams): ValidationResult<FindAllDailyOrderParams> {
     const schema = Joi.object({
       start: Joi.date().required(),
       end: Joi.date().required(),

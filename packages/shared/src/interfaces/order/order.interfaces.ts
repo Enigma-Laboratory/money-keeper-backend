@@ -110,12 +110,62 @@ export interface UpdateManyOrderStatusesResponse {
   result: number;
 }
 
+/**
+ * Specifies the parameters required for finding all daily order revenues.
+ */
 export interface FindAllDailyOrderRevenueParams extends Required<Pick<FindAllParams, 'start' | 'end'>> {
+  /**
+   * Optional group ID for filtering.
+   */
   groupId?: string;
 }
 
+/**
+ * Represents the response structure for finding all daily order revenues.
+ */
 export interface FindAllDailyOrderRevenueResponse {
+  /**
+   * An array containing daily revenue data.
+   */
   data: { date: Date; value: number }[];
+
+  /**
+   * Total revenue across all days.
+   */
   total: number;
+
+  /**
+   * Trend of revenue over time.
+   */
+  trend: number;
+}
+
+/**
+ * Specifies the parameters required for finding all daily orders.
+ */
+export interface FindAllDailyOrderParams extends Required<Pick<FindAllParams, 'start' | 'end'>> {
+  /**
+   * Optional group ID for filtering.
+   */
+  groupId?: string;
+}
+
+/**
+ * Represents the response structure for finding all daily orders.
+ */
+export interface FindAllDailyOrderResponse {
+  /**
+   * An array containing daily order data.
+   */
+  data: { date: Date; value: number }[];
+
+  /**
+   * Total number of orders across all days.
+   */
+  total: number;
+
+  /**
+   * Trend of orders over time.
+   */
   trend: number;
 }

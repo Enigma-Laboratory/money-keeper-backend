@@ -2,12 +2,11 @@ import { accessToken } from '@/middleware/accessToken';
 import SwaggerUI from '@/services/apiDocsServices/apiDocsServices';
 import { Express } from 'express';
 import AuthRoute from './auth/authRoutes';
+import operationalSettingRoutes from './operationalSetting/operationalSettingRoutes';
 import OrderRoute from './order/orderRoutes';
-import OrderDetailRoute from './orderDetail/orderDetailRoutes';
 import ProductRoute from './product/productRoutes';
 import AdditionalHttpStatusCodes from './serverError/serverError';
 import UserRoute from './user/userRoutes';
-import operationalSettingRoutes from './operationalSetting/operationalSettingRoutes';
 // import RemoveRoute from '@/utils/remove_data';
 
 function routes(app: Express) {
@@ -15,7 +14,6 @@ function routes(app: Express) {
   app.use('/auth', accessToken, AuthRoute);
   app.use('/products', accessToken, ProductRoute);
   app.use('/orders', accessToken, OrderRoute);
-  app.use('/order-details', accessToken, OrderDetailRoute);
   app.use('/users', accessToken, UserRoute);
   app.use('/operational-settings', accessToken, operationalSettingRoutes);
 
