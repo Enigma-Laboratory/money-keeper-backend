@@ -26,6 +26,8 @@ jobs:
         run: npm install -g pnpm
       - name: Install dependencies
         run: pnpm bootstrap
+      - name: Run test all
+        run: pnpm test
       - name: Run build server API
         run: pnpm build:server-api
 
