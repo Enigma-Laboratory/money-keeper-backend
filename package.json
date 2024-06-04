@@ -11,7 +11,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx lerna run --scope=@enigma-laboratory/auth-service test",
     "bootstrap": "pnpm i",
     "run:server-api": "npx lerna run --scope=server-api dev",
     "clean": "lerna clean ",
