@@ -58,7 +58,6 @@ export class AuthService {
       throw new ForbiddenException();
     }
 
-    // comparing refresh_token and userResponse.refresh_token if matching
     const isMatchFound = await bcrypt.compare(
       user.refreshToken,
       userResponse.refreshToken,

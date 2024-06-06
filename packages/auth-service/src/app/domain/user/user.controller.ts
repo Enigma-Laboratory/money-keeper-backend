@@ -31,7 +31,7 @@ export class UserController {
   })
   @ApiConsumes('application/json')
   @Get('/')
-  public async allUsers() {
+  public async getAllUsers() {
     return this.service.getAllUsers();
   }
 
@@ -44,7 +44,7 @@ export class UserController {
   @ApiOperation({ description: 'user create api ' })
   @ApiConsumes('application/json')
   @Post('/')
-  public async CreateUser(@Body() body: UserSignupDto) {
+  public async createUser(@Body() body: UserSignupDto) {
     return this.service.create(body);
   }
 }
