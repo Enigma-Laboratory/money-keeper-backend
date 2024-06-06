@@ -1,8 +1,8 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
-import { ConfigService } from 'src/config';
 import { Like, Repository } from 'typeorm';
+import { ConfigService } from '../../../config';
 import { FindUserDto, UserSignupDto } from './dto/user-request.dto';
 import { UserEntity } from './entity/user.entity';
 
