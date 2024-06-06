@@ -19,19 +19,19 @@ export class UserEntity extends BaseEntity {
   public password!: string;
 
   @Column({ type: 'varchar', length: 500, nullable: true })
-  public last_name!: string;
+  public lastName!: string;
 
   @Column({ type: 'varchar', length: 500, nullable: true })
-  public first_name!: string;
+  public firstName!: string;
 
   @Column({ type: 'varchar', length: 500, nullable: true })
   public name!: string;
 
   @Column({ type: 'varchar', nullable: true, select: false })
-  public refresh_token!: string;
+  public refreshToken!: string;
 
   @Column({ type: 'varchar', length: 500, nullable: true })
-  public picture_url!: string;
+  public pictureUrl!: string;
 
   @Column({ type: 'varchar', nullable: true })
   public permissions!: string;
@@ -44,12 +44,12 @@ export class UserEntity extends BaseEntity {
     default: () => 'CURRENT_TIMESTAMP',
     select: true,
   })
-  public created_at!: Date;
+  public createdAt!: Date;
 
   @UpdateDateColumn({
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',
     select: true,
   })
-  public updated_at!: Date;
+  public updatedAt!: Date;
 }

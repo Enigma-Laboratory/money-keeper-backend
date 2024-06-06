@@ -66,13 +66,13 @@ export class CreateAddressDto {
   public country!: string;
 
   @ApiProperty({
-    description: 'pin_code',
+    description: 'pinCode',
     example: '6789876',
     required: true,
   })
   @IsDefined()
   @IsString()
-  public pincode!: string;
+  public pinCode!: string;
 
   @ApiProperty({
     description: 'street',
@@ -111,7 +111,7 @@ export class UserSignupDto {
   })
   @IsOptional()
   @IsString()
-  public first_name!: string;
+  public firstName!: string;
 
   @ApiProperty({
     description: 'lastName',
@@ -120,7 +120,7 @@ export class UserSignupDto {
   })
   @IsOptional()
   @IsString()
-  public last_name!: string;
+  public lastName!: string;
 
   @ApiProperty({
     description: 'password',
@@ -135,7 +135,7 @@ export class UserSignupDto {
 
 export class UpdateUserByIdDto {
   @ApiProperty({
-    description: 'uuid user_id',
+    description: 'uuid userId',
     example: '',
     required: true,
   })
@@ -144,7 +144,7 @@ export class UpdateUserByIdDto {
 }
 export class UpdateUserPermissionBodyDto {
   @ApiProperty({
-    description: 'uuid user_id',
+    description: 'uuid userId',
     example: '',
     enum: UserRoles,
   })
@@ -173,32 +173,32 @@ export class FindUserDto {
   public name!: string;
 
   @ApiProperty({
-    description: 'first_name',
+    description: 'firstName',
     example: '',
     required: false,
   })
   @IsOptional()
   @IsString()
-  public first_name!: string;
+  public firstName!: string;
 
   @ApiProperty({
-    description: 'last_name',
+    description: 'lastName',
     example: '',
     required: false,
   })
   @IsOptional()
   @IsString()
-  public last_name!: string;
+  public lastName!: string;
 }
 
 export class BothPassword {
   @IsDefined()
   @IsString()
-  old_password: string;
+  oldPassword: string;
 
   @IsDefined()
   @IsString()
-  new_password: string;
+  newPassword: string;
 }
 
 // update user and here things will be optional
@@ -207,5 +207,5 @@ export class fieldsToUpdateDto extends PartialType(UserSignupDto) {
   @IsObject()
   @ValidateNested()
   @validateType(() => BothPassword)
-  public password_update!: BothPassword;
+  public passwordUpdate!: BothPassword;
 }

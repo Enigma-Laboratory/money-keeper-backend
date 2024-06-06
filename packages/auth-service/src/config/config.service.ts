@@ -16,6 +16,7 @@ export class ConfigService {
   }
 
   private parseConfigFromEnv(env: NodeJS.ProcessEnv) {
+    console.log(process.env.DATABASE_URL);
     return {
       env: env.NODE_ENV || DEFAULT_CONFIG.env,
       port: parseInt(env.PORT!, 10),

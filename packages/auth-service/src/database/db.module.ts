@@ -14,7 +14,6 @@ export class DBModule {
   ): TypeOrmModuleOptions {
     const dbData = config.get().db;
 
-    console.log(dbData);
     if (!dbData) {
       throw new Error('Database configuration is missing');
     }
@@ -32,13 +31,19 @@ export class DBModule {
     const isLocalOrTestEnv = [this.LOCAL_ENV, this.TEST_ENV].includes(
       process.env.NODE_ENV,
     );
-    console.log(dbData);
 
     return {
       type: 'postgres',
+      autoLoadEntities: true,
+      synchronize: true,
       url: dbData.url,
+      port: 5432,
       keepConnectionAlive: true,
-      ssl: !isLocalOrTestEnv ? { rejectUnauthorized: false } : false,
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      // ssl: !isLocalOrTestEnv ? { rejectUnauthorized: false } : false,
     };
   }
 
