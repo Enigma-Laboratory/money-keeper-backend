@@ -18,6 +18,7 @@
     "build:api-order": "npx lerna run --scope=@enigma-laboratory/order-service build",
     "run:api-auth": "npx lerna run --scope=@enigma-laboratory/auth-service start",
     "build:api-auth": "npx lerna run --scope=@enigma-laboratory/auth-service build",
+    "run:api-proxy": "npx lerna run --scope=@enigma-laboratory/proxy-service start",
     "clean": "lerna clean ",
     "clean:all": "lerna clean && pnpm store prune && lerna exec -- rm -rf node_modules",
     "build:interfaces": "npx lerna run --scope=@enigma-laboratory/shared build",

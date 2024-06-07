@@ -74,24 +74,24 @@ export class CreateApplication {
   }
 
   private startServer(): void {
-    const client = new Client(
-      'postgresql://pencusto-dev_owner:jedVs0FZGT7M@ep-cool-sun-a1mi6t81.ap-southeast-1.aws.neon.tech/pencusto-dev?sslmode=require',
-    );
+    // const client = new Client(
+    //   'postgresql://pencusto-dev_owner:jedVs0FZGT7M@ep-cool-sun-a1mi6t81.ap-southeast-1.aws.neon.tech/pencusto-dev?sslmode=require',
+    // );
 
-    client
-      .connect()
-      .then(() => {
-        return client.query('SELECT * FROM "users"');
-      })
-      .then((res: any) => {
-        console.log('Connected to PostgreSQL');
-        console.log(res.rows);
+    // client
+    //   .connect()
+    //   .then(() => {
+    //     return client.query('SELECT * FROM "users"');
+    //   })
+    //   .then((res: any) => {
+    //     console.log('Connected to PostgreSQL');
+    //     console.log(res.rows);
 
-        return client.end();
-      })
-      .catch((err: any) => {
-        console.error('Connection error', err.stack);
-      });
+    //     return client.end();
+    //   })
+    //   .catch((err: any) => {
+    //     console.error('Connection error', err.stack);
+    //   });
 
     this.server.listen(Config.instance.port, async () => {
       logger.debug(`🚀 App is running port :${Config.instance.port}`);
