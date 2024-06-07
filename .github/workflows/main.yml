@@ -28,8 +28,8 @@ jobs:
         run: pnpm bootstrap
       - name: Run test all
         run: pnpm test
-      - name: Run build server API
-        run: pnpm build:server-api
+      - name: Run build api order
+        run: pnpm build:api-order
 
   publish-package:
     name: Publish Package to npm

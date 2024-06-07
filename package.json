@@ -13,11 +13,12 @@
   "scripts": {
     "test": "npx lerna run --scope=@enigma-laboratory/auth-service test",
     "bootstrap": "pnpm i",
-    "run:server-api": "npx lerna run --scope=server-api dev",
+    "run:api-order": "npx lerna run --scope=@enigma-laboratory/order-service dev",
+    "format:api-order": "npx lerna run --scope=@enigma-laboratory/order-service format",
+    "build:api-order": "npx lerna run --scope=@enigma-laboratory/order-service build",
+    "run:api-auth": "npx lerna run --scope=@enigma-laboratory/auth-service start",
     "clean": "lerna clean ",
     "clean:all": "lerna clean && pnpm store prune && lerna exec -- rm -rf node_modules",
-    "format:server-api": "npx lerna run --scope=server-api format",
-    "build:server-api": "npx lerna run --scope=server-api build",
     "build:interfaces": "npx lerna run --scope=@enigma-laboratory/shared build",
     "bump-version": "npx lerna run --scope=@enigma-laboratory/shared bump-version",
     "deploy:prod": "npx lerna run --scope=@enigma-laboratory/shared deploy"
