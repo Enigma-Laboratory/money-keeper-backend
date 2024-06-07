@@ -21,7 +21,7 @@ export default class Config {
     this.accessTokenSecret = process.env.ACCESS_TOKEN_SECRET || 'ACCESS_TOKEN_SECRET';
     this.refreshTokenTtl = process.env.REFRESH_TOKEN_TTL || '30d';
     this.refreshTokenSecret = process.env.REFRESH_TOKEN_SECRET || 'REFRESH_TOKEN_SECRET';
-    this.port = process.env.PORT || '1337';
+    this.port = process.env.PORT || '3302';
     this.saltWorkFactor = Number(process.env.SALT_WORK_FACTOR) || 1;
     this.dbUri = process.env.DB_URI || '';
   }
