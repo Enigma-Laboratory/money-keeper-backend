@@ -7,8 +7,6 @@ export class ConfigService {
   private config: ConfigData;
   constructor(data: ConfigData = DEFAULT_CONFIG) {
     this.config = data;
-
-    console.log(data);
   }
 
   public loadFromEnv() {
