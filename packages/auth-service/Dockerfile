@@ -1,21 +1,23 @@
-FROM node:14-buster-slim
+# Use Node.js 14.x LTS image
+FROM node:20
 
+# Set the working directory inside the container
 WORKDIR /app
 
-COPY package.json /app/
+# Copy package.json and package-lock.json to the working directory
+COPY package.json pnpm-lock.yaml* ./
 
-RUN npm install && \
-    rm -rf /tmp/* /var/tmp/*
+# Install PNPM globally
+RUN npm install -g pnpm
 
-COPY ./docker-utils/entrypoint/init.sh /usr/local/bin/docker-entrypoint.sh
+# Install NestJS dependencies using PNPM
+RUN pnpm install
 
+# Copy the rest of the application code
+COPY . .
 
-
-
+# Expose the port the app runs on
 EXPOSE 3000
 
-USER node
-
-ENV TYPEORM_MIGRATION=ENABLE
-ENV NPM_INSTALL=DISABLE
-CMD npm run start:prod
+# Command to run your NestJS application
+CMD ["pnpm", "start"]
