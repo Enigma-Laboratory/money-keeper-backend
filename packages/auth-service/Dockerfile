@@ -1,21 +1,23 @@
-FROM node:14-buster-slim
+# Use the official Node.js image as the base image
+FROM node:18-alpine
 
-WORKDIR /app
+# Set the working directory inside the container
+WORKDIR /usr/src/app
 
-COPY package.json /app/
+# Copy package.json and package-lock.json (or yarn.lock) files
+COPY package*.json ./
 
-RUN npm install && \
-    rm -rf /tmp/* /var/tmp/*
+# Install dependencies
+RUN npm install
 
-COPY ./docker-utils/entrypoint/init.sh /usr/local/bin/docker-entrypoint.sh
+# Copy the rest of the application code
+COPY . .
 
+# Build the NestJS application
+RUN npm run build
 
+# Expose the port the app runs on
+EXPOSE 3301
 
-
-EXPOSE 3000
-
-USER node
-
-ENV TYPEORM_MIGRATION=ENABLE
-ENV NPM_INSTALL=DISABLE
-CMD npm run start:prod
+# Command to run the application
+CMD ["npm", "run", "start:prod"]

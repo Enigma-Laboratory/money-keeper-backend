@@ -1,12 +1,18 @@
-version: '3.6'
+version: '3.8'
 services:
-  node:
-    build: .
-    volumes:
-      - .:/app
-    env_file:
-      - ./. env
+  auth-service:
+    build:
+      context: ./packages/auth-service
+    container_name: auth-service
+    ports:
+      - '3301:3301'
+    environment:
+      - NODE_ENV=production
+      - PORT=3301
 
-  postgres:
-    image: postgres
-    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
