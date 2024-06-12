@@ -170,8 +170,8 @@ importers:
   packages/order-service:
     devDependencies:
       '@enigma-laboratory/shared':
-        specifier: workspace:*
-        version: link:../shared
+        specifier: 1.13.0
+        version: 1.13.0
       '@types/bcrypt':
         specifier: ^5.0.0
         version: 5.0.2
@@ -623,6 +623,9 @@ packages:
 
   '@dabh/diagnostics@2.0.3':
     resolution: {integrity: sha512-hrlQOIi7hAfzsMqlGSFyVucrx38O+j6wiGOf//H2ecvIEqYN4ADBSS2iLMh5UFyDunCNniUIPk/q3riFv45xRA==}
+
+  '@enigma-laboratory/shared@1.13.0':
+    resolution: {integrity: sha512-L5OQBdwiPMJrfwhnvN/Wmp2BRokqisGWcoPWL3S479uuTyzjsFSuupqo1g2SNGFTo89jeVFrLixW/IpIAU285g==}
 
   '@esbuild/aix-ppc64@0.19.12':
     resolution: {integrity: sha512-bmoCYyWdEL3wDQIVbcyzRyeKLgk2WtWLTWz1ZIAZF/EGbNOwSA6ew3PftJ1PqMiOOGu0OyFMzG53L0zqIpPeNA==}
@@ -6655,6 +6658,10 @@ snapshots:
       colorspace: 1.1.4
       enabled: 2.0.0
       kuler: 2.0.0
+
+  '@enigma-laboratory/shared@1.13.0':
+    dependencies:
+      typescript: 5.4.5
 
   '@esbuild/aix-ppc64@0.19.12':
     optional: true
