@@ -1,17 +1,21 @@
-# Money Keeper Backend
+# Project README
 
-#### [API for Money Keeper](https://github.com/Enigma-Laboratory/money-keeper)
+## Overview
 
-#### [Money Keeper Production](https://money-keeper-dev.onrender.com)
+This project utilizes several frameworks and libraries to build a scalable and efficient application. Below are the primary technologies used:
 
-## Applied Frameworks
+### Frameworks and Libraries
+- **ExpressJS**: A minimal and flexible Node.js web application framework.
+- **NestJS**: A progressive Node.js framework for building efficient and scalable server-side applications.
+- **Socket.IO**: A library for real-time, bidirectional communication between web clients and servers.
+- **JWT (JSON Web Tokens)**: A compact, URL-safe means of representing claims to be transferred between two parties.
 
-ExpressJS\
-Typescript\
-swagger\
-Joi
+### Databases
+- **MongoDB**: A document-oriented NoSQL database used for high-volume data storage.
+- **PostgreSQL**: A powerful, open-source object-relational database system.
+- **Prisma**: An open-source ORM that simplifies data modeling, migrations, and queries.
 
-## Development Environment Setup
+## Installation
 
 ### Creating the Environment Configuration File
 
@@ -21,22 +25,29 @@ Copy the .env.example file to .env.
 cp .env.example .env
 ```
 
-## Getting Started
+### Prerequisites
+Ensure you have the following installed:
+- Node.js
+- pnpm (fast, disk space-efficient package manager)
 
-### Installing NPM lerna and pnpm
+### Setting Up the Monorepo
 
-```console
-npm install -g pnpm lerna
-```
+We use Lerna to manage our monorepo. Follow these steps to set up the project:
 
-### Installing NPM Packages
+1. **Install Lerna globally**:
+    ```bash
+    pnpm install -g lerna
+    ```
 
-```console
-pnpm bootstrap
-```
+2. **Bootstrap the project**:
+    ```bash
+    pnpm bootstrap
+    ```
 
-### Runs the app in the development mode.
+## Running the Services
 
-```console
-pnpm run:server-api
-```
+### Authentication Service
+To start the authentication service, use the following command:
+```bash
+pnpm run:auth-api
+
