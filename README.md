@@ -51,3 +51,11 @@ To start the authentication service, use the following command:
 ```bash
 pnpm run:auth-api
 
+```
+### Order Service
+To start the order sevice,
+use the following command:
+```
+pnpm run:order-api
+```
+
