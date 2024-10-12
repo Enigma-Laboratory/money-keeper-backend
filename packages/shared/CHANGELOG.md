@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.14.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.13.0...v1.14.0) (2024-10-12)
+
+
+### Features
+
+* add auth service & guard jwt ([103ab15](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/103ab1583ec864f9182bbdbc8c4b739af66f982f))
+* add script for load balancing EL-48 ([7bd67c5](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/7bd67c56b20850a45fe2666b8eadbde55e344a29))
+* add sort group by create at ([349af96](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/349af96b581e8e734f895210dded776baa22a861))
+* add swagger auth service EL-45 ([8637e37](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/8637e37fe3d9444bf4a4657d15808aea337b241d))
+* add test for auth ([d75cbf6](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/d75cbf658b63ea0e66c0938ade378de3fbd24088))
+* add test for user EL-45 ([d55cf65](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/d55cf657ba6c6014225b757cfc9bdbe5c86443f3))
+* change pnpm lock ([56bf17e](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/56bf17e229936f545c434a80ba391caac84def1e))
+* implement proxy service EL-48 ([c7ad6a1](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/c7ad6a16897e96cbf62ac4174a370aa401780f45))
+* implement role of user ([2dfc3d2](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/2dfc3d22b00ad7a8b3abcb93bca8fef217ac5a24))
+* setup auth service and pipeline: ([15f19a5](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/15f19a54e97bbbd73077a4f6a55ee24a3dd37278))
+* setup connect db with postgre ([0a7fd0c](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/0a7fd0c8d4484bfd79ee7d0b37f1e5f291ec173e))
+* setup init auth service ([6232266](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/623226652af814837799260b32ed1b48b6a04af9))
+* update to dockerhub ([bf21e5b](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/bf21e5bddc2d50942048f667432ce8f9e134a38f))
+
+
+### Bug Fixes
+
+* docker file EL-46 ([6e87df4](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/6e87df40aa62e9f3bfb62130d1f81a3e24f51d54))
+* update docker file for order service EL-46 ([9f20802](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/9f20802711209393d363d91feffe196d9f5eadeb))
+* update pnpm lock change ([15dd6d0](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/15dd6d04063b766a5f240bf95754728aaeb180df))
+
 ## [1.13.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.12.0...v1.13.0) (2024-06-02)
 
 
