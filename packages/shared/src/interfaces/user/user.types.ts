@@ -1,6 +1,6 @@
 export enum UserTypes {
   ADMIN = 'admin',
-  CUSTOMER = 'customer',
+  USER = 'user',
 }
 
 export enum UserEvent {
