@@ -18,6 +18,7 @@ export const userSchema = new Schema(
     address: { type: String, required: false },
     numberPhone: { type: String, required: false },
     image: { type: String, required: false },
+    role: { type: String, required: true, enum: ['user', 'admin'], default: 'user' },
   },
   {
     timestamps: true,

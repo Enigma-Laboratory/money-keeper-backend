@@ -1,4 +1,5 @@
 import { FindAllParams, FindAllResponse, GetOneParams } from '../common';
+import { UserTypes } from './user.types';
 
 /** Represents a user entity with various properties. */
 export interface User {
@@ -11,6 +12,7 @@ export interface User {
   updatedAt?: Date /** The timestamp when the user was last updated (optional). */;
   image?: string /** The avatar image URL of the user (optional). */;
   password: string /** The password of the user. */;
+  role?: UserTypes /** The role of the user, which defines their permissions and access levels (optional). */;
 }
 
 /** Represents the response structure for finding multiple users. */
