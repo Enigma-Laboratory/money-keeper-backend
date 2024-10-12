@@ -11,7 +11,7 @@ export interface OperationalSetting {
 
 export interface FindAllOperationalSettingResponse extends FindAllResponse<OperationalSetting> {}
 
-export interface CreateOneOperationalSettingParams extends Pick<OperationalSetting, 'name'> {}
+export interface CreateOneOperationalSettingParams extends Pick<OperationalSetting, 'name' | 'userIds'> {}
 
 export interface CreateOneOperationalSettingResponse extends OperationalSetting {}
 
