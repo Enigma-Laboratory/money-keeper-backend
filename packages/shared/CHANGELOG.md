@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.14.0...v1.15.0) (2024-10-12)
+
+
+### Features
+
+* implement new role ([938557f](https://github.com/Enigma-Laboratory/money-keeper-backend/commit/938557fd80f2fc49ac5a4eee3be4b1327834b396))
+
 ## [1.14.0](https://github.com/Enigma-Laboratory/money-keeper-backend/compare/v1.13.0...v1.14.0) (2024-10-12)
 
 
