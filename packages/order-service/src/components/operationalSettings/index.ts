@@ -1,6 +1,8 @@
 import logger from '@/utils/logger';
 import * as OperationalSettingUseCases from './use-cases';
 import { NextFunction, Response, Request } from 'express';
+import { RequestWithUser } from '@/interface';
+import { User } from '@enigma-laboratory/shared';
 
 export async function createOneOperationalSettingHandler(
   req: Request,
@@ -25,9 +27,13 @@ export async function createOneOperationalSettingHandler(
   }
 }
 
-export async function getAllOperationalSettingHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
+export async function getAllOperationalSettingHandler(
+  req: RequestWithUser,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
   try {
-    const operationalSettings = await OperationalSettingUseCases.getAllOperationalSettings();
+    const operationalSettings = await OperationalSettingUseCases.getAllOperationalSettings(req?.actor as User);
     res.status(200).send(operationalSettings);
   } catch (error) {
     logger.error({

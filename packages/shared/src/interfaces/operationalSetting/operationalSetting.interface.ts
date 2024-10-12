@@ -6,6 +6,7 @@ export interface OperationalSetting {
   status: 'opening' | 'closed';
   createdAt: Date;
   description?: string;
+  userIds?: string[] /** The user associated with the order. */;
 }
 
 export interface FindAllOperationalSettingResponse extends FindAllResponse<OperationalSetting> {}
