@@ -31,6 +31,7 @@ export class OperationalSettingValidation {
   ): ValidationResult<UpdateOneOperationalSettingResponse> {
     const schema = Joi.object({
       _id: Joi.string().required(),
+      name: Joi.string().optional(),
       status: Joi.string().valid('opening', 'closed').required(),
       userIds: Joi.array().items(Joi.string()).optional(),
       description: Joi.string().optional(),
