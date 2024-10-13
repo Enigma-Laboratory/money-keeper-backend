@@ -10,6 +10,7 @@ export const operationalSettingSchema = new Schema(
     name: { type: String, required: true },
     status: { type: String, required: true, enum: ['opening', 'closed'] },
     userIds: [{ type: String, required: true }],
+    description: { type: String },
   },
   {
     timestamps: true,

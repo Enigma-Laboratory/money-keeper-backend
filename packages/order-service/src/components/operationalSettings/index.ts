@@ -45,9 +45,13 @@ export async function getAllOperationalSettingHandler(
   }
 }
 
-export async function updateOperationalStatusHandler(req: Request, res: Response, next: NextFunction): Promise<void> {
+export async function updateOperationalStatusHandler(
+  req: RequestWithUser,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
   try {
-    const operationalSetting = await OperationalSettingUseCases.updateOperationalStatus(req.body);
+    const operationalSetting = await OperationalSettingUseCases.updateOperationalStatus(req?.actor as User, req.body);
     res.status(200).send(operationalSetting);
   } catch (error) {
     logger.error({

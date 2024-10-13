@@ -5,6 +5,8 @@ import {
   OperationalSettingEvent,
   UpdateOneOperationalSettingParams,
   UpdateOneOperationalSettingResponse,
+  User,
+  UserTypes,
 } from '@enigma-laboratory/shared';
 
 import { BadRequestError, InternalServerError } from '@/errors';
@@ -13,21 +15,28 @@ import { CreateApplication } from '@/app';
 import { OperationalSettingValidation } from '../validation';
 
 export async function updateOperationalStatus(
+  user: User,
   params: UpdateOneOperationalSettingParams,
 ): Promise<UpdateOneOperationalSettingResponse> {
   try {
+    const { _id, role } = user;
+
     const validate = OperationalSettingValidation.instance.putOperationalSettingValidate(params);
     if (validate.error) throw new BadRequestError(validate.error.message);
 
     const orders = await OrderModel.find({ groupId: params?._id });
 
-    if ((orders || []).some(order => Object.values(order.usersStatus || {}).some(value => value !== 'done'))) {
+    if (
+      (orders || []).some(order => Object.values(order.usersStatus || {}).some(value => value !== 'done')) &&
+      params.status === 'closed' &&
+      role !== UserTypes.ADMIN
+    ) {
       throw new BadRequestError('The order status is not done ');
     }
 
     const groups = await OperationalSettingModel.findByIdAndUpdate(
       params._id,
-      { status: params.status },
+      { ...params },
       {
         new: true,
       },
