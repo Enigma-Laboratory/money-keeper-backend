@@ -32,6 +32,8 @@ export class OperationalSettingValidation {
     const schema = Joi.object({
       _id: Joi.string().required(),
       status: Joi.string().valid('opening', 'closed').required(),
+      userIds: Joi.array().items(Joi.string()).optional(),
+      description: Joi.string().optional(),
     });
     return schema.validate(params);
   }
