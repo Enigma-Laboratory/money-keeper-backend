@@ -9,7 +9,7 @@ export async function updateOneUser(params: UpdateOneUserParams) {
     const validate = UserValidation.instance.updateOneUserValidation(params);
     if (validate.error) throw new BadRequestError(validate.error.message);
 
-    const { email, _id, ...remaining } = params;
+    const { email, _id, currentPassword, ...remaining } = params;
 
     let query: any = {};
     if (_id) {
@@ -20,7 +20,11 @@ export async function updateOneUser(params: UpdateOneUserParams) {
       throw new Error('Invalid identifier');
     }
 
-    const user = await UserModel.findOneAndUpdate(query, remaining, { new: true }).lean();
+    const user = await UserModel.findOneAndUpdate(
+      query,
+      { ...remaining, ...(currentPassword && { password: currentPassword }) },
+      { new: true },
+    ).lean();
 
     if (!user) {
       throw new BadRequestError('User not found or not updated.');
