@@ -34,7 +34,7 @@ export class OperationalSettingValidation {
       name: Joi.string().optional(),
       status: Joi.string().valid('opening', 'closed').required(),
       userIds: Joi.array().items(Joi.string()).optional(),
-      description: Joi.string().optional(),
+      description: Joi.string().allow('').optional(),
     });
     return schema.validate(params);
   }
