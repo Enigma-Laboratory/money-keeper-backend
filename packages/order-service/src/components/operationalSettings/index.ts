@@ -62,3 +62,22 @@ export async function updateOperationalStatusHandler(
     next(error);
   }
 }
+
+export async function deleteOperationalSettingHandler(
+  req: RequestWithUser,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    const { id } = req.params;
+    await OperationalSettingUseCases.deleteOperationalSetting(req?.actor as User, { _id: id });
+    res.status(204).send();
+  } catch (error) {
+    logger.error({
+      component: 'OperationalSettingService',
+      func: 'deleteOperationalSettingHandler',
+      additionalInfo: error,
+    });
+    next(error);
+  }
+}
