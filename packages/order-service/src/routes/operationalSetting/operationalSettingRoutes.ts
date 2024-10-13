@@ -45,4 +45,18 @@ route.get('/', OperationalSettingComponent.getAllOperationalSettingHandler);
  */
 route.put('/', OperationalSettingComponent.updateOperationalStatusHandler);
 
+/**
+ * delete /OperationalSettings/{id}
+ * @summary delete an operational setting
+ *
+ * @tags OperationalSettings
+ *
+ * @security BearerAuth
+ *
+ * @param {string} id.path.required - operational setting id
+ * @return {void} 204 - No content
+ * @return {Error} default - Unexpected error - application/json
+ */
+route.delete('/:id', OperationalSettingComponent.deleteOperationalSettingHandler);
+
 export default route;
