@@ -175,7 +175,10 @@ export async function getDailyRevenueHandler(req: RequestWithUser, res: Response
 export async function getDailyOrderHandler(req: RequestWithUser, res: Response, next: NextFunction): Promise<void> {
   try {
     const params = parseQueryParams(req.query);
-    const dailyRevenue = await OrderUseCases.getDailyOrder(params as unknown as FindAllDailyOrderParams);
+    const dailyRevenue = await OrderUseCases.getDailyOrder(
+      req?.actor as User,
+      params as unknown as FindAllDailyOrderParams,
+    );
     res.status(200).json(dailyRevenue);
   } catch (error) {
     logger.error({
